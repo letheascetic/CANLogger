@@ -1,2 +1,2 @@
-# CAN_BUS_READER
-CAN-bus application based on windows operating system
+# CANLogger
+CAN-bus tool based for windows os
