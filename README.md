@@ -1,2 +1,2 @@
 # CANLogger
-CAN-bus tool based for windows os
+CAN-bus tool for windows os
