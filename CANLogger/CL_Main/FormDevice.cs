@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CANLogger
+namespace CL_Main
 {
-    public partial class Form1 : Form
+    public partial class FormDevice : Form
     {
-        public Form1()
+        public FormDevice()
         {
             InitializeComponent();
         }
