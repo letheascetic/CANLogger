@@ -119,34 +119,78 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 25</value>
+    <value>141, 24</value>
   </data>
   <data name="btnDevice.Text" xml:space="preserve">
     <value>Select Device</value>
   </data>
   <data name="lbFrameFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 25</value>
+    <value>170, 24</value>
   </data>
   <data name="lbFrameFormat.Text" xml:space="preserve">
-    <value>Frame Display Format：</value>
+    <value>Frame Display Format:</value>
+  </data>
+  <data name="cbxFrameFormat.Items" xml:space="preserve">
+    <value>BIN</value>
+  </data>
+  <data name="cbxFrameFormat.Items1" xml:space="preserve">
+    <value>DEC</value>
+  </data>
+  <data name="cbxFrameFormat.Items2" xml:space="preserve">
+    <value>HEX</value>
   </data>
   <data name="lbIDFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 25</value>
+    <value>84, 24</value>
   </data>
   <data name="lbIDFormat.Text" xml:space="preserve">
-    <value>ID Format：</value>
+    <value>ID Format:</value>
+  </data>
+  <data name="cbxIDFormat.Items" xml:space="preserve">
+    <value>Real ID(Align Right)</value>
   </data>
   <data name="btnLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 25</value>
+    <value>114, 24</value>
   </data>
   <data name="btnLanguage.Text" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="uSNCANIIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="itemDeviceUSBCANII.Size" type="System.Drawing.Size, System.Drawing">
     <value>181, 26</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="itemLanguageCN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 26</value>
+  </data>
+  <data name="itemLanguageCN.Text" xml:space="preserve">
+    <value>Simplified-Chinese</value>
+  </data>
+  <data name="itemLanguageEn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 26</value>
+  </data>
+  <data name="itemLanguageEn.Text" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="btnStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 24</value>
+  </data>
+  <data name="btnStart.Text" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="btnStop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 24</value>
+  </data>
+  <data name="btnStop.Text" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 24</value>
+  </data>
+  <data name="btnClose.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="btnFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 24</value>
+  </data>
+  <data name="btnFilter.Text" xml:space="preserve">
+    <value>Filter</value>
   </data>
 </root>

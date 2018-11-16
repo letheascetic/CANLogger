@@ -37,7 +37,7 @@
             this.cbxFrameFormat = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.lbIDFormat = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
+            this.cbxIDFormat = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnLanguage = new System.Windows.Forms.ToolStripDropDownButton();
             this.itemLanguageCN = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +67,7 @@
             this.cbxFrameFormat,
             this.toolStripSeparator2,
             this.lbIDFormat,
-            this.toolStripComboBox2,
+            this.cbxIDFormat,
             this.toolStripSeparator3,
             this.btnLanguage});
             this.toolStrip.Name = "toolStrip";
@@ -98,6 +98,8 @@
             // cbxFrameFormat
             // 
             resources.ApplyResources(this.cbxFrameFormat, "cbxFrameFormat");
+            this.cbxFrameFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxFrameFormat.DropDownWidth = 60;
             this.cbxFrameFormat.Items.AddRange(new object[] {
             resources.GetString("cbxFrameFormat.Items"),
             resources.GetString("cbxFrameFormat.Items1"),
@@ -114,12 +116,14 @@
             this.lbIDFormat.Name = "lbIDFormat";
             resources.ApplyResources(this.lbIDFormat, "lbIDFormat");
             // 
-            // toolStripComboBox2
+            // cbxIDFormat
             // 
-            resources.ApplyResources(this.toolStripComboBox2, "toolStripComboBox2");
-            this.toolStripComboBox2.Items.AddRange(new object[] {
-            resources.GetString("toolStripComboBox2.Items")});
-            this.toolStripComboBox2.Name = "toolStripComboBox2";
+            resources.ApplyResources(this.cbxIDFormat, "cbxIDFormat");
+            this.cbxIDFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxIDFormat.DropDownWidth = 60;
+            this.cbxIDFormat.Items.AddRange(new object[] {
+            resources.GetString("cbxIDFormat.Items")});
+            this.cbxIDFormat.Name = "cbxIDFormat";
             // 
             // toolStripSeparator3
             // 
@@ -149,7 +153,7 @@
             // 
             this.itemLanguageEn.Name = "itemLanguageEn";
             resources.ApplyResources(this.itemLanguageEn, "itemLanguageEn");
-            this.itemLanguageEn.Tag = "en-GB";
+            this.itemLanguageEn.Tag = "en";
             // 
             // statusStrip
             // 
@@ -241,7 +245,7 @@
         private System.Windows.Forms.ToolStripComboBox cbxFrameFormat;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripLabel lbIDFormat;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
+        private System.Windows.Forms.ToolStripComboBox cbxIDFormat;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripDropDownButton btnLanguage;
         private System.Windows.Forms.ToolStripMenuItem itemDeviceUSBCANII;

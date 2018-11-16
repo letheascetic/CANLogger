@@ -24,9 +24,30 @@ namespace CL_Main
             //Start Form Loading
             //FormLoading formLoading = new FormLoading();
             //formLoading.ShowDialog();
+        }
 
+        private void SetLanguage(string language) 
+        {
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(language);
+            System.ComponentModel.ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
 
+            resources.ApplyResources(this, "$this");
 
+            resources.ApplyResources(this.btnDevice, this.btnDevice.Name);
+            resources.ApplyResources(this.lbFrameFormat, this.lbFrameFormat.Name);
+            resources.ApplyResources(this.lbIDFormat, this.lbIDFormat.Name);
+            resources.ApplyResources(this.btnLanguage, this.btnLanguage.Name);
+
+            resources.ApplyResources(this.btnStart, this.btnStart.Name);
+            resources.ApplyResources(this.btnStop, this.btnStop.Name);
+            resources.ApplyResources(this.btnClose, this.btnClose.Name);
+            resources.ApplyResources(this.btnFilter, this.btnFilter.Name);
+
+            cbxFrameFormat.Items[0] = resources.GetString("cbxFrameFormat.Items");
+            cbxFrameFormat.Items[1] = resources.GetString("cbxFrameFormat.Items1");
+            cbxFrameFormat.Items[2] = resources.GetString("cbxFrameFormat.Items2");
+
+            cbxIDFormat.Items[0] = resources.GetString("cbxIDFormat.Items");
 
         }
 
@@ -38,18 +59,8 @@ namespace CL_Main
                 return;
             }
 
-            string language = (string)item.Tag;
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(language);
+            SetLanguage((string)item.Tag);
 
-            System.ComponentModel.ComponentResourceManager res = new ComponentResourceManager(this.GetType());
-            foreach (Control ctl in Controls)
-            {
-                res.ApplyResources(ctl, ctl.Name);
-            }
-            this.ResumeLayout(false);
-            this.PerformLayout();
-            res.ApplyResources(this, "$this");
-            
             int oldIndex = Convert.ToInt32(btnLanguage.Tag);
             ToolStripMenuItem oldItem = (ToolStripMenuItem)btnLanguage.DropDownItems[oldIndex];
             oldItem.Checked = false;
