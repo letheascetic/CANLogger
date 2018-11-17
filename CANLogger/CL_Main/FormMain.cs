@@ -38,10 +38,10 @@ namespace CL_Main
             resources.ApplyResources(this.lbIDFormat, this.lbIDFormat.Name);
             resources.ApplyResources(this.btnLanguage, this.btnLanguage.Name);
 
-            resources.ApplyResources(this.btnStart, this.btnStart.Name);
-            resources.ApplyResources(this.btnStop, this.btnStop.Name);
-            resources.ApplyResources(this.btnClose, this.btnClose.Name);
-            resources.ApplyResources(this.btnFilter, this.btnFilter.Name);
+            //resources.ApplyResources(this.btnStart, this.btnStart.Name);
+            //resources.ApplyResources(this.btnStop, this.btnStop.Name);
+            //resources.ApplyResources(this.btnClose, this.btnClose.Name);
+            //resources.ApplyResources(this.btnFilter, this.btnFilter.Name);
 
             cbxFrameFormat.Items[0] = resources.GetString("cbxFrameFormat.Items");
             cbxFrameFormat.Items[1] = resources.GetString("cbxFrameFormat.Items1");

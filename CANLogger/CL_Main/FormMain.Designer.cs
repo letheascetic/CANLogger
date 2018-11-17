@@ -44,15 +44,8 @@
             this.itemLanguageEn = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.toolStripConfig = new System.Windows.Forms.ToolStrip();
-            this.btnStart = new System.Windows.Forms.ToolStripButton();
-            this.btnStop = new System.Windows.Forms.ToolStripButton();
-            this.btnClose = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnFilter = new System.Windows.Forms.ToolStripButton();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.toolStrip.SuspendLayout();
-            this.toolStripConfig.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -167,48 +160,6 @@
             resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
             // 
-            // toolStripConfig
-            // 
-            this.toolStripConfig.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.toolStripConfig.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStripConfig.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnStart,
-            this.btnStop,
-            this.btnClose,
-            this.toolStripSeparator4,
-            this.btnFilter});
-            resources.ApplyResources(this.toolStripConfig, "toolStripConfig");
-            this.toolStripConfig.Name = "toolStripConfig";
-            // 
-            // btnStart
-            // 
-            this.btnStart.Image = global::CL_Main.Properties.Resources.start;
-            resources.ApplyResources(this.btnStart, "btnStart");
-            this.btnStart.Name = "btnStart";
-            // 
-            // btnStop
-            // 
-            this.btnStop.Image = global::CL_Main.Properties.Resources.stop;
-            resources.ApplyResources(this.btnStop, "btnStop");
-            this.btnStop.Name = "btnStop";
-            // 
-            // btnClose
-            // 
-            this.btnClose.Image = global::CL_Main.Properties.Resources.close;
-            resources.ApplyResources(this.btnClose, "btnClose");
-            this.btnClose.Name = "btnClose";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.Image = global::CL_Main.Properties.Resources.filter;
-            resources.ApplyResources(this.btnFilter, "btnFilter");
-            this.btnFilter.Name = "btnFilter";
-            // 
             // tabControl
             // 
             resources.ApplyResources(this.tabControl, "tabControl");
@@ -221,7 +172,6 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.toolStripConfig);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -229,8 +179,6 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            this.toolStripConfig.ResumeLayout(false);
-            this.toolStripConfig.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,12 +201,6 @@
         private System.Windows.Forms.ToolStripMenuItem itemLanguageEn;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStrip toolStripConfig;
-        private System.Windows.Forms.ToolStripButton btnStart;
-        private System.Windows.Forms.ToolStripButton btnStop;
-        private System.Windows.Forms.ToolStripButton btnClose;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton btnFilter;
         private System.Windows.Forms.TabControl tabControl;
     }
 }
