@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Messaging" />
@@ -51,6 +52,24 @@
     <Compile Include="FormDevice.Designer.cs">
       <DependentUpon>FormDevice.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStatus.Designer.cs">
+      <DependentUpon>FormStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStatusChannel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStatusChannel.Designer.cs">
+      <DependentUpon>FormStatusChannel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormView.Designer.cs">
+      <DependentUpon>FormView.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLoading.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,11 +84,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormDevice.en.resx">
-      <DependentUpon>FormDevice.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormDevice.resx">
       <DependentUpon>FormDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStatus.resx">
+      <DependentUpon>FormStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStatusChannel.resx">
+      <DependentUpon>FormStatusChannel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormView.en.resx">
+      <DependentUpon>FormView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormView.resx">
+      <DependentUpon>FormView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLoading.resx">
       <DependentUpon>FormLoading.cs</DependentUpon>
@@ -120,6 +148,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\filter.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\option.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reset.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

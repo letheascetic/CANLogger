@@ -117,42 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 24</value>
-  </data>
-  <data name="btnStart.Text" xml:space="preserve">
-    <value>Start</value>
-  </data>
-  <data name="btnStop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 24</value>
-  </data>
-  <data name="btnStop.Text" xml:space="preserve">
-    <value>Stop</value>
-  </data>
-  <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 24</value>
-  </data>
-  <data name="btnClose.Text" xml:space="preserve">
-    <value>Close</value>
-  </data>
-  <data name="btnFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 24</value>
-  </data>
-  <data name="btnFilter.Text" xml:space="preserve">
-    <value>Filter</value>
-  </data>
-  <data name="cNO.HeaderText" xml:space="preserve">
-    <value>Index</value>
-  </data>
-  <data name="cTime.HeaderText" xml:space="preserve">
-    <value>Time Stamp（us）</value>
-  </data>
-  <data name="cState.HeaderText" xml:space="preserve">
-    <value>Transmission State</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
 </root>

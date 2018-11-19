@@ -28,163 +28,141 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDevice));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.dgvData = new System.Windows.Forms.DataGridView();
-            this.btnStart = new System.Windows.Forms.ToolStripButton();
-            this.btnStop = new System.Windows.Forms.ToolStripButton();
-            this.btnClose = new System.Windows.Forms.ToolStripButton();
-            this.btnFilter = new System.Windows.Forms.ToolStripButton();
-            this.cNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cFormat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnAddSet = new System.Windows.Forms.ToolStripButton();
+            this.btnReset = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.dgvDeviceList = new System.Windows.Forms.DataGridView();
+            this.cOpen = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cDevice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cChannelNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cBaudRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cBusLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cBusFlow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
-            this.splitContainer.Panel1.SuspendLayout();
-            this.splitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeviceList)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip
             // 
-            resources.ApplyResources(this.toolStrip, "toolStrip");
-            this.toolStrip.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.toolStrip.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.toolStrip.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnStart,
-            this.btnStop,
-            this.btnClose,
-            this.toolStripSeparator4,
-            this.btnFilter});
+            this.btnAddSet,
+            this.toolStripSeparator1,
+            this.btnReset,
+            this.toolStripSeparator2,
+            this.btnDelete});
+            this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(570, 27);
+            this.toolStrip.TabIndex = 0;
+            this.toolStrip.Text = "toolStrip1";
             // 
-            // toolStripSeparator4
+            // toolStripSeparator1
             // 
-            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
-            // splitContainer
+            // toolStripSeparator2
             // 
-            resources.ApplyResources(this.splitContainer, "splitContainer");
-            this.splitContainer.Name = "splitContainer";
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
-            // splitContainer.Panel1
+            // btnAddSet
             // 
-            resources.ApplyResources(this.splitContainer.Panel1, "splitContainer.Panel1");
-            this.splitContainer.Panel1.Controls.Add(this.dgvData);
+            this.btnAddSet.Image = global::CL_Main.Properties.Resources.add;
+            this.btnAddSet.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddSet.Name = "btnAddSet";
+            this.btnAddSet.Size = new System.Drawing.Size(99, 24);
+            this.btnAddSet.Text = "添加/设置";
             // 
-            // splitContainer.Panel2
+            // btnReset
             // 
-            resources.ApplyResources(this.splitContainer.Panel2, "splitContainer.Panel2");
+            this.btnReset.Image = global::CL_Main.Properties.Resources.reset;
+            this.btnReset.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(63, 24);
+            this.btnReset.Text = "复位";
             // 
-            // dgvData
+            // btnDelete
             // 
-            resources.ApplyResources(this.dgvData, "dgvData");
-            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cNO,
-            this.cTime,
-            this.cState,
-            this.cID,
-            this.cType,
-            this.cFormat,
-            this.cLength,
-            this.cData});
-            this.dgvData.Name = "dgvData";
-            this.dgvData.RowTemplate.Height = 27;
+            this.btnDelete.Image = global::CL_Main.Properties.Resources.delete;
+            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(63, 24);
+            this.btnDelete.Text = "删除";
             // 
-            // btnStart
+            // dgvDeviceList
             // 
-            resources.ApplyResources(this.btnStart, "btnStart");
-            this.btnStart.Image = global::CL_Main.Properties.Resources.start;
-            this.btnStart.Name = "btnStart";
+            this.dgvDeviceList.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvDeviceList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDeviceList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cOpen,
+            this.cDevice,
+            this.cChannelNum,
+            this.cBaudRate,
+            this.cBusLoad,
+            this.cBusFlow});
+            this.dgvDeviceList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDeviceList.Location = new System.Drawing.Point(0, 27);
+            this.dgvDeviceList.Name = "dgvDeviceList";
+            this.dgvDeviceList.RowTemplate.Height = 27;
+            this.dgvDeviceList.Size = new System.Drawing.Size(570, 155);
+            this.dgvDeviceList.TabIndex = 1;
             // 
-            // btnStop
+            // cOpen
             // 
-            resources.ApplyResources(this.btnStop, "btnStop");
-            this.btnStop.Image = global::CL_Main.Properties.Resources.stop;
-            this.btnStop.Name = "btnStop";
+            this.cOpen.HeaderText = "状态";
+            this.cOpen.Name = "cOpen";
+            this.cOpen.Width = 50;
             // 
-            // btnClose
+            // cDevice
             // 
-            resources.ApplyResources(this.btnClose, "btnClose");
-            this.btnClose.Image = global::CL_Main.Properties.Resources.close;
-            this.btnClose.Name = "btnClose";
+            this.cDevice.HeaderText = "设备";
+            this.cDevice.Name = "cDevice";
+            this.cDevice.Width = 80;
             // 
-            // btnFilter
+            // cChannelNum
             // 
-            resources.ApplyResources(this.btnFilter, "btnFilter");
-            this.btnFilter.Image = global::CL_Main.Properties.Resources.filter;
-            this.btnFilter.Name = "btnFilter";
+            this.cChannelNum.HeaderText = "通道数";
+            this.cChannelNum.Name = "cChannelNum";
             // 
-            // cNO
+            // cBaudRate
             // 
-            resources.ApplyResources(this.cNO, "cNO");
-            this.cNO.Name = "cNO";
+            this.cBaudRate.HeaderText = "波特率";
+            this.cBaudRate.Name = "cBaudRate";
             // 
-            // cTime
+            // cBusLoad
             // 
-            resources.ApplyResources(this.cTime, "cTime");
-            this.cTime.Name = "cTime";
+            this.cBusLoad.HeaderText = "总线负载";
+            this.cBusLoad.Name = "cBusLoad";
             // 
-            // cState
+            // cBusFlow
             // 
-            resources.ApplyResources(this.cState, "cState");
-            this.cState.Name = "cState";
-            this.cState.ReadOnly = true;
-            // 
-            // cID
-            // 
-            resources.ApplyResources(this.cID, "cID");
-            this.cID.Name = "cID";
-            this.cID.ReadOnly = true;
-            // 
-            // cType
-            // 
-            resources.ApplyResources(this.cType, "cType");
-            this.cType.Name = "cType";
-            this.cType.ReadOnly = true;
-            // 
-            // cFormat
-            // 
-            resources.ApplyResources(this.cFormat, "cFormat");
-            this.cFormat.Name = "cFormat";
-            this.cFormat.ReadOnly = true;
-            // 
-            // cLength
-            // 
-            resources.ApplyResources(this.cLength, "cLength");
-            this.cLength.Name = "cLength";
-            this.cLength.ReadOnly = true;
-            // 
-            // cData
-            // 
-            resources.ApplyResources(this.cData, "cData");
-            this.cData.Name = "cData";
-            this.cData.ReadOnly = true;
+            this.cBusFlow.HeaderText = "总线流量";
+            this.cBusFlow.Name = "cBusFlow";
             // 
             // FormDevice
             // 
-            resources.ApplyResources(this, "$this");
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.Controls.Add(this.splitContainer);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(570, 182);
+            this.Controls.Add(this.dgvDeviceList);
             this.Controls.Add(this.toolStrip);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormDevice";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "设备";
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            this.splitContainer.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
-            this.splitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeviceList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,22 +171,17 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripButton btnStart;
-        private System.Windows.Forms.ToolStripButton btnStop;
-        private System.Windows.Forms.ToolStripButton btnClose;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton btnFilter;
-        private System.Windows.Forms.SplitContainer splitContainer;
-        private System.Windows.Forms.DataGridView dgvData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cState;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cFormat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cLength;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cData;
-
-
+        private System.Windows.Forms.ToolStripButton btnAddSet;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnReset;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btnDelete;
+        private System.Windows.Forms.DataGridView dgvDeviceList;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cOpen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cDevice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cChannelNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cBaudRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cBusLoad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cBusFlow;
     }
 }

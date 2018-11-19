@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace CL_Main
 {
-    public partial class FormDevice : Form
+    public partial class FormStatus : Form
     {
-        public FormDevice()
+        public FormStatus()
         {
             InitializeComponent();
         }

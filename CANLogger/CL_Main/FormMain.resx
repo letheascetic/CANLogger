@@ -125,6 +125,9 @@
     <value>None</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStrip.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
   <data name="btnDevice.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -192,17 +195,8 @@
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
   </data>
-  <data name="btnLanguage.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 24</value>
-  </data>
-  <data name="btnLanguage.Text" xml:space="preserve">
-    <value>语言设置</value>
-  </data>
   <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+    <value>0, 28</value>
   </data>
   <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>982, 27</value>
@@ -225,27 +219,12 @@
   <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="itemDeviceUSBCANII.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 26</value>
-  </data>
-  <data name="itemDeviceUSBCANII.Text" xml:space="preserve">
-    <value>USNCAN-II</value>
-  </data>
-  <data name="itemLanguageCN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 26</value>
-  </data>
-  <data name="itemLanguageCN.Text" xml:space="preserve">
-    <value>简体中文</value>
-  </data>
-  <data name="itemLanguageEn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 26</value>
-  </data>
-  <data name="itemLanguageEn.Text" xml:space="preserve">
-    <value>英语</value>
-  </data>
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>138, 17</value>
   </metadata>
+  <data name="statusStrip.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
   <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 733</value>
   </data>
@@ -271,13 +250,16 @@
     <value>1</value>
   </data>
   <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>443, 17</value>
+    <value>268, 21</value>
   </metadata>
+  <data name="menuStrip.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
   <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>982, 24</value>
+    <value>982, 28</value>
   </data>
   <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -304,10 +286,10 @@
     <value>Fill</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 51</value>
+    <value>0, 55</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>982, 682</value>
+    <value>982, 678</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -324,11 +306,74 @@
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="itemDeviceUSBCANII.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="itemDeviceUSBCANII.Text" xml:space="preserve">
+    <value>USNCAN-II</value>
+  </data>
+  <data name="menuItemOption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 24</value>
+  </data>
+  <data name="menuItemOption.Text" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="menuItemFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 24</value>
+  </data>
+  <data name="menuItemFile.Text" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="menuItemLanguage.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="menuItemLanguage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 24</value>
+  </data>
+  <data name="menuItemLanguage.Text" xml:space="preserve">
+    <value>语言设置</value>
+  </data>
+  <data name="menuItemLanguage.ToolTipText" xml:space="preserve">
+    <value>设置语言</value>
+  </data>
+  <data name="menuItemLanguageCN.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="menuItemLanguageCN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="menuItemLanguageCN.Text" xml:space="preserve">
+    <value>简体中文</value>
+  </data>
+  <data name="英语ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="英语ToolStripMenuItem.Text" xml:space="preserve">
+    <value>英语</value>
+  </data>
+  <data name="menuItemHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 24</value>
+  </data>
+  <data name="menuItemHelp.Text" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="menuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="menuItemAbout.Text" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="menuItemManual.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="menuItemManual.Text" xml:space="preserve">
+    <value>用户手册</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>67</value>
+    <value>59</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>9, 20</value>
@@ -345,6 +390,9 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
   </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
@@ -353,18 +401,6 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>CANLogger</value>
-  </data>
-  <data name="&gt;&gt;btnDevice.Name" xml:space="preserve">
-    <value>btnDevice</value>
-  </data>
-  <data name="&gt;&gt;btnDevice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;itemDeviceUSBCANII.Name" xml:space="preserve">
-    <value>itemDeviceUSBCANII</value>
-  </data>
-  <data name="&gt;&gt;itemDeviceUSBCANII.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
     <value>toolStripSeparator1</value>
@@ -408,22 +444,64 @@
   <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnLanguage.Name" xml:space="preserve">
-    <value>btnLanguage</value>
+  <data name="&gt;&gt;btnDevice.Name" xml:space="preserve">
+    <value>btnDevice</value>
   </data>
-  <data name="&gt;&gt;btnLanguage.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnDevice.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;itemLanguageCN.Name" xml:space="preserve">
-    <value>itemLanguageCN</value>
+  <data name="&gt;&gt;itemDeviceUSBCANII.Name" xml:space="preserve">
+    <value>itemDeviceUSBCANII</value>
   </data>
-  <data name="&gt;&gt;itemLanguageCN.Type" xml:space="preserve">
+  <data name="&gt;&gt;itemDeviceUSBCANII.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;itemLanguageEn.Name" xml:space="preserve">
-    <value>itemLanguageEn</value>
+  <data name="&gt;&gt;menuItemOption.Name" xml:space="preserve">
+    <value>menuItemOption</value>
   </data>
-  <data name="&gt;&gt;itemLanguageEn.Type" xml:space="preserve">
+  <data name="&gt;&gt;menuItemOption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemFile.Name" xml:space="preserve">
+    <value>menuItemFile</value>
+  </data>
+  <data name="&gt;&gt;menuItemFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemLanguage.Name" xml:space="preserve">
+    <value>menuItemLanguage</value>
+  </data>
+  <data name="&gt;&gt;menuItemLanguage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemLanguageCN.Name" xml:space="preserve">
+    <value>menuItemLanguageCN</value>
+  </data>
+  <data name="&gt;&gt;menuItemLanguageCN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;英语ToolStripMenuItem.Name" xml:space="preserve">
+    <value>英语ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;英语ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemHelp.Name" xml:space="preserve">
+    <value>menuItemHelp</value>
+  </data>
+  <data name="&gt;&gt;menuItemHelp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemAbout.Name" xml:space="preserve">
+    <value>menuItemAbout</value>
+  </data>
+  <data name="&gt;&gt;menuItemAbout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemManual.Name" xml:space="preserve">
+    <value>menuItemManual</value>
+  </data>
+  <data name="&gt;&gt;menuItemManual.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

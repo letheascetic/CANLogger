@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace CL_Main
 {
-    public partial class FormDevice : Form
+    public partial class FormView : Form
     {
-        public FormDevice()
+        public FormView()
         {
             InitializeComponent();
         }
@@ -25,6 +25,13 @@ namespace CL_Main
             System.ComponentModel.ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
 
             resources.ApplyResources(this, "$this");
+
+            resources.ApplyResources(this.btnStart, this.btnStart.Name);
+            resources.ApplyResources(this.btnStop, this.btnStop.Name);
+            resources.ApplyResources(this.btnClose, this.btnClose.Name);
+            resources.ApplyResources(this.btnFilter, this.btnFilter.Name);
+
         }
+
     }
 }
