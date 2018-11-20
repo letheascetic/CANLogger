@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.btnDevice = new System.Windows.Forms.ToolStripDropDownButton();
+            this.itemDeviceUSBCANII = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.lbFrameFormat = new System.Windows.Forms.ToolStripLabel();
             this.cbxFrameFormat = new System.Windows.Forms.ToolStripComboBox();
@@ -39,19 +41,23 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.btnDevice = new System.Windows.Forms.ToolStripDropDownButton();
-            this.itemDeviceUSBCANII = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemOption = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemOption = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLanguageCN = new System.Windows.Forms.ToolStripMenuItem();
             this.英语ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemManual = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlDown = new System.Windows.Forms.Panel();
+            this.splitter = new System.Windows.Forms.Splitter();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
+            this.pnlDown.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
+            this.splitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -69,6 +75,19 @@
             this.cbxIDFormat,
             this.toolStripSeparator3});
             this.toolStrip.Name = "toolStrip";
+            // 
+            // btnDevice
+            // 
+            this.btnDevice.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemDeviceUSBCANII});
+            this.btnDevice.Image = global::CL_Main.Properties.Resources.device;
+            resources.ApplyResources(this.btnDevice, "btnDevice");
+            this.btnDevice.Name = "btnDevice";
+            // 
+            // itemDeviceUSBCANII
+            // 
+            this.itemDeviceUSBCANII.Name = "itemDeviceUSBCANII";
+            resources.ApplyResources(this.itemDeviceUSBCANII, "itemDeviceUSBCANII");
             // 
             // toolStripSeparator1
             // 
@@ -133,36 +152,17 @@
             this.menuItemHelp});
             this.menuStrip.Name = "menuStrip";
             // 
-            // tabControl
+            // menuItemFile
             // 
-            resources.ApplyResources(this.tabControl, "tabControl");
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            // 
-            // btnDevice
-            // 
-            this.btnDevice.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemDeviceUSBCANII});
-            this.btnDevice.Image = global::CL_Main.Properties.Resources.device;
-            resources.ApplyResources(this.btnDevice, "btnDevice");
-            this.btnDevice.Name = "btnDevice";
-            // 
-            // itemDeviceUSBCANII
-            // 
-            this.itemDeviceUSBCANII.Name = "itemDeviceUSBCANII";
-            resources.ApplyResources(this.itemDeviceUSBCANII, "itemDeviceUSBCANII");
+            this.menuItemFile.Image = global::CL_Main.Properties.Resources.file;
+            this.menuItemFile.Name = "menuItemFile";
+            resources.ApplyResources(this.menuItemFile, "menuItemFile");
             // 
             // menuItemOption
             // 
             this.menuItemOption.Image = global::CL_Main.Properties.Resources.option;
             this.menuItemOption.Name = "menuItemOption";
             resources.ApplyResources(this.menuItemOption, "menuItemOption");
-            // 
-            // menuItemFile
-            // 
-            this.menuItemFile.Image = global::CL_Main.Properties.Resources.file;
-            this.menuItemFile.Name = "menuItemFile";
-            resources.ApplyResources(this.menuItemFile, "menuItemFile");
             // 
             // menuItemLanguage
             // 
@@ -199,15 +199,38 @@
             this.menuItemHelp.Name = "menuItemHelp";
             resources.ApplyResources(this.menuItemHelp, "menuItemHelp");
             // 
+            // menuItemManual
+            // 
+            this.menuItemManual.Name = "menuItemManual";
+            resources.ApplyResources(this.menuItemManual, "menuItemManual");
+            // 
             // menuItemAbout
             // 
             this.menuItemAbout.Name = "menuItemAbout";
             resources.ApplyResources(this.menuItemAbout, "menuItemAbout");
             // 
-            // menuItemManual
+            // pnlDown
             // 
-            this.menuItemManual.Name = "menuItemManual";
-            resources.ApplyResources(this.menuItemManual, "menuItemManual");
+            this.pnlDown.Controls.Add(this.splitContainer);
+            resources.ApplyResources(this.pnlDown, "pnlDown");
+            this.pnlDown.Name = "pnlDown";
+            // 
+            // splitter
+            // 
+            resources.ApplyResources(this.splitter, "splitter");
+            this.splitter.Name = "splitter";
+            this.splitter.TabStop = false;
+            // 
+            // tabControl
+            // 
+            resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            // 
+            // splitContainer
+            // 
+            resources.ApplyResources(this.splitContainer, "splitContainer");
+            this.splitContainer.Name = "splitContainer";
             // 
             // FormMain
             // 
@@ -215,6 +238,8 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.splitter);
+            this.Controls.Add(this.pnlDown);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -224,6 +249,9 @@
             this.toolStrip.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.pnlDown.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
+            this.splitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,7 +271,6 @@
         private System.Windows.Forms.ToolStripMenuItem itemDeviceUSBCANII;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.ToolStripMenuItem menuItemFile;
         private System.Windows.Forms.ToolStripMenuItem menuItemOption;
         private System.Windows.Forms.ToolStripMenuItem menuItemLanguage;
@@ -252,6 +279,10 @@
         private System.Windows.Forms.ToolStripMenuItem 英语ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuItemAbout;
         private System.Windows.Forms.ToolStripMenuItem menuItemManual;
+        private System.Windows.Forms.Panel pnlDown;
+        private System.Windows.Forms.Splitter splitter;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.SplitContainer splitContainer;
     }
 }
 

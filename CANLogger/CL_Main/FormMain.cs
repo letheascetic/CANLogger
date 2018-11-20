@@ -14,6 +14,9 @@ namespace CL_Main
 {
     public partial class FormMain : Form
     {
+        private FormDevice formDevice;
+        private FormStatus formSatus;
+
         public FormMain()
         {
             InitializeComponent();
@@ -24,6 +27,28 @@ namespace CL_Main
             //Start Form Loading
             //FormLoading formLoading = new FormLoading();
             //formLoading.ShowDialog();
+
+            InitLoadControls();
+
+        }
+
+        private void InitLoadControls()
+        {
+            //init & load FormDevice
+            formDevice = new FormDevice();
+            formDevice.TopLevel = false;
+            formDevice.Parent = this.splitContainer.Panel1;
+            formDevice.Location = new Point(0, 0);
+            formDevice.Dock = DockStyle.Fill;
+            formDevice.Show();
+
+            //init & load FormStatus
+            formSatus = new FormStatus();
+            formSatus.TopLevel = false;
+            formSatus.Parent = this.splitContainer.Panel2;
+            formSatus.Location = new Point(0, 0);
+            formSatus.Dock = DockStyle.Fill;
+            formSatus.Show();
         }
 
         private void SetLanguage(string language) 

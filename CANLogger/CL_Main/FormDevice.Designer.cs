@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAddSet = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnReset = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.dgvDeviceList = new System.Windows.Forms.DataGridView();
             this.cOpen = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -62,16 +62,6 @@
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
-            // 
             // btnAddSet
             // 
             this.btnAddSet.Image = global::CL_Main.Properties.Resources.add;
@@ -80,6 +70,11 @@
             this.btnAddSet.Size = new System.Drawing.Size(99, 24);
             this.btnAddSet.Text = "添加/设置";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            // 
             // btnReset
             // 
             this.btnReset.Image = global::CL_Main.Properties.Resources.reset;
@@ -87,6 +82,11 @@
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(63, 24);
             this.btnReset.Text = "复位";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // btnDelete
             // 
@@ -150,12 +150,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(570, 182);
             this.Controls.Add(this.dgvDeviceList);
             this.Controls.Add(this.toolStrip);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormDevice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

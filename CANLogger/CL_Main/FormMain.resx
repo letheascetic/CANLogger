@@ -128,6 +128,12 @@
   <data name="toolStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
   </data>
+  <data name="itemDeviceUSBCANII.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="itemDeviceUSBCANII.Text" xml:space="preserve">
+    <value>USNCAN-II</value>
+  </data>
   <data name="btnDevice.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -217,7 +223,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>138, 17</value>
@@ -247,13 +253,70 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>268, 21</value>
   </metadata>
   <data name="menuStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="menuItemFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 24</value>
+  </data>
+  <data name="menuItemFile.Text" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="menuItemOption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 24</value>
+  </data>
+  <data name="menuItemOption.Text" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="menuItemLanguageCN.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="menuItemLanguageCN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="menuItemLanguageCN.Text" xml:space="preserve">
+    <value>简体中文</value>
+  </data>
+  <data name="英语ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="英语ToolStripMenuItem.Text" xml:space="preserve">
+    <value>英语</value>
+  </data>
+  <data name="menuItemLanguage.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="menuItemLanguage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 24</value>
+  </data>
+  <data name="menuItemLanguage.Text" xml:space="preserve">
+    <value>语言设置</value>
+  </data>
+  <data name="menuItemLanguage.ToolTipText" xml:space="preserve">
+    <value>设置语言</value>
+  </data>
+  <data name="menuItemManual.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="menuItemManual.Text" xml:space="preserve">
+    <value>用户手册</value>
+  </data>
+  <data name="menuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="menuItemAbout.Text" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="menuItemHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 24</value>
+  </data>
+  <data name="menuItemHelp.Text" xml:space="preserve">
+    <value>帮助</value>
   </data>
   <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -277,7 +340,106 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
+  </data>
+  <data name="splitContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="splitContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel1.Name" xml:space="preserve">
+    <value>splitContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel1.Parent" xml:space="preserve">
+    <value>splitContainer</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel2.Name" xml:space="preserve">
+    <value>splitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel2.Parent" xml:space="preserve">
+    <value>splitContainer</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>982, 164</value>
+  </data>
+  <data name="splitContainer.SplitterDistance" type="System.Int32, mscorlib">
+    <value>475</value>
+  </data>
+  <data name="splitContainer.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Name" xml:space="preserve">
+    <value>splitContainer</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Parent" xml:space="preserve">
+    <value>pnlDown</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnlDown.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="pnlDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 569</value>
+  </data>
+  <data name="pnlDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>982, 164</value>
+  </data>
+  <data name="pnlDown.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;pnlDown.Name" xml:space="preserve">
+    <value>pnlDown</value>
+  </data>
+  <data name="&gt;&gt;pnlDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlDown.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlDown.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="splitter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="splitter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 566</value>
+  </data>
+  <data name="splitter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>982, 3</value>
+  </data>
+  <data name="splitter.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;splitter.Name" xml:space="preserve">
+    <value>splitter</value>
+  </data>
+  <data name="&gt;&gt;splitter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Splitter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;splitter.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="tabControl.Appearance" type="System.Windows.Forms.TabAppearance, System.Windows.Forms">
     <value>Buttons</value>
@@ -289,10 +451,10 @@
     <value>0, 55</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>982, 678</value>
+    <value>982, 511</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
     <value>tabControl</value>
@@ -305,69 +467,6 @@
   </data>
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="itemDeviceUSBCANII.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
-  </data>
-  <data name="itemDeviceUSBCANII.Text" xml:space="preserve">
-    <value>USNCAN-II</value>
-  </data>
-  <data name="menuItemOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 24</value>
-  </data>
-  <data name="menuItemOption.Text" xml:space="preserve">
-    <value>操作</value>
-  </data>
-  <data name="menuItemFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 24</value>
-  </data>
-  <data name="menuItemFile.Text" xml:space="preserve">
-    <value>文件</value>
-  </data>
-  <data name="menuItemLanguage.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="menuItemLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 24</value>
-  </data>
-  <data name="menuItemLanguage.Text" xml:space="preserve">
-    <value>语言设置</value>
-  </data>
-  <data name="menuItemLanguage.ToolTipText" xml:space="preserve">
-    <value>设置语言</value>
-  </data>
-  <data name="menuItemLanguageCN.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="menuItemLanguageCN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
-  </data>
-  <data name="menuItemLanguageCN.Text" xml:space="preserve">
-    <value>简体中文</value>
-  </data>
-  <data name="英语ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
-  </data>
-  <data name="英语ToolStripMenuItem.Text" xml:space="preserve">
-    <value>英语</value>
-  </data>
-  <data name="menuItemHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 24</value>
-  </data>
-  <data name="menuItemHelp.Text" xml:space="preserve">
-    <value>帮助</value>
-  </data>
-  <data name="menuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
-  </data>
-  <data name="menuItemAbout.Text" xml:space="preserve">
-    <value>关于</value>
-  </data>
-  <data name="menuItemManual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
-  </data>
-  <data name="menuItemManual.Text" xml:space="preserve">
-    <value>用户手册</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -390,9 +489,6 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
@@ -401,6 +497,18 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>CANLogger</value>
+  </data>
+  <data name="&gt;&gt;btnDevice.Name" xml:space="preserve">
+    <value>btnDevice</value>
+  </data>
+  <data name="&gt;&gt;btnDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;itemDeviceUSBCANII.Name" xml:space="preserve">
+    <value>itemDeviceUSBCANII</value>
+  </data>
+  <data name="&gt;&gt;itemDeviceUSBCANII.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
     <value>toolStripSeparator1</value>
@@ -444,28 +552,16 @@
   <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnDevice.Name" xml:space="preserve">
-    <value>btnDevice</value>
+  <data name="&gt;&gt;menuItemFile.Name" xml:space="preserve">
+    <value>menuItemFile</value>
   </data>
-  <data name="&gt;&gt;btnDevice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;itemDeviceUSBCANII.Name" xml:space="preserve">
-    <value>itemDeviceUSBCANII</value>
-  </data>
-  <data name="&gt;&gt;itemDeviceUSBCANII.Type" xml:space="preserve">
+  <data name="&gt;&gt;menuItemFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItemOption.Name" xml:space="preserve">
     <value>menuItemOption</value>
   </data>
   <data name="&gt;&gt;menuItemOption.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemFile.Name" xml:space="preserve">
-    <value>menuItemFile</value>
-  </data>
-  <data name="&gt;&gt;menuItemFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItemLanguage.Name" xml:space="preserve">
@@ -492,16 +588,16 @@
   <data name="&gt;&gt;menuItemHelp.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItemAbout.Name" xml:space="preserve">
-    <value>menuItemAbout</value>
-  </data>
-  <data name="&gt;&gt;menuItemAbout.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;menuItemManual.Name" xml:space="preserve">
     <value>menuItemManual</value>
   </data>
   <data name="&gt;&gt;menuItemManual.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemAbout.Name" xml:space="preserve">
+    <value>menuItemAbout</value>
+  </data>
+  <data name="&gt;&gt;menuItemAbout.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
