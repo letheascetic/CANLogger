@@ -1,6 +1,6 @@
 ﻿namespace CL_Main
 {
-    partial class FormView
+    partial class FormData
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormView));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.cNO = new System.Windows.Forms.DataGridViewTextBoxColumn();

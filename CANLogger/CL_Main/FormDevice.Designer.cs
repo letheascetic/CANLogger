@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDevice));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.btnAddSet = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -48,7 +49,7 @@
             // toolStrip
             // 
             this.toolStrip.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.toolStrip.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAddSet,
@@ -56,45 +57,35 @@
             this.btnReset,
             this.toolStripSeparator2,
             this.btnDelete});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(570, 27);
-            this.toolStrip.TabIndex = 0;
-            this.toolStrip.Text = "toolStrip1";
             // 
             // btnAddSet
             // 
             this.btnAddSet.Image = global::CL_Main.Properties.Resources.add;
-            this.btnAddSet.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.btnAddSet, "btnAddSet");
             this.btnAddSet.Name = "btnAddSet";
-            this.btnAddSet.Size = new System.Drawing.Size(99, 24);
-            this.btnAddSet.Text = "添加/设置";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // btnReset
             // 
             this.btnReset.Image = global::CL_Main.Properties.Resources.reset;
-            this.btnReset.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.btnReset, "btnReset");
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(63, 24);
-            this.btnReset.Text = "复位";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // btnDelete
             // 
             this.btnDelete.Image = global::CL_Main.Properties.Resources.delete;
-            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.btnDelete, "btnDelete");
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(63, 24);
-            this.btnDelete.Text = "删除";
             // 
             // dgvDeviceList
             // 
@@ -107,61 +98,50 @@
             this.cBaudRate,
             this.cBusLoad,
             this.cBusFlow});
-            this.dgvDeviceList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDeviceList.Location = new System.Drawing.Point(0, 27);
+            resources.ApplyResources(this.dgvDeviceList, "dgvDeviceList");
             this.dgvDeviceList.Name = "dgvDeviceList";
             this.dgvDeviceList.RowTemplate.Height = 27;
-            this.dgvDeviceList.Size = new System.Drawing.Size(570, 155);
-            this.dgvDeviceList.TabIndex = 1;
             // 
             // cOpen
             // 
-            this.cOpen.HeaderText = "状态";
+            resources.ApplyResources(this.cOpen, "cOpen");
             this.cOpen.Name = "cOpen";
-            this.cOpen.Width = 50;
             // 
             // cDevice
             // 
-            this.cDevice.HeaderText = "设备";
+            resources.ApplyResources(this.cDevice, "cDevice");
             this.cDevice.Name = "cDevice";
-            this.cDevice.Width = 80;
             // 
             // cChannelNum
             // 
-            this.cChannelNum.HeaderText = "通道数";
+            resources.ApplyResources(this.cChannelNum, "cChannelNum");
             this.cChannelNum.Name = "cChannelNum";
             // 
             // cBaudRate
             // 
-            this.cBaudRate.HeaderText = "波特率";
+            resources.ApplyResources(this.cBaudRate, "cBaudRate");
             this.cBaudRate.Name = "cBaudRate";
             // 
             // cBusLoad
             // 
-            this.cBusLoad.HeaderText = "总线负载";
+            resources.ApplyResources(this.cBusLoad, "cBusLoad");
             this.cBusLoad.Name = "cBusLoad";
             // 
             // cBusFlow
             // 
-            this.cBusFlow.HeaderText = "总线流量";
+            resources.ApplyResources(this.cBusFlow, "cBusFlow");
             this.cBusFlow.Name = "cBusFlow";
             // 
             // FormDevice
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(570, 182);
             this.Controls.Add(this.dgvDeviceList);
             this.Controls.Add(this.toolStrip);
-            this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.HideOnClose = true;
             this.Name = "FormDevice";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "设备";
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeviceList)).EndInit();

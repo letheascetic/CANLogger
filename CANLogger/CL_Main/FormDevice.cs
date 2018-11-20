@@ -9,10 +9,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace CL_Main
 {
-    public partial class FormDevice : Form
+    public partial class FormDevice : DockContent
     {
         public FormDevice()
         {

@@ -4,51 +4,49 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace CL_Main
 {
     public partial class FormMain : Form
     {
-        private FormDevice formDevice;
-        private FormStatus formSatus;
-
         public FormMain()
         {
             InitializeComponent();
+            new Sunisoft.IrisSkin.SkinEngine().SkinFile = "skins/MacOS.ssk";
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
             //Start Form Loading
-            //FormLoading formLoading = new FormLoading();
-            //formLoading.ShowDialog();
+            FormLoading formLoading = new FormLoading();
+            formLoading.ShowDialog();
 
             InitLoadControls();
-
         }
 
         private void InitLoadControls()
         {
+            //init & load FormData
+            FormData formData1 = new FormData();
+            FormData formData2 = new FormData();
+            formData1.Show(this.dockPanel, DockState.Document);
+            formData2.Show(formData1.Pane, null);
+
             //init & load FormDevice
-            formDevice = new FormDevice();
-            formDevice.TopLevel = false;
-            formDevice.Parent = this.splitContainer.Panel1;
-            formDevice.Location = new Point(0, 0);
-            formDevice.Dock = DockStyle.Fill;
-            formDevice.Show();
+            FormDevice formDevice = new FormDevice();
+            formDevice.Show(this.dockPanel, DockState.DockBottom);
 
             //init & load FormStatus
-            formSatus = new FormStatus();
-            formSatus.TopLevel = false;
-            formSatus.Parent = this.splitContainer.Panel2;
-            formSatus.Location = new Point(0, 0);
-            formSatus.Dock = DockStyle.Fill;
-            formSatus.Show();
+            FormStatus formSatus = new FormStatus();
+            formSatus.Show(formDevice.Pane, DockAlignment.Right, 0.5);
+
         }
 
         private void SetLanguage(string language) 

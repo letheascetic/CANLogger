@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CL_Main</RootNamespace>
     <AssemblyName>CL_Main</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IrisSkin4">
+      <HintPath>..\Lib\IrisSkin4.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,6 +48,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\packages\DockPanelSuite.3.0.6\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2015, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\packages\DockPanelSuite.ThemeVS2015.3.0.6\lib\net40\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormDevice.cs">
@@ -58,17 +68,17 @@
     <Compile Include="FormStatus.Designer.cs">
       <DependentUpon>FormStatus.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStatusChannel.cs">
+    <Compile Include="UCStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCStatus.Designer.cs">
+      <DependentUpon>UCStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStatusChannel.Designer.cs">
-      <DependentUpon>FormStatusChannel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormView.Designer.cs">
-      <DependentUpon>FormView.cs</DependentUpon>
+    <Compile Include="FormData.Designer.cs">
+      <DependentUpon>FormData.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLoading.cs">
       <SubType>Form</SubType>
@@ -90,14 +100,14 @@
     <EmbeddedResource Include="FormStatus.resx">
       <DependentUpon>FormStatus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStatusChannel.resx">
-      <DependentUpon>FormStatusChannel.cs</DependentUpon>
+    <EmbeddedResource Include="UCStatus.resx">
+      <DependentUpon>UCStatus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormView.en.resx">
-      <DependentUpon>FormView.cs</DependentUpon>
+    <EmbeddedResource Include="FormData.en.resx">
+      <DependentUpon>FormData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormView.resx">
-      <DependentUpon>FormView.cs</DependentUpon>
+    <EmbeddedResource Include="FormData.resx">
+      <DependentUpon>FormData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLoading.resx">
       <DependentUpon>FormLoading.cs</DependentUpon>
@@ -118,6 +128,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -127,6 +138,70 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Skins\Calmness.ssk" />
+    <None Include="Skins\CalmnessColor1.ssk" />
+    <None Include="Skins\CalmnessColor2.ssk" />
+    <None Include="Skins\DeepCyan.ssk" />
+    <None Include="Skins\DeepGreen.ssk" />
+    <None Include="Skins\DeepOrange.ssk" />
+    <None Include="Skins\DiamondBlue.ssk" />
+    <None Include="Skins\DiamondGreen.ssk" />
+    <None Include="Skins\Eighteen.ssk" />
+    <None Include="Skins\EighteenColor1.ssk" />
+    <None Include="Skins\EighteenColor2.ssk" />
+    <None Include="Skins\Emerald.ssk" />
+    <None Include="Skins\EmeraldColor1.ssk" />
+    <None Include="Skins\EmeraldColor2.ssk" />
+    <None Include="Skins\EmeraldColor3.ssk" />
+    <None Include="Skins\GlassBrown.ssk" />
+    <None Include="Skins\GlassGreen.ssk" />
+    <None Include="Skins\GlassOrange.ssk" />
+    <None Include="Skins\Longhorn.ssk" />
+    <None Include="Skins\MacOS.ssk" />
+    <None Include="Skins\Midsummer.ssk" />
+    <None Include="Skins\MidsummerColor1.ssk" />
+    <None Include="Skins\MidsummerColor2.ssk" />
+    <None Include="Skins\MidsummerColor3.ssk" />
+    <None Include="Skins\MP10.ssk" />
+    <None Include="Skins\MSN.ssk" />
+    <None Include="Skins\OneBlue.ssk" />
+    <None Include="Skins\OneCyan.ssk" />
+    <None Include="Skins\OneGreen.ssk" />
+    <None Include="Skins\OneOrange.ssk" />
+    <None Include="Skins\Page.ssk" />
+    <None Include="Skins\PageColor1.ssk" />
+    <None Include="Skins\PageColor2.ssk" />
+    <None Include="Skins\RealOne.ssk" />
+    <None Include="Skins\Silver.ssk" />
+    <None Include="Skins\SilverColor1.ssk" />
+    <None Include="Skins\SilverColor2.ssk" />
+    <None Include="Skins\SportsBlack.ssk" />
+    <None Include="Skins\SportsBlue.ssk" />
+    <None Include="Skins\SportsCyan.ssk" />
+    <None Include="Skins\SportsGreen.ssk" />
+    <None Include="Skins\SportsOrange.ssk" />
+    <None Include="Skins\SteelBlack.ssk" />
+    <None Include="Skins\SteelBlue.ssk" />
+    <None Include="Skins\vista1.ssk" />
+    <None Include="Skins\vista1_green.ssk" />
+    <None Include="Skins\Vista2_color1.ssk" />
+    <None Include="Skins\Vista2_color2.ssk" />
+    <None Include="Skins\Vista2_color3.ssk" />
+    <None Include="Skins\Vista2_color4.ssk" />
+    <None Include="Skins\Vista2_color5.ssk" />
+    <None Include="Skins\Vista2_color6.ssk" />
+    <None Include="Skins\Vista2_color7.ssk" />
+    <None Include="Skins\Warm.ssk" />
+    <None Include="Skins\WarmColor1.ssk" />
+    <None Include="Skins\WarmColor2.ssk" />
+    <None Include="Skins\WarmColor3.ssk" />
+    <None Include="Skins\Wave.ssk" />
+    <None Include="Skins\WaveColor1.ssk" />
+    <None Include="Skins\WaveColor2.ssk" />
+    <None Include="Skins\XPBlue.ssk" />
+    <None Include="Skins\XPGreen.ssk" />
+    <None Include="Skins\XPOrange.ssk" />
+    <None Include="Skins\XPSilver.ssk" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

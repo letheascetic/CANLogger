@@ -35,6 +35,7 @@
             // tabControl
             // 
             resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.HotTrack = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             // 

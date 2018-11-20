@@ -9,12 +9,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace CL_Main
 {
-    public partial class FormView : Form
+    public partial class FormData : DockContent
     {
-        public FormView()
+        public FormData()
         {
             InitializeComponent();
         }

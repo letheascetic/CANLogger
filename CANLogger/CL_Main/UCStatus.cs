@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace CL_Main
 {
-    public partial class FormStatusChannel : Form
+    public partial class UCStatus : UserControl
     {
-        public FormStatusChannel()
+        public UCStatus()
         {
             InitializeComponent();
         }

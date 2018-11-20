@@ -49,15 +49,9 @@
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemManual = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlDown = new System.Windows.Forms.Panel();
-            this.splitter = new System.Windows.Forms.Splitter();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
-            this.pnlDown.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
-            this.splitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -209,49 +203,28 @@
             this.menuItemAbout.Name = "menuItemAbout";
             resources.ApplyResources(this.menuItemAbout, "menuItemAbout");
             // 
-            // pnlDown
+            // dockPanel
             // 
-            this.pnlDown.Controls.Add(this.splitContainer);
-            resources.ApplyResources(this.pnlDown, "pnlDown");
-            this.pnlDown.Name = "pnlDown";
-            // 
-            // splitter
-            // 
-            resources.ApplyResources(this.splitter, "splitter");
-            this.splitter.Name = "splitter";
-            this.splitter.TabStop = false;
-            // 
-            // tabControl
-            // 
-            resources.ApplyResources(this.tabControl, "tabControl");
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            // 
-            // splitContainer
-            // 
-            resources.ApplyResources(this.splitContainer, "splitContainer");
-            this.splitContainer.Name = "splitContainer";
+            resources.ApplyResources(this.dockPanel, "dockPanel");
+            this.dockPanel.DockBottomPortion = 0.3D;
+            this.dockPanel.Name = "dockPanel";
             // 
             // FormMain
             // 
             this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.splitter);
-            this.Controls.Add(this.pnlDown);
+            this.Controls.Add(this.dockPanel);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
+            this.IsMdiContainer = true;
             this.Name = "FormMain";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.pnlDown.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
-            this.splitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,10 +252,7 @@
         private System.Windows.Forms.ToolStripMenuItem 英语ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuItemAbout;
         private System.Windows.Forms.ToolStripMenuItem menuItemManual;
-        private System.Windows.Forms.Panel pnlDown;
-        private System.Windows.Forms.Splitter splitter;
-        private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.SplitContainer splitContainer;
+        private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
     }
 }
 
