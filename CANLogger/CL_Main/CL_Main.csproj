@@ -56,66 +56,81 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormDevice.cs">
+    <Compile Include="Dialog\DialogDevice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDevice.Designer.cs">
-      <DependentUpon>FormDevice.cs</DependentUpon>
+    <Compile Include="Dialog\DialogDevice.Designer.cs">
+      <DependentUpon>DialogDevice.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStatus.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormStatus.Designer.cs">
-      <DependentUpon>FormStatus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UCStatus.cs">
+    <Compile Include="UserControl\UCChannel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCStatus.Designer.cs">
+    <Compile Include="UserControl\UCChannel.Designer.cs">
+      <DependentUpon>UCChannel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\FormDevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\FormDevice.Designer.cs">
+      <DependentUpon>FormDevice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\FormStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\FormStatus.Designer.cs">
+      <DependentUpon>FormStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UCStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UCStatus.Designer.cs">
       <DependentUpon>UCStatus.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormData.cs">
+    <Compile Include="Window\FormData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormData.Designer.cs">
+    <Compile Include="Window\FormData.Designer.cs">
       <DependentUpon>FormData.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLoading.cs">
+    <Compile Include="Window\FormLoading.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLoading.Designer.cs">
+    <Compile Include="Window\FormLoading.Designer.cs">
       <DependentUpon>FormLoading.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMain.cs">
+    <Compile Include="Window\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
+    <Compile Include="Window\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormDevice.resx">
+    <EmbeddedResource Include="Dialog\DialogDevice.resx">
+      <DependentUpon>DialogDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\FormDevice.resx">
       <DependentUpon>FormDevice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStatus.resx">
+    <EmbeddedResource Include="Window\FormStatus.resx">
       <DependentUpon>FormStatus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCStatus.resx">
+    <EmbeddedResource Include="UserControl\UCStatus.resx">
       <DependentUpon>UCStatus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormData.en.resx">
+    <EmbeddedResource Include="Window\FormData.en.resx">
       <DependentUpon>FormData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormData.resx">
+    <EmbeddedResource Include="Window\FormData.resx">
       <DependentUpon>FormData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLoading.resx">
+    <EmbeddedResource Include="Window\FormLoading.resx">
       <DependentUpon>FormLoading.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.en.resx">
+    <EmbeddedResource Include="Window\FormMain.en.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
+    <EmbeddedResource Include="Window\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -128,7 +143,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="packages.config" />
+    <None Include="Config\packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -140,7 +155,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Config\App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\device.jpg" />
@@ -184,6 +199,7 @@
       <Name>CL_Framework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
