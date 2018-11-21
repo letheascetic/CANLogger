@@ -43,9 +43,10 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemSkin = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLanguageCN = new System.Windows.Forms.ToolStripMenuItem();
-            this.英语ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemLanguageEN = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemManual = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -142,6 +143,7 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemFile,
             this.menuItemOption,
+            this.menuItemSkin,
             this.menuItemLanguage,
             this.menuItemHelp});
             this.menuStrip.Name = "menuStrip";
@@ -158,12 +160,19 @@
             this.menuItemOption.Name = "menuItemOption";
             resources.ApplyResources(this.menuItemOption, "menuItemOption");
             // 
+            // menuItemSkin
+            // 
+            this.menuItemSkin.Image = global::CL_Main.Properties.Resources.skin;
+            this.menuItemSkin.Name = "menuItemSkin";
+            resources.ApplyResources(this.menuItemSkin, "menuItemSkin");
+            this.menuItemSkin.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuItemSkin_DropDownItemClicked);
+            // 
             // menuItemLanguage
             // 
             this.menuItemLanguage.AutoToolTip = true;
             this.menuItemLanguage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemLanguageCN,
-            this.英语ToolStripMenuItem});
+            this.menuItemLanguageEN});
             this.menuItemLanguage.Image = global::CL_Main.Properties.Resources.language;
             resources.ApplyResources(this.menuItemLanguage, "menuItemLanguage");
             this.menuItemLanguage.Name = "menuItemLanguage";
@@ -178,11 +187,11 @@
             this.menuItemLanguageCN.Name = "menuItemLanguageCN";
             this.menuItemLanguageCN.Tag = "zh-CN";
             // 
-            // 英语ToolStripMenuItem
+            // menuItemLanguageEN
             // 
-            this.英语ToolStripMenuItem.Name = "英语ToolStripMenuItem";
-            resources.ApplyResources(this.英语ToolStripMenuItem, "英语ToolStripMenuItem");
-            this.英语ToolStripMenuItem.Tag = "en";
+            this.menuItemLanguageEN.Name = "menuItemLanguageEN";
+            resources.ApplyResources(this.menuItemLanguageEN, "menuItemLanguageEN");
+            this.menuItemLanguageEN.Tag = "en";
             // 
             // menuItemHelp
             // 
@@ -249,10 +258,11 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemLanguage;
         private System.Windows.Forms.ToolStripMenuItem menuItemHelp;
         private System.Windows.Forms.ToolStripMenuItem menuItemLanguageCN;
-        private System.Windows.Forms.ToolStripMenuItem 英语ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuItemLanguageEN;
         private System.Windows.Forms.ToolStripMenuItem menuItemAbout;
         private System.Windows.Forms.ToolStripMenuItem menuItemManual;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
+        private System.Windows.Forms.ToolStripMenuItem menuItemSkin;
     }
 }
 

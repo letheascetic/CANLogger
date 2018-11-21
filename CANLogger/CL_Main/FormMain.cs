@@ -33,12 +33,42 @@ namespace CL_Main
             formLoading.ShowDialog();
         }
 
+        private void InitLoadSkinMenuItems()
+        {
+            skinEngine = new SkinEngine();
+            List<string> skins = Directory.GetFiles(Application.StartupPath + @"\skins\", "*.ssk").ToList();
+
+            int index = 0;
+            skins.ForEach(skinFile =>
+            {
+                string itemText = Path.GetFileNameWithoutExtension(skinFile);
+                ToolStripMenuItem skinItem = new ToolStripMenuItem(itemText);
+                skinItem.Tag = skinFile;
+                skinItem.Name = String.Concat("menuItemSkin", itemText.Replace(" ", ""));
+                this.menuItemSkin.DropDownItems.Add(skinItem);
+                if (skinFile.Contains("Classical"))
+                {
+                    skinEngine.SkinFile = skinFile;
+                    skinItem.Checked = true;
+                    this.menuItemSkin.Tag = index;
+                }
+                index++;
+            });
+
+            if (this.menuItemSkin.Tag == null && this.menuItemSkin.DropDownItems.Count != 0)
+            {
+                ToolStripMenuItem skinItem = (ToolStripMenuItem)this.menuItemSkin.DropDownItems[0];
+                string skinFile = (string)skinItem.Tag;
+                skinItem.Checked = true;
+                skinEngine.SkinFile = skinFile;
+                this.menuItemSkin.Tag = 0;
+            }
+        }
+
         private void InitLoadControls()
         {
-            //load default classical skin
-            skinEngine = new SkinEngine();
-            skinEngine.SkinFile = "skins/Classical.ssk";
-
+            InitLoadSkinMenuItems();
+            
             //init & load FormData
             FormData formData1 = new FormData();
             FormData formData2 = new FormData();
@@ -90,6 +120,30 @@ namespace CL_Main
             item.Checked = true;
             int newIndex = menuItemLanguage.DropDownItems.IndexOf(item);
             menuItemLanguage.Tag = newIndex;
+        }
+
+        private void menuItemSkin_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)e.ClickedItem;
+            if (item.Checked)
+            {
+                return;
+            }
+
+            this.Cursor = Cursors.WaitCursor;
+
+            string skinFile = (string)item.Tag;
+            skinEngine.SkinFile = skinFile;
+
+            int oldIndex = Convert.ToInt32(menuItemSkin.Tag);
+            ToolStripMenuItem oldItem = (ToolStripMenuItem)menuItemSkin.DropDownItems[oldIndex];
+            oldItem.Checked = false;
+
+            item.Checked = true;
+            int newIndex = menuItemSkin.DropDownItems.IndexOf(item);
+            menuItemSkin.Tag = newIndex;
+
+            this.Cursor = Cursors.Default;
         }
     }
 }
