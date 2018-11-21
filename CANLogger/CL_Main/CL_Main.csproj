@@ -178,6 +178,12 @@
   <ItemGroup>
     <None Include="Resources\delete.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CL_Framework\CL_Framework.csproj">
+      <Project>{9733e336-4c84-4024-bcdb-51dcee3a40da}</Project>
+      <Name>CL_Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

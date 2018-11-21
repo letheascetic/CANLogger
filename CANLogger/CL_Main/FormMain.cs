@@ -1,4 +1,5 @@
-﻿using Sunisoft.IrisSkin;
+﻿using CL_Framework;
+using Sunisoft.IrisSkin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,7 @@ namespace CL_Main
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            LogHelper.Log("Enter FormMain_Load...");
             InitLoadControls();
 
             //Start Form Loading
@@ -35,6 +37,7 @@ namespace CL_Main
 
         private void InitLoadSkinMenuItems()
         {
+            LogHelper.Log("InitLoadSkinMenuItems...");
             skinEngine = new SkinEngine();
             List<string> skins = Directory.GetFiles(Application.StartupPath + @"\skins\", "*.ssk").ToList();
 
@@ -67,6 +70,7 @@ namespace CL_Main
 
         private void InitLoadControls()
         {
+            LogHelper.Log("InitLoadControls...");
             InitLoadSkinMenuItems();
             
             //init & load FormData
@@ -86,6 +90,7 @@ namespace CL_Main
 
         private void SetLanguage(string language) 
         {
+            LogHelper.Log(string.Format("SetLanguage To {0}...", language));
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(language);
             System.ComponentModel.ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
 
@@ -105,12 +110,15 @@ namespace CL_Main
 
         private void menuItemLanguage_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+            LogHelper.Log("menuItemLanguage_DropDownItemClicked...");
             ToolStripMenuItem item = (ToolStripMenuItem)e.ClickedItem;
             if (item.Checked)
             {
                 return;
             }
 
+            this.Cursor = Cursors.WaitCursor;
+    
             SetLanguage((string)item.Tag);
 
             int oldIndex = Convert.ToInt32(menuItemLanguage.Tag);
@@ -120,10 +128,13 @@ namespace CL_Main
             item.Checked = true;
             int newIndex = menuItemLanguage.DropDownItems.IndexOf(item);
             menuItemLanguage.Tag = newIndex;
+
+            this.Cursor = Cursors.Default;
         }
 
         private void menuItemSkin_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+            LogHelper.Log("menuItemSkin_DropDownItemClicked...");
             ToolStripMenuItem item = (ToolStripMenuItem)e.ClickedItem;
             if (item.Checked)
             {
