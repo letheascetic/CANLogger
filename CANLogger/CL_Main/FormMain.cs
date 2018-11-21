@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sunisoft.IrisSkin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,23 +17,28 @@ namespace CL_Main
 {
     public partial class FormMain : Form
     {
+        private SkinEngine skinEngine;
+
         public FormMain()
         {
             InitializeComponent();
-            new Sunisoft.IrisSkin.SkinEngine().SkinFile = "skins/MacOS.ssk";
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            InitLoadControls();
+
             //Start Form Loading
             FormLoading formLoading = new FormLoading();
             formLoading.ShowDialog();
-
-            InitLoadControls();
         }
 
         private void InitLoadControls()
         {
+            //load default classical skin
+            skinEngine = new SkinEngine();
+            skinEngine.SkinFile = "skins/Classical.ssk";
+
             //init & load FormData
             FormData formData1 = new FormData();
             FormData formData2 = new FormData();
@@ -46,7 +52,6 @@ namespace CL_Main
             //init & load FormStatus
             FormStatus formSatus = new FormStatus();
             formSatus.Show(formDevice.Pane, DockAlignment.Right, 0.5);
-
         }
 
         private void SetLanguage(string language) 
