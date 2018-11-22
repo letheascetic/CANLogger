@@ -62,12 +62,6 @@
     <Compile Include="Dialog\DialogDevice.Designer.cs">
       <DependentUpon>DialogDevice.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\UCChannel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl\UCChannel.Designer.cs">
-      <DependentUpon>UCChannel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Window\FormDevice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +100,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialog\DialogDevice.en.resx">
+      <DependentUpon>DialogDevice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog\DialogDevice.resx">
       <DependentUpon>DialogDevice.cs</DependentUpon>
     </EmbeddedResource>

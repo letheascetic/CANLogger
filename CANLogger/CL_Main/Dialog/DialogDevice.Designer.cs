@@ -62,6 +62,8 @@
             this.lbCAN2Mode = new System.Windows.Forms.Label();
             this.lbCAN2Name = new System.Windows.Forms.Label();
             this.lbCAN2Channel = new System.Windows.Forms.Label();
+            this.lbCAN1K = new System.Windows.Forms.Label();
+            this.lbCAN2K = new System.Windows.Forms.Label();
             this.panelBottom.SuspendLayout();
             this.panelSelect.SuspendLayout();
             this.panelList.SuspendLayout();
@@ -74,16 +76,16 @@
             // 
             // panelTop
             // 
-            resources.ApplyResources(this.panelTop, "panelTop");
             this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            resources.ApplyResources(this.panelTop, "panelTop");
             this.panelTop.Name = "panelTop";
             // 
             // panelBottom
             // 
-            resources.ApplyResources(this.panelBottom, "panelBottom");
             this.panelBottom.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panelBottom.Controls.Add(this.btnCancel);
             this.panelBottom.Controls.Add(this.btnOK);
+            resources.ApplyResources(this.panelBottom, "panelBottom");
             this.panelBottom.Name = "panelBottom";
             // 
             // btnCancel
@@ -100,10 +102,10 @@
             // 
             // panelSelect
             // 
-            resources.ApplyResources(this.panelSelect, "panelSelect");
             this.panelSelect.Controls.Add(this.btnOpenDevice);
             this.panelSelect.Controls.Add(this.cbxSelectDevice);
             this.panelSelect.Controls.Add(this.lbSelectDevice);
+            resources.ApplyResources(this.panelSelect, "panelSelect");
             this.panelSelect.Name = "panelSelect";
             // 
             // btnOpenDevice
@@ -114,11 +116,11 @@
             // 
             // cbxSelectDevice
             // 
-            resources.ApplyResources(this.cbxSelectDevice, "cbxSelectDevice");
             this.cbxSelectDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSelectDevice.FormattingEnabled = true;
             this.cbxSelectDevice.Items.AddRange(new object[] {
             resources.GetString("cbxSelectDevice.Items")});
+            resources.ApplyResources(this.cbxSelectDevice, "cbxSelectDevice");
             this.cbxSelectDevice.Name = "cbxSelectDevice";
             // 
             // lbSelectDevice
@@ -128,13 +130,12 @@
             // 
             // panelList
             // 
-            resources.ApplyResources(this.panelList, "panelList");
             this.panelList.Controls.Add(this.dgvDevice);
+            resources.ApplyResources(this.panelList, "panelList");
             this.panelList.Name = "panelList";
             // 
             // dgvDevice
             // 
-            resources.ApplyResources(this.dgvDevice, "dgvDevice");
             this.dgvDevice.AllowUserToAddRows = false;
             this.dgvDevice.AllowUserToDeleteRows = false;
             this.dgvDevice.BackgroundColor = System.Drawing.SystemColors.Info;
@@ -143,6 +144,7 @@
             this.cName,
             this.cHardware,
             this.cID});
+            resources.ApplyResources(this.dgvDevice, "dgvDevice");
             this.dgvDevice.Name = "dgvDevice";
             this.dgvDevice.ReadOnly = true;
             this.dgvDevice.RowTemplate.Height = 27;
@@ -167,21 +169,21 @@
             // 
             // panelConfig
             // 
-            resources.ApplyResources(this.panelConfig, "panelConfig");
             this.panelConfig.Controls.Add(this.tabControl);
+            resources.ApplyResources(this.panelConfig, "panelConfig");
             this.panelConfig.Name = "panelConfig";
             // 
             // tabControl
             // 
-            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Controls.Add(this.tpgCAN1);
             this.tabControl.Controls.Add(this.tpgCAN2);
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             // 
             // tpgCAN1
             // 
-            resources.ApplyResources(this.tpgCAN1, "tpgCAN1");
+            this.tpgCAN1.Controls.Add(this.lbCAN1K);
             this.tpgCAN1.Controls.Add(this.tbxCAN1Channel);
             this.tpgCAN1.Controls.Add(this.tbxCAN1Name);
             this.tpgCAN1.Controls.Add(this.cbxCAN1RaudRate);
@@ -190,6 +192,7 @@
             this.tpgCAN1.Controls.Add(this.lbCAN1Mode);
             this.tpgCAN1.Controls.Add(this.lbCAN1Name);
             this.tpgCAN1.Controls.Add(this.lbCAN1Channel);
+            resources.ApplyResources(this.tpgCAN1, "tpgCAN1");
             this.tpgCAN1.Name = "tpgCAN1";
             this.tpgCAN1.UseVisualStyleBackColor = true;
             // 
@@ -206,8 +209,25 @@
             // 
             // cbxCAN1RaudRate
             // 
-            resources.ApplyResources(this.cbxCAN1RaudRate, "cbxCAN1RaudRate");
             this.cbxCAN1RaudRate.FormattingEnabled = true;
+            this.cbxCAN1RaudRate.Items.AddRange(new object[] {
+            resources.GetString("cbxCAN1RaudRate.Items"),
+            resources.GetString("cbxCAN1RaudRate.Items1"),
+            resources.GetString("cbxCAN1RaudRate.Items2"),
+            resources.GetString("cbxCAN1RaudRate.Items3"),
+            resources.GetString("cbxCAN1RaudRate.Items4"),
+            resources.GetString("cbxCAN1RaudRate.Items5"),
+            resources.GetString("cbxCAN1RaudRate.Items6"),
+            resources.GetString("cbxCAN1RaudRate.Items7"),
+            resources.GetString("cbxCAN1RaudRate.Items8"),
+            resources.GetString("cbxCAN1RaudRate.Items9"),
+            resources.GetString("cbxCAN1RaudRate.Items10"),
+            resources.GetString("cbxCAN1RaudRate.Items11"),
+            resources.GetString("cbxCAN1RaudRate.Items12"),
+            resources.GetString("cbxCAN1RaudRate.Items13"),
+            resources.GetString("cbxCAN1RaudRate.Items14"),
+            resources.GetString("cbxCAN1RaudRate.Items15")});
+            resources.ApplyResources(this.cbxCAN1RaudRate, "cbxCAN1RaudRate");
             this.cbxCAN1RaudRate.Name = "cbxCAN1RaudRate";
             // 
             // lbCAN1BaudRate
@@ -217,8 +237,8 @@
             // 
             // cbxCAN1Mode
             // 
-            resources.ApplyResources(this.cbxCAN1Mode, "cbxCAN1Mode");
             this.cbxCAN1Mode.FormattingEnabled = true;
+            resources.ApplyResources(this.cbxCAN1Mode, "cbxCAN1Mode");
             this.cbxCAN1Mode.Name = "cbxCAN1Mode";
             // 
             // lbCAN1Mode
@@ -238,7 +258,7 @@
             // 
             // tpgCAN2
             // 
-            resources.ApplyResources(this.tpgCAN2, "tpgCAN2");
+            this.tpgCAN2.Controls.Add(this.lbCAN2K);
             this.tpgCAN2.Controls.Add(this.tbxCAN2Channel);
             this.tpgCAN2.Controls.Add(this.tbxCAN2Name);
             this.tpgCAN2.Controls.Add(this.cbxCAN2BaudRate);
@@ -247,6 +267,7 @@
             this.tpgCAN2.Controls.Add(this.lbCAN2Mode);
             this.tpgCAN2.Controls.Add(this.lbCAN2Name);
             this.tpgCAN2.Controls.Add(this.lbCAN2Channel);
+            resources.ApplyResources(this.tpgCAN2, "tpgCAN2");
             this.tpgCAN2.Name = "tpgCAN2";
             this.tpgCAN2.UseVisualStyleBackColor = true;
             // 
@@ -263,8 +284,25 @@
             // 
             // cbxCAN2BaudRate
             // 
-            resources.ApplyResources(this.cbxCAN2BaudRate, "cbxCAN2BaudRate");
             this.cbxCAN2BaudRate.FormattingEnabled = true;
+            this.cbxCAN2BaudRate.Items.AddRange(new object[] {
+            resources.GetString("cbxCAN2BaudRate.Items"),
+            resources.GetString("cbxCAN2BaudRate.Items1"),
+            resources.GetString("cbxCAN2BaudRate.Items2"),
+            resources.GetString("cbxCAN2BaudRate.Items3"),
+            resources.GetString("cbxCAN2BaudRate.Items4"),
+            resources.GetString("cbxCAN2BaudRate.Items5"),
+            resources.GetString("cbxCAN2BaudRate.Items6"),
+            resources.GetString("cbxCAN2BaudRate.Items7"),
+            resources.GetString("cbxCAN2BaudRate.Items8"),
+            resources.GetString("cbxCAN2BaudRate.Items9"),
+            resources.GetString("cbxCAN2BaudRate.Items10"),
+            resources.GetString("cbxCAN2BaudRate.Items11"),
+            resources.GetString("cbxCAN2BaudRate.Items12"),
+            resources.GetString("cbxCAN2BaudRate.Items13"),
+            resources.GetString("cbxCAN2BaudRate.Items14"),
+            resources.GetString("cbxCAN2BaudRate.Items15")});
+            resources.ApplyResources(this.cbxCAN2BaudRate, "cbxCAN2BaudRate");
             this.cbxCAN2BaudRate.Name = "cbxCAN2BaudRate";
             // 
             // lbCAN2BaudRate
@@ -274,8 +312,8 @@
             // 
             // cbxCAN2Mode
             // 
-            resources.ApplyResources(this.cbxCAN2Mode, "cbxCAN2Mode");
             this.cbxCAN2Mode.FormattingEnabled = true;
+            resources.ApplyResources(this.cbxCAN2Mode, "cbxCAN2Mode");
             this.cbxCAN2Mode.Name = "cbxCAN2Mode";
             // 
             // lbCAN2Mode
@@ -292,6 +330,16 @@
             // 
             resources.ApplyResources(this.lbCAN2Channel, "lbCAN2Channel");
             this.lbCAN2Channel.Name = "lbCAN2Channel";
+            // 
+            // lbCAN1K
+            // 
+            resources.ApplyResources(this.lbCAN1K, "lbCAN1K");
+            this.lbCAN1K.Name = "lbCAN1K";
+            // 
+            // lbCAN2K
+            // 
+            resources.ApplyResources(this.lbCAN2K, "lbCAN2K");
+            this.lbCAN2K.Name = "lbCAN2K";
             // 
             // DialogDevice
             // 
@@ -354,5 +402,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cName;
         private System.Windows.Forms.DataGridViewTextBoxColumn cHardware;
         private System.Windows.Forms.DataGridViewTextBoxColumn cID;
+        private System.Windows.Forms.Label lbCAN1K;
+        private System.Windows.Forms.Label lbCAN2K;
     }
 }

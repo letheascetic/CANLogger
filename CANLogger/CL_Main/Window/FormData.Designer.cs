@@ -31,6 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.dgvData = new System.Windows.Forms.DataGridView();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.cbxFilter = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cState = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,17 +44,25 @@
             this.cFormat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cData = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.btnStart = new System.Windows.Forms.ToolStripButton();
-            this.btnStop = new System.Windows.Forms.ToolStripButton();
-            this.btnClose = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSend = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSendMode = new System.Windows.Forms.ToolStripButton();
+            this.btnSendFile = new System.Windows.Forms.ToolStripButton();
+            this.btnContinueShow = new System.Windows.Forms.ToolStripButton();
+            this.btnStopShow = new System.Windows.Forms.ToolStripButton();
+            this.btnShowMode = new System.Windows.Forms.ToolStripButton();
+            this.btnClear = new System.Windows.Forms.ToolStripButton();
             this.btnFilter = new System.Windows.Forms.ToolStripButton();
+            this.btnSave = new System.Windows.Forms.ToolStripButton();
+            this.btnRTSave = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
+            this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.toolStrip.SuspendLayout();
+            this.toolStripSend.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -61,9 +74,16 @@
             // 
             this.splitContainer.Panel1.Controls.Add(this.dgvData);
             // 
+            // splitContainer.Panel2
+            // 
+            this.splitContainer.Panel2.Controls.Add(this.panel1);
+            this.splitContainer.Panel2.Controls.Add(this.toolStripSend);
+            // 
             // dgvData
             // 
             resources.ApplyResources(this.dgvData, "dgvData");
+            this.dgvData.AllowUserToAddRows = false;
+            this.dgvData.AllowUserToDeleteRows = false;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cNO,
@@ -75,17 +95,60 @@
             this.cLength,
             this.cData});
             this.dgvData.Name = "dgvData";
+            this.dgvData.ReadOnly = true;
             this.dgvData.RowTemplate.Height = 27;
+            // 
+            // toolStrip
+            // 
+            this.toolStrip.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnContinueShow,
+            this.btnStopShow,
+            this.btnShowMode,
+            this.btnClear,
+            this.toolStripSeparator4,
+            this.btnFilter,
+            this.cbxFilter,
+            this.toolStripSeparator1,
+            this.btnSave,
+            this.btnRTSave,
+            this.toolStripSeparator2});
+            resources.ApplyResources(this.toolStrip, "toolStrip");
+            this.toolStrip.Name = "toolStrip";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            // 
+            // cbxFilter
+            // 
+            this.cbxFilter.BackColor = System.Drawing.SystemColors.ScrollBar;
+            resources.ApplyResources(this.cbxFilter, "cbxFilter");
+            this.cbxFilter.Name = "cbxFilter";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // cNO
             // 
             resources.ApplyResources(this.cNO, "cNO");
             this.cNO.Name = "cNO";
+            this.cNO.ReadOnly = true;
             // 
             // cTime
             // 
             resources.ApplyResources(this.cTime, "cTime");
             this.cTime.Name = "cTime";
+            this.cTime.ReadOnly = true;
             // 
             // cState
             // 
@@ -123,41 +186,62 @@
             this.cData.Name = "cData";
             this.cData.ReadOnly = true;
             // 
-            // toolStrip
+            // toolStripSend
             // 
-            this.toolStrip.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnStart,
-            this.btnStop,
-            this.btnClose,
-            this.toolStripSeparator4,
-            this.btnFilter});
-            resources.ApplyResources(this.toolStrip, "toolStrip");
-            this.toolStrip.Name = "toolStrip";
+            this.toolStripSend.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.toolStripSend.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStripSend.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnSendMode,
+            this.btnSendFile,
+            this.toolStripSeparator3});
+            resources.ApplyResources(this.toolStripSend, "toolStripSend");
+            this.toolStripSend.Name = "toolStripSend";
             // 
-            // btnStart
+            // toolStripSeparator3
             // 
-            this.btnStart.Image = global::CL_Main.Properties.Resources.start;
-            resources.ApplyResources(this.btnStart, "btnStart");
-            this.btnStart.Name = "btnStart";
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
-            // btnStop
+            // panel1
             // 
-            this.btnStop.Image = global::CL_Main.Properties.Resources.stop;
-            resources.ApplyResources(this.btnStop, "btnStop");
-            this.btnStop.Name = "btnStop";
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
             // 
-            // btnClose
+            // btnSendMode
             // 
-            this.btnClose.Image = global::CL_Main.Properties.Resources.close;
-            resources.ApplyResources(this.btnClose, "btnClose");
-            this.btnClose.Name = "btnClose";
+            this.btnSendMode.Image = global::CL_Main.Properties.Resources.sendmode;
+            resources.ApplyResources(this.btnSendMode, "btnSendMode");
+            this.btnSendMode.Name = "btnSendMode";
             // 
-            // toolStripSeparator4
+            // btnSendFile
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            this.btnSendFile.Image = global::CL_Main.Properties.Resources.sendfile;
+            resources.ApplyResources(this.btnSendFile, "btnSendFile");
+            this.btnSendFile.Name = "btnSendFile";
+            // 
+            // btnContinueShow
+            // 
+            this.btnContinueShow.Image = global::CL_Main.Properties.Resources.start;
+            resources.ApplyResources(this.btnContinueShow, "btnContinueShow");
+            this.btnContinueShow.Name = "btnContinueShow";
+            // 
+            // btnStopShow
+            // 
+            this.btnStopShow.Image = global::CL_Main.Properties.Resources.stop;
+            resources.ApplyResources(this.btnStopShow, "btnStopShow");
+            this.btnStopShow.Name = "btnStopShow";
+            // 
+            // btnShowMode
+            // 
+            this.btnShowMode.Image = global::CL_Main.Properties.Resources.showmode;
+            resources.ApplyResources(this.btnShowMode, "btnShowMode");
+            this.btnShowMode.Name = "btnShowMode";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Image = global::CL_Main.Properties.Resources.clear;
+            resources.ApplyResources(this.btnClear, "btnClear");
+            this.btnClear.Name = "btnClear";
             // 
             // btnFilter
             // 
@@ -165,7 +249,19 @@
             resources.ApplyResources(this.btnFilter, "btnFilter");
             this.btnFilter.Name = "btnFilter";
             // 
-            // FormView
+            // btnSave
+            // 
+            this.btnSave.Image = global::CL_Main.Properties.Resources.save;
+            resources.ApplyResources(this.btnSave, "btnSave");
+            this.btnSave.Name = "btnSave";
+            // 
+            // btnRTSave
+            // 
+            this.btnRTSave.Image = global::CL_Main.Properties.Resources.rtsave;
+            resources.ApplyResources(this.btnRTSave, "btnRTSave");
+            this.btnRTSave.Name = "btnRTSave";
+            // 
+            // FormData
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -173,13 +269,17 @@
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.toolStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormView";
+            this.Name = "FormData";
             this.splitContainer.Panel1.ResumeLayout(false);
+            this.splitContainer.Panel2.ResumeLayout(false);
+            this.splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
+            this.toolStripSend.ResumeLayout(false);
+            this.toolStripSend.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,13 +288,19 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripButton btnStart;
-        private System.Windows.Forms.ToolStripButton btnStop;
-        private System.Windows.Forms.ToolStripButton btnClose;
+        private System.Windows.Forms.ToolStripButton btnContinueShow;
+        private System.Windows.Forms.ToolStripButton btnStopShow;
+        private System.Windows.Forms.ToolStripButton btnShowMode;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton btnFilter;
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.DataGridView dgvData;
+        private System.Windows.Forms.ToolStripButton btnClear;
+        private System.Windows.Forms.ToolStripComboBox cbxFilter;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnSave;
+        private System.Windows.Forms.ToolStripButton btnRTSave;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn cState;
@@ -203,5 +309,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cFormat;
         private System.Windows.Forms.DataGridViewTextBoxColumn cLength;
         private System.Windows.Forms.DataGridViewTextBoxColumn cData;
+        private System.Windows.Forms.ToolStrip toolStripSend;
+        private System.Windows.Forms.ToolStripButton btnSendFile;
+        private System.Windows.Forms.ToolStripButton btnSendMode;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.Panel panel1;
     }
 }

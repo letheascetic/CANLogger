@@ -27,9 +27,9 @@ namespace CL_Main
 
             resources.ApplyResources(this, "$this");
 
-            resources.ApplyResources(this.btnStart, this.btnStart.Name);
-            resources.ApplyResources(this.btnStop, this.btnStop.Name);
-            resources.ApplyResources(this.btnClose, this.btnClose.Name);
+            resources.ApplyResources(this.btnContinueShow, this.btnContinueShow.Name);
+            resources.ApplyResources(this.btnStopShow, this.btnStopShow.Name);
+            resources.ApplyResources(this.btnShowMode, this.btnShowMode.Name);
             resources.ApplyResources(this.btnFilter, this.btnFilter.Name);
 
         }
