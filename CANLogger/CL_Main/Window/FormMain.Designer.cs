@@ -51,6 +51,8 @@
             this.menuItemManual = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.menuItemSkinDefault = new System.Windows.Forms.ToolStripMenuItem();
+            this.bgUIWorker = new System.ComponentModel.BackgroundWorker();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -162,9 +164,14 @@
             // 
             // menuItemSkin
             // 
+            this.menuItemSkin.Checked = true;
+            this.menuItemSkin.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuItemSkin.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemSkinDefault});
             this.menuItemSkin.Image = global::CL_Main.Properties.Resources.skin;
             this.menuItemSkin.Name = "menuItemSkin";
             resources.ApplyResources(this.menuItemSkin, "menuItemSkin");
+            this.menuItemSkin.Tag = "0";
             this.menuItemSkin.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuItemSkin_DropDownItemClicked);
             // 
             // menuItemLanguage
@@ -218,6 +225,17 @@
             this.dockPanel.DockBottomPortion = 0.3D;
             this.dockPanel.Name = "dockPanel";
             // 
+            // menuItemSkinDefault
+            // 
+            this.menuItemSkinDefault.Checked = true;
+            this.menuItemSkinDefault.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuItemSkinDefault.Name = "menuItemSkinDefault";
+            resources.ApplyResources(this.menuItemSkinDefault, "menuItemSkinDefault");
+            // 
+            // bgUIWorker
+            // 
+            this.bgUIWorker.WorkerReportsProgress = true;
+            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -263,6 +281,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemManual;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
         private System.Windows.Forms.ToolStripMenuItem menuItemSkin;
+        private System.Windows.Forms.ToolStripMenuItem menuItemSkinDefault;
+        private System.ComponentModel.BackgroundWorker bgUIWorker;
     }
 }
 

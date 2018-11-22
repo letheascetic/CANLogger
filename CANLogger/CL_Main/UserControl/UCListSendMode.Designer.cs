@@ -64,7 +64,7 @@
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
             this.dgvData.RowTemplate.Height = 27;
-            this.dgvData.Size = new System.Drawing.Size(1045, 160);
+            this.dgvData.Size = new System.Drawing.Size(1000, 120);
             this.dgvData.TabIndex = 0;
             // 
             // cSend
@@ -143,7 +143,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dgvData);
             this.Name = "UCListSendMode";
-            this.Size = new System.Drawing.Size(1045, 160);
+            this.Size = new System.Drawing.Size(1000, 120);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
 

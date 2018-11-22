@@ -27,10 +27,18 @@ namespace CL_Main
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            LogHelper.Log("Enter FormMain_Load...");
-            InitLoadControls();
+            LogHelper.Log("FormMain_Load...");
 
-            //Start Form Loading
+            Thread thread = new Thread(new ThreadStart(Loading));
+            thread.IsBackground = true;
+            thread.Start();
+
+            InitLoadControls();
+            thread.Join();
+        }
+
+        private void Loading()
+        {
             FormLoading formLoading = new FormLoading();
             formLoading.ShowDialog();
         }
@@ -49,30 +57,15 @@ namespace CL_Main
                 skinItem.Tag = skinFile;
                 skinItem.Name = String.Concat("menuItemSkin", itemText.Replace(" ", ""));
                 this.menuItemSkin.DropDownItems.Add(skinItem);
-                if (skinFile.Contains("Classical"))
-                {
-                    skinEngine.SkinFile = skinFile;
-                    skinItem.Checked = true;
-                    this.menuItemSkin.Tag = index;
-                }
                 index++;
             });
-
-            if (this.menuItemSkin.Tag == null && this.menuItemSkin.DropDownItems.Count != 0)
-            {
-                ToolStripMenuItem skinItem = (ToolStripMenuItem)this.menuItemSkin.DropDownItems[0];
-                string skinFile = (string)skinItem.Tag;
-                skinItem.Checked = true;
-                skinEngine.SkinFile = skinFile;
-                this.menuItemSkin.Tag = 0;
-            }
         }
 
         private void InitLoadControls()
         {
             LogHelper.Log("InitLoadControls...");
             InitLoadSkinMenuItems();
-            
+
             //init & load FormData
             FormData formData1 = new FormData();
             FormData formData2 = new FormData();
@@ -86,6 +79,8 @@ namespace CL_Main
             //init & load FormStatus
             FormStatus formSatus = new FormStatus();
             formSatus.Show(formDevice.Pane, DockAlignment.Right, 0.5);
+
+            this.Activate();
         }
 
         private void SetLanguage(string language) 
@@ -110,7 +105,7 @@ namespace CL_Main
 
         private void menuItemLanguage_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            LogHelper.Log("menuItemLanguage_DropDownItemClicked...");
+            LogHelper.Log(string.Format("menuItemLanguage_DropDownItemClicked -> clickedItem: [{0}]", e.ClickedItem.Text));
             ToolStripMenuItem item = (ToolStripMenuItem)e.ClickedItem;
             if (item.Checked)
             {
@@ -134,7 +129,7 @@ namespace CL_Main
 
         private void menuItemSkin_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            LogHelper.Log("menuItemSkin_DropDownItemClicked...");
+            LogHelper.Log(string.Format("menuItemSkin_DropDownItemClicked -> clickedItem: [{0}]", e.ClickedItem.Text));
             ToolStripMenuItem item = (ToolStripMenuItem)e.ClickedItem;
             if (item.Checked)
             {
@@ -143,7 +138,7 @@ namespace CL_Main
 
             this.Cursor = Cursors.WaitCursor;
 
-            string skinFile = (string)item.Tag;
+            string skinFile = item.Tag == null ? null : (string)item.Tag;
             skinEngine.SkinFile = skinFile;
 
             int oldIndex = Convert.ToInt32(menuItemSkin.Tag);

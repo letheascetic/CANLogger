@@ -89,6 +89,8 @@
             // 
             // dgvDeviceList
             // 
+            this.dgvDeviceList.AllowUserToAddRows = false;
+            this.dgvDeviceList.AllowUserToDeleteRows = false;
             this.dgvDeviceList.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvDeviceList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDeviceList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -100,37 +102,44 @@
             this.cBusFlow});
             resources.ApplyResources(this.dgvDeviceList, "dgvDeviceList");
             this.dgvDeviceList.Name = "dgvDeviceList";
+            this.dgvDeviceList.ReadOnly = true;
             this.dgvDeviceList.RowTemplate.Height = 27;
             // 
             // cOpen
             // 
             resources.ApplyResources(this.cOpen, "cOpen");
             this.cOpen.Name = "cOpen";
+            this.cOpen.ReadOnly = true;
             // 
             // cDevice
             // 
             resources.ApplyResources(this.cDevice, "cDevice");
             this.cDevice.Name = "cDevice";
+            this.cDevice.ReadOnly = true;
             // 
             // cChannelNum
             // 
             resources.ApplyResources(this.cChannelNum, "cChannelNum");
             this.cChannelNum.Name = "cChannelNum";
+            this.cChannelNum.ReadOnly = true;
             // 
             // cBaudRate
             // 
             resources.ApplyResources(this.cBaudRate, "cBaudRate");
             this.cBaudRate.Name = "cBaudRate";
+            this.cBaudRate.ReadOnly = true;
             // 
             // cBusLoad
             // 
             resources.ApplyResources(this.cBusLoad, "cBusLoad");
             this.cBusLoad.Name = "cBusLoad";
+            this.cBusLoad.ReadOnly = true;
             // 
             // cBusFlow
             // 
             resources.ApplyResources(this.cBusFlow, "cBusFlow");
             this.cBusFlow.Name = "cBusFlow";
+            this.cBusFlow.ReadOnly = true;
             // 
             // FormDevice
             // 

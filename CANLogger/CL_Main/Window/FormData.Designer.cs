@@ -30,23 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.cbxFilter = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSend = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnSendMode = new System.Windows.Forms.ToolStripButton();
-            this.btnSendFile = new System.Windows.Forms.ToolStripButton();
-            this.btnContinueShow = new System.Windows.Forms.ToolStripButton();
-            this.btnStopShow = new System.Windows.Forms.ToolStripButton();
-            this.btnShowMode = new System.Windows.Forms.ToolStripButton();
-            this.btnClear = new System.Windows.Forms.ToolStripButton();
-            this.btnFilter = new System.Windows.Forms.ToolStripButton();
-            this.btnSave = new System.Windows.Forms.ToolStripButton();
-            this.btnRTSave = new System.Windows.Forms.ToolStripButton();
-            this.pnlSendIcon = new System.Windows.Forms.Panel();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,13 +40,32 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlReceiveIcon = new System.Windows.Forms.Panel();
+            this.ucSendModeList = new CL_Main.UCListSendMode();
+            this.pnlSendIcon = new System.Windows.Forms.Panel();
+            this.toolStripSend = new System.Windows.Forms.ToolStrip();
+            this.btnSendMode = new System.Windows.Forms.ToolStripButton();
+            this.btnSendFile = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.btnContinueShow = new System.Windows.Forms.ToolStripButton();
+            this.btnStopShow = new System.Windows.Forms.ToolStripButton();
+            this.btnShowMode = new System.Windows.Forms.ToolStripButton();
+            this.btnClear = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnFilter = new System.Windows.Forms.ToolStripButton();
+            this.cbxFilter = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnSave = new System.Windows.Forms.ToolStripButton();
+            this.btnRTSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.ucSendModeNormal = new CL_Main.UCNormalSendMode();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
-            this.toolStrip.SuspendLayout();
-            this.toolStripSend.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
+            this.toolStripSend.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -78,123 +80,11 @@
             // 
             // splitContainer.Panel2
             // 
+            resources.ApplyResources(this.splitContainer.Panel2, "splitContainer.Panel2");
+            this.splitContainer.Panel2.Controls.Add(this.ucSendModeNormal);
+            this.splitContainer.Panel2.Controls.Add(this.ucSendModeList);
             this.splitContainer.Panel2.Controls.Add(this.pnlSendIcon);
             this.splitContainer.Panel2.Controls.Add(this.toolStripSend);
-            // 
-            // toolStrip
-            // 
-            this.toolStrip.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnContinueShow,
-            this.btnStopShow,
-            this.btnShowMode,
-            this.btnClear,
-            this.toolStripSeparator4,
-            this.btnFilter,
-            this.cbxFilter,
-            this.toolStripSeparator1,
-            this.btnSave,
-            this.btnRTSave,
-            this.toolStripSeparator2});
-            resources.ApplyResources(this.toolStrip, "toolStrip");
-            this.toolStrip.Name = "toolStrip";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
-            // 
-            // cbxFilter
-            // 
-            this.cbxFilter.BackColor = System.Drawing.SystemColors.ScrollBar;
-            resources.ApplyResources(this.cbxFilter, "cbxFilter");
-            this.cbxFilter.Name = "cbxFilter";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
-            // 
-            // toolStripSend
-            // 
-            this.toolStripSend.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.toolStripSend.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStripSend.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnSendMode,
-            this.btnSendFile,
-            this.toolStripSeparator3});
-            resources.ApplyResources(this.toolStripSend, "toolStripSend");
-            this.toolStripSend.Name = "toolStripSend";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
-            // 
-            // btnSendMode
-            // 
-            this.btnSendMode.Image = global::CL_Main.Properties.Resources.sendmode;
-            resources.ApplyResources(this.btnSendMode, "btnSendMode");
-            this.btnSendMode.Name = "btnSendMode";
-            // 
-            // btnSendFile
-            // 
-            this.btnSendFile.Image = global::CL_Main.Properties.Resources.sendfile;
-            resources.ApplyResources(this.btnSendFile, "btnSendFile");
-            this.btnSendFile.Name = "btnSendFile";
-            // 
-            // btnContinueShow
-            // 
-            this.btnContinueShow.Image = global::CL_Main.Properties.Resources.start;
-            resources.ApplyResources(this.btnContinueShow, "btnContinueShow");
-            this.btnContinueShow.Name = "btnContinueShow";
-            // 
-            // btnStopShow
-            // 
-            this.btnStopShow.Image = global::CL_Main.Properties.Resources.stop;
-            resources.ApplyResources(this.btnStopShow, "btnStopShow");
-            this.btnStopShow.Name = "btnStopShow";
-            // 
-            // btnShowMode
-            // 
-            this.btnShowMode.Image = global::CL_Main.Properties.Resources.showmode;
-            resources.ApplyResources(this.btnShowMode, "btnShowMode");
-            this.btnShowMode.Name = "btnShowMode";
-            // 
-            // btnClear
-            // 
-            this.btnClear.Image = global::CL_Main.Properties.Resources.clear;
-            resources.ApplyResources(this.btnClear, "btnClear");
-            this.btnClear.Name = "btnClear";
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.Image = global::CL_Main.Properties.Resources.filter;
-            resources.ApplyResources(this.btnFilter, "btnFilter");
-            this.btnFilter.Name = "btnFilter";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Image = global::CL_Main.Properties.Resources.save;
-            resources.ApplyResources(this.btnSave, "btnSave");
-            this.btnSave.Name = "btnSave";
-            // 
-            // btnRTSave
-            // 
-            this.btnRTSave.Image = global::CL_Main.Properties.Resources.rtsave;
-            resources.ApplyResources(this.btnRTSave, "btnRTSave");
-            this.btnRTSave.Name = "btnRTSave";
-            // 
-            // pnlSendIcon
-            // 
-            resources.ApplyResources(this.pnlSendIcon, "pnlSendIcon");
-            this.pnlSendIcon.Name = "pnlSendIcon";
             // 
             // dgvData
             // 
@@ -270,6 +160,132 @@
             resources.ApplyResources(this.pnlReceiveIcon, "pnlReceiveIcon");
             this.pnlReceiveIcon.Name = "pnlReceiveIcon";
             // 
+            // ucSendModeList
+            // 
+            resources.ApplyResources(this.ucSendModeList, "ucSendModeList");
+            this.ucSendModeList.Name = "ucSendModeList";
+            // 
+            // pnlSendIcon
+            // 
+            resources.ApplyResources(this.pnlSendIcon, "pnlSendIcon");
+            this.pnlSendIcon.Name = "pnlSendIcon";
+            // 
+            // toolStripSend
+            // 
+            this.toolStripSend.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.toolStripSend.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStripSend.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnSendMode,
+            this.btnSendFile,
+            this.toolStripSeparator3});
+            resources.ApplyResources(this.toolStripSend, "toolStripSend");
+            this.toolStripSend.Name = "toolStripSend";
+            // 
+            // btnSendMode
+            // 
+            this.btnSendMode.Image = global::CL_Main.Properties.Resources.sendmode;
+            resources.ApplyResources(this.btnSendMode, "btnSendMode");
+            this.btnSendMode.Name = "btnSendMode";
+            this.btnSendMode.Click += new System.EventHandler(this.btnSendMode_Click);
+            // 
+            // btnSendFile
+            // 
+            this.btnSendFile.Image = global::CL_Main.Properties.Resources.sendfile;
+            resources.ApplyResources(this.btnSendFile, "btnSendFile");
+            this.btnSendFile.Name = "btnSendFile";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            // 
+            // toolStrip
+            // 
+            this.toolStrip.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnContinueShow,
+            this.btnStopShow,
+            this.btnShowMode,
+            this.btnClear,
+            this.toolStripSeparator4,
+            this.btnFilter,
+            this.cbxFilter,
+            this.toolStripSeparator1,
+            this.btnSave,
+            this.btnRTSave,
+            this.toolStripSeparator2});
+            resources.ApplyResources(this.toolStrip, "toolStrip");
+            this.toolStrip.Name = "toolStrip";
+            // 
+            // btnContinueShow
+            // 
+            this.btnContinueShow.Image = global::CL_Main.Properties.Resources.start;
+            resources.ApplyResources(this.btnContinueShow, "btnContinueShow");
+            this.btnContinueShow.Name = "btnContinueShow";
+            // 
+            // btnStopShow
+            // 
+            this.btnStopShow.Image = global::CL_Main.Properties.Resources.stop;
+            resources.ApplyResources(this.btnStopShow, "btnStopShow");
+            this.btnStopShow.Name = "btnStopShow";
+            // 
+            // btnShowMode
+            // 
+            this.btnShowMode.Image = global::CL_Main.Properties.Resources.showmode;
+            resources.ApplyResources(this.btnShowMode, "btnShowMode");
+            this.btnShowMode.Name = "btnShowMode";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Image = global::CL_Main.Properties.Resources.clear;
+            resources.ApplyResources(this.btnClear, "btnClear");
+            this.btnClear.Name = "btnClear";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Image = global::CL_Main.Properties.Resources.filter;
+            resources.ApplyResources(this.btnFilter, "btnFilter");
+            this.btnFilter.Name = "btnFilter";
+            // 
+            // cbxFilter
+            // 
+            this.cbxFilter.BackColor = System.Drawing.SystemColors.ScrollBar;
+            resources.ApplyResources(this.cbxFilter, "cbxFilter");
+            this.cbxFilter.Name = "cbxFilter";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = global::CL_Main.Properties.Resources.save;
+            resources.ApplyResources(this.btnSave, "btnSave");
+            this.btnSave.Name = "btnSave";
+            // 
+            // btnRTSave
+            // 
+            this.btnRTSave.Image = global::CL_Main.Properties.Resources.rtsave;
+            resources.ApplyResources(this.btnRTSave, "btnRTSave");
+            this.btnRTSave.Name = "btnRTSave";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            // 
+            // ucSendModeNormal
+            // 
+            resources.ApplyResources(this.ucSendModeNormal, "ucSendModeNormal");
+            this.ucSendModeNormal.Name = "ucSendModeNormal";
+            // 
             // FormData
             // 
             resources.ApplyResources(this, "$this");
@@ -279,16 +295,17 @@
             this.Controls.Add(this.toolStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormData";
+            this.Load += new System.EventHandler(this.FormData_Load);
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel2.ResumeLayout(false);
             this.splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.toolStripSend.ResumeLayout(false);
             this.toolStripSend.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,5 +341,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.Panel pnlReceiveIcon;
+        private UCListSendMode ucSendModeList;
+        private UCNormalSendMode ucSendModeNormal;
     }
 }

@@ -273,6 +273,12 @@
   <data name="menuItemOption.Text" xml:space="preserve">
     <value>操作</value>
   </data>
+  <data name="menuItemSkinDefault.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="menuItemSkinDefault.Text" xml:space="preserve">
+    <value>Default</value>
+  </data>
   <data name="menuItemSkin.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 24</value>
   </data>
@@ -283,13 +289,13 @@
     <value>MiddleLeft</value>
   </data>
   <data name="menuItemLanguageCN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 26</value>
+    <value>216, 26</value>
   </data>
   <data name="menuItemLanguageCN.Text" xml:space="preserve">
     <value>简体中文</value>
   </data>
   <data name="menuItemLanguageEN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 26</value>
+    <value>216, 26</value>
   </data>
   <data name="menuItemLanguageEN.Text" xml:space="preserve">
     <value>英语</value>
@@ -372,6 +378,9 @@
   <data name="&gt;&gt;dockPanel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="bgUIWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>401, 21</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -506,6 +515,18 @@
   </data>
   <data name="&gt;&gt;menuItemAbout.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemSkinDefault.Name" xml:space="preserve">
+    <value>menuItemSkinDefault</value>
+  </data>
+  <data name="&gt;&gt;menuItemSkinDefault.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bgUIWorker.Name" xml:space="preserve">
+    <value>bgUIWorker</value>
+  </data>
+  <data name="&gt;&gt;bgUIWorker.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormMain</value>
