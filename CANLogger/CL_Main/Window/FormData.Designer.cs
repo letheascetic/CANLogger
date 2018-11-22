@@ -30,23 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.dgvData = new System.Windows.Forms.DataGridView();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.cbxFilter = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.cNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cFormat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripSend = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnSendMode = new System.Windows.Forms.ToolStripButton();
             this.btnSendFile = new System.Windows.Forms.ToolStripButton();
             this.btnContinueShow = new System.Windows.Forms.ToolStripButton();
@@ -56,13 +46,24 @@
             this.btnFilter = new System.Windows.Forms.ToolStripButton();
             this.btnSave = new System.Windows.Forms.ToolStripButton();
             this.btnRTSave = new System.Windows.Forms.ToolStripButton();
+            this.pnlSendIcon = new System.Windows.Forms.Panel();
+            this.dgvData = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlReceiveIcon = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.toolStrip.SuspendLayout();
             this.toolStripSend.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -73,30 +74,12 @@
             // splitContainer.Panel1
             // 
             this.splitContainer.Panel1.Controls.Add(this.dgvData);
+            this.splitContainer.Panel1.Controls.Add(this.pnlReceiveIcon);
             // 
             // splitContainer.Panel2
             // 
-            this.splitContainer.Panel2.Controls.Add(this.panel1);
+            this.splitContainer.Panel2.Controls.Add(this.pnlSendIcon);
             this.splitContainer.Panel2.Controls.Add(this.toolStripSend);
-            // 
-            // dgvData
-            // 
-            resources.ApplyResources(this.dgvData, "dgvData");
-            this.dgvData.AllowUserToAddRows = false;
-            this.dgvData.AllowUserToDeleteRows = false;
-            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cNO,
-            this.cTime,
-            this.cState,
-            this.cID,
-            this.cType,
-            this.cFormat,
-            this.cLength,
-            this.cData});
-            this.dgvData.Name = "dgvData";
-            this.dgvData.ReadOnly = true;
-            this.dgvData.RowTemplate.Height = 27;
             // 
             // toolStrip
             // 
@@ -138,54 +121,6 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
-            // cNO
-            // 
-            resources.ApplyResources(this.cNO, "cNO");
-            this.cNO.Name = "cNO";
-            this.cNO.ReadOnly = true;
-            // 
-            // cTime
-            // 
-            resources.ApplyResources(this.cTime, "cTime");
-            this.cTime.Name = "cTime";
-            this.cTime.ReadOnly = true;
-            // 
-            // cState
-            // 
-            resources.ApplyResources(this.cState, "cState");
-            this.cState.Name = "cState";
-            this.cState.ReadOnly = true;
-            // 
-            // cID
-            // 
-            resources.ApplyResources(this.cID, "cID");
-            this.cID.Name = "cID";
-            this.cID.ReadOnly = true;
-            // 
-            // cType
-            // 
-            resources.ApplyResources(this.cType, "cType");
-            this.cType.Name = "cType";
-            this.cType.ReadOnly = true;
-            // 
-            // cFormat
-            // 
-            resources.ApplyResources(this.cFormat, "cFormat");
-            this.cFormat.Name = "cFormat";
-            this.cFormat.ReadOnly = true;
-            // 
-            // cLength
-            // 
-            resources.ApplyResources(this.cLength, "cLength");
-            this.cLength.Name = "cLength";
-            this.cLength.ReadOnly = true;
-            // 
-            // cData
-            // 
-            resources.ApplyResources(this.cData, "cData");
-            this.cData.Name = "cData";
-            this.cData.ReadOnly = true;
-            // 
             // toolStripSend
             // 
             this.toolStripSend.BackColor = System.Drawing.SystemColors.ScrollBar;
@@ -201,11 +136,6 @@
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
-            // 
-            // panel1
-            // 
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
             // 
             // btnSendMode
             // 
@@ -261,6 +191,85 @@
             resources.ApplyResources(this.btnRTSave, "btnRTSave");
             this.btnRTSave.Name = "btnRTSave";
             // 
+            // pnlSendIcon
+            // 
+            resources.ApplyResources(this.pnlSendIcon, "pnlSendIcon");
+            this.pnlSendIcon.Name = "pnlSendIcon";
+            // 
+            // dgvData
+            // 
+            resources.ApplyResources(this.dgvData, "dgvData");
+            this.dgvData.AllowUserToAddRows = false;
+            this.dgvData.AllowUserToDeleteRows = false;
+            this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvData.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
+            this.dgvData.Name = "dgvData";
+            this.dgvData.ReadOnly = true;
+            this.dgvData.RowTemplate.Height = 27;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            resources.ApplyResources(this.dataGridViewTextBoxColumn6, "dataGridViewTextBoxColumn6");
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            resources.ApplyResources(this.dataGridViewTextBoxColumn7, "dataGridViewTextBoxColumn7");
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            resources.ApplyResources(this.dataGridViewTextBoxColumn8, "dataGridViewTextBoxColumn8");
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // pnlReceiveIcon
+            // 
+            resources.ApplyResources(this.pnlReceiveIcon, "pnlReceiveIcon");
+            this.pnlReceiveIcon.Name = "pnlReceiveIcon";
+            // 
             // FormData
             // 
             resources.ApplyResources(this, "$this");
@@ -275,11 +284,11 @@
             this.splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.toolStripSend.ResumeLayout(false);
             this.toolStripSend.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,25 +303,26 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton btnFilter;
         private System.Windows.Forms.SplitContainer splitContainer;
-        private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.ToolStripButton btnClear;
         private System.Windows.Forms.ToolStripComboBox cbxFilter;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnSave;
         private System.Windows.Forms.ToolStripButton btnRTSave;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cState;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cFormat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cLength;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cData;
         private System.Windows.Forms.ToolStrip toolStripSend;
         private System.Windows.Forms.ToolStripButton btnSendFile;
         private System.Windows.Forms.ToolStripButton btnSendMode;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlSendIcon;
+        private System.Windows.Forms.DataGridView dgvData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.Panel pnlReceiveIcon;
     }
 }

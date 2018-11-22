@@ -62,6 +62,18 @@
     <Compile Include="Dialog\DialogDevice.Designer.cs">
       <DependentUpon>DialogDevice.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\UCListSendMode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UCListSendMode.Designer.cs">
+      <DependentUpon>UCListSendMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UCNormalSendMode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UCNormalSendMode.Designer.cs">
+      <DependentUpon>UCNormalSendMode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Window\FormDevice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +117,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\DialogDevice.resx">
       <DependentUpon>DialogDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UCListSendMode.resx">
+      <DependentUpon>UCListSendMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UCNormalSendMode.resx">
+      <DependentUpon>UCNormalSendMode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window\FormDevice.resx">
       <DependentUpon>FormDevice.cs</DependentUpon>
@@ -196,7 +214,24 @@
       <Name>CL_Framework</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\clear.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rtsave.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\showmode.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sendfile.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sendmode.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
