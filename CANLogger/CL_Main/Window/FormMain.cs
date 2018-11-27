@@ -1,4 +1,5 @@
 ﻿using CL_Framework;
+using CL_Main.Dialog;
 using Sunisoft.IrisSkin;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace CL_Main
     public partial class FormMain : Form
     {
         private SkinEngine skinEngine;
+        private List<Device> devices;
 
         public FormMain()
         {
@@ -35,6 +37,11 @@ namespace CL_Main
 
             InitLoadControls();
             thread.Join();
+        }
+
+        private void InitVarialbes()
+        {
+            devices = new List<Device>();
         }
 
         private void Loading()
@@ -67,10 +74,10 @@ namespace CL_Main
             InitLoadSkinMenuItems();
 
             //init & load FormData
-            FormData formData1 = new FormData();
-            FormData formData2 = new FormData();
-            formData1.Show(this.dockPanel, DockState.Document);
-            formData2.Show(formData1.Pane, null);
+            //FormData formData1 = new FormData();
+            // formData2 = new FormData();
+            //formData1.Show(this.dockPanel, DockState.Document);
+            //formData2.Show(formData1.Pane, null);
 
             //init & load FormDevice
             FormDevice formDevice = new FormDevice();
@@ -91,7 +98,7 @@ namespace CL_Main
 
             resources.ApplyResources(this, "$this");
 
-            resources.ApplyResources(this.btnDevice, this.btnDevice.Name);
+            resources.ApplyResources(this.btnAddSet, this.btnAddSet.Name);
             resources.ApplyResources(this.lbFrameFormat, this.lbFrameFormat.Name);
             resources.ApplyResources(this.lbIDFormat, this.lbIDFormat.Name);
 
@@ -150,6 +157,13 @@ namespace CL_Main
             menuItemSkin.Tag = newIndex;
 
             this.Cursor = Cursors.Default;
+        }
+
+        private void btnAddSet_Click(object sender, EventArgs e)
+        {
+            DialogDevice dialogDevice = new DialogDevice();
+
+
         }
     }
 }

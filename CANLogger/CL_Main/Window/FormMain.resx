@@ -128,20 +128,32 @@
   <data name="toolStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
   </data>
-  <data name="itemDeviceUSBCANII.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 26</value>
-  </data>
-  <data name="itemDeviceUSBCANII.Text" xml:space="preserve">
-    <value>USNCAN-II</value>
-  </data>
-  <data name="btnDevice.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="btnAddSet.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="btnDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 24</value>
+  <data name="btnAddSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 24</value>
   </data>
-  <data name="btnDevice.Text" xml:space="preserve">
-    <value>选择设备</value>
+  <data name="btnAddSet.Text" xml:space="preserve">
+    <value>添加/设置</value>
+  </data>
+  <data name="btnReset.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 24</value>
+  </data>
+  <data name="btnReset.Text" xml:space="preserve">
+    <value>复位</value>
+  </data>
+  <data name="btnDelete.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="btnDelete.Text" xml:space="preserve">
+    <value>删除设备</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
@@ -274,7 +286,7 @@
     <value>操作</value>
   </data>
   <data name="menuItemSkinDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>136, 26</value>
   </data>
   <data name="menuItemSkinDefault.Text" xml:space="preserve">
     <value>Default</value>
@@ -289,13 +301,13 @@
     <value>MiddleLeft</value>
   </data>
   <data name="menuItemLanguageCN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="menuItemLanguageCN.Text" xml:space="preserve">
     <value>简体中文</value>
   </data>
   <data name="menuItemLanguageEN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="menuItemLanguageEN.Text" xml:space="preserve">
     <value>英语</value>
@@ -408,18 +420,6 @@
   <data name="$this.Text" xml:space="preserve">
     <value>CANLogger</value>
   </data>
-  <data name="&gt;&gt;btnDevice.Name" xml:space="preserve">
-    <value>btnDevice</value>
-  </data>
-  <data name="&gt;&gt;btnDevice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;itemDeviceUSBCANII.Name" xml:space="preserve">
-    <value>itemDeviceUSBCANII</value>
-  </data>
-  <data name="&gt;&gt;itemDeviceUSBCANII.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
     <value>toolStripSeparator1</value>
   </data>
@@ -480,6 +480,12 @@
   <data name="&gt;&gt;menuItemSkin.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;menuItemSkinDefault.Name" xml:space="preserve">
+    <value>menuItemSkinDefault</value>
+  </data>
+  <data name="&gt;&gt;menuItemSkinDefault.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;menuItemLanguage.Name" xml:space="preserve">
     <value>menuItemLanguage</value>
   </data>
@@ -516,17 +522,29 @@
   <data name="&gt;&gt;menuItemAbout.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItemSkinDefault.Name" xml:space="preserve">
-    <value>menuItemSkinDefault</value>
-  </data>
-  <data name="&gt;&gt;menuItemSkinDefault.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;bgUIWorker.Name" xml:space="preserve">
     <value>bgUIWorker</value>
   </data>
   <data name="&gt;&gt;bgUIWorker.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAddSet.Name" xml:space="preserve">
+    <value>btnAddSet</value>
+  </data>
+  <data name="&gt;&gt;btnAddSet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnReset.Name" xml:space="preserve">
+    <value>btnReset</value>
+  </data>
+  <data name="&gt;&gt;btnReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnDelete.Name" xml:space="preserve">
+    <value>btnDelete</value>
+  </data>
+  <data name="&gt;&gt;btnDelete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormMain</value>

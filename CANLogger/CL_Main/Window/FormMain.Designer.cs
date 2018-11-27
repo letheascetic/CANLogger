@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.btnDevice = new System.Windows.Forms.ToolStripDropDownButton();
-            this.itemDeviceUSBCANII = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.lbFrameFormat = new System.Windows.Forms.ToolStripLabel();
             this.cbxFrameFormat = new System.Windows.Forms.ToolStripComboBox();
@@ -44,6 +42,7 @@
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemOption = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSkin = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemSkinDefault = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLanguageCN = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLanguageEN = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,8 +50,10 @@
             this.menuItemManual = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.menuItemSkinDefault = new System.Windows.Forms.ToolStripMenuItem();
             this.bgUIWorker = new System.ComponentModel.BackgroundWorker();
+            this.btnAddSet = new System.Windows.Forms.ToolStripButton();
+            this.btnReset = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +64,9 @@
             resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnDevice,
+            this.btnAddSet,
+            this.btnReset,
+            this.btnDelete,
             this.toolStripSeparator1,
             this.lbFrameFormat,
             this.cbxFrameFormat,
@@ -72,19 +75,6 @@
             this.cbxIDFormat,
             this.toolStripSeparator3});
             this.toolStrip.Name = "toolStrip";
-            // 
-            // btnDevice
-            // 
-            this.btnDevice.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemDeviceUSBCANII});
-            this.btnDevice.Image = global::CL_Main.Properties.Resources.device;
-            resources.ApplyResources(this.btnDevice, "btnDevice");
-            this.btnDevice.Name = "btnDevice";
-            // 
-            // itemDeviceUSBCANII
-            // 
-            this.itemDeviceUSBCANII.Name = "itemDeviceUSBCANII";
-            resources.ApplyResources(this.itemDeviceUSBCANII, "itemDeviceUSBCANII");
             // 
             // toolStripSeparator1
             // 
@@ -174,6 +164,13 @@
             this.menuItemSkin.Tag = "0";
             this.menuItemSkin.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuItemSkin_DropDownItemClicked);
             // 
+            // menuItemSkinDefault
+            // 
+            this.menuItemSkinDefault.Checked = true;
+            this.menuItemSkinDefault.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuItemSkinDefault.Name = "menuItemSkinDefault";
+            resources.ApplyResources(this.menuItemSkinDefault, "menuItemSkinDefault");
+            // 
             // menuItemLanguage
             // 
             this.menuItemLanguage.AutoToolTip = true;
@@ -221,20 +218,33 @@
             // 
             // dockPanel
             // 
+            this.dockPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             resources.ApplyResources(this.dockPanel, "dockPanel");
             this.dockPanel.DockBottomPortion = 0.3D;
             this.dockPanel.Name = "dockPanel";
             // 
-            // menuItemSkinDefault
-            // 
-            this.menuItemSkinDefault.Checked = true;
-            this.menuItemSkinDefault.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuItemSkinDefault.Name = "menuItemSkinDefault";
-            resources.ApplyResources(this.menuItemSkinDefault, "menuItemSkinDefault");
-            // 
             // bgUIWorker
             // 
             this.bgUIWorker.WorkerReportsProgress = true;
+            // 
+            // btnAddSet
+            // 
+            this.btnAddSet.Image = global::CL_Main.Properties.Resources.add;
+            resources.ApplyResources(this.btnAddSet, "btnAddSet");
+            this.btnAddSet.Name = "btnAddSet";
+            this.btnAddSet.Click += new System.EventHandler(this.btnAddSet_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Image = global::CL_Main.Properties.Resources.reset;
+            resources.ApplyResources(this.btnReset, "btnReset");
+            this.btnReset.Name = "btnReset";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Image = global::CL_Main.Properties.Resources.delete;
+            resources.ApplyResources(this.btnDelete, "btnDelete");
+            this.btnDelete.Name = "btnDelete";
             // 
             // FormMain
             // 
@@ -260,7 +270,6 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripDropDownButton btnDevice;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel lbFrameFormat;
         private System.Windows.Forms.ToolStripComboBox cbxFrameFormat;
@@ -268,7 +277,6 @@
         private System.Windows.Forms.ToolStripLabel lbIDFormat;
         private System.Windows.Forms.ToolStripComboBox cbxIDFormat;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem itemDeviceUSBCANII;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem menuItemFile;
@@ -283,6 +291,9 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemSkin;
         private System.Windows.Forms.ToolStripMenuItem menuItemSkinDefault;
         private System.ComponentModel.BackgroundWorker bgUIWorker;
+        private System.Windows.Forms.ToolStripButton btnAddSet;
+        private System.Windows.Forms.ToolStripButton btnReset;
+        private System.Windows.Forms.ToolStripButton btnDelete;
     }
 }
 

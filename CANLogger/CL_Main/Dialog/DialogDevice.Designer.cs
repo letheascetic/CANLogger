@@ -45,6 +45,7 @@
             this.panelConfig = new System.Windows.Forms.Panel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tpgCAN1 = new System.Windows.Forms.TabPage();
+            this.lbCAN1K = new System.Windows.Forms.Label();
             this.tbxCAN1Channel = new System.Windows.Forms.TextBox();
             this.tbxCAN1Name = new System.Windows.Forms.TextBox();
             this.cbxCAN1RaudRate = new System.Windows.Forms.ComboBox();
@@ -54,6 +55,7 @@
             this.lbCAN1Name = new System.Windows.Forms.Label();
             this.lbCAN1Channel = new System.Windows.Forms.Label();
             this.tpgCAN2 = new System.Windows.Forms.TabPage();
+            this.lbCAN2K = new System.Windows.Forms.Label();
             this.tbxCAN2Channel = new System.Windows.Forms.TextBox();
             this.tbxCAN2Name = new System.Windows.Forms.TextBox();
             this.cbxCAN2BaudRate = new System.Windows.Forms.ComboBox();
@@ -62,8 +64,6 @@
             this.lbCAN2Mode = new System.Windows.Forms.Label();
             this.lbCAN2Name = new System.Windows.Forms.Label();
             this.lbCAN2Channel = new System.Windows.Forms.Label();
-            this.lbCAN1K = new System.Windows.Forms.Label();
-            this.lbCAN2K = new System.Windows.Forms.Label();
             this.panelBottom.SuspendLayout();
             this.panelSelect.SuspendLayout();
             this.panelList.SuspendLayout();
@@ -93,12 +93,14 @@
             resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
             resources.ApplyResources(this.btnOK, "btnOK");
             this.btnOK.Name = "btnOK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // panelSelect
             // 
@@ -118,8 +120,6 @@
             // 
             this.cbxSelectDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSelectDevice.FormattingEnabled = true;
-            this.cbxSelectDevice.Items.AddRange(new object[] {
-            resources.GetString("cbxSelectDevice.Items")});
             resources.ApplyResources(this.cbxSelectDevice, "cbxSelectDevice");
             this.cbxSelectDevice.Name = "cbxSelectDevice";
             // 
@@ -196,6 +196,11 @@
             this.tpgCAN1.Name = "tpgCAN1";
             this.tpgCAN1.UseVisualStyleBackColor = true;
             // 
+            // lbCAN1K
+            // 
+            resources.ApplyResources(this.lbCAN1K, "lbCAN1K");
+            this.lbCAN1K.Name = "lbCAN1K";
+            // 
             // tbxCAN1Channel
             // 
             resources.ApplyResources(this.tbxCAN1Channel, "tbxCAN1Channel");
@@ -271,6 +276,11 @@
             this.tpgCAN2.Name = "tpgCAN2";
             this.tpgCAN2.UseVisualStyleBackColor = true;
             // 
+            // lbCAN2K
+            // 
+            resources.ApplyResources(this.lbCAN2K, "lbCAN2K");
+            this.lbCAN2K.Name = "lbCAN2K";
+            // 
             // tbxCAN2Channel
             // 
             resources.ApplyResources(this.tbxCAN2Channel, "tbxCAN2Channel");
@@ -331,16 +341,6 @@
             resources.ApplyResources(this.lbCAN2Channel, "lbCAN2Channel");
             this.lbCAN2Channel.Name = "lbCAN2Channel";
             // 
-            // lbCAN1K
-            // 
-            resources.ApplyResources(this.lbCAN1K, "lbCAN1K");
-            this.lbCAN1K.Name = "lbCAN1K";
-            // 
-            // lbCAN2K
-            // 
-            resources.ApplyResources(this.lbCAN2K, "lbCAN2K");
-            this.lbCAN2K.Name = "lbCAN2K";
-            // 
             // DialogDevice
             // 
             resources.ApplyResources(this, "$this");
@@ -352,6 +352,7 @@
             this.Controls.Add(this.panelTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "DialogDevice";
+            this.Load += new System.EventHandler(this.DialogDevice_Load);
             this.panelBottom.ResumeLayout(false);
             this.panelSelect.ResumeLayout(false);
             this.panelSelect.PerformLayout();

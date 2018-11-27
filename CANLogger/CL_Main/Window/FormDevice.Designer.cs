@@ -64,6 +64,7 @@
             this.btnAddSet.Image = global::CL_Main.Properties.Resources.add;
             resources.ApplyResources(this.btnAddSet, "btnAddSet");
             this.btnAddSet.Name = "btnAddSet";
+            this.btnAddSet.Click += new System.EventHandler(this.btnAddSet_Click);
             // 
             // toolStripSeparator1
             // 

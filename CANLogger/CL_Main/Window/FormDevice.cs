@@ -27,5 +27,10 @@ namespace CL_Main
 
             resources.ApplyResources(this, "$this");
         }
+
+        private void btnAddSet_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
