@@ -20,7 +20,7 @@ namespace CL_Main
     public partial class FormMain : Form
     {
         private SkinEngine skinEngine;
-        private List<Device> devices;
+        private DeviceGroup deviceGroup;
 
         public FormMain()
         {
@@ -41,7 +41,7 @@ namespace CL_Main
 
         private void InitVarialbes()
         {
-            devices = new List<Device>();
+            deviceGroup = new DeviceGroup();
         }
 
         private void Loading()
@@ -161,9 +161,8 @@ namespace CL_Main
 
         private void btnAddSet_Click(object sender, EventArgs e)
         {
-            DialogDevice dialogDevice = new DialogDevice();
-
-
+            //DialogDevice dialogDevice = new DialogDevice();
+            //dialogDevice.Show();
         }
     }
 }

@@ -14,10 +14,9 @@ namespace CL_Main.Dialog
     {
         private Device device;
 
-        public DialogDevice(ref Device device)
+        public DialogDevice(string deviceID)
         {
             InitializeComponent();
-            this.device = device;
         }
 
         private void InitLoadControls()

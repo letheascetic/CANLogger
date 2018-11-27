@@ -21,7 +21,7 @@ namespace CL_Framework
         private DeviceType deviceType;
         private UInt32 deviceIndex;
         private BOARD_INFO deviceInfo;
-        private INIT_CONFIG initInfo;
+        private INIT_CONFIG initConfig;
         
         public DeviceType DeviceType
         { get { return deviceType; } }
@@ -29,6 +29,8 @@ namespace CL_Framework
         { get { return deviceIndex; } }
         public Boolean IsDeviceOpen
         { get { return isDeviceOpen; } }
+        public string DeviceID
+        { get { return deviceInfo.str_Serial_Num.ToString(); } }
 
         static Device()
         {
@@ -37,19 +39,31 @@ namespace CL_Framework
             DeviceTypies.Add(USBCANII, CL_Framework.DeviceType.USBCANII);
         }
 
-        public Device()
+        private Device(DeviceType deviceType, UInt32 deviceIndex)
         {
+            this.deviceType = deviceType;
+            this.deviceIndex = deviceIndex;
 
+            this.isDeviceOpen = false;
+            this.deviceInfo = new BOARD_INFO();
+            this.initConfig = new INIT_CONFIG();
+        }
+
+        public static Device OpenInitDevice(DeviceType deviceType, UInt32 deviceIndex, UInt32 Reserved)
+        {
+            Device device = new Device(deviceType, deviceIndex);
+
+            return device;
         }
 
         public CANStatus OpenDevice()
         {
-            return CANDLL.OpenDevice(deviceType, deviceIndex, 0);
+            return CANDLL.OpenDevice((UInt32)deviceType, deviceIndex, 0);
         }
 
         public CANStatus CloseDevice()
         {
-            return CANDLL.CloseDevice(deviceType, deviceIndex);
+            return CANDLL.CloseDevice((UInt32)deviceType, deviceIndex);
         }
 
 

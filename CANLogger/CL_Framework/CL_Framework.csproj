@@ -45,7 +45,8 @@
   <ItemGroup>
     <Compile Include="CAN\CAN.cs" />
     <Compile Include="CAN\Device.cs" />
-    <Compile Include="Channel.cs" />
+    <Compile Include="CAN\Channel.cs" />
+    <Compile Include="CAN\DeviceGroup.cs" />
     <Compile Include="Helper\LogHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
