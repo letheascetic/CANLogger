@@ -62,6 +62,12 @@
     <Compile Include="Dialog\DialogDevice.Designer.cs">
       <DependentUpon>DialogDevice.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCCANConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCCANConfig.Designer.cs">
+      <DependentUpon>UCCANConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UCListSendMode.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\DialogDevice.resx">
       <DependentUpon>DialogDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCCANConfig.resx">
+      <DependentUpon>UCCANConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UCListSendMode.resx">
       <DependentUpon>UCListSendMode.cs</DependentUpon>
