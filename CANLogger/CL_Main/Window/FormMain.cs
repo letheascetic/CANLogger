@@ -31,12 +31,12 @@ namespace CL_Main
         {
             LogHelper.Log("FormMain_Load...");
 
-            Thread thread = new Thread(new ThreadStart(Loading));
-            thread.IsBackground = true;
-            thread.Start();
+            //Thread thread = new Thread(new ThreadStart(Loading));
+            //thread.IsBackground = true;
+            //thread.Start();
 
             InitLoadControls();
-            thread.Join();
+            //thread.Join();
         }
 
         private void InitVarialbes()
@@ -161,8 +161,12 @@ namespace CL_Main
 
         private void btnAddSet_Click(object sender, EventArgs e)
         {
-            //DialogDevice dialogDevice = new DialogDevice();
-            //dialogDevice.Show();
+            DialogDevice dialogDevice = new DialogDevice(DeviceType.UNKNOWN, 0);
+            if (dialogDevice.ShowDialog() == DialogResult.OK)
+            {
+
+                dialogDevice.Close();
+            }
         }
     }
 }

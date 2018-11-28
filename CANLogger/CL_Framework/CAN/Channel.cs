@@ -7,14 +7,19 @@ namespace CL_Framework
 {
     public class Channel
     {
-        private string name;
-        private Device device;
+        private uint channelIndex;
+        private string channelName;
+        
+        private Device parentDevice;
+        private InitConfig initConfig;
 
-        public Channel(string name, Device device)
+        public Channel(uint channelIndex, string channelName, Device parentDevice)
         {
-            this.name = name;
-            this.device = device;
+            this.channelIndex = channelIndex;
+            this.channelName = channelName;
+            this.parentDevice = parentDevice;
         }
+        
 
 
     }

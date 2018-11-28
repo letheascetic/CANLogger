@@ -12,26 +12,36 @@ namespace CL_Main.Dialog
 {
     public partial class DialogDevice : Form
     {
-        private Device device;
+        private DeviceGroup deviceGroup = DeviceGroup.CreateInstance();
+        private DeviceType deviceType = DeviceType.UNKNOWN;
+        private UInt32 deviceIndex = 0;
+        private Device device = null;
 
-        public DialogDevice(string deviceID)
+        public DialogDevice(DeviceType deviceType, UInt32 deviceIndex)
         {
             InitializeComponent();
+
+            this.deviceType = deviceType;
+            this.deviceIndex = deviceIndex;
+            this.device = deviceGroup.GetDevice(deviceType, deviceIndex);
         }
 
         private void InitLoadControls()
         {
             //load cbxSelectDevice data source
-            BindingSource source = new BindingSource();
-            source.DataSource = CL_Framework.Device.DeviceTypies;
-            cbxSelectDevice.DataSource = source;
-            cbxSelectDevice.ValueMember = "Value";
-            cbxSelectDevice.DisplayMember = "Key";
+            cbxSelectDevice.DataSource = Device.DeviceTypies;
+            cbxSelectDevice.ValueMember = "Key";
+            cbxSelectDevice.DisplayMember = "Value";
+            cbxSelectDevice.SelectedIndex = device != null ? 
+                cbxSelectDevice.FindString(device.DeviceTypeDesc) : cbxSelectDevice.FindString(Device.USBCANII);
 
-            cbxSelectDevice.Enabled = device == null ? true : false;
+            //btnOpenDevice.Enabled = (device == null || !device.IsDeviceOpen) ? true : false;
+            tabControl.Enabled = (device != null && device.IsDeviceOpen) ? true : false;
+        }
 
-            tabControl.Enabled = false;
-            btnOK.Enabled = false;
+        private void UpdateControls()
+        {
+            tabControl.Enabled = (device != null && device.IsDeviceOpen) ? true : false;
         }
 
         private void DialogDevice_Load(object sender, EventArgs e)
@@ -41,12 +51,29 @@ namespace CL_Main.Dialog
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnOpenDevice_Click(object sender, EventArgs e)
+        {
+            if (device != null && device.IsDeviceOpen)
+            {
+                return;
+            }
+
+            if (device == null)
+            {
+                DeviceType deviceType = (DeviceType)Enum.Parse(typeof(DeviceType), cbxSelectDevice.SelectedValue.ToString());
+                UInt32 deviceIndex = deviceGroup.GetNewDeviceIndex(deviceType);
+                //Device device = Device.OpenInitDevice(deviceType, deviceIndex, 0);
+
+            }
+            return;
         }
     }
 }

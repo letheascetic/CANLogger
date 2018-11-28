@@ -175,7 +175,7 @@
     <value>RightToLeft</value>
   </data>
   <data name="panelBottom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 413</value>
+    <value>0, 488</value>
   </data>
   <data name="panelBottom.Size" type="System.Drawing.Size, System.Drawing">
     <value>482, 40</value>
@@ -249,6 +249,66 @@
   <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="&gt;&gt;btnOpenDevice.Name" xml:space="preserve">
+    <value>btnOpenDevice</value>
+  </data>
+  <data name="&gt;&gt;btnOpenDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOpenDevice.Parent" xml:space="preserve">
+    <value>panelSelect</value>
+  </data>
+  <data name="&gt;&gt;btnOpenDevice.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectDevice.Name" xml:space="preserve">
+    <value>cbxSelectDevice</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectDevice.Parent" xml:space="preserve">
+    <value>panelSelect</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectDevice.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lbSelectDevice.Name" xml:space="preserve">
+    <value>lbSelectDevice</value>
+  </data>
+  <data name="&gt;&gt;lbSelectDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbSelectDevice.Parent" xml:space="preserve">
+    <value>panelSelect</value>
+  </data>
+  <data name="&gt;&gt;lbSelectDevice.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panelSelect.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panelSelect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 77</value>
+  </data>
+  <data name="panelSelect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 38</value>
+  </data>
+  <data name="panelSelect.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panelSelect.Name" xml:space="preserve">
+    <value>panelSelect</value>
+  </data>
+  <data name="&gt;&gt;panelSelect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelSelect.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelSelect.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="btnOpenDevice.Location" type="System.Drawing.Point, System.Drawing">
     <value>303, 5</value>
   </data>
@@ -321,29 +381,44 @@
   <data name="&gt;&gt;lbSelectDevice.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="panelSelect.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <metadata name="cName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cName.HeaderText" xml:space="preserve">
+    <value>Name</value>
   </data>
-  <data name="panelSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 77</value>
+  <data name="cName.Width" type="System.Int32, mscorlib">
+    <value>150</value>
   </data>
-  <data name="panelSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 38</value>
+  <metadata name="cHardware.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cHardware.HeaderText" xml:space="preserve">
+    <value>Hardware</value>
   </data>
-  <data name="panelSelect.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="cHardware.Width" type="System.Int32, mscorlib">
+    <value>120</value>
   </data>
-  <data name="&gt;&gt;panelSelect.Name" xml:space="preserve">
-    <value>panelSelect</value>
+  <metadata name="cID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cID.HeaderText" xml:space="preserve">
+    <value>ID</value>
   </data>
-  <data name="&gt;&gt;panelSelect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="cID.Width" type="System.Int32, mscorlib">
+    <value>150</value>
   </data>
-  <data name="&gt;&gt;panelSelect.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="dgvDevice.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;panelSelect.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="dgvDevice.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dgvDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 111</value>
+  </data>
+  <data name="dgvDevice.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;dgvDevice.Name" xml:space="preserve">
     <value>dgvDevice</value>
@@ -381,66 +456,6 @@
   <data name="&gt;&gt;panelList.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="cName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cHardware.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dgvDevice.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="dgvDevice.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="dgvDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 111</value>
-  </data>
-  <data name="dgvDevice.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;dgvDevice.Name" xml:space="preserve">
-    <value>dgvDevice</value>
-  </data>
-  <data name="&gt;&gt;dgvDevice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvDevice.Parent" xml:space="preserve">
-    <value>panelList</value>
-  </data>
-  <data name="&gt;&gt;dgvDevice.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="cName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="cName.HeaderText" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="cName.Width" type="System.Int32, mscorlib">
-    <value>150</value>
-  </data>
-  <metadata name="cHardware.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="cHardware.HeaderText" xml:space="preserve">
-    <value>Hardware</value>
-  </data>
-  <data name="cHardware.Width" type="System.Int32, mscorlib">
-    <value>120</value>
-  </data>
-  <metadata name="cID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="cID.HeaderText" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="cID.Width" type="System.Int32, mscorlib">
-    <value>150</value>
-  </data>
   <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
     <value>tabControl</value>
   </data>
@@ -460,7 +475,7 @@
     <value>0, 226</value>
   </data>
   <data name="panelConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 187</value>
+    <value>482, 262</value>
   </data>
   <data name="panelConfig.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -477,458 +492,17 @@
   <data name="&gt;&gt;panelConfig.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;tpgCAN1.Name" xml:space="preserve">
-    <value>tpgCAN1</value>
+  <data name="&gt;&gt;btnCAN2.Name" xml:space="preserve">
+    <value>btnCAN2</value>
   </data>
-  <data name="&gt;&gt;tpgCAN1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnCAN2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tpgCAN1.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tpgCAN1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tpgCAN2.Name" xml:space="preserve">
+  <data name="&gt;&gt;btnCAN2.Parent" xml:space="preserve">
     <value>tpgCAN2</value>
   </data>
-  <data name="&gt;&gt;tpgCAN2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tpgCAN2.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tpgCAN2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 187</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;btnCAN2.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>panelConfig</value>
-  </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1K.Name" xml:space="preserve">
-    <value>lbCAN1K</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1K.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1K.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1K.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Channel.Name" xml:space="preserve">
-    <value>tbxCAN1Channel</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Channel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Channel.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Channel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Name.Name" xml:space="preserve">
-    <value>tbxCAN1Name</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Name.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Name.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Name.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1RaudRate.Name" xml:space="preserve">
-    <value>cbxCAN1RaudRate</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1RaudRate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1RaudRate.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1RaudRate.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1BaudRate.Name" xml:space="preserve">
-    <value>lbCAN1BaudRate</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1BaudRate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1BaudRate.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1BaudRate.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1Mode.Name" xml:space="preserve">
-    <value>cbxCAN1Mode</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1Mode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1Mode.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1Mode.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Mode.Name" xml:space="preserve">
-    <value>lbCAN1Mode</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Mode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Mode.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Mode.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Name.Name" xml:space="preserve">
-    <value>lbCAN1Name</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Name.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Name.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Name.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Channel.Name" xml:space="preserve">
-    <value>lbCAN1Channel</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Channel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Channel.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Channel.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="tpgCAN1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
-  </data>
-  <data name="tpgCAN1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tpgCAN1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 154</value>
-  </data>
-  <data name="tpgCAN1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tpgCAN1.Text" xml:space="preserve">
-    <value>CAN1</value>
-  </data>
-  <data name="&gt;&gt;tpgCAN1.Name" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;tpgCAN1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tpgCAN1.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tpgCAN1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lbCAN1K.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbCAN1K.Location" type="System.Drawing.Point, System.Drawing">
-    <value>224, 116</value>
-  </data>
-  <data name="lbCAN1K.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 20</value>
-  </data>
-  <data name="lbCAN1K.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="lbCAN1K.Text" xml:space="preserve">
-    <value>K</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1K.Name" xml:space="preserve">
-    <value>lbCAN1K</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1K.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1K.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1K.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tbxCAN1Channel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 12</value>
-  </data>
-  <data name="tbxCAN1Channel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 27</value>
-  </data>
-  <data name="tbxCAN1Channel.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="tbxCAN1Channel.Text" xml:space="preserve">
-    <value>CAN1</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Channel.Name" xml:space="preserve">
-    <value>tbxCAN1Channel</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Channel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Channel.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Channel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tbxCAN1Name.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 46</value>
-  </data>
-  <data name="tbxCAN1Name.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 27</value>
-  </data>
-  <data name="tbxCAN1Name.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Name.Name" xml:space="preserve">
-    <value>tbxCAN1Name</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Name.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Name.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;tbxCAN1Name.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items" xml:space="preserve">
-    <value>1000</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items1" xml:space="preserve">
-    <value>800</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items2" xml:space="preserve">
-    <value>666</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items3" xml:space="preserve">
-    <value>500</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items4" xml:space="preserve">
-    <value>400</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items5" xml:space="preserve">
-    <value>250</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items6" xml:space="preserve">
-    <value>200</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items7" xml:space="preserve">
-    <value>125</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items8" xml:space="preserve">
-    <value>100</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items9" xml:space="preserve">
-    <value>80</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items10" xml:space="preserve">
-    <value>50</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items11" xml:space="preserve">
-    <value>40</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items12" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items13" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items14" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Items15" xml:space="preserve">
-    <value>其他</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 113</value>
-  </data>
-  <data name="cbxCAN1RaudRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 28</value>
-  </data>
-  <data name="cbxCAN1RaudRate.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1RaudRate.Name" xml:space="preserve">
-    <value>cbxCAN1RaudRate</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1RaudRate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1RaudRate.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1RaudRate.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="lbCAN1BaudRate.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbCAN1BaudRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 116</value>
-  </data>
-  <data name="lbCAN1BaudRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 20</value>
-  </data>
-  <data name="lbCAN1BaudRate.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="lbCAN1BaudRate.Text" xml:space="preserve">
-    <value>波特率：</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1BaudRate.Name" xml:space="preserve">
-    <value>lbCAN1BaudRate</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1BaudRate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1BaudRate.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1BaudRate.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="cbxCAN1Mode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 79</value>
-  </data>
-  <data name="cbxCAN1Mode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 28</value>
-  </data>
-  <data name="cbxCAN1Mode.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1Mode.Name" xml:space="preserve">
-    <value>cbxCAN1Mode</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1Mode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1Mode.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;cbxCAN1Mode.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="lbCAN1Mode.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbCAN1Mode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 82</value>
-  </data>
-  <data name="lbCAN1Mode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 20</value>
-  </data>
-  <data name="lbCAN1Mode.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="lbCAN1Mode.Text" xml:space="preserve">
-    <value>模式：</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Mode.Name" xml:space="preserve">
-    <value>lbCAN1Mode</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Mode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Mode.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Mode.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="lbCAN1Name.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbCAN1Name.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 49</value>
-  </data>
-  <data name="lbCAN1Name.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 20</value>
-  </data>
-  <data name="lbCAN1Name.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="lbCAN1Name.Text" xml:space="preserve">
-    <value>名称：</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Name.Name" xml:space="preserve">
-    <value>lbCAN1Name</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Name.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Name.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Name.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="lbCAN1Channel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbCAN1Channel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 15</value>
-  </data>
-  <data name="lbCAN1Channel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 20</value>
-  </data>
-  <data name="lbCAN1Channel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lbCAN1Channel.Text" xml:space="preserve">
-    <value>通道：</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Channel.Name" xml:space="preserve">
-    <value>lbCAN1Channel</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Channel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Channel.Parent" xml:space="preserve">
-    <value>tpgCAN1</value>
-  </data>
-  <data name="&gt;&gt;lbCAN1Channel.ZOrder" xml:space="preserve">
-    <value>8</value>
   </data>
   <data name="&gt;&gt;lbCAN2K.Name" xml:space="preserve">
     <value>lbCAN2K</value>
@@ -940,7 +514,7 @@
     <value>tpgCAN2</value>
   </data>
   <data name="&gt;&gt;lbCAN2K.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;tbxCAN2Channel.Name" xml:space="preserve">
     <value>tbxCAN2Channel</value>
@@ -952,7 +526,7 @@
     <value>tpgCAN2</value>
   </data>
   <data name="&gt;&gt;tbxCAN2Channel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;tbxCAN2Name.Name" xml:space="preserve">
     <value>tbxCAN2Name</value>
@@ -964,7 +538,7 @@
     <value>tpgCAN2</value>
   </data>
   <data name="&gt;&gt;tbxCAN2Name.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;cbxCAN2BaudRate.Name" xml:space="preserve">
     <value>cbxCAN2BaudRate</value>
@@ -976,7 +550,7 @@
     <value>tpgCAN2</value>
   </data>
   <data name="&gt;&gt;cbxCAN2BaudRate.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;lbCAN2BaudRate.Name" xml:space="preserve">
     <value>lbCAN2BaudRate</value>
@@ -988,7 +562,7 @@
     <value>tpgCAN2</value>
   </data>
   <data name="&gt;&gt;lbCAN2BaudRate.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;cbxCAN2Mode.Name" xml:space="preserve">
     <value>cbxCAN2Mode</value>
@@ -1000,7 +574,7 @@
     <value>tpgCAN2</value>
   </data>
   <data name="&gt;&gt;cbxCAN2Mode.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;lbCAN2Mode.Name" xml:space="preserve">
     <value>lbCAN2Mode</value>
@@ -1012,7 +586,7 @@
     <value>tpgCAN2</value>
   </data>
   <data name="&gt;&gt;lbCAN2Mode.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;lbCAN2Name.Name" xml:space="preserve">
     <value>lbCAN2Name</value>
@@ -1024,7 +598,7 @@
     <value>tpgCAN2</value>
   </data>
   <data name="&gt;&gt;lbCAN2Name.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;lbCAN2Channel.Name" xml:space="preserve">
     <value>lbCAN2Channel</value>
@@ -1036,7 +610,7 @@
     <value>tpgCAN2</value>
   </data>
   <data name="&gt;&gt;lbCAN2Channel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="tpgCAN2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 29</value>
@@ -1045,7 +619,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tpgCAN2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 154</value>
+    <value>474, 229</value>
   </data>
   <data name="tpgCAN2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1065,80 +639,146 @@
   <data name="&gt;&gt;tpgCAN2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lbCAN2K.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lbCAN2Channel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbCAN2K.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lbCAN2Channel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lbCAN2K.Location" type="System.Drawing.Point, System.Drawing">
-    <value>224, 116</value>
+  <data name="lbCAN2Channel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 15</value>
   </data>
-  <data name="lbCAN2K.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 20</value>
+  <data name="lbCAN2Channel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
   </data>
-  <data name="lbCAN2K.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+  <data name="lbCAN2Channel.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <data name="lbCAN2K.Text" xml:space="preserve">
-    <value>K</value>
+  <data name="lbCAN2Channel.Text" xml:space="preserve">
+    <value>通道：</value>
   </data>
-  <data name="&gt;&gt;lbCAN2K.Name" xml:space="preserve">
-    <value>lbCAN2K</value>
+  <data name="&gt;&gt;lbCAN2Channel.Name" xml:space="preserve">
+    <value>lbCAN2Channel</value>
   </data>
-  <data name="&gt;&gt;lbCAN2K.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbCAN2Channel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbCAN2K.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbCAN2Channel.Parent" xml:space="preserve">
     <value>tpgCAN2</value>
   </data>
-  <data name="&gt;&gt;lbCAN2K.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;lbCAN2Channel.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
-  <data name="tbxCAN2Channel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 12</value>
+  <data name="lbCAN2Name.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="tbxCAN2Channel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 27</value>
+  <data name="lbCAN2Name.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="tbxCAN2Channel.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+  <data name="lbCAN2Name.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 49</value>
   </data>
-  <data name="tbxCAN2Channel.Text" xml:space="preserve">
-    <value>CAN2</value>
+  <data name="lbCAN2Name.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
   </data>
-  <data name="&gt;&gt;tbxCAN2Channel.Name" xml:space="preserve">
-    <value>tbxCAN2Channel</value>
+  <data name="lbCAN2Name.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
-  <data name="&gt;&gt;tbxCAN2Channel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lbCAN2Name.Text" xml:space="preserve">
+    <value>名称：</value>
   </data>
-  <data name="&gt;&gt;tbxCAN2Channel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbCAN2Name.Name" xml:space="preserve">
+    <value>lbCAN2Name</value>
+  </data>
+  <data name="&gt;&gt;lbCAN2Name.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCAN2Name.Parent" xml:space="preserve">
     <value>tpgCAN2</value>
   </data>
-  <data name="&gt;&gt;tbxCAN2Channel.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;lbCAN2Name.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
-  <data name="tbxCAN2Name.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 46</value>
+  <data name="lbCAN2Mode.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="tbxCAN2Name.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 27</value>
+  <data name="lbCAN2Mode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="tbxCAN2Name.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="lbCAN2Mode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 82</value>
   </data>
-  <data name="&gt;&gt;tbxCAN2Name.Name" xml:space="preserve">
-    <value>tbxCAN2Name</value>
+  <data name="lbCAN2Mode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
   </data>
-  <data name="&gt;&gt;tbxCAN2Name.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lbCAN2Mode.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
   </data>
-  <data name="&gt;&gt;tbxCAN2Name.Parent" xml:space="preserve">
+  <data name="lbCAN2Mode.Text" xml:space="preserve">
+    <value>模式：</value>
+  </data>
+  <data name="&gt;&gt;lbCAN2Mode.Name" xml:space="preserve">
+    <value>lbCAN2Mode</value>
+  </data>
+  <data name="&gt;&gt;lbCAN2Mode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCAN2Mode.Parent" xml:space="preserve">
     <value>tpgCAN2</value>
   </data>
-  <data name="&gt;&gt;tbxCAN2Name.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;lbCAN2Mode.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cbxCAN2Mode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 79</value>
+  </data>
+  <data name="cbxCAN2Mode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 28</value>
+  </data>
+  <data name="cbxCAN2Mode.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;cbxCAN2Mode.Name" xml:space="preserve">
+    <value>cbxCAN2Mode</value>
+  </data>
+  <data name="&gt;&gt;cbxCAN2Mode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxCAN2Mode.Parent" xml:space="preserve">
+    <value>tpgCAN2</value>
+  </data>
+  <data name="&gt;&gt;cbxCAN2Mode.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lbCAN2BaudRate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCAN2BaudRate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCAN2BaudRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 116</value>
+  </data>
+  <data name="lbCAN2BaudRate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 20</value>
+  </data>
+  <data name="lbCAN2BaudRate.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="lbCAN2BaudRate.Text" xml:space="preserve">
+    <value>波特率：</value>
+  </data>
+  <data name="&gt;&gt;lbCAN2BaudRate.Name" xml:space="preserve">
+    <value>lbCAN2BaudRate</value>
+  </data>
+  <data name="&gt;&gt;lbCAN2BaudRate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCAN2BaudRate.Parent" xml:space="preserve">
+    <value>tpgCAN2</value>
+  </data>
+  <data name="&gt;&gt;lbCAN2BaudRate.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="cbxCAN2BaudRate.Items" xml:space="preserve">
     <value>1000</value>
@@ -1207,136 +847,622 @@
     <value>tpgCAN2</value>
   </data>
   <data name="&gt;&gt;cbxCAN2BaudRate.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="lbCAN2BaudRate.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbCAN2BaudRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 116</value>
-  </data>
-  <data name="lbCAN2BaudRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 20</value>
-  </data>
-  <data name="lbCAN2BaudRate.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="lbCAN2BaudRate.Text" xml:space="preserve">
-    <value>波特率：</value>
-  </data>
-  <data name="&gt;&gt;lbCAN2BaudRate.Name" xml:space="preserve">
-    <value>lbCAN2BaudRate</value>
-  </data>
-  <data name="&gt;&gt;lbCAN2BaudRate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCAN2BaudRate.Parent" xml:space="preserve">
-    <value>tpgCAN2</value>
-  </data>
-  <data name="&gt;&gt;lbCAN2BaudRate.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="cbxCAN2Mode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 79</value>
+  <data name="tbxCAN2Name.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 46</value>
   </data>
-  <data name="cbxCAN2Mode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 28</value>
+  <data name="tbxCAN2Name.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 27</value>
   </data>
-  <data name="cbxCAN2Mode.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="tbxCAN2Name.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
-  <data name="&gt;&gt;cbxCAN2Mode.Name" xml:space="preserve">
-    <value>cbxCAN2Mode</value>
+  <data name="&gt;&gt;tbxCAN2Name.Name" xml:space="preserve">
+    <value>tbxCAN2Name</value>
   </data>
-  <data name="&gt;&gt;cbxCAN2Mode.Type" xml:space="preserve">
+  <data name="&gt;&gt;tbxCAN2Name.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN2Name.Parent" xml:space="preserve">
+    <value>tpgCAN2</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN2Name.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tbxCAN2Channel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 12</value>
+  </data>
+  <data name="tbxCAN2Channel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 27</value>
+  </data>
+  <data name="tbxCAN2Channel.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="tbxCAN2Channel.Text" xml:space="preserve">
+    <value>CAN2</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN2Channel.Name" xml:space="preserve">
+    <value>tbxCAN2Channel</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN2Channel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN2Channel.Parent" xml:space="preserve">
+    <value>tpgCAN2</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN2Channel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lbCAN2K.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCAN2K.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCAN2K.Location" type="System.Drawing.Point, System.Drawing">
+    <value>224, 116</value>
+  </data>
+  <data name="lbCAN2K.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 20</value>
+  </data>
+  <data name="lbCAN2K.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="lbCAN2K.Text" xml:space="preserve">
+    <value>K</value>
+  </data>
+  <data name="&gt;&gt;lbCAN2K.Name" xml:space="preserve">
+    <value>lbCAN2K</value>
+  </data>
+  <data name="&gt;&gt;lbCAN2K.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCAN2K.Parent" xml:space="preserve">
+    <value>tpgCAN2</value>
+  </data>
+  <data name="&gt;&gt;lbCAN2K.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnCAN1Init.Name" xml:space="preserve">
+    <value>btnCAN1Init</value>
+  </data>
+  <data name="&gt;&gt;btnCAN1Init.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCAN1Init.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;btnCAN1Init.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1K.Name" xml:space="preserve">
+    <value>lbCAN1K</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1K.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1K.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1K.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Channel.Name" xml:space="preserve">
+    <value>tbxCAN1Channel</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Channel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Channel.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Channel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Name.Name" xml:space="preserve">
+    <value>tbxCAN1Name</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Name.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Name.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Name.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cbxCAN1RaudRate.Name" xml:space="preserve">
+    <value>cbxCAN1RaudRate</value>
+  </data>
+  <data name="&gt;&gt;cbxCAN1RaudRate.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cbxCAN2Mode.Parent" xml:space="preserve">
-    <value>tpgCAN2</value>
+  <data name="&gt;&gt;cbxCAN1RaudRate.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
   </data>
-  <data name="&gt;&gt;cbxCAN2Mode.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cbxCAN1RaudRate.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1BaudRate.Name" xml:space="preserve">
+    <value>lbCAN1BaudRate</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1BaudRate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1BaudRate.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1BaudRate.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="lbCAN2Mode.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;cbxCAN1Mode.Name" xml:space="preserve">
+    <value>cbxCAN1Mode</value>
   </data>
-  <data name="lbCAN2Mode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 82</value>
+  <data name="&gt;&gt;cbxCAN1Mode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="lbCAN2Mode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 20</value>
+  <data name="&gt;&gt;cbxCAN1Mode.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
   </data>
-  <data name="lbCAN2Mode.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="lbCAN2Mode.Text" xml:space="preserve">
-    <value>模式：</value>
-  </data>
-  <data name="&gt;&gt;lbCAN2Mode.Name" xml:space="preserve">
-    <value>lbCAN2Mode</value>
-  </data>
-  <data name="&gt;&gt;lbCAN2Mode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCAN2Mode.Parent" xml:space="preserve">
-    <value>tpgCAN2</value>
-  </data>
-  <data name="&gt;&gt;lbCAN2Mode.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cbxCAN1Mode.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="lbCAN2Name.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;lbCAN1Mode.Name" xml:space="preserve">
+    <value>lbCAN1Mode</value>
   </data>
-  <data name="lbCAN2Name.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 49</value>
-  </data>
-  <data name="lbCAN2Name.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 20</value>
-  </data>
-  <data name="lbCAN2Name.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="lbCAN2Name.Text" xml:space="preserve">
-    <value>名称：</value>
-  </data>
-  <data name="&gt;&gt;lbCAN2Name.Name" xml:space="preserve">
-    <value>lbCAN2Name</value>
-  </data>
-  <data name="&gt;&gt;lbCAN2Name.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbCAN1Mode.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbCAN2Name.Parent" xml:space="preserve">
-    <value>tpgCAN2</value>
+  <data name="&gt;&gt;lbCAN1Mode.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
   </data>
-  <data name="&gt;&gt;lbCAN2Name.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbCAN1Mode.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="lbCAN2Channel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;lbCAN1Name.Name" xml:space="preserve">
+    <value>lbCAN1Name</value>
   </data>
-  <data name="lbCAN2Channel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 15</value>
-  </data>
-  <data name="lbCAN2Channel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 20</value>
-  </data>
-  <data name="lbCAN2Channel.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="lbCAN2Channel.Text" xml:space="preserve">
-    <value>通道：</value>
-  </data>
-  <data name="&gt;&gt;lbCAN2Channel.Name" xml:space="preserve">
-    <value>lbCAN2Channel</value>
-  </data>
-  <data name="&gt;&gt;lbCAN2Channel.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbCAN1Name.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbCAN2Channel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbCAN1Name.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Name.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Channel.Name" xml:space="preserve">
+    <value>lbCAN1Channel</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Channel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Channel.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Channel.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="tpgCAN1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="tpgCAN1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tpgCAN1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>474, 229</value>
+  </data>
+  <data name="tpgCAN1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tpgCAN1.Text" xml:space="preserve">
+    <value>CAN1</value>
+  </data>
+  <data name="&gt;&gt;tpgCAN1.Name" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;tpgCAN1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpgCAN1.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tpgCAN1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lbCAN1Channel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCAN1Channel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCAN1Channel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 15</value>
+  </data>
+  <data name="lbCAN1Channel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
+  </data>
+  <data name="lbCAN1Channel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbCAN1Channel.Text" xml:space="preserve">
+    <value>通道：</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Channel.Name" xml:space="preserve">
+    <value>lbCAN1Channel</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Channel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Channel.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Channel.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="lbCAN1Name.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCAN1Name.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCAN1Name.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 49</value>
+  </data>
+  <data name="lbCAN1Name.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
+  </data>
+  <data name="lbCAN1Name.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lbCAN1Name.Text" xml:space="preserve">
+    <value>名称：</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Name.Name" xml:space="preserve">
+    <value>lbCAN1Name</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Name.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Name.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Name.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lbCAN1Mode.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCAN1Mode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCAN1Mode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 82</value>
+  </data>
+  <data name="lbCAN1Mode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
+  </data>
+  <data name="lbCAN1Mode.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="lbCAN1Mode.Text" xml:space="preserve">
+    <value>模式：</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Mode.Name" xml:space="preserve">
+    <value>lbCAN1Mode</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Mode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Mode.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1Mode.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cbxCAN1Mode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 79</value>
+  </data>
+  <data name="cbxCAN1Mode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 28</value>
+  </data>
+  <data name="cbxCAN1Mode.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;cbxCAN1Mode.Name" xml:space="preserve">
+    <value>cbxCAN1Mode</value>
+  </data>
+  <data name="&gt;&gt;cbxCAN1Mode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxCAN1Mode.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;cbxCAN1Mode.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lbCAN1BaudRate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCAN1BaudRate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCAN1BaudRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 116</value>
+  </data>
+  <data name="lbCAN1BaudRate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 20</value>
+  </data>
+  <data name="lbCAN1BaudRate.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="lbCAN1BaudRate.Text" xml:space="preserve">
+    <value>波特率：</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1BaudRate.Name" xml:space="preserve">
+    <value>lbCAN1BaudRate</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1BaudRate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1BaudRate.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1BaudRate.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items" xml:space="preserve">
+    <value>1000</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items1" xml:space="preserve">
+    <value>800</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items2" xml:space="preserve">
+    <value>666</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items3" xml:space="preserve">
+    <value>500</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items4" xml:space="preserve">
+    <value>400</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items5" xml:space="preserve">
+    <value>250</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items6" xml:space="preserve">
+    <value>200</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items7" xml:space="preserve">
+    <value>125</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items8" xml:space="preserve">
+    <value>100</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items9" xml:space="preserve">
+    <value>80</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items10" xml:space="preserve">
+    <value>50</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items11" xml:space="preserve">
+    <value>40</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items12" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items13" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items14" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Items15" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 113</value>
+  </data>
+  <data name="cbxCAN1RaudRate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 28</value>
+  </data>
+  <data name="cbxCAN1RaudRate.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;cbxCAN1RaudRate.Name" xml:space="preserve">
+    <value>cbxCAN1RaudRate</value>
+  </data>
+  <data name="&gt;&gt;cbxCAN1RaudRate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxCAN1RaudRate.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;cbxCAN1RaudRate.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tbxCAN1Name.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 46</value>
+  </data>
+  <data name="tbxCAN1Name.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 27</value>
+  </data>
+  <data name="tbxCAN1Name.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Name.Name" xml:space="preserve">
+    <value>tbxCAN1Name</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Name.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Name.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Name.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tbxCAN1Channel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 12</value>
+  </data>
+  <data name="tbxCAN1Channel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 27</value>
+  </data>
+  <data name="tbxCAN1Channel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="tbxCAN1Channel.Text" xml:space="preserve">
+    <value>CAN1</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Channel.Name" xml:space="preserve">
+    <value>tbxCAN1Channel</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Channel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Channel.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;tbxCAN1Channel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lbCAN1K.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbCAN1K.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbCAN1K.Location" type="System.Drawing.Point, System.Drawing">
+    <value>224, 116</value>
+  </data>
+  <data name="lbCAN1K.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 20</value>
+  </data>
+  <data name="lbCAN1K.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lbCAN1K.Text" xml:space="preserve">
+    <value>K</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1K.Name" xml:space="preserve">
+    <value>lbCAN1K</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1K.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1K.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;lbCAN1K.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnCAN1Init.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="btnCAN1Init.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCAN1Init.Location" type="System.Drawing.Point, System.Drawing">
+    <value>309, 193</value>
+  </data>
+  <data name="btnCAN1Init.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 30</value>
+  </data>
+  <data name="btnCAN1Init.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnCAN1Init.Text" xml:space="preserve">
+    <value>更新CAN1配置</value>
+  </data>
+  <data name="&gt;&gt;btnCAN1Init.Name" xml:space="preserve">
+    <value>btnCAN1Init</value>
+  </data>
+  <data name="&gt;&gt;btnCAN1Init.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCAN1Init.Parent" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;btnCAN1Init.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tpgCAN1.Name" xml:space="preserve">
+    <value>tpgCAN1</value>
+  </data>
+  <data name="&gt;&gt;tpgCAN1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpgCAN1.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tpgCAN1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tpgCAN2.Name" xml:space="preserve">
     <value>tpgCAN2</value>
   </data>
-  <data name="&gt;&gt;lbCAN2Channel.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;tpgCAN2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpgCAN2.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tpgCAN2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 262</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>panelConfig</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnCAN2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="btnCAN2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCAN2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>309, 193</value>
+  </data>
+  <data name="btnCAN2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 30</value>
+  </data>
+  <data name="btnCAN2.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="btnCAN2.Text" xml:space="preserve">
+    <value>更新CAN2配置</value>
+  </data>
+  <data name="&gt;&gt;btnCAN2.Name" xml:space="preserve">
+    <value>btnCAN2</value>
+  </data>
+  <data name="&gt;&gt;btnCAN2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCAN2.Parent" xml:space="preserve">
+    <value>tpgCAN2</value>
+  </data>
+  <data name="&gt;&gt;btnCAN2.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1345,7 +1471,7 @@
     <value>9, 20</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>482, 453</value>
+    <value>482, 528</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>

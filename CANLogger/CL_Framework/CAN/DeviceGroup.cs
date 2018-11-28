@@ -51,7 +51,24 @@ namespace CL_Framework
             }
         }
 
-
+        public Device GetDevice(DeviceType deviceType, UInt32 deviceIndex)
+        {
+            if (deviceType == DeviceType.UNKNOWN)
+            {
+                return null;
+            }
+            lock (locker)
+            {
+                foreach (Device device in devices)
+                {
+                    if(device.DeviceType == deviceType && device.DeviceIndex == deviceIndex)
+                    {
+                        return device;
+                    }
+                }
+                return null;
+            }
+        }
 
     }
 }
