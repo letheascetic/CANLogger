@@ -89,62 +89,98 @@ namespace CL_Framework
         [DllImport("ECANVCI64.dll", EntryPoint = "OpenDevice")]
         public static extern CANResult OpenDevice(
             UInt32 DeviceType,
-            UInt32 DeviceInd,
+            UInt32 DeviceIndex,
             UInt32 Reserved);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "CloseDevice")]
         public static extern CANResult CloseDevice(
             UInt32 DeviceType,
-            UInt32 DeviceInd);
+            UInt32 DeviceIndex);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "InitCAN")]
         public static extern CANResult InitCAN(
             UInt32 DeviceType,
-            UInt32 DeviceInd,
-            UInt32 CANInd,
+            UInt32 DeviceIndex,
+            UInt32 CANIndex,
             ref InitConfig InitConfig);
-
-        [DllImport("ECANVCI64.dll", EntryPoint = "StartCAN")]
-        public static extern CANResult StartCAN(
-            UInt32 DeviceType,
-            UInt32 DeviceInd,
-            UInt32 CANInd);
-
-        [DllImport("ECANVCI64.dll", EntryPoint = "ResetCAN")]
-        public static extern CANResult ResetCAN(
-            UInt32 DeviceType,
-            UInt32 DeviceInd,
-            UInt32 CANInd);
-
-        [DllImport("ECANVCI64.dll", EntryPoint = "Transmit")]
-        public static extern CANResult Transmit(
-            UInt32 DeviceType,
-            UInt32 DeviceInd,
-            UInt32 CANInd,
-            CANOBJ[] Send,
-            UInt16 length);
-
-        [DllImport("ECANVCI64.dll", EntryPoint = "Receive")]
-        public static extern CANResult Receive(
-            UInt32 DeviceType,
-            UInt32 DeviceInd,
-            UInt32 CANInd,
-            out CANOBJ Receive,
-            UInt32 length,
-            UInt32 WaitTime);
-
-        [DllImport("ECANVCI64.dll", EntryPoint = "ReadErrInfo")]
-        public static extern CANResult ReadErrInfo(
-            UInt32 DeviceType,
-            UInt32 DeviceInd,
-            UInt32 CANInd,
-            out CANErrInfo ReadErrInfo);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "ReadBoardInfo")]
         public static extern CANResult ReadBoardInfo(
             UInt32 DeviceType,
-            UInt32 DeviceInd,
-            out BoardInfo ReadErrInfo);
+            UInt32 DeviceIndex,
+            out BoardInfo BoardInfo);
+
+        [DllImport("ECANVCI64.dll", EntryPoint = "ReadErrInfo")]
+        public static extern CANResult ReadErrInfo(
+            UInt32 DeviceType,
+            UInt32 DeviceIndex,
+            UInt32 CANIndex,
+            out CANErrInfo CANErrInfo);
+
+        [DllImport("ECANVCI64.dll", EntryPoint = "ReadCanStatus")]
+        public static extern CANResult ReadCanStatus(
+            UInt32 DeviceType,
+            UInt32 DeviceIndex,
+            UInt32 CANIndex,
+            out CANStatus CANStatus);
+
+        [DllImport("ECANVCI64.dll", EntryPoint = "GetReference")]
+        public static extern CANResult GetReference(
+            UInt32 DeviceType,
+            UInt32 DeviceIndex,
+            UInt32 CANIndex,
+            UInt32 RefType,
+            IntPtr data);
+
+        [DllImport("ECANVCI64.dll", EntryPoint = "SetReference")]
+        public static extern CANResult SetReference(
+            UInt32 DeviceType,
+            UInt32 DeviceIndex,
+            UInt32 CANIndex,
+            UInt32 RefType,
+            IntPtr data);
+
+        [DllImport("ECANVCI64.dll", EntryPoint = "GetReceiveNum")]
+        public static extern CANResult GetReceiveNum(
+            UInt32 DeviceType,
+            UInt32 DeviceIndex,
+            UInt32 CANIndex);
+
+        [DllImport("ECANVCI64.dll", EntryPoint = "ClearBuffer")]
+        public static extern CANResult ClearBuffer(
+            UInt32 DeviceType,
+            UInt32 DeviceIndex,
+            UInt32 CANIndex);
+
+        [DllImport("ECANVCI64.dll", EntryPoint = "StartCAN")]
+        public static extern CANResult StartCAN(
+            UInt32 DeviceType,
+            UInt32 DeviceIndex,
+            UInt32 CANIndex);
+
+        [DllImport("ECANVCI64.dll", EntryPoint = "Transmit")]
+        public static extern CANResult Transmit(
+            UInt32 DeviceType,
+            UInt32 DeviceIndex,
+            UInt32 CANIndex,
+            CANOBJ[] Send,
+            UInt32 Length);
+
+        [DllImport("ECANVCI64.dll", EntryPoint = "Receive")]
+        public static extern CANResult Receive(
+            UInt32 DeviceType,
+            UInt32 DeviceIndex,
+            UInt32 CANIndex,
+            out CANOBJ Receive,
+            UInt32 Length,
+            Int32 WaitTime);
+
+        [DllImport("ECANVCI64.dll", EntryPoint = "ResetCAN")]
+        public static extern CANResult ResetCAN(
+            UInt32 DeviceType,
+            UInt32 DeviceIndex,
+            UInt32 CANIndex);
+
     }
 
 }
