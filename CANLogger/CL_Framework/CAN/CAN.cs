@@ -141,7 +141,7 @@ namespace CL_Framework
             IntPtr data);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "GetReceiveNum")]
-        public static extern CANResult GetReceiveNum(
+        public static extern UInt32 GetReceiveNum(
             UInt32 DeviceType,
             UInt32 DeviceIndex,
             UInt32 CANIndex);
@@ -159,7 +159,7 @@ namespace CL_Framework
             UInt32 CANIndex);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "Transmit")]
-        public static extern CANResult Transmit(
+        public static extern UInt32 Transmit(
             UInt32 DeviceType,
             UInt32 DeviceIndex,
             UInt32 CANIndex,
@@ -167,11 +167,11 @@ namespace CL_Framework
             UInt32 Length);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "Receive")]
-        public static extern CANResult Receive(
+        public static extern UInt32 Receive(
             UInt32 DeviceType,
             UInt32 DeviceIndex,
             UInt32 CANIndex,
-            out CANOBJ Receive,
+            out CANOBJ[] Receive,
             UInt32 Length,
             Int32 WaitTime);
 

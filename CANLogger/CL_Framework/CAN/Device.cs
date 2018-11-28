@@ -52,21 +52,6 @@ namespace CL_Framework
             DeviceTypies.Add(new KeyValuePair<DeviceType, string>(DeviceType.USBCANII, USBCANII));
         }
 
-        private Device(DeviceType deviceType, UInt32 deviceIndex)
-        {
-            this.deviceType = deviceType;
-            this.deviceIndex = deviceIndex;
-
-            this.isDeviceOpen = false;
-            this.deviceInfo = new BoardInfo();
-        }
-
-        //public static CANStatus OpenInitDevice(DeviceType deviceType, UInt32 deviceIndex, UInt32 Reserved, out Device device)
-        //{
-        //    device = null;
-        //    return CANStatus.STATUS_OK;
-        //}
-
         public static string GetDeviceDesc(DeviceType deviceType)
         {
             if (deviceType == DeviceType.UNKNOWN)
@@ -83,6 +68,15 @@ namespace CL_Framework
             return null;
         }
 
+        private Device(DeviceType deviceType, UInt32 deviceIndex)
+        {
+            this.deviceType = deviceType;
+            this.deviceIndex = deviceIndex;
+
+            this.isDeviceOpen = false;
+            this.deviceInfo = new BoardInfo();
+        }
+
         public CANResult OpenDevice()
         {
             return CANDLL.OpenDevice((UInt32)deviceType, deviceIndex, 0);
@@ -93,6 +87,65 @@ namespace CL_Framework
             return CANDLL.CloseDevice((UInt32)deviceType, deviceIndex);
         }
 
+        public CANResult InitCAN(UInt32 canIndex, ref InitConfig initConfig)
+        {
+            return channels[canIndex].InitCAN(ref initConfig);
+        }
+
+        private CANResult ReadBoardInfo()
+        {
+            return CANDLL.ReadBoardInfo((UInt32)deviceType, deviceIndex, out deviceInfo);
+        }
+
+        public CANResult ReadErrInfo(UInt32 canIndex, out CANErrInfo canErrInfo)
+        {
+            return channels[canIndex].ReadErrInfo(out canErrInfo);
+        }
+
+        public CANResult ReadCanStatus(UInt32 canIndex, out CANStatus canStatus)
+        {
+            return channels[canIndex].ReadCanStatus(out canStatus);
+        }
+
+        public CANResult GetReference(UInt32 canIndex, UInt32 refType, IntPtr data)
+        {
+            return channels[canIndex].GetReference(refType, data);
+        }
+
+        public CANResult SetReference(UInt32 canIndex, UInt32 refType, IntPtr data)
+        {
+            return channels[canIndex].SetReference(refType, data);
+        }
+
+        public UInt32 GetReceiveNum(UInt32 canIndex)
+        {
+            return channels[canIndex].GetReceiveNum();
+        }
+
+        public CANResult ClearBuffer(UInt32 canIndex)
+        {
+            return channels[canIndex].ClearBuffer();
+        }
+
+        public CANResult StartCAN(UInt32 canIndex)
+        {
+            return channels[canIndex].StartCAN();
+        }
+
+        public UInt32 Transmit(UInt32 canIndex, CANOBJ[] canFrames, UInt32 canFrameLength)
+        {
+            return channels[canIndex].Transmit(canFrames, canFrameLength);
+        }
+
+        public UInt32 Receive(UInt32 canIndex, out CANOBJ[] canFrames, UInt32 canFrameLength, Int32 waitMilliseconds)
+        {
+            return channels[canIndex].Receive(out canFrames, canFrameLength, waitMilliseconds);
+        }
+
+        public CANResult ResetCAN(UInt32 canIndex)
+        {
+            return channels[canIndex].ResetCAN();
+        }
 
     }
 }
