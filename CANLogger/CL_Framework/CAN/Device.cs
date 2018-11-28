@@ -21,7 +21,7 @@ namespace CL_Framework
         private DeviceType deviceType;
         private UInt32 deviceIndex;
         private BOARD_INFO deviceInfo;
-        private INIT_CONFIG initConfig;
+        private InitConfig initConfig;
         
         public DeviceType DeviceType
         { get { return deviceType; } }
@@ -30,7 +30,7 @@ namespace CL_Framework
         public Boolean IsDeviceOpen
         { get { return isDeviceOpen; } }
         public string DeviceID
-        { get { return deviceInfo.str_Serial_Num.ToString(); } }
+        { get { return deviceInfo.StrSerialNO.ToString(); } }
 
         static Device()
         {
@@ -46,7 +46,7 @@ namespace CL_Framework
 
             this.isDeviceOpen = false;
             this.deviceInfo = new BOARD_INFO();
-            this.initConfig = new INIT_CONFIG();
+            this.initConfig = new InitConfig();
         }
 
         public static Device OpenInitDevice(DeviceType deviceType, UInt32 deviceIndex, UInt32 Reserved)

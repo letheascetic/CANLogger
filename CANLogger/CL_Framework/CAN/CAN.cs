@@ -14,7 +14,7 @@ namespace CL_Framework
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct CAN_OBJ
+    public struct CANFrame
     {
         public uint ID;
         public uint TimeStamp;
@@ -29,15 +29,15 @@ namespace CL_Framework
         public byte[] Reserved;
     }
 
-    public struct CAN_ERR_INFO
+    public struct CANErrInfo
     {
         public uint ErrCode;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-        public byte[] Passive_ErrData;
-        public byte ArLost_ErrData;
+        public byte[] PassiveErrData;
+        public byte ArLostErrData;
     }
 
-    public struct INIT_CONFIG
+    public struct InitConfig
     {
         public uint AccCode;
         public uint AccMask;
@@ -50,16 +50,16 @@ namespace CL_Framework
 
     public struct BOARD_INFO
     {
-        public ushort hw_Version;
-        public ushort fw_Version;
-        public ushort dr_Version;
-        public ushort in_Version;
-        public ushort irq_Num;
-        public byte can_Num;
+        public ushort HWVersion;
+        public ushort FWVersion;
+        public ushort DriverVersion;
+        public ushort InVersion;
+        public ushort IRQNum;
+        public byte CANNum;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 20)]
-        public byte[] str_Serial_Num;
+        public byte[] StrSerialNO;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 40)]
-        public byte[] str_hw_Type;
+        public byte[] StrHWType;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public ushort[] Reserved;
     }
@@ -82,7 +82,7 @@ namespace CL_Framework
             UInt32 DeviceType,
             UInt32 DeviceInd,
             UInt32 CANInd,
-            ref INIT_CONFIG InitConfig);
+            ref InitConfig InitConfig);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "StartCAN")]
         public static extern CANStatus StartCAN(
@@ -101,7 +101,7 @@ namespace CL_Framework
             UInt32 DeviceType,
             UInt32 DeviceInd,
             UInt32 CANInd,
-            CAN_OBJ[] Send,
+            CANFrame[] Send,
             UInt16 length);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "Receive")]
@@ -109,7 +109,7 @@ namespace CL_Framework
             UInt32 DeviceType,
             UInt32 DeviceInd,
             UInt32 CANInd,
-            out CAN_OBJ Receive,
+            out CANFrame Receive,
             UInt32 length,
             UInt32 WaitTime);
 
@@ -118,7 +118,7 @@ namespace CL_Framework
             UInt32 DeviceType,
             UInt32 DeviceInd,
             UInt32 CANInd,
-            out CAN_ERR_INFO ReadErrInfo);
+            out CANErrInfo ReadErrInfo);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "ReadBoardInfo")]
         public static extern CANStatus ReadBoardInfo(
