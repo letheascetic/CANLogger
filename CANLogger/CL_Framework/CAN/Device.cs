@@ -68,13 +68,47 @@ namespace CL_Framework
             return null;
         }
 
-        private Device(DeviceType deviceType, UInt32 deviceIndex)
+        private Device(DeviceType deviceType)
         {
             this.deviceType = deviceType;
-            this.deviceIndex = deviceIndex;
-
+            this.deviceTypeDesc = GetDeviceDesc(deviceType);
+            this.deviceIndex = DeviceGroup.CreateInstance().GetNewDeviceIndex(deviceType);
             this.isDeviceOpen = false;
             this.deviceInfo = new BoardInfo();
+        }
+
+        private void InitCAN(UInt32 canNum)
+        {
+            channels = new Channel[canNum];
+            for (UInt32 canIndex = 0; canIndex < canNum; canIndex++)
+            {
+                string channelName = string.Join("-", 
+                    new string[] { this.deviceTypeDesc, this.deviceIndex.ToString(), "CAN" + canIndex.ToString() });
+                Channel channel = new Channel(canIndex, channelName, this);
+                channels[canIndex] = channel;
+            }
+        }
+
+        public static CANResult CreateDevice(DeviceType deviceType, out Device device)
+        {
+            device = null;
+            //CANResult canResult = CANResult.STATUS_ERR;
+            Device newDevice = new Device(deviceType);
+
+            if (newDevice.OpenDevice() == CANResult.STATUS_ERR)
+            {
+                return CANResult.STATUS_ERR;
+            }
+
+            if (newDevice.ReadBoardInfo() == CANResult.STATUS_ERR)
+            {
+                return CANResult.STATUS_ERR;
+            }
+
+            newDevice.InitCAN(newDevice.DeviceInfo.CANNum);
+            device = newDevice;
+
+            return CANResult.STATUS_OK;
         }
 
         public CANResult OpenDevice()
