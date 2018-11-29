@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DialogDevice));
             this.panelTop = new System.Windows.Forms.Panel();
+            this.lbVersion = new System.Windows.Forms.Label();
             this.panelBottom = new System.Windows.Forms.FlowLayoutPanel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
@@ -39,11 +40,18 @@
             this.lbSelectDevice = new System.Windows.Forms.Label();
             this.panelList = new System.Windows.Forms.Panel();
             this.dgvDevice = new System.Windows.Forms.DataGridView();
-            this.cName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cHardware = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cHWType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDeviceIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cChannelNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cHWVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFWVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDriverVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cInVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cIRQNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cSerialNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelConfig = new System.Windows.Forms.Panel();
             this.tabControl = new System.Windows.Forms.TabControl();
+            this.panelTop.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelSelect.SuspendLayout();
             this.panelList.SuspendLayout();
@@ -54,8 +62,15 @@
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panelTop.Controls.Add(this.lbVersion);
             resources.ApplyResources(this.panelTop, "panelTop");
             this.panelTop.Name = "panelTop";
+            // 
+            // lbVersion
+            // 
+            resources.ApplyResources(this.lbVersion, "lbVersion");
+            this.lbVersion.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lbVersion.Name = "lbVersion";
             // 
             // panelBottom
             // 
@@ -116,35 +131,80 @@
             // 
             this.dgvDevice.AllowUserToAddRows = false;
             this.dgvDevice.AllowUserToDeleteRows = false;
+            this.dgvDevice.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvDevice.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDevice.BackgroundColor = System.Drawing.SystemColors.Info;
             this.dgvDevice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDevice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDevice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cName,
-            this.cHardware,
-            this.cID});
+            this.cHWType,
+            this.cDeviceIndex,
+            this.cChannelNum,
+            this.cHWVersion,
+            this.cFWVersion,
+            this.cDriverVersion,
+            this.cInVersion,
+            this.cIRQNum,
+            this.cSerialNO});
             resources.ApplyResources(this.dgvDevice, "dgvDevice");
+            this.dgvDevice.MultiSelect = false;
             this.dgvDevice.Name = "dgvDevice";
             this.dgvDevice.ReadOnly = true;
             this.dgvDevice.RowTemplate.Height = 27;
             // 
-            // cName
+            // cHWType
             // 
-            resources.ApplyResources(this.cName, "cName");
-            this.cName.Name = "cName";
-            this.cName.ReadOnly = true;
+            resources.ApplyResources(this.cHWType, "cHWType");
+            this.cHWType.Name = "cHWType";
+            this.cHWType.ReadOnly = true;
             // 
-            // cHardware
+            // cDeviceIndex
             // 
-            resources.ApplyResources(this.cHardware, "cHardware");
-            this.cHardware.Name = "cHardware";
-            this.cHardware.ReadOnly = true;
+            resources.ApplyResources(this.cDeviceIndex, "cDeviceIndex");
+            this.cDeviceIndex.Name = "cDeviceIndex";
+            this.cDeviceIndex.ReadOnly = true;
             // 
-            // cID
+            // cChannelNum
             // 
-            resources.ApplyResources(this.cID, "cID");
-            this.cID.Name = "cID";
-            this.cID.ReadOnly = true;
+            resources.ApplyResources(this.cChannelNum, "cChannelNum");
+            this.cChannelNum.Name = "cChannelNum";
+            this.cChannelNum.ReadOnly = true;
+            // 
+            // cHWVersion
+            // 
+            resources.ApplyResources(this.cHWVersion, "cHWVersion");
+            this.cHWVersion.Name = "cHWVersion";
+            this.cHWVersion.ReadOnly = true;
+            // 
+            // cFWVersion
+            // 
+            resources.ApplyResources(this.cFWVersion, "cFWVersion");
+            this.cFWVersion.Name = "cFWVersion";
+            this.cFWVersion.ReadOnly = true;
+            // 
+            // cDriverVersion
+            // 
+            resources.ApplyResources(this.cDriverVersion, "cDriverVersion");
+            this.cDriverVersion.Name = "cDriverVersion";
+            this.cDriverVersion.ReadOnly = true;
+            // 
+            // cInVersion
+            // 
+            resources.ApplyResources(this.cInVersion, "cInVersion");
+            this.cInVersion.Name = "cInVersion";
+            this.cInVersion.ReadOnly = true;
+            // 
+            // cIRQNum
+            // 
+            resources.ApplyResources(this.cIRQNum, "cIRQNum");
+            this.cIRQNum.Name = "cIRQNum";
+            this.cIRQNum.ReadOnly = true;
+            // 
+            // cSerialNO
+            // 
+            resources.ApplyResources(this.cSerialNO, "cSerialNO");
+            this.cSerialNO.Name = "cSerialNO";
+            this.cSerialNO.ReadOnly = true;
             // 
             // panelConfig
             // 
@@ -170,6 +230,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "DialogDevice";
             this.Load += new System.EventHandler(this.DialogDevice_Load);
+            this.panelTop.ResumeLayout(false);
+            this.panelTop.PerformLayout();
             this.panelBottom.ResumeLayout(false);
             this.panelSelect.ResumeLayout(false);
             this.panelSelect.PerformLayout();
@@ -193,9 +255,16 @@
         private System.Windows.Forms.ComboBox cbxSelectDevice;
         private System.Windows.Forms.Button btnOpenDevice;
         private System.Windows.Forms.DataGridView dgvDevice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cHardware;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cID;
         private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cHWType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cDeviceIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cChannelNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cHWVersion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cFWVersion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cDriverVersion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cInVersion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cIRQNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cSerialNO;
+        private System.Windows.Forms.Label lbVersion;
     }
 }

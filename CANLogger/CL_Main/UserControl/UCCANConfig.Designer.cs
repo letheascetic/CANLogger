@@ -38,6 +38,7 @@
             this.lbCANMode = new System.Windows.Forms.Label();
             this.lbCANName = new System.Windows.Forms.Label();
             this.lbCANIndex = new System.Windows.Forms.Label();
+            this.lbCAN = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCANConfig
@@ -115,6 +116,10 @@
             // cbxCANMode
             // 
             this.cbxCANMode.FormattingEnabled = true;
+            this.cbxCANMode.Items.AddRange(new object[] {
+            "正常模式",
+            "只听模式",
+            "自发自收"});
             this.cbxCANMode.Location = new System.Drawing.Point(91, 76);
             this.cbxCANMode.Name = "cbxCANMode";
             this.cbxCANMode.Size = new System.Drawing.Size(121, 28);
@@ -150,10 +155,25 @@
             this.lbCANIndex.TabIndex = 10;
             this.lbCANIndex.Text = "通道：";
             // 
+            // lbCAN
+            // 
+            this.lbCAN.AutoSize = true;
+            this.lbCAN.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbCAN.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbCAN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lbCAN.Font = new System.Drawing.Font("微软雅黑", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbCAN.ForeColor = System.Drawing.Color.Orange;
+            this.lbCAN.Location = new System.Drawing.Point(413, 0);
+            this.lbCAN.Name = "lbCAN";
+            this.lbCAN.Size = new System.Drawing.Size(49, 59);
+            this.lbCAN.TabIndex = 20;
+            this.lbCAN.Text = "x";
+            // 
             // UCCANConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbCAN);
             this.Controls.Add(this.btnCANConfig);
             this.Controls.Add(this.lbCANK);
             this.Controls.Add(this.tbxCANIndex);
@@ -186,5 +206,6 @@
         private System.Windows.Forms.Label lbCANMode;
         private System.Windows.Forms.Label lbCANName;
         private System.Windows.Forms.Label lbCANIndex;
+        private System.Windows.Forms.Label lbCAN;
     }
 }

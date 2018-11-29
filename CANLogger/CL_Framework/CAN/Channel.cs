@@ -24,6 +24,9 @@ namespace CL_Framework
         public int BaudRate
         { get { return baudRate; } }
 
+        public CANMode Mode
+        { get { return (CANMode)Enum.ToObject(typeof(CANMode), this.initConfig.Mode); } }
+
 
         public Channel(uint channelIndex, string channelName, Device parentDevice)
         {
@@ -31,6 +34,7 @@ namespace CL_Framework
             this.channelName = channelName;
             this.parentDevice = parentDevice;
             this.initConfig = CANDLL.CreateBasicInitConfig();
+            this.baudRate = CANDLL.DEFAULT_BAUDRATE;
         }
         
         public CANResult InitCAN(int baudRate, ref InitConfig initConfig)
@@ -42,6 +46,7 @@ namespace CL_Framework
                 return CANResult.STATUS_ERR;
             }
 
+            this.baudRate = baudRate;
             this.initConfig = initConfig;
             return CANDLL.InitCAN((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex, ref initConfig);
         }

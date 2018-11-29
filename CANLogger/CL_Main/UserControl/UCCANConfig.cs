@@ -22,12 +22,15 @@ namespace CL_Main
 
         private void UCCANConfig_Load(object sender, EventArgs e)
         {
-            this.Name = string.Concat("ucConfigCAN", channel.ChannelIndex.ToString());
-            this.tbxCANIndex.Text = string.Concat("CAN", channel.ChannelIndex.ToString());
+            string channelIndex = channel.ChannelIndex.ToString();
+
+            this.Name = string.Concat("ucConfigCAN", channelIndex);
+            this.lbCAN.Text = channelIndex;
+            this.tbxCANIndex.Text = string.Concat("CAN", channelIndex);
             this.tbxCANName.Text = channel.ChannelName;
-            
 
-
+            this.cbxCANMode.SelectedIndex = (int)channel.Mode;
+            this.cbxCANBaudRate.SelectedIndex = this.cbxCANBaudRate.FindString(channel.BaudRate.ToString());
         }
     }
 }

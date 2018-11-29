@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -28,15 +29,39 @@ namespace CL_Main.Dialog
 
         private void InitLoadControls()
         {
+            //init load top panel
+            Version version = Assembly.GetExecutingAssembly().GetName().Version;
+            lbVersion.Text += string.Join(".", new object[] { version.Major, version.Minor, version.Build});
+
+            //init load select panel
             //load cbxSelectDevice data source
             cbxSelectDevice.DataSource = Device.DeviceTypies;
             cbxSelectDevice.ValueMember = "Key";
             cbxSelectDevice.DisplayMember = "Value";
             cbxSelectDevice.SelectedIndex = device != null ? 
                 cbxSelectDevice.FindString(device.DeviceTypeDesc) : cbxSelectDevice.FindString(Device.USBCANII);
+            
+            cbxSelectDevice.Enabled = device == null ? true : false;
+
+            //init load device list panel
+            if (device != null)
+            {
+
+            }
+
+            panelConfig.Visible = false;
+            tabControl.Visible = false;
+            panelList.Dock = DockStyle.Fill;
+
+
 
             //btnOpenDevice.Enabled = (device == null || !device.IsDeviceOpen) ? true : false;
             tabControl.Enabled = (device != null && device.IsDeviceOpen) ? true : false;
+
+
+
+
+
         }
 
         private void UpdateControls()

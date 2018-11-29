@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.btnAddSet = new System.Windows.Forms.ToolStripButton();
+            this.btnReset = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.lbFrameFormat = new System.Windows.Forms.ToolStripLabel();
             this.cbxFrameFormat = new System.Windows.Forms.ToolStripComboBox();
@@ -51,9 +54,6 @@
             this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.bgUIWorker = new System.ComponentModel.BackgroundWorker();
-            this.btnAddSet = new System.Windows.Forms.ToolStripButton();
-            this.btnReset = new System.Windows.Forms.ToolStripButton();
-            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +75,25 @@
             this.cbxIDFormat,
             this.toolStripSeparator3});
             this.toolStrip.Name = "toolStrip";
+            // 
+            // btnAddSet
+            // 
+            this.btnAddSet.Image = global::CL_Main.Properties.Resources.add;
+            resources.ApplyResources(this.btnAddSet, "btnAddSet");
+            this.btnAddSet.Name = "btnAddSet";
+            this.btnAddSet.Click += new System.EventHandler(this.btnAddSet_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Image = global::CL_Main.Properties.Resources.reset;
+            resources.ApplyResources(this.btnReset, "btnReset");
+            this.btnReset.Name = "btnReset";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Image = global::CL_Main.Properties.Resources.delete;
+            resources.ApplyResources(this.btnDelete, "btnDelete");
+            this.btnDelete.Name = "btnDelete";
             // 
             // toolStripSeparator1
             // 
@@ -226,25 +245,6 @@
             // bgUIWorker
             // 
             this.bgUIWorker.WorkerReportsProgress = true;
-            // 
-            // btnAddSet
-            // 
-            this.btnAddSet.Image = global::CL_Main.Properties.Resources.add;
-            resources.ApplyResources(this.btnAddSet, "btnAddSet");
-            this.btnAddSet.Name = "btnAddSet";
-            this.btnAddSet.Click += new System.EventHandler(this.btnAddSet_Click);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Image = global::CL_Main.Properties.Resources.reset;
-            resources.ApplyResources(this.btnReset, "btnReset");
-            this.btnReset.Name = "btnReset";
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Image = global::CL_Main.Properties.Resources.delete;
-            resources.ApplyResources(this.btnDelete, "btnDelete");
-            this.btnDelete.Name = "btnDelete";
             // 
             // FormMain
             // 
