@@ -9,19 +9,39 @@ namespace CL_Framework
     {
         private uint channelIndex;
         private string channelName;
+        private int baudRate;
         
         private Device parentDevice;
         private InitConfig initConfig;
+
+
+        public uint ChannelIndex
+        { get { return channelIndex; } }
+
+        public string ChannelName
+        { get { return channelName; } }
+
+        public int BaudRate
+        { get { return baudRate; } }
+
 
         public Channel(uint channelIndex, string channelName, Device parentDevice)
         {
             this.channelIndex = channelIndex;
             this.channelName = channelName;
             this.parentDevice = parentDevice;
+            this.initConfig = CANDLL.CreateBasicInitConfig();
         }
         
-        public CANResult InitCAN(ref InitConfig initConfig)
+        public CANResult InitCAN(int baudRate, ref InitConfig initConfig)
         {
+            InitConfig config = CANDLL.CreateBasicInitConfig();
+            CANDLL.ConfigBaudRate(baudRate, ref config);
+            if (config.Timing0 != initConfig.Timing0 || config.Timing1 != initConfig.Timing1)
+            {
+                return CANResult.STATUS_ERR;
+            }
+
             this.initConfig = initConfig;
             return CANDLL.InitCAN((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex, ref initConfig);
         }

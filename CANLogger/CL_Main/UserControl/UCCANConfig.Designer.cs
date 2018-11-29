@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCANStart = new System.Windows.Forms.Button();
+            this.btnCANConfig = new System.Windows.Forms.Button();
             this.lbCANK = new System.Windows.Forms.Label();
             this.tbxCANIndex = new System.Windows.Forms.TextBox();
             this.tbxCANName = new System.Windows.Forms.TextBox();
@@ -40,16 +40,16 @@
             this.lbCANIndex = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // btnCANStart
+            // btnCANConfig
             // 
-            this.btnCANStart.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCANStart.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnCANStart.Location = new System.Drawing.Point(303, 190);
-            this.btnCANStart.Name = "btnCANStart";
-            this.btnCANStart.Size = new System.Drawing.Size(157, 30);
-            this.btnCANStart.TabIndex = 19;
-            this.btnCANStart.Text = "配置并启动CAN";
-            this.btnCANStart.UseVisualStyleBackColor = true;
+            this.btnCANConfig.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnCANConfig.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnCANConfig.Location = new System.Drawing.Point(303, 190);
+            this.btnCANConfig.Name = "btnCANConfig";
+            this.btnCANConfig.Size = new System.Drawing.Size(157, 30);
+            this.btnCANConfig.TabIndex = 19;
+            this.btnCANConfig.Text = "配置CAN";
+            this.btnCANConfig.UseVisualStyleBackColor = true;
             // 
             // lbCANK
             // 
@@ -154,7 +154,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnCANStart);
+            this.Controls.Add(this.btnCANConfig);
             this.Controls.Add(this.lbCANK);
             this.Controls.Add(this.tbxCANIndex);
             this.Controls.Add(this.tbxCANName);
@@ -168,6 +168,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UCCANConfig";
             this.Size = new System.Drawing.Size(474, 229);
+            this.Load += new System.EventHandler(this.UCCANConfig_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,7 +176,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnCANStart;
+        private System.Windows.Forms.Button btnCANConfig;
         private System.Windows.Forms.Label lbCANK;
         private System.Windows.Forms.TextBox tbxCANIndex;
         private System.Windows.Forms.TextBox tbxCANName;

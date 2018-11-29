@@ -144,6 +144,57 @@
   <data name="&gt;&gt;panelTop.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
+    <value>btnCancel</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
+    <value>panelBottom</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Name" xml:space="preserve">
+    <value>btnOK</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Parent" xml:space="preserve">
+    <value>panelBottom</value>
+  </data>
+  <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panelBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panelBottom.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>RightToLeft</value>
+  </data>
+  <data name="panelBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 488</value>
+  </data>
+  <data name="panelBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 40</value>
+  </data>
+  <data name="panelBottom.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panelBottom.Name" xml:space="preserve">
+    <value>panelBottom</value>
+  </data>
+  <data name="&gt;&gt;panelBottom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelBottom.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>399, 3</value>
   </data>
@@ -198,32 +249,65 @@
   <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="panelBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
+  <data name="&gt;&gt;btnOpenDevice.Name" xml:space="preserve">
+    <value>btnOpenDevice</value>
   </data>
-  <data name="panelBottom.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>RightToLeft</value>
+  <data name="&gt;&gt;btnOpenDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panelBottom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 488</value>
+  <data name="&gt;&gt;btnOpenDevice.Parent" xml:space="preserve">
+    <value>panelSelect</value>
   </data>
-  <data name="panelBottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 40</value>
+  <data name="&gt;&gt;btnOpenDevice.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="panelBottom.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;cbxSelectDevice.Name" xml:space="preserve">
+    <value>cbxSelectDevice</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectDevice.Parent" xml:space="preserve">
+    <value>panelSelect</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectDevice.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;panelBottom.Name" xml:space="preserve">
-    <value>panelBottom</value>
+  <data name="&gt;&gt;lbSelectDevice.Name" xml:space="preserve">
+    <value>lbSelectDevice</value>
   </data>
-  <data name="&gt;&gt;panelBottom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lbSelectDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panelBottom.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbSelectDevice.Parent" xml:space="preserve">
+    <value>panelSelect</value>
+  </data>
+  <data name="&gt;&gt;lbSelectDevice.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panelSelect.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panelSelect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 77</value>
+  </data>
+  <data name="panelSelect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 38</value>
+  </data>
+  <data name="panelSelect.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panelSelect.Name" xml:space="preserve">
+    <value>panelSelect</value>
+  </data>
+  <data name="&gt;&gt;panelSelect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelSelect.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;panelBottom.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;panelSelect.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="btnOpenDevice.Location" type="System.Drawing.Point, System.Drawing">
     <value>303, 5</value>
@@ -297,69 +381,6 @@
   <data name="&gt;&gt;lbSelectDevice.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="panelSelect.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panelSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 77</value>
-  </data>
-  <data name="panelSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 38</value>
-  </data>
-  <data name="panelSelect.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;panelSelect.Name" xml:space="preserve">
-    <value>panelSelect</value>
-  </data>
-  <data name="&gt;&gt;panelSelect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelSelect.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panelSelect.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <metadata name="cName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="cName.HeaderText" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="cName.Width" type="System.Int32, mscorlib">
-    <value>150</value>
-  </data>
-  <metadata name="cHardware.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="cHardware.HeaderText" xml:space="preserve">
-    <value>Hardware</value>
-  </data>
-  <data name="cHardware.Width" type="System.Int32, mscorlib">
-    <value>120</value>
-  </data>
-  <metadata name="cID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="cID.HeaderText" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="cID.Width" type="System.Int32, mscorlib">
-    <value>150</value>
-  </data>
-  <data name="dgvDevice.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="dgvDevice.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="dgvDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 111</value>
-  </data>
-  <data name="dgvDevice.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;dgvDevice.Name" xml:space="preserve">
     <value>dgvDevice</value>
   </data>
@@ -395,6 +416,66 @@
   </data>
   <data name="&gt;&gt;panelList.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <metadata name="cName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cHardware.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="dgvDevice.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dgvDevice.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dgvDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 111</value>
+  </data>
+  <data name="dgvDevice.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dgvDevice.Name" xml:space="preserve">
+    <value>dgvDevice</value>
+  </data>
+  <data name="&gt;&gt;dgvDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvDevice.Parent" xml:space="preserve">
+    <value>panelList</value>
+  </data>
+  <data name="&gt;&gt;dgvDevice.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="cName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cName.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="cName.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <metadata name="cHardware.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cHardware.HeaderText" xml:space="preserve">
+    <value>Hardware</value>
+  </data>
+  <data name="cHardware.Width" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <metadata name="cID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cID.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="cID.Width" type="System.Int32, mscorlib">
+    <value>150</value>
   </data>
   <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

@@ -121,9 +121,9 @@ namespace CL_Framework
             return CANDLL.CloseDevice((UInt32)deviceType, deviceIndex);
         }
 
-        public CANResult InitCAN(UInt32 canIndex, ref InitConfig initConfig)
+        public CANResult InitCAN(UInt32 canIndex, int baudRate, ref InitConfig initConfig)
         {
-            return channels[canIndex].InitCAN(ref initConfig);
+            return channels[canIndex].InitCAN(baudRate, ref initConfig);
         }
 
         private CANResult ReadBoardInfo()
