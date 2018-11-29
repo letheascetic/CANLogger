@@ -53,7 +53,6 @@
             this.menuItemManual = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.bgUIWorker = new System.ComponentModel.BackgroundWorker();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -242,10 +241,6 @@
             this.dockPanel.DockBottomPortion = 0.3D;
             this.dockPanel.Name = "dockPanel";
             // 
-            // bgUIWorker
-            // 
-            this.bgUIWorker.WorkerReportsProgress = true;
-            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -290,7 +285,6 @@
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
         private System.Windows.Forms.ToolStripMenuItem menuItemSkin;
         private System.Windows.Forms.ToolStripMenuItem menuItemSkinDefault;
-        private System.ComponentModel.BackgroundWorker bgUIWorker;
         private System.Windows.Forms.ToolStripButton btnAddSet;
         private System.Windows.Forms.ToolStripButton btnReset;
         private System.Windows.Forms.ToolStripButton btnDelete;

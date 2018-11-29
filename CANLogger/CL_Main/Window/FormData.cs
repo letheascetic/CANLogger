@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CL_Framework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,7 @@ namespace CL_Main
         public readonly static int SEND_MODE_NORMAL = 0;
         public readonly static int SEND_MODE_LIST = 1;
 
+        private Channel channel = null;
         private bool isShowing = true;
         private int sendMode = SEND_MODE_NORMAL;
 
@@ -30,9 +32,10 @@ namespace CL_Main
         public int SendMode
         { get { return sendMode; } set { sendMode = value; } }
 
-        public FormData()
+        public FormData(Channel channel)
         {
             InitializeComponent();
+            this.channel = channel;
         }
 
         public void SetLanguage(string language)

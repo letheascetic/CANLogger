@@ -51,6 +51,7 @@
             this.btnCANConfig.TabIndex = 19;
             this.btnCANConfig.Text = "配置CAN";
             this.btnCANConfig.UseVisualStyleBackColor = true;
+            this.btnCANConfig.Click += new System.EventHandler(this.btnCANConfig_Click);
             // 
             // lbCANK
             // 

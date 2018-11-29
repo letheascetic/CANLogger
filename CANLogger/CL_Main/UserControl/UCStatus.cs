@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CL_Framework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,12 @@ namespace CL_Main
 {
     public partial class UCStatus : UserControl
     {
-        public UCStatus()
+        private Channel channel = null;
+
+        public UCStatus(Channel channel)
         {
             InitializeComponent();
+            this.channel = channel;
         }
     }
 }

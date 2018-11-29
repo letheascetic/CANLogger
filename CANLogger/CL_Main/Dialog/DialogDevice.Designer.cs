@@ -32,8 +32,7 @@
             this.panelTop = new System.Windows.Forms.Panel();
             this.lbVersion = new System.Windows.Forms.Label();
             this.panelBottom = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
             this.panelSelect = new System.Windows.Forms.Panel();
             this.btnOpenDevice = new System.Windows.Forms.Button();
             this.cbxSelectDevice = new System.Windows.Forms.ComboBox();
@@ -51,6 +50,7 @@
             this.cSerialNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelConfig = new System.Windows.Forms.Panel();
             this.tabControl = new System.Windows.Forms.TabControl();
+            this.btnConfigOnly = new System.Windows.Forms.Button();
             this.panelTop.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelSelect.SuspendLayout();
@@ -75,24 +75,17 @@
             // panelBottom
             // 
             this.panelBottom.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.panelBottom.Controls.Add(this.btnCancel);
-            this.panelBottom.Controls.Add(this.btnOK);
+            this.panelBottom.Controls.Add(this.btnConfigOnly);
+            this.panelBottom.Controls.Add(this.btnStart);
             resources.ApplyResources(this.panelBottom, "panelBottom");
             this.panelBottom.Name = "panelBottom";
             // 
-            // btnCancel
+            // btnStart
             // 
-            resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnOK
-            // 
-            resources.ApplyResources(this.btnOK, "btnOK");
-            this.btnOK.Name = "btnOK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            resources.ApplyResources(this.btnStart, "btnStart");
+            this.btnStart.Name = "btnStart";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // panelSelect
             // 
@@ -218,6 +211,13 @@
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             // 
+            // btnConfigOnly
+            // 
+            resources.ApplyResources(this.btnConfigOnly, "btnConfigOnly");
+            this.btnConfigOnly.Name = "btnConfigOnly";
+            this.btnConfigOnly.UseVisualStyleBackColor = true;
+            this.btnConfigOnly.Click += new System.EventHandler(this.btnConfigOnly_Click);
+            // 
             // DialogDevice
             // 
             resources.ApplyResources(this, "$this");
@@ -246,8 +246,7 @@
 
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.FlowLayoutPanel panelBottom;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Panel panelSelect;
         private System.Windows.Forms.Panel panelList;
         private System.Windows.Forms.Panel panelConfig;
@@ -266,5 +265,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cIRQNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn cChannelNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn cSerialNO;
+        private System.Windows.Forms.Button btnConfigOnly;
     }
 }

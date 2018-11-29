@@ -70,5 +70,21 @@ namespace CL_Framework
             }
         }
 
+        public bool Add(Device device)
+        {
+            if (device == null)
+            {
+                return false;
+            }
+            // device already exists
+            if (GetDevice(device.DeviceType, device.DeviceIndex) != null)
+            {
+                return false;
+            }
+
+            this.devices.Add(device);
+            return true;
+        }
+
     }
 }

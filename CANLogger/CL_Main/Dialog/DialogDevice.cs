@@ -14,17 +14,17 @@ namespace CL_Main.Dialog
     public partial class DialogDevice : Form
     {
         private DeviceGroup deviceGroup = DeviceGroup.CreateInstance();
-        private DeviceType deviceType = DeviceType.UNKNOWN;
-        private UInt32 deviceIndex = 0;
         private Device device = null;
 
-        public DialogDevice(DeviceType deviceType, UInt32 deviceIndex)
+        public DialogDevice(Device device)
         {
             InitializeComponent();
+            this.device = device;
+        }
 
-            this.deviceType = deviceType;
-            this.deviceIndex = deviceIndex;
-            this.device = deviceGroup.GetDevice(deviceType, deviceIndex);
+        public Device GetDevice()
+        {
+            return this.device;
         }
 
         private void InitLoadControls()
@@ -87,9 +87,10 @@ namespace CL_Main.Dialog
                 {
                     TabPage tpgCAN = new TabPage(string.Concat("CAN", channelIndex));
                     tpgCAN.Name = string.Concat("tpgCAN", channelIndex);
-                    tpgCAN.AutoScroll = true;
+                    //tpgCAN.AutoScroll = true;
                     UCCANConfig ucConfigCAN = new UCCANConfig(device.GetChannel(channelIndex));
-                    ucConfigCAN.Parent = tpgCAN;
+                    tpgCAN.Controls.Add(ucConfigCAN);
+                    //ucConfigCAN.Parent = tpgCAN;
                     ucConfigCAN.Dock = DockStyle.Fill;
                     tabControl.TabPages.Add(tpgCAN);
                 }
@@ -112,16 +113,6 @@ namespace CL_Main.Dialog
         private void DialogDevice_Load(object sender, EventArgs e)
         {
             InitLoadControls();
-        }
-
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnOpenDevice_Click(object sender, EventArgs e)
@@ -169,5 +160,42 @@ namespace CL_Main.Dialog
             device = newDevice;
             UpdateControls();
         }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            foreach (TabPage tpgCAN in tabControl.TabPages)
+            {
+                foreach (Control control in tpgCAN.Controls)
+                {
+                    UCCANConfig ucCANConfig = control as UCCANConfig;
+                    if (ucCANConfig != null)
+                    {
+                        ucCANConfig.ConfigAndSatrt();
+                        break;
+                    }
+                }
+            }
+            this.deviceGroup.Add(this.device);
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void btnConfigOnly_Click(object sender, EventArgs e)
+        {
+            foreach (TabPage tpgCAN in tabControl.TabPages)
+            {
+                foreach (Control control in tpgCAN.Controls)
+                {
+                    UCCANConfig ucCANConfig = control as UCCANConfig;
+                    if (ucCANConfig != null)
+                    {
+                        ucCANConfig.ConfigOnly();
+                        break;
+                    }
+                }
+            }
+            this.deviceGroup.Add(this.device);
+            this.DialogResult = DialogResult.OK;
+        }
+
     }
 }

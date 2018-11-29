@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CL_Framework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,8 @@ namespace CL_Main
 {
     public partial class FormDevice : DockContent
     {
+        private DeviceGroup deviceGroup = DeviceGroup.CreateInstance();
+
         public FormDevice()
         {
             InitializeComponent();

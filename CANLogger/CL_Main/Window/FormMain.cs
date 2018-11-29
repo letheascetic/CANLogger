@@ -21,8 +21,9 @@ namespace CL_Main
     public partial class FormMain : Form
     {
         private SkinEngine skinEngine;
-        private DeviceGroup deviceGroup;
+        private DeviceGroup deviceGroup = new DeviceGroup();
 
+        
         public FormMain()
         {
             InitializeComponent();
@@ -32,17 +33,18 @@ namespace CL_Main
         {
             LogHelper.Log("FormMain_Load...");
 
-            //Thread thread = new Thread(new ThreadStart(Loading));
-            //thread.IsBackground = true;
-            //thread.Start();
+            Thread thread = new Thread(new ThreadStart(Loading));
+            thread.IsBackground = true;
+            thread.Start();
 
+            InitVarialbes();
             InitLoadControls();
-            //thread.Join();
+            thread.Join();
         }
 
         private void InitVarialbes()
         {
-            deviceGroup = new DeviceGroup();
+            
         }
 
         private void Loading()
@@ -164,12 +166,22 @@ namespace CL_Main
 
         private void btnAddSet_Click(object sender, EventArgs e)
         {
-            DialogDevice dialogDevice = new DialogDevice(DeviceType.UNKNOWN, 0);
+            // get selected device or null
+            Device device = null;
+
+            DialogDevice dialogDevice = new DialogDevice(device);
             if (dialogDevice.ShowDialog() == DialogResult.OK)
             {
+                if (device != null)
+                {
+                    // update forms
+                    return;
+                }
+                Device newDevice = dialogDevice.GetDevice();
 
                 dialogDevice.Close();
             }
         }
+
     }
 }
