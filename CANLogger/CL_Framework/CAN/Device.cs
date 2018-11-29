@@ -77,6 +77,11 @@ namespace CL_Framework
             this.deviceInfo = new BoardInfo();
         }
 
+        public Channel GetChannel(uint channelIndex)
+        {
+            return channelIndex >= this.deviceInfo.CANNum ? null : this.channels[channelIndex];
+        }
+
         private void InitCAN(UInt32 canNum)
         {
             channels = new Channel[canNum];

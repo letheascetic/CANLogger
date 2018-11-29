@@ -117,11 +117,48 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;lbVersion.Name" xml:space="preserve">
+    <value>lbVersion</value>
+  </data>
+  <data name="&gt;&gt;lbVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbVersion.Parent" xml:space="preserve">
+    <value>panelTop</value>
+  </data>
+  <data name="&gt;&gt;lbVersion.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panelTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="panelTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panelTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 77</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panelTop.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panelTop.Name" xml:space="preserve">
+    <value>panelTop</value>
+  </data>
+  <data name="&gt;&gt;panelTop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelTop.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="lbVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lbVersion.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 22.2pt, style=Bold, Italic</value>
   </data>
@@ -149,30 +186,56 @@
   <data name="&gt;&gt;lbVersion.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="panelTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
+    <value>btnCancel</value>
   </data>
-  <data name="panelTop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panelTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 77</value>
+  <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
+    <value>panelBottom</value>
   </data>
-  <data name="panelTop.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;panelTop.Name" xml:space="preserve">
-    <value>panelTop</value>
+  <data name="&gt;&gt;btnOK.Name" xml:space="preserve">
+    <value>btnOK</value>
   </data>
-  <data name="&gt;&gt;panelTop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panelTop.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnOK.Parent" xml:space="preserve">
+    <value>panelBottom</value>
+  </data>
+  <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panelBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panelBottom.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>RightToLeft</value>
+  </data>
+  <data name="panelBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 488</value>
+  </data>
+  <data name="panelBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 40</value>
+  </data>
+  <data name="panelBottom.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panelBottom.Name" xml:space="preserve">
+    <value>panelBottom</value>
+  </data>
+  <data name="&gt;&gt;panelBottom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelBottom.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;panelTop.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;panelBottom.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>399, 3</value>
@@ -228,32 +291,65 @@
   <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="panelBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
+  <data name="&gt;&gt;btnOpenDevice.Name" xml:space="preserve">
+    <value>btnOpenDevice</value>
   </data>
-  <data name="panelBottom.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>RightToLeft</value>
+  <data name="&gt;&gt;btnOpenDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panelBottom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 488</value>
+  <data name="&gt;&gt;btnOpenDevice.Parent" xml:space="preserve">
+    <value>panelSelect</value>
   </data>
-  <data name="panelBottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 40</value>
+  <data name="&gt;&gt;btnOpenDevice.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="panelBottom.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;cbxSelectDevice.Name" xml:space="preserve">
+    <value>cbxSelectDevice</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectDevice.Parent" xml:space="preserve">
+    <value>panelSelect</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectDevice.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;panelBottom.Name" xml:space="preserve">
-    <value>panelBottom</value>
+  <data name="&gt;&gt;lbSelectDevice.Name" xml:space="preserve">
+    <value>lbSelectDevice</value>
   </data>
-  <data name="&gt;&gt;panelBottom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lbSelectDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panelBottom.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbSelectDevice.Parent" xml:space="preserve">
+    <value>panelSelect</value>
+  </data>
+  <data name="&gt;&gt;lbSelectDevice.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panelSelect.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panelSelect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 77</value>
+  </data>
+  <data name="panelSelect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 38</value>
+  </data>
+  <data name="panelSelect.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panelSelect.Name" xml:space="preserve">
+    <value>panelSelect</value>
+  </data>
+  <data name="&gt;&gt;panelSelect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelSelect.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;panelBottom.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;panelSelect.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="btnOpenDevice.Location" type="System.Drawing.Point, System.Drawing">
     <value>303, 5</value>
@@ -327,30 +423,6 @@
   <data name="&gt;&gt;lbSelectDevice.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="panelSelect.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panelSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 77</value>
-  </data>
-  <data name="panelSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 38</value>
-  </data>
-  <data name="panelSelect.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;panelSelect.Name" xml:space="preserve">
-    <value>panelSelect</value>
-  </data>
-  <data name="&gt;&gt;panelSelect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelSelect.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panelSelect.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <metadata name="cHWType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -368,15 +440,6 @@
   </data>
   <data name="cDeviceIndex.Width" type="System.Int32, mscorlib">
     <value>98</value>
-  </data>
-  <metadata name="cChannelNum.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="cChannelNum.HeaderText" xml:space="preserve">
-    <value>CAN数</value>
-  </data>
-  <data name="cChannelNum.Width" type="System.Int32, mscorlib">
-    <value>86</value>
   </data>
   <metadata name="cHWVersion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -422,6 +485,15 @@
   </data>
   <data name="cIRQNum.Width" type="System.Int32, mscorlib">
     <value>83</value>
+  </data>
+  <metadata name="cChannelNum.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cChannelNum.HeaderText" xml:space="preserve">
+    <value>CAN数</value>
+  </data>
+  <data name="cChannelNum.Width" type="System.Int32, mscorlib">
+    <value>86</value>
   </data>
   <metadata name="cSerialNO.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -480,18 +552,6 @@
   <data name="&gt;&gt;panelList.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 262</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
     <value>tabControl</value>
   </data>
@@ -528,6 +588,30 @@
   <data name="&gt;&gt;panelConfig.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 262</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>panelConfig</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -561,12 +645,6 @@
   <data name="&gt;&gt;cDeviceIndex.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cChannelNum.Name" xml:space="preserve">
-    <value>cChannelNum</value>
-  </data>
-  <data name="&gt;&gt;cChannelNum.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;cHWVersion.Name" xml:space="preserve">
     <value>cHWVersion</value>
   </data>
@@ -595,6 +673,12 @@
     <value>cIRQNum</value>
   </data>
   <data name="&gt;&gt;cIRQNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cChannelNum.Name" xml:space="preserve">
+    <value>cChannelNum</value>
+  </data>
+  <data name="&gt;&gt;cChannelNum.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cSerialNO.Name" xml:space="preserve">

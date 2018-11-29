@@ -40,17 +40,17 @@
             this.lbSelectDevice = new System.Windows.Forms.Label();
             this.panelList = new System.Windows.Forms.Panel();
             this.dgvDevice = new System.Windows.Forms.DataGridView();
+            this.panelConfig = new System.Windows.Forms.Panel();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.cHWType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDeviceIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cChannelNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cHWVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cFWVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDriverVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cInVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cIRQNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cChannelNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cSerialNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelConfig = new System.Windows.Forms.Panel();
-            this.tabControl = new System.Windows.Forms.TabControl();
             this.panelTop.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelSelect.SuspendLayout();
@@ -139,18 +139,30 @@
             this.dgvDevice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cHWType,
             this.cDeviceIndex,
-            this.cChannelNum,
             this.cHWVersion,
             this.cFWVersion,
             this.cDriverVersion,
             this.cInVersion,
             this.cIRQNum,
+            this.cChannelNum,
             this.cSerialNO});
             resources.ApplyResources(this.dgvDevice, "dgvDevice");
             this.dgvDevice.MultiSelect = false;
             this.dgvDevice.Name = "dgvDevice";
             this.dgvDevice.ReadOnly = true;
             this.dgvDevice.RowTemplate.Height = 27;
+            // 
+            // panelConfig
+            // 
+            this.panelConfig.Controls.Add(this.tabControl);
+            resources.ApplyResources(this.panelConfig, "panelConfig");
+            this.panelConfig.Name = "panelConfig";
+            // 
+            // tabControl
+            // 
+            resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
             // 
             // cHWType
             // 
@@ -163,12 +175,6 @@
             resources.ApplyResources(this.cDeviceIndex, "cDeviceIndex");
             this.cDeviceIndex.Name = "cDeviceIndex";
             this.cDeviceIndex.ReadOnly = true;
-            // 
-            // cChannelNum
-            // 
-            resources.ApplyResources(this.cChannelNum, "cChannelNum");
-            this.cChannelNum.Name = "cChannelNum";
-            this.cChannelNum.ReadOnly = true;
             // 
             // cHWVersion
             // 
@@ -200,23 +206,17 @@
             this.cIRQNum.Name = "cIRQNum";
             this.cIRQNum.ReadOnly = true;
             // 
+            // cChannelNum
+            // 
+            resources.ApplyResources(this.cChannelNum, "cChannelNum");
+            this.cChannelNum.Name = "cChannelNum";
+            this.cChannelNum.ReadOnly = true;
+            // 
             // cSerialNO
             // 
             resources.ApplyResources(this.cSerialNO, "cSerialNO");
             this.cSerialNO.Name = "cSerialNO";
             this.cSerialNO.ReadOnly = true;
-            // 
-            // panelConfig
-            // 
-            this.panelConfig.Controls.Add(this.tabControl);
-            resources.ApplyResources(this.panelConfig, "panelConfig");
-            this.panelConfig.Name = "panelConfig";
-            // 
-            // tabControl
-            // 
-            resources.ApplyResources(this.tabControl, "tabControl");
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
             // 
             // DialogDevice
             // 
@@ -256,15 +256,15 @@
         private System.Windows.Forms.Button btnOpenDevice;
         private System.Windows.Forms.DataGridView dgvDevice;
         private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.Label lbVersion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cHWType;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDeviceIndex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cChannelNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn cHWVersion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFWVersion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDriverVersion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cInVersion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cIRQNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cChannelNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn cSerialNO;
-        private System.Windows.Forms.Label lbVersion;
     }
 }

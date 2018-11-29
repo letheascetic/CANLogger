@@ -40,33 +40,58 @@ namespace CL_Main.Dialog
             cbxSelectDevice.DisplayMember = "Value";
             cbxSelectDevice.SelectedIndex = device != null ? 
                 cbxSelectDevice.FindString(device.DeviceTypeDesc) : cbxSelectDevice.FindString(Device.USBCANII);
-            
             cbxSelectDevice.Enabled = device == null ? true : false;
 
-            //init load device list panel
-            if (device != null)
-            {
-
-            }
-
-            panelConfig.Visible = false;
-            tabControl.Visible = false;
-            panelList.Dock = DockStyle.Fill;
-
-
+            UpdateControls();
 
             //btnOpenDevice.Enabled = (device == null || !device.IsDeviceOpen) ? true : false;
-            tabControl.Enabled = (device != null && device.IsDeviceOpen) ? true : false;
-
-
-
-
-
+            //tabControl.Enabled = (device != null && device.IsDeviceOpen) ? true : false;
         }
 
         private void UpdateControls()
         {
-            tabControl.Enabled = (device != null && device.IsDeviceOpen) ? true : false;
+            panelConfig.Visible = device == null ? false : true;
+            tabControl.Visible = device == null ? false : true;
+            panelList.Dock = device == null ? DockStyle.Fill : DockStyle.Top;
+
+            UpdateDevicePanel();
+
+            UpdateConfigPanel();
+        }
+
+        private void UpdateDevicePanel()
+        {
+            this.dgvDevice.Rows.Clear();
+            if (device != null)
+            {
+                int index = dgvDevice.Rows.Add();
+                dgvDevice.Rows[index].Cells[0].Value = device.DeviceInfo.StrHWType.ToString();
+                dgvDevice.Rows[index].Cells[1].Value = device.DeviceIndex;
+                dgvDevice.Rows[index].Cells[2].Value = String.Concat("0x", Convert.ToString(device.DeviceInfo.HWVersion, 16));
+                dgvDevice.Rows[index].Cells[3].Value = String.Concat("0x", Convert.ToString(device.DeviceInfo.FWVersion, 16));
+                dgvDevice.Rows[index].Cells[4].Value = String.Concat("0x", Convert.ToString(device.DeviceInfo.DriverVersion, 16));
+                dgvDevice.Rows[index].Cells[5].Value = String.Concat("0x", Convert.ToString(device.DeviceInfo.InVersion, 16));
+                dgvDevice.Rows[index].Cells[6].Value = device.DeviceInfo.IRQNum;
+                dgvDevice.Rows[index].Cells[7].Value = device.DeviceInfo.CANNum;
+                dgvDevice.Rows[index].Cells[8].Value = device.DeviceInfo.StrSerialNO.ToString();
+            }
+        }
+
+        private void UpdateConfigPanel()
+        {
+            tabControl.TabPages.Clear();
+            if (device != null)
+            {
+                for (uint channelIndex = 0; channelIndex < device.DeviceInfo.CANNum; channelIndex++)
+                {
+                    TabPage tpgCAN = new TabPage(string.Concat("CAN", channelIndex));
+                    tpgCAN.Name = string.Concat("tpgCAN", channelIndex);
+                    UCCANConfig ucConfigCAN = new UCCANConfig(device.GetChannel(channelIndex));
+                    ucConfigCAN.Parent = tpgCAN;
+                    ucConfigCAN.Dock = DockStyle.Fill;
+                    tabControl.TabPages.Add(tpgCAN);
+                }
+            }
         }
 
         private void DialogDevice_Load(object sender, EventArgs e)
