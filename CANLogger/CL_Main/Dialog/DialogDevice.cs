@@ -39,7 +39,7 @@ namespace CL_Main.Dialog
             cbxSelectDevice.ValueMember = "Key";
             cbxSelectDevice.DisplayMember = "Value";
             cbxSelectDevice.SelectedIndex = device != null ? 
-                cbxSelectDevice.FindString(device.DeviceTypeDesc) : cbxSelectDevice.FindString(Device.USBCANII);
+                cbxSelectDevice.FindString(device.DeviceTypeDesc) : cbxSelectDevice.FindString(Device.DEVICE_TYPE_USBCANII);
             cbxSelectDevice.Enabled = device == null ? true : false;
 
             UpdateControls();
@@ -65,15 +65,16 @@ namespace CL_Main.Dialog
             if (device != null)
             {
                 int index = dgvDevice.Rows.Add();
-                dgvDevice.Rows[index].Cells[0].Value = device.DeviceInfo.StrHWType.ToString();
+                //dgvDevice.Rows[index].Cells[0].Value = System.Text.Encoding.Default.GetString(device.DeviceInfo.StrHWType);
+                dgvDevice.Rows[index].Cells[0].Value = device.DeviceTypeDesc;
                 dgvDevice.Rows[index].Cells[1].Value = device.DeviceIndex;
                 dgvDevice.Rows[index].Cells[2].Value = String.Concat("0x", Convert.ToString(device.DeviceInfo.HWVersion, 16));
                 dgvDevice.Rows[index].Cells[3].Value = String.Concat("0x", Convert.ToString(device.DeviceInfo.FWVersion, 16));
                 dgvDevice.Rows[index].Cells[4].Value = String.Concat("0x", Convert.ToString(device.DeviceInfo.DriverVersion, 16));
                 dgvDevice.Rows[index].Cells[5].Value = String.Concat("0x", Convert.ToString(device.DeviceInfo.InVersion, 16));
                 dgvDevice.Rows[index].Cells[6].Value = device.DeviceInfo.IRQNum;
-                dgvDevice.Rows[index].Cells[7].Value = device.DeviceInfo.CANNum;
-                dgvDevice.Rows[index].Cells[8].Value = device.DeviceInfo.StrSerialNO.ToString();
+                dgvDevice.Rows[index].Cells[7].Value = device.CANNum;
+                dgvDevice.Rows[index].Cells[8].Value = System.Text.Encoding.Default.GetString(device.DeviceInfo.StrSerialNO);
             }
         }
 
@@ -82,16 +83,30 @@ namespace CL_Main.Dialog
             tabControl.TabPages.Clear();
             if (device != null)
             {
-                for (uint channelIndex = 0; channelIndex < device.DeviceInfo.CANNum; channelIndex++)
+                for (uint channelIndex = 0; channelIndex < device.CANNum; channelIndex++)
                 {
                     TabPage tpgCAN = new TabPage(string.Concat("CAN", channelIndex));
                     tpgCAN.Name = string.Concat("tpgCAN", channelIndex);
+                    tpgCAN.AutoScroll = true;
                     UCCANConfig ucConfigCAN = new UCCANConfig(device.GetChannel(channelIndex));
                     ucConfigCAN.Parent = tpgCAN;
                     ucConfigCAN.Dock = DockStyle.Fill;
                     tabControl.TabPages.Add(tpgCAN);
                 }
             }
+        }
+
+        private Device CreateDevice(DeviceType deviceType)
+        {
+            Device device = null;
+            // get new device index
+            UInt32 deviceIndex = deviceGroup.GetNewDeviceIndex(deviceType);
+            // create new device
+            if (Device.CreateDevice(deviceType, out device) == CANResult.STATUS_OK)
+            {
+                return device;
+            }
+            return null;
         }
 
         private void DialogDevice_Load(object sender, EventArgs e)
@@ -111,19 +126,48 @@ namespace CL_Main.Dialog
 
         private void btnOpenDevice_Click(object sender, EventArgs e)
         {
-            if (device != null && device.IsDeviceOpen)
+            DeviceType deviceType = (DeviceType)Enum.Parse(typeof(DeviceType), cbxSelectDevice.SelectedValue.ToString());
+            Device newDevice = null;
+
+            if (device == null) //try to open a new device
             {
+                newDevice = CreateDevice(deviceType);
+                if (newDevice == null)
+                {
+                    MessageBox.Show("打开设备失败。");
+                    return;
+                }
+                device = newDevice;
+                UpdateControls();
                 return;
             }
 
+            if (device.DeviceType == deviceType)
+            {
+                if (!device.IsDeviceOpen)   
+                {
+                    device.OpenDevice();
+                    return;
+                }
+                // device already open
+                return;
+            }
+
+            // try to open another device
+            // close the old device firstly
+            if (device.IsDeviceOpen)
+            {
+                device.CloseDevice();
+            }
+            // create new device
+            newDevice = CreateDevice(deviceType);
             if (device == null)
             {
-                DeviceType deviceType = (DeviceType)Enum.Parse(typeof(DeviceType), cbxSelectDevice.SelectedValue.ToString());
-                UInt32 deviceIndex = deviceGroup.GetNewDeviceIndex(deviceType);
-                //Device device = Device.OpenInitDevice(deviceType, deviceIndex, 0);
-
+                MessageBox.Show("打开设备失败。");
+                return;
             }
-            return;
+            device = newDevice;
+            UpdateControls();
         }
     }
 }

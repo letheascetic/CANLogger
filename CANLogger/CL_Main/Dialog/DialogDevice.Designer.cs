@@ -40,8 +40,6 @@
             this.lbSelectDevice = new System.Windows.Forms.Label();
             this.panelList = new System.Windows.Forms.Panel();
             this.dgvDevice = new System.Windows.Forms.DataGridView();
-            this.panelConfig = new System.Windows.Forms.Panel();
-            this.tabControl = new System.Windows.Forms.TabControl();
             this.cHWType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDeviceIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cHWVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +49,8 @@
             this.cIRQNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cChannelNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cSerialNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelConfig = new System.Windows.Forms.Panel();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.panelTop.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelSelect.SuspendLayout();
@@ -152,18 +152,6 @@
             this.dgvDevice.ReadOnly = true;
             this.dgvDevice.RowTemplate.Height = 27;
             // 
-            // panelConfig
-            // 
-            this.panelConfig.Controls.Add(this.tabControl);
-            resources.ApplyResources(this.panelConfig, "panelConfig");
-            this.panelConfig.Name = "panelConfig";
-            // 
-            // tabControl
-            // 
-            resources.ApplyResources(this.tabControl, "tabControl");
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            // 
             // cHWType
             // 
             resources.ApplyResources(this.cHWType, "cHWType");
@@ -217,6 +205,18 @@
             resources.ApplyResources(this.cSerialNO, "cSerialNO");
             this.cSerialNO.Name = "cSerialNO";
             this.cSerialNO.ReadOnly = true;
+            // 
+            // panelConfig
+            // 
+            this.panelConfig.Controls.Add(this.tabControl);
+            resources.ApplyResources(this.panelConfig, "panelConfig");
+            this.panelConfig.Name = "panelConfig";
+            // 
+            // tabControl
+            // 
+            resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
             // 
             // DialogDevice
             // 

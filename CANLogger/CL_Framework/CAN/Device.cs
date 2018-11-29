@@ -16,9 +16,11 @@ namespace CL_Framework
     public class Device
     {
         public static List<KeyValuePair<DeviceType, string>> DeviceTypies = new List<KeyValuePair<DeviceType, string>>();
-        public static readonly string UNKNOWN = "UNKNOWN";
-        public static readonly string USBCAN = "USBCAN";
-        public static readonly string USBCANII = "USBCAN-II";
+        public static readonly string DEVICE_TYPE_UNKNOWN = "UNKNOWN";
+        public static readonly string DEVICE_TYPE_USBCAN = "USBCAN";
+        public static readonly string DEVICE_TYPE_USBCANII = "USBCAN-II";
+
+        private static readonly uint DEVICE_CANNUM_MAXIMUM = 2;
 
         private bool isDeviceOpen;
         private DeviceType deviceType;
@@ -41,22 +43,23 @@ namespace CL_Framework
         { get { return isDeviceOpen; } }
 
         public BoardInfo DeviceInfo
-        { get { return deviceInfo; } }
+        { get { return deviceInfo; } set { deviceInfo = value; } }
 
-        public string DeviceID
-        { get { return deviceInfo.StrSerialNO.ToString(); } }
+        public uint CANNum
+        { get { return deviceInfo.CANNum > DEVICE_CANNUM_MAXIMUM ? DEVICE_CANNUM_MAXIMUM : deviceInfo.CANNum; } }
+
 
         static Device()
         {
-            DeviceTypies.Add(new KeyValuePair<DeviceType, string>(DeviceType.USBCAN, USBCAN));
-            DeviceTypies.Add(new KeyValuePair<DeviceType, string>(DeviceType.USBCANII, USBCANII));
+            DeviceTypies.Add(new KeyValuePair<DeviceType, string>(DeviceType.USBCAN, DEVICE_TYPE_USBCAN));
+            DeviceTypies.Add(new KeyValuePair<DeviceType, string>(DeviceType.USBCANII, DEVICE_TYPE_USBCANII));
         }
 
         public static string GetDeviceDesc(DeviceType deviceType)
         {
             if (deviceType == DeviceType.UNKNOWN)
             {
-                return Device.UNKNOWN;
+                return Device.DEVICE_TYPE_UNKNOWN;
             }
             foreach (KeyValuePair<DeviceType, string> keyValuePair in DeviceTypies)
             {
@@ -79,7 +82,7 @@ namespace CL_Framework
 
         public Channel GetChannel(uint channelIndex)
         {
-            return channelIndex >= this.deviceInfo.CANNum ? null : this.channels[channelIndex];
+            return channelIndex >= this.CANNum ? null : this.channels[channelIndex];
         }
 
         private void InitCAN(UInt32 canNum)
@@ -110,7 +113,7 @@ namespace CL_Framework
                 return CANResult.STATUS_ERR;
             }
 
-            newDevice.InitCAN(newDevice.DeviceInfo.CANNum);
+            newDevice.InitCAN(newDevice.CANNum);
             device = newDevice;
 
             return CANResult.STATUS_OK;
@@ -118,7 +121,9 @@ namespace CL_Framework
 
         public CANResult OpenDevice()
         {
-            return CANDLL.OpenDevice((UInt32)deviceType, deviceIndex, 0);
+            CANResult result = CANDLL.OpenDevice((UInt32)deviceType, deviceIndex, 0);
+            isDeviceOpen = result == CANResult.STATUS_OK ? true : false;
+            return result;
         }
 
         public CANResult CloseDevice()

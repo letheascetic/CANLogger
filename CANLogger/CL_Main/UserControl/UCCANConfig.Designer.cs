@@ -45,7 +45,7 @@
             // 
             this.btnCANConfig.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnCANConfig.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnCANConfig.Location = new System.Drawing.Point(303, 190);
+            this.btnCANConfig.Location = new System.Drawing.Point(314, 160);
             this.btnCANConfig.Name = "btnCANConfig";
             this.btnCANConfig.Size = new System.Drawing.Size(157, 30);
             this.btnCANConfig.TabIndex = 19;
@@ -56,7 +56,7 @@
             // 
             this.lbCANK.AutoSize = true;
             this.lbCANK.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbCANK.Location = new System.Drawing.Point(218, 113);
+            this.lbCANK.Location = new System.Drawing.Point(180, 113);
             this.lbCANK.Name = "lbCANK";
             this.lbCANK.Size = new System.Drawing.Size(19, 20);
             this.lbCANK.TabIndex = 18;
@@ -64,7 +64,7 @@
             // 
             // tbxCANIndex
             // 
-            this.tbxCANIndex.Location = new System.Drawing.Point(91, 9);
+            this.tbxCANIndex.Location = new System.Drawing.Point(74, 9);
             this.tbxCANIndex.Name = "tbxCANIndex";
             this.tbxCANIndex.ReadOnly = true;
             this.tbxCANIndex.Size = new System.Drawing.Size(50, 27);
@@ -73,13 +73,15 @@
             // 
             // tbxCANName
             // 
-            this.tbxCANName.Location = new System.Drawing.Point(91, 43);
+            this.tbxCANName.Location = new System.Drawing.Point(74, 43);
             this.tbxCANName.Name = "tbxCANName";
-            this.tbxCANName.Size = new System.Drawing.Size(200, 27);
+            this.tbxCANName.ReadOnly = true;
+            this.tbxCANName.Size = new System.Drawing.Size(125, 27);
             this.tbxCANName.TabIndex = 12;
             // 
             // cbxCANBaudRate
             // 
+            this.cbxCANBaudRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCANBaudRate.FormattingEnabled = true;
             this.cbxCANBaudRate.Items.AddRange(new object[] {
             "1000",
@@ -98,16 +100,16 @@
             "10",
             "5",
             "其他"});
-            this.cbxCANBaudRate.Location = new System.Drawing.Point(91, 110);
+            this.cbxCANBaudRate.Location = new System.Drawing.Point(74, 110);
             this.cbxCANBaudRate.Name = "cbxCANBaudRate";
-            this.cbxCANBaudRate.Size = new System.Drawing.Size(121, 28);
+            this.cbxCANBaudRate.Size = new System.Drawing.Size(100, 28);
             this.cbxCANBaudRate.TabIndex = 16;
             // 
             // lbCANBaudRate
             // 
             this.lbCANBaudRate.AutoSize = true;
             this.lbCANBaudRate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbCANBaudRate.Location = new System.Drawing.Point(14, 113);
+            this.lbCANBaudRate.Location = new System.Drawing.Point(3, 113);
             this.lbCANBaudRate.Name = "lbCANBaudRate";
             this.lbCANBaudRate.Size = new System.Drawing.Size(69, 20);
             this.lbCANBaudRate.TabIndex = 15;
@@ -115,14 +117,15 @@
             // 
             // cbxCANMode
             // 
+            this.cbxCANMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCANMode.FormattingEnabled = true;
             this.cbxCANMode.Items.AddRange(new object[] {
             "正常模式",
             "只听模式",
             "自发自收"});
-            this.cbxCANMode.Location = new System.Drawing.Point(91, 76);
+            this.cbxCANMode.Location = new System.Drawing.Point(74, 76);
             this.cbxCANMode.Name = "cbxCANMode";
-            this.cbxCANMode.Size = new System.Drawing.Size(121, 28);
+            this.cbxCANMode.Size = new System.Drawing.Size(100, 28);
             this.cbxCANMode.TabIndex = 14;
             // 
             // lbCANMode
@@ -159,13 +162,12 @@
             // 
             this.lbCAN.AutoSize = true;
             this.lbCAN.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbCAN.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbCAN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lbCAN.Font = new System.Drawing.Font("微软雅黑", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbCAN.ForeColor = System.Drawing.Color.Orange;
-            this.lbCAN.Location = new System.Drawing.Point(413, 0);
+            this.lbCAN.Location = new System.Drawing.Point(310, 0);
             this.lbCAN.Name = "lbCAN";
-            this.lbCAN.Size = new System.Drawing.Size(49, 59);
+            this.lbCAN.Size = new System.Drawing.Size(47, 57);
             this.lbCAN.TabIndex = 20;
             this.lbCAN.Text = "x";
             // 
@@ -173,6 +175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.Controls.Add(this.lbCAN);
             this.Controls.Add(this.btnCANConfig);
             this.Controls.Add(this.lbCANK);
@@ -187,7 +190,7 @@
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UCCANConfig";
-            this.Size = new System.Drawing.Size(474, 229);
+            this.Size = new System.Drawing.Size(474, 193);
             this.Load += new System.EventHandler(this.UCCANConfig_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
