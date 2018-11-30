@@ -116,11 +116,6 @@ namespace CL_Main
             UpdateControls();
         }
 
-        private void btnAddSet_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FormDevice_Load(object sender, EventArgs e)
         {
             InitLoadControls();
@@ -129,6 +124,21 @@ namespace CL_Main
         private void chbxDevices_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             
+        }
+
+        private void btnAddSet_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

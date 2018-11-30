@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CL_Framework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,12 +16,62 @@ namespace CL_Main
 {
     public partial class FormStatus : DockContent
     {
+        private DeviceGroup pMeviceGroup = DeviceGroup.CreateInstance();
+        private List<Device> pDevices = new List<Device>();
+        private List<UCCANStatus> pChannelStatusList = new List<UCCANStatus>();
+
         public FormStatus()
         {
             InitializeComponent();
             InitLoadControls();
         }
-        
+
+        public bool AddDevice(Device newDevice)
+        {
+            if (newDevice == null)
+            {
+                LogHelper.Log("newDevice could not be null");
+                return false;
+            }
+
+            for (uint channelIndex = 0; channelIndex < newDevice.CANNum; channelIndex++)
+            {
+                Channel channel = newDevice.GetChannel(channelIndex);
+                AddChannel(channel);
+            }
+
+            pDevices.Add(newDevice);
+            return true;
+        }
+
+        public bool RemoveDevice(Device device)
+        {
+            if (device == null)
+            {
+                LogHelper.Log("device could not be null");
+                return false;
+            }
+
+            foreach (UCCANStatus pChannelStatus in pChannelStatusList)
+            {
+                if (Object.ReferenceEquals(device, pChannelStatus.GetChannel().ParentDevice))
+                {
+                    TabPage tabPage = (TabPage)pChannelStatus.Parent;
+
+                }
+            }
+
+            return false;
+        }
+
+        public void SetLanguage(string language)
+        {
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(language);
+            System.ComponentModel.ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
+
+            resources.ApplyResources(this, "$this");
+        }
+
         private void InitLoadControls()
         {
             //UCStatus statusChannel1 = new UCStatus();
@@ -38,18 +89,22 @@ namespace CL_Main
             //this.tabControl.Controls.Add(tabPage2);
         }
 
-        public void SetLanguage(string language)
+        private void AddChannel(Channel channel)
         {
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(language);
-            System.ComponentModel.ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
+            TabPage tabPage = new TabPage(channel.ChannelName);
+            
+            UCCANStatus pChnanelStatus = new UCCANStatus(channel);
+            pChnanelStatus.Parent = tabPage;
+            pChnanelStatus.Dock = DockStyle.Fill;
 
-            resources.ApplyResources(this, "$this");
+            tabControl.TabPages.Add(tabPage);
+
+            pChannelStatusList.Add(pChnanelStatus);
         }
 
-        public void UpdateControls()
+        private void FormStatus_Load(object sender, EventArgs e)
         {
 
         }
-
     }
 }

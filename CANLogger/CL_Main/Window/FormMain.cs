@@ -180,7 +180,7 @@ namespace CL_Main
             if (dialogDevice.ShowDialog() == DialogResult.OK)
             {
                 this.formDevice.UpdateControls();
-                this.formStatus.UpdateControls();
+                //this.formStatus.UpdateControls();
                 dialogDevice.Close();
             }
         }

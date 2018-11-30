@@ -77,6 +77,7 @@
             this.btnReset.Image = global::CL_Main.Properties.Resources.reset;
             resources.ApplyResources(this.btnReset, "btnReset");
             this.btnReset.Name = "btnReset";
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // toolStripSeparator2
             // 
@@ -88,6 +89,7 @@
             this.btnDelete.Image = global::CL_Main.Properties.Resources.delete;
             resources.ApplyResources(this.btnDelete, "btnDelete");
             this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // chbxDevices
             // 

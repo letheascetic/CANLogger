@@ -46,6 +46,7 @@
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormStatus";
+            this.Load += new System.EventHandler(this.FormStatus_Load);
             this.ResumeLayout(false);
 
         }

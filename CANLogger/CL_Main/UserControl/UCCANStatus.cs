@@ -12,14 +12,24 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace CL_Main
 {
-    public partial class UCStatus : UserControl
+    public partial class UCCANStatus : UserControl
     {
         private Channel channel = null;
 
-        public UCStatus(Channel channel)
+        public UCCANStatus(Channel channel)
         {
             InitializeComponent();
             this.channel = channel;
+        }
+
+        public Channel GetChannel()
+        {
+            return channel;
+        }
+
+        private void UCCANStatus_Load(object sender, EventArgs e)
+        {
+            this.Name = channel.ChannelName;
         }
     }
 }

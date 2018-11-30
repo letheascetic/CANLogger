@@ -1,6 +1,6 @@
 ﻿namespace CL_Main
 {
-    partial class UCStatus
+    partial class UCCANStatus
     {
         /// <summary>
         /// Required designer variable.
@@ -425,7 +425,7 @@
             this.lbRcvErr.TabIndex = 14;
             this.lbRcvErr.Text = "接收错误:";
             // 
-            // UCStatus
+            // UCCANStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -435,8 +435,9 @@
             this.Controls.Add(this.gbxControlStatus);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "UCStatus";
+            this.Name = "UCCANStatus";
             this.Size = new System.Drawing.Size(470, 137);
+            this.Load += new System.EventHandler(this.UCCANStatus_Load);
             this.gbxControlStatus.ResumeLayout(false);
             this.gbxControlStatus.PerformLayout();
             this.gbxBusStatus.ResumeLayout(false);

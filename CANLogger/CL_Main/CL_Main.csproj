@@ -96,11 +96,11 @@
     <Compile Include="Window\FormStatus.Designer.cs">
       <DependentUpon>FormStatus.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\UCStatus.cs">
+    <Compile Include="UserControl\UCCANStatus.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\UCStatus.Designer.cs">
-      <DependentUpon>UCStatus.cs</DependentUpon>
+    <Compile Include="UserControl\UCCANStatus.Designer.cs">
+      <DependentUpon>UCCANStatus.cs</DependentUpon>
     </Compile>
     <Compile Include="Window\FormData.cs">
       <SubType>Form</SubType>
@@ -143,8 +143,8 @@
     <EmbeddedResource Include="Window\FormStatus.resx">
       <DependentUpon>FormStatus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\UCStatus.resx">
-      <DependentUpon>UCStatus.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\UCCANStatus.resx">
+      <DependentUpon>UCCANStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window\FormData.en.resx">
       <DependentUpon>FormData.cs</DependentUpon>
