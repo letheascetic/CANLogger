@@ -35,15 +35,16 @@
             this.btnReset = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
-            this.dgvDeviceList = new System.Windows.Forms.DataGridView();
-            this.cOpen = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.cDevice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cChannelNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chbxDevices = new System.Windows.Forms.CheckedListBox();
+            this.dgvChannels = new System.Windows.Forms.DataGridView();
+            this.cStart = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cChannelIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cBaudRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cBusLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cBusFlow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDeviceList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvChannels)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -88,41 +89,57 @@
             resources.ApplyResources(this.btnDelete, "btnDelete");
             this.btnDelete.Name = "btnDelete";
             // 
-            // dgvDeviceList
+            // chbxDevices
             // 
-            this.dgvDeviceList.AllowUserToAddRows = false;
-            this.dgvDeviceList.AllowUserToDeleteRows = false;
-            this.dgvDeviceList.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvDeviceList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDeviceList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cOpen,
-            this.cDevice,
-            this.cChannelNum,
+            this.chbxDevices.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.chbxDevices, "chbxDevices");
+            this.chbxDevices.FormattingEnabled = true;
+            this.chbxDevices.Items.AddRange(new object[] {
+            resources.GetString("chbxDevices.Items"),
+            resources.GetString("chbxDevices.Items1")});
+            this.chbxDevices.Name = "chbxDevices";
+            this.chbxDevices.UseCompatibleTextRendering = true;
+            this.chbxDevices.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chbxDevices_ItemCheck);
+            // 
+            // dgvChannels
+            // 
+            this.dgvChannels.AllowUserToAddRows = false;
+            this.dgvChannels.AllowUserToDeleteRows = false;
+            this.dgvChannels.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvChannels.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvChannels.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvChannels.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvChannels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvChannels.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cStart,
+            this.cChannelName,
+            this.cChannelIndex,
             this.cBaudRate,
             this.cBusLoad,
             this.cBusFlow});
-            resources.ApplyResources(this.dgvDeviceList, "dgvDeviceList");
-            this.dgvDeviceList.Name = "dgvDeviceList";
-            this.dgvDeviceList.ReadOnly = true;
-            this.dgvDeviceList.RowTemplate.Height = 27;
+            resources.ApplyResources(this.dgvChannels, "dgvChannels");
+            this.dgvChannels.MultiSelect = false;
+            this.dgvChannels.Name = "dgvChannels";
+            this.dgvChannels.ReadOnly = true;
+            this.dgvChannels.RowTemplate.Height = 27;
             // 
-            // cOpen
+            // cStart
             // 
-            resources.ApplyResources(this.cOpen, "cOpen");
-            this.cOpen.Name = "cOpen";
-            this.cOpen.ReadOnly = true;
+            resources.ApplyResources(this.cStart, "cStart");
+            this.cStart.Name = "cStart";
+            this.cStart.ReadOnly = true;
             // 
-            // cDevice
+            // cChannelName
             // 
-            resources.ApplyResources(this.cDevice, "cDevice");
-            this.cDevice.Name = "cDevice";
-            this.cDevice.ReadOnly = true;
+            resources.ApplyResources(this.cChannelName, "cChannelName");
+            this.cChannelName.Name = "cChannelName";
+            this.cChannelName.ReadOnly = true;
             // 
-            // cChannelNum
+            // cChannelIndex
             // 
-            resources.ApplyResources(this.cChannelNum, "cChannelNum");
-            this.cChannelNum.Name = "cChannelNum";
-            this.cChannelNum.ReadOnly = true;
+            resources.ApplyResources(this.cChannelIndex, "cChannelIndex");
+            this.cChannelIndex.Name = "cChannelIndex";
+            this.cChannelIndex.ReadOnly = true;
             // 
             // cBaudRate
             // 
@@ -147,14 +164,16 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.dgvDeviceList);
+            this.Controls.Add(this.dgvChannels);
+            this.Controls.Add(this.chbxDevices);
             this.Controls.Add(this.toolStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.HideOnClose = true;
             this.Name = "FormDevice";
+            this.Load += new System.EventHandler(this.FormDevice_Load);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDeviceList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvChannels)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,10 +187,11 @@
         private System.Windows.Forms.ToolStripButton btnReset;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnDelete;
-        private System.Windows.Forms.DataGridView dgvDeviceList;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn cOpen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cDevice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cChannelNum;
+        private System.Windows.Forms.CheckedListBox chbxDevices;
+        private System.Windows.Forms.DataGridView dgvChannels;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cStart;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cChannelName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cChannelIndex;
         private System.Windows.Forms.DataGridViewTextBoxColumn cBaudRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cBusLoad;
         private System.Windows.Forms.DataGridViewTextBoxColumn cBusFlow;

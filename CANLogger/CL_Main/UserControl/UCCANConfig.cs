@@ -38,7 +38,7 @@ namespace CL_Main
             InitConfig config = channel.Config;
 
             CANMode mode = (CANMode)Enum.ToObject(typeof(CANMode), this.cbxCANMode.SelectedIndex);
-            int baudRate = Convert.ToInt32(cbxCANBaudRate.SelectedValue);
+            int baudRate = Convert.ToInt32(cbxCANBaudRate.SelectedItem);
 
             if (isConfigured && mode == channel.Mode && baudRate == channel.BaudRate)
             {

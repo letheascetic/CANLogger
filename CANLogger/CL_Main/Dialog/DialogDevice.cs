@@ -43,9 +43,6 @@ namespace CL_Main.Dialog
             cbxSelectDevice.Enabled = device == null ? true : false;
 
             UpdateControls();
-
-            //btnOpenDevice.Enabled = (device == null || !device.IsDeviceOpen) ? true : false;
-            //tabControl.Enabled = (device != null && device.IsDeviceOpen) ? true : false;
         }
 
         private void UpdateControls()
@@ -55,7 +52,6 @@ namespace CL_Main.Dialog
             panelList.Dock = device == null ? DockStyle.Fill : DockStyle.Top;
 
             UpdateDevicePanel();
-
             UpdateConfigPanel();
         }
 

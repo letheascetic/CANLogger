@@ -15,6 +15,11 @@ namespace CL_Framework
 
         private List<Device> devices;
 
+
+        public List<Device> Devices
+        { get { return devices; } }
+
+
         public static DeviceGroup CreateInstance()
         {
             if (deviceGroup == null)

@@ -23,7 +23,11 @@ namespace CL_Main
         private SkinEngine skinEngine;
         private DeviceGroup deviceGroup = new DeviceGroup();
 
-        
+        private List<FormData> formDataList = new List<FormData>();
+        private FormDevice formDevice = new FormDevice();
+        private FormStatus formStatus = new FormStatus();
+
+
         public FormMain()
         {
             InitializeComponent();
@@ -31,8 +35,6 @@ namespace CL_Main
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            LogHelper.Log("FormMain_Load...");
-
             Thread thread = new Thread(new ThreadStart(Loading));
             thread.IsBackground = true;
             thread.Start();
@@ -55,13 +57,13 @@ namespace CL_Main
 
         private void InitLoadSkinMenuItems()
         {
-            LogHelper.Log("InitLoadSkinMenuItems...");
             skinEngine = new SkinEngine();
             List<string> skins = Directory.GetFiles(Application.StartupPath + @"\skins\", "*.ssk").ToList();
 
             int index = 0;
             skins.ForEach(skinFile =>
             {
+                LogHelper.Log(string.Format("get skin file: [{0}]", skinFile));
                 string itemText = Path.GetFileNameWithoutExtension(skinFile);
                 ToolStripMenuItem skinItem = new ToolStripMenuItem(itemText);
                 skinItem.Tag = skinFile;
@@ -73,10 +75,12 @@ namespace CL_Main
 
         private void InitLoadControls()
         {
-            LogHelper.Log("InitLoadControls...");
             InitLoadSkinMenuItems();
 
-            this.Text += Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            this.Text += version;
+
+            LogHelper.Log(string.Format("get CAN Logger version: [{0}]", version));
 
             //init & load FormData
             //FormData formData1 = new FormData();
@@ -84,13 +88,11 @@ namespace CL_Main
             //formData1.Show(this.dockPanel, DockState.Document);
             //formData2.Show(formData1.Pane, null);
 
-            //init & load FormDevice
-            FormDevice formDevice = new FormDevice();
+            // init & load FormDevice
             formDevice.Show(this.dockPanel, DockState.DockBottom);
 
             //init & load FormStatus
-            FormStatus formSatus = new FormStatus();
-            formSatus.Show(formDevice.Pane, DockAlignment.Right, 0.5);
+            formStatus.Show(formDevice.Pane, DockAlignment.Right, 0.5);
 
             this.Activate();
         }
@@ -112,6 +114,11 @@ namespace CL_Main
             cbxFrameFormat.Items[2] = resources.GetString("cbxFrameFormat.Items2");
 
             cbxIDFormat.Items[0] = resources.GetString("cbxIDFormat.Items");
+
+        }
+
+        private void UpdateControls()
+        {
 
         }
 
@@ -166,19 +173,14 @@ namespace CL_Main
 
         private void btnAddSet_Click(object sender, EventArgs e)
         {
-            // get selected device or null
-            Device device = null;
+            Device device = this.formDevice.GetSelectedDevice();
+            bool isNewDevice = device == null ? true : false;
 
             DialogDevice dialogDevice = new DialogDevice(device);
             if (dialogDevice.ShowDialog() == DialogResult.OK)
             {
-                if (device != null)
-                {
-                    // update forms
-                    return;
-                }
-                Device newDevice = dialogDevice.GetDevice();
-
+                this.formDevice.UpdateControls();
+                this.formStatus.UpdateControls();
                 dialogDevice.Close();
             }
         }

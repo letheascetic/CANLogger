@@ -180,31 +180,68 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chbxDevices.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="chbxDevices.HorizontalScrollbar" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chbxDevices.Items" xml:space="preserve">
+    <value>USBCAN-II-0</value>
+  </data>
+  <data name="chbxDevices.Items1" xml:space="preserve">
+    <value>USBCAN-II-1</value>
+  </data>
+  <data name="chbxDevices.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 27</value>
+  </data>
+  <data name="chbxDevices.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 155</value>
+  </data>
+  <data name="chbxDevices.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;chbxDevices.Name" xml:space="preserve">
+    <value>chbxDevices</value>
+  </data>
+  <data name="&gt;&gt;chbxDevices.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chbxDevices.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chbxDevices.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="cOpen.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="cStart.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="cOpen.HeaderText" xml:space="preserve">
-    <value>状态</value>
+  <data name="cStart.HeaderText" xml:space="preserve">
+    <value>启动/复位</value>
   </data>
-  <data name="cOpen.Width" type="System.Int32, mscorlib">
-    <value>50</value>
+  <data name="cStart.Width" type="System.Int32, mscorlib">
+    <value>81</value>
   </data>
-  <metadata name="cDevice.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="cChannelName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="cDevice.HeaderText" xml:space="preserve">
-    <value>设备</value>
+  <data name="cChannelName.HeaderText" xml:space="preserve">
+    <value>CAN</value>
   </data>
-  <data name="cDevice.Width" type="System.Int32, mscorlib">
-    <value>80</value>
+  <data name="cChannelName.Width" type="System.Int32, mscorlib">
+    <value>71</value>
   </data>
-  <metadata name="cChannelNum.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="cChannelIndex.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="cChannelNum.HeaderText" xml:space="preserve">
-    <value>通道数</value>
+  <data name="cChannelIndex.HeaderText" xml:space="preserve">
+    <value>CAN索引</value>
+  </data>
+  <data name="cChannelIndex.Width" type="System.Int32, mscorlib">
+    <value>101</value>
   </data>
   <metadata name="cBaudRate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -212,11 +249,17 @@
   <data name="cBaudRate.HeaderText" xml:space="preserve">
     <value>波特率</value>
   </data>
+  <data name="cBaudRate.Width" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
   <metadata name="cBusLoad.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="cBusLoad.HeaderText" xml:space="preserve">
     <value>总线负载</value>
+  </data>
+  <data name="cBusLoad.Width" type="System.Int32, mscorlib">
+    <value>98</value>
   </data>
   <metadata name="cBusFlow.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -224,29 +267,31 @@
   <data name="cBusFlow.HeaderText" xml:space="preserve">
     <value>总线流量</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dgvDeviceList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="cBusFlow.Width" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="dgvChannels.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="dgvDeviceList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
+  <data name="dgvChannels.Location" type="System.Drawing.Point, System.Drawing">
+    <value>129, 27</value>
   </data>
-  <data name="dgvDeviceList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>570, 155</value>
+  <data name="dgvChannels.Size" type="System.Drawing.Size, System.Drawing">
+    <value>441, 155</value>
   </data>
-  <data name="dgvDeviceList.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="dgvChannels.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;dgvDeviceList.Name" xml:space="preserve">
-    <value>dgvDeviceList</value>
+  <data name="&gt;&gt;dgvChannels.Name" xml:space="preserve">
+    <value>dgvChannels</value>
   </data>
-  <data name="&gt;&gt;dgvDeviceList.Type" xml:space="preserve">
+  <data name="&gt;&gt;dgvChannels.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dgvDeviceList.Parent" xml:space="preserve">
+  <data name="&gt;&gt;dgvChannels.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;dgvDeviceList.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;dgvChannels.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -306,22 +351,22 @@
   <data name="&gt;&gt;btnDelete.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cOpen.Name" xml:space="preserve">
-    <value>cOpen</value>
+  <data name="&gt;&gt;cStart.Name" xml:space="preserve">
+    <value>cStart</value>
   </data>
-  <data name="&gt;&gt;cOpen.Type" xml:space="preserve">
+  <data name="&gt;&gt;cStart.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cDevice.Name" xml:space="preserve">
-    <value>cDevice</value>
+  <data name="&gt;&gt;cChannelName.Name" xml:space="preserve">
+    <value>cChannelName</value>
   </data>
-  <data name="&gt;&gt;cDevice.Type" xml:space="preserve">
+  <data name="&gt;&gt;cChannelName.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cChannelNum.Name" xml:space="preserve">
-    <value>cChannelNum</value>
+  <data name="&gt;&gt;cChannelIndex.Name" xml:space="preserve">
+    <value>cChannelIndex</value>
   </data>
-  <data name="&gt;&gt;cChannelNum.Type" xml:space="preserve">
+  <data name="&gt;&gt;cChannelIndex.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cBaudRate.Name" xml:space="preserve">

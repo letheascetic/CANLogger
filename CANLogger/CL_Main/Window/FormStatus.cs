@@ -20,7 +20,7 @@ namespace CL_Main
             InitializeComponent();
             InitLoadControls();
         }
-
+        
         private void InitLoadControls()
         {
             //UCStatus statusChannel1 = new UCStatus();
@@ -45,5 +45,11 @@ namespace CL_Main
 
             resources.ApplyResources(this, "$this");
         }
+
+        public void UpdateControls()
+        {
+
+        }
+
     }
 }

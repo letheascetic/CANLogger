@@ -7,8 +7,8 @@ namespace CL_Framework
 {
     public class LogHelper
     {
-        public static readonly log4net.ILog loginfo = log4net.LogManager.GetLogger("loginfo");
-        public static readonly log4net.ILog logerror = log4net.LogManager.GetLogger("logerror");
+        private static readonly log4net.ILog loginfo = log4net.LogManager.GetLogger("info");
+        private static readonly log4net.ILog logerror = log4net.LogManager.GetLogger("error");
 
         public static void Log(string info)
         {

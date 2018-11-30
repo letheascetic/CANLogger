@@ -29,6 +29,9 @@ namespace CL_Framework
         public string ChannelName
         { get { return channelName; } }
 
+        public Device ParentDevice
+        { get { return parentDevice; } }
+
         public int BaudRate
         { get { return baudRate; } }
 
