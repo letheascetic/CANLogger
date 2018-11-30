@@ -18,6 +18,7 @@ namespace CL_Main
     public partial class FormDevice : DockContent
     {
         private DeviceGroup deviceGroup = DeviceGroup.CreateInstance();
+        private List<string> deviceNames = new List<string>();
         private Hashtable nameDevicePairs = new Hashtable();
 
         public FormDevice()
@@ -25,33 +26,53 @@ namespace CL_Main
             InitializeComponent();
         }
 
-        public void SetLanguage(string language)
-        {
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(language);
-            System.ComponentModel.ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
-
-            resources.ApplyResources(this, "$this");
-        }
+        #region public apis
 
         public Device GetSelectedDevice()
         {
-            Channel channel = GetSelectedChannel();
-            if (channel != null)
+            string deviceName = this.cbxDevice.SelectedText;
+            if (deviceName == null || deviceName.Equals(string.Empty))
             {
-                return channel.ParentDevice;
+                LogHelper.Log("no selected device.");
+                return null;
             }
-            return null;
+
+            return (Device)nameDevicePairs[deviceName];
         }
 
         public Channel GetSelectedChannel()
         {
-            if (dgvChannels.SelectedRows.Count <= 0)
+            if (dgvChannels.CurrentRow == null)
             {
+                LogHelper.Log("no selected channel.");
                 return null;
             }
-            Channel channel = (Channel)dgvChannels.SelectedRows[0].Tag;
+            Channel channel = (Channel)dgvChannels.CurrentRow.Tag;
             return channel;
         }
+
+        #endregion
+
+
+        #region private functions
+
+        private void Init()
+        {
+            
+        }
+
+        #endregion
+
+        public void SetLanguage(string language)
+        {
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(language);
+            System.ComponentModel.ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
+            resources.ApplyResources(this, "$this");
+        }
+
+
+
+
 
         public void UpdateControls()
         {
@@ -117,29 +138,25 @@ namespace CL_Main
             UpdateControls();
         }
 
+
+
         private void FormDevice_Load(object sender, EventArgs e)
         {
             InitLoadControls();
         }
 
-        private void chbxDevices_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            
-        }
 
-        private void btnAddSet_Click(object sender, EventArgs e)
+        private void dgvChannels_SelectionChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
 
-        }
+        #region events
 
-        private void btnReset_Click(object sender, EventArgs e)
-        {
 
-        }
+
+        #region
+
     }
 }
