@@ -246,6 +246,9 @@
     <None Include="Resources\sendmode.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\resetall.jpg" />
+    <None Include="Resources\opertion.jpg" />
+    <None Include="Resources\config.jpg" />
     <Content Include="Resources\logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

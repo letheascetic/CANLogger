@@ -79,7 +79,7 @@ namespace CL_Main
         public void AddDevice(string deviceName, Device device)
         {
             nameDevicePairs.Add(deviceName, device);
-            chbxDevices.Items.Add(deviceName, true);
+            //chbxDevices.Items.Add(deviceName, true);
             for (uint channelIndex = 0; channelIndex < device.CANNum; channelIndex++)
             {
                 Channel channel = device.GetChannel(channelIndex);
@@ -93,10 +93,11 @@ namespace CL_Main
 
         public void RemoveDevice(string deviceName, Device device)
         {
-            int index = chbxDevices.FindString(deviceName);
+            int index = 0;
+                //chbxDevices.FindString(deviceName);
             if (index >= 0)
             {
-                chbxDevices.Items.RemoveAt(index);
+                //chbxDevices.Items.RemoveAt(index);
             }
 
             foreach (DataGridViewRow row in dgvChannels.Rows)
@@ -112,7 +113,7 @@ namespace CL_Main
 
         public void InitLoadControls()
         {
-            chbxDevices.Items.Clear();
+            //chbxDevices.Items.Clear();
             UpdateControls();
         }
 

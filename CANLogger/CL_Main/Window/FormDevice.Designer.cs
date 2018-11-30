@@ -30,14 +30,24 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDevice));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.btnAddSet = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnReset = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnDelete = new System.Windows.Forms.ToolStripButton();
-            this.chbxDevices = new System.Windows.Forms.CheckedListBox();
+            this.lbDevice = new System.Windows.Forms.ToolStripLabel();
+            this.cbxDevice = new System.Windows.Forms.ToolStripComboBox();
+            this.btnOptionCAN = new System.Windows.Forms.ToolStripDropDownButton();
+            this.itemStartCAN = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemResetCAN = new System.Windows.Forms.ToolStripMenuItem();
+            this.sp1 = new System.Windows.Forms.ToolStripSeparator();
+            this.lbCAN = new System.Windows.Forms.ToolStripLabel();
+            this.tbxCAN = new System.Windows.Forms.ToolStripTextBox();
             this.dgvChannels = new System.Windows.Forms.DataGridView();
-            this.cStart = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.sp3 = new System.Windows.Forms.ToolStripSeparator();
+            this.sp2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnOption = new System.Windows.Forms.ToolStripDropDownButton();
+            this.itemAddDevice = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemConfigDevice = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemResetDevice = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemDeleteDevice = new System.Windows.Forms.ToolStripMenuItem();
+            this.sp4 = new System.Windows.Forms.ToolStripSeparator();
+            this.cStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cChannelIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cBaudRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,55 +63,65 @@
             resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnAddSet,
-            this.toolStripSeparator1,
-            this.btnReset,
-            this.toolStripSeparator2,
-            this.btnDelete});
+            this.lbDevice,
+            this.cbxDevice,
+            this.sp1,
+            this.btnOption,
+            this.sp2,
+            this.lbCAN,
+            this.tbxCAN,
+            this.sp3,
+            this.btnOptionCAN,
+            this.sp4});
             this.toolStrip.Name = "toolStrip";
             // 
-            // btnAddSet
+            // lbDevice
             // 
-            this.btnAddSet.Image = global::CL_Main.Properties.Resources.add;
-            resources.ApplyResources(this.btnAddSet, "btnAddSet");
-            this.btnAddSet.Name = "btnAddSet";
-            this.btnAddSet.Click += new System.EventHandler(this.btnAddSet_Click);
+            this.lbDevice.Name = "lbDevice";
+            resources.ApplyResources(this.lbDevice, "lbDevice");
             // 
-            // toolStripSeparator1
+            // cbxDevice
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.cbxDevice.BackColor = System.Drawing.SystemColors.Control;
+            this.cbxDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbxDevice, "cbxDevice");
+            this.cbxDevice.Name = "cbxDevice";
             // 
-            // btnReset
+            // btnOptionCAN
             // 
-            this.btnReset.Image = global::CL_Main.Properties.Resources.reset;
-            resources.ApplyResources(this.btnReset, "btnReset");
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnOptionCAN.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemStartCAN,
+            this.itemResetCAN});
+            this.btnOptionCAN.Image = global::CL_Main.Properties.Resources.opertion;
+            resources.ApplyResources(this.btnOptionCAN, "btnOptionCAN");
+            this.btnOptionCAN.Name = "btnOptionCAN";
             // 
-            // toolStripSeparator2
+            // itemStartCAN
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            this.itemStartCAN.Image = global::CL_Main.Properties.Resources.start;
+            this.itemStartCAN.Name = "itemStartCAN";
+            resources.ApplyResources(this.itemStartCAN, "itemStartCAN");
             // 
-            // btnDelete
+            // itemResetCAN
             // 
-            this.btnDelete.Image = global::CL_Main.Properties.Resources.delete;
-            resources.ApplyResources(this.btnDelete, "btnDelete");
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.itemResetCAN.Image = global::CL_Main.Properties.Resources.stop;
+            this.itemResetCAN.Name = "itemResetCAN";
+            resources.ApplyResources(this.itemResetCAN, "itemResetCAN");
             // 
-            // chbxDevices
+            // sp1
             // 
-            this.chbxDevices.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.chbxDevices, "chbxDevices");
-            this.chbxDevices.FormattingEnabled = true;
-            this.chbxDevices.Items.AddRange(new object[] {
-            resources.GetString("chbxDevices.Items"),
-            resources.GetString("chbxDevices.Items1")});
-            this.chbxDevices.Name = "chbxDevices";
-            this.chbxDevices.UseCompatibleTextRendering = true;
-            this.chbxDevices.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chbxDevices_ItemCheck);
+            this.sp1.Name = "sp1";
+            resources.ApplyResources(this.sp1, "sp1");
+            // 
+            // lbCAN
+            // 
+            this.lbCAN.Name = "lbCAN";
+            resources.ApplyResources(this.lbCAN, "lbCAN");
+            // 
+            // tbxCAN
+            // 
+            resources.ApplyResources(this.tbxCAN, "tbxCAN");
+            this.tbxCAN.Name = "tbxCAN";
             // 
             // dgvChannels
             // 
@@ -113,7 +133,7 @@
             this.dgvChannels.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvChannels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvChannels.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cStart,
+            this.cStatus,
             this.cChannelName,
             this.cChannelIndex,
             this.cBaudRate,
@@ -125,11 +145,63 @@
             this.dgvChannels.ReadOnly = true;
             this.dgvChannels.RowTemplate.Height = 27;
             // 
-            // cStart
+            // sp3
             // 
-            resources.ApplyResources(this.cStart, "cStart");
-            this.cStart.Name = "cStart";
-            this.cStart.ReadOnly = true;
+            this.sp3.Name = "sp3";
+            resources.ApplyResources(this.sp3, "sp3");
+            // 
+            // sp2
+            // 
+            this.sp2.Name = "sp2";
+            resources.ApplyResources(this.sp2, "sp2");
+            // 
+            // btnOption
+            // 
+            this.btnOption.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemAddDevice,
+            this.itemConfigDevice,
+            this.itemResetDevice,
+            this.itemDeleteDevice});
+            this.btnOption.Image = global::CL_Main.Properties.Resources.opertion;
+            resources.ApplyResources(this.btnOption, "btnOption");
+            this.btnOption.Name = "btnOption";
+            // 
+            // itemAddDevice
+            // 
+            this.itemAddDevice.Image = global::CL_Main.Properties.Resources.add;
+            this.itemAddDevice.Name = "itemAddDevice";
+            resources.ApplyResources(this.itemAddDevice, "itemAddDevice");
+            // 
+            // itemConfigDevice
+            // 
+            this.itemConfigDevice.Image = global::CL_Main.Properties.Resources.config;
+            this.itemConfigDevice.Name = "itemConfigDevice";
+            resources.ApplyResources(this.itemConfigDevice, "itemConfigDevice");
+            // 
+            // itemResetDevice
+            // 
+            this.itemResetDevice.Image = global::CL_Main.Properties.Resources.resetall;
+            this.itemResetDevice.Name = "itemResetDevice";
+            resources.ApplyResources(this.itemResetDevice, "itemResetDevice");
+            // 
+            // itemDeleteDevice
+            // 
+            this.itemDeleteDevice.Image = global::CL_Main.Properties.Resources.delete;
+            this.itemDeleteDevice.Name = "itemDeleteDevice";
+            resources.ApplyResources(this.itemDeleteDevice, "itemDeleteDevice");
+            // 
+            // sp4
+            // 
+            this.sp4.Name = "sp4";
+            resources.ApplyResources(this.sp4, "sp4");
+            // 
+            // cStatus
+            // 
+            resources.ApplyResources(this.cStatus, "cStatus");
+            this.cStatus.Name = "cStatus";
+            this.cStatus.ReadOnly = true;
+            this.cStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // cChannelName
             // 
@@ -167,7 +239,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.dgvChannels);
-            this.Controls.Add(this.chbxDevices);
             this.Controls.Add(this.toolStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.HideOnClose = true;
@@ -184,14 +255,24 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripButton btnAddSet;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton btnReset;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton btnDelete;
-        private System.Windows.Forms.CheckedListBox chbxDevices;
         private System.Windows.Forms.DataGridView dgvChannels;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn cStart;
+        private System.Windows.Forms.ToolStripComboBox cbxDevice;
+        private System.Windows.Forms.ToolStripLabel lbDevice;
+        private System.Windows.Forms.ToolStripSeparator sp1;
+        private System.Windows.Forms.ToolStripDropDownButton btnOptionCAN;
+        private System.Windows.Forms.ToolStripMenuItem itemStartCAN;
+        private System.Windows.Forms.ToolStripMenuItem itemResetCAN;
+        private System.Windows.Forms.ToolStripLabel lbCAN;
+        private System.Windows.Forms.ToolStripTextBox tbxCAN;
+        private System.Windows.Forms.ToolStripSeparator sp2;
+        private System.Windows.Forms.ToolStripSeparator sp3;
+        private System.Windows.Forms.ToolStripDropDownButton btnOption;
+        private System.Windows.Forms.ToolStripMenuItem itemAddDevice;
+        private System.Windows.Forms.ToolStripMenuItem itemConfigDevice;
+        private System.Windows.Forms.ToolStripMenuItem itemResetDevice;
+        private System.Windows.Forms.ToolStripMenuItem itemDeleteDevice;
+        private System.Windows.Forms.ToolStripSeparator sp4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn cChannelName;
         private System.Windows.Forms.DataGridViewTextBoxColumn cChannelIndex;
         private System.Windows.Forms.DataGridViewTextBoxColumn cBaudRate;
