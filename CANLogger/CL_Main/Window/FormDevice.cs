@@ -57,7 +57,7 @@ namespace CL_Main
                 dgvChannels.Rows[index].Visible = false;
                 dgvChannels.Rows[index].Tag = channel;
                 dgvChannels.Rows[index].Cells[0].Value = "";
-                dgvChannels.Rows[index].Cells[1].Value = channel.Mode;
+                dgvChannels.Rows[index].Cells[1].Value = Channel.GetCANModeDesc(channel.Mode);
                 dgvChannels.Rows[index].Cells[2].Value = channel.ChannelName;
                 dgvChannels.Rows[index].Cells[3].Value = channel.ChannelIndex;
                 dgvChannels.Rows[index].Cells[4].Value = channel.BaudRate;
@@ -72,7 +72,19 @@ namespace CL_Main
         /// <param name="device"></param>
         public void UpdateDevice(Device device)
         {
+            string deviceName = GetDeviceName(device);
 
+            List<DataGridViewRow> mappingRows = FindMappingRows(device);
+            foreach (DataGridViewRow row in mappingRows)
+            {
+                Channel channel = (Channel)row.Tag;
+                row.Cells[0].Value = "";
+                row.Cells[1].Value = Channel.GetCANModeDesc(channel.Mode);
+                row.Cells[2].Value = channel.ChannelName;
+                row.Cells[3].Value = channel.ChannelIndex;
+                row.Cells[4].Value = channel.BaudRate;
+            }
+            this.cbxDevice.SelectedIndex = this.cbxDevice.FindString(deviceName);
         }
 
         public void RemoveDevice(Device device)
@@ -149,32 +161,6 @@ namespace CL_Main
         }
 
         #endregion
-
-
-        //public void UpdateControls()
-        //{
-        //    foreach (Device device in deviceGroup.Devices)
-        //    {
-        //        string deviceName = string.Join("-", device.DeviceTypeDesc, device.DeviceIndex);
-        //        if (!this.nameDevicePairs.ContainsKey(deviceName))  // new device found
-        //        {
-        //            AddDevice(deviceName, device);
-        //        }
-        //    }
-
-        //    foreach (DictionaryEntry keyValuePair in this.nameDevicePairs)
-        //    {
-        //        string deviceName = (string)keyValuePair.Key;
-        //        Device device = (Device)keyValuePair.Value;
-        //        if (deviceGroup.GetDevice(device.DeviceType, device.DeviceIndex) == null)   // device removed
-        //        {
-        //            RemoveDevice(deviceName, device);
-        //        }
-        //    }
-
-        //}
-
-
 
         #region events
 
