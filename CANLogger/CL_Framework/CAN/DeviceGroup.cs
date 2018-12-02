@@ -95,8 +95,11 @@ namespace CL_Framework
                 return false;
             }
 
-            this.devices.Add(device);
-
+            lock (locker)
+            {
+                this.devices.Add(device);
+            }
+            
             if (DeviceAdded != null)
             {
                 DeviceAdded.Invoke(device, paras);
@@ -119,8 +122,15 @@ namespace CL_Framework
                 return false;
             }
 
-            this.devices.Remove(device);
-            DeviceRemoved.Invoke(device, paras);
+            lock (locker)
+            {
+                this.devices.Remove(device);
+            }
+            
+            if (DeviceRemoved != null)
+            {
+                DeviceRemoved.Invoke(device, paras);
+            }
             return true;
         }
 
@@ -138,7 +148,10 @@ namespace CL_Framework
                 return false;
             }
 
-            DeviceUpdated.Invoke(device, paras);
+            if (DeviceUpdated != null)
+            {
+                DeviceUpdated.Invoke(device, paras);
+            }
             return true;
         }
 

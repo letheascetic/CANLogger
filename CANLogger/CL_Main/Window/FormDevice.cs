@@ -17,12 +17,11 @@ namespace CL_Main
 {
     public partial class FormDevice : DockContent
     {
-        private DeviceGroup deviceGroup = DeviceGroup.CreateInstance();
-        private Hashtable nameDevicePairs = new Hashtable();
+        private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
+        private Hashtable pNameDevicePairs = new Hashtable();
 
         private Device selectedDevice = null;
         private Channel selectedChannel = null;
-
 
         public Device SelectedDevice
         { get { return selectedDevice; } }
@@ -35,6 +34,7 @@ namespace CL_Main
         public FormDevice()
         {
             InitializeComponent();
+            Init();
         }
 
         public void SetLanguage(string language)
@@ -44,10 +44,10 @@ namespace CL_Main
             resources.ApplyResources(this, "$this");
         }
 
-        public void AddDevice(Device device)
+        public void AddDevice(Device device, object paras)
         {
             string deviceName = GetDeviceName(device);
-            nameDevicePairs.Add(deviceName, device);
+            pNameDevicePairs.Add(deviceName, device);
 
             this.cbxDevice.Items.Add(deviceName);
             for (uint channelIndex = 0; channelIndex < device.CANNum; channelIndex++)
@@ -70,7 +70,7 @@ namespace CL_Main
         /// 配置设备或复位设备
         /// </summary>
         /// <param name="device"></param>
-        public void UpdateDevice(Device device)
+        public void UpdateDevice(Device device, object paras)
         {
             string deviceName = GetDeviceName(device);
 
@@ -87,10 +87,10 @@ namespace CL_Main
             this.cbxDevice.SelectedIndex = this.cbxDevice.FindString(deviceName);
         }
 
-        public void RemoveDevice(Device device)
+        public void RemoveDevice(Device device, object paras)
         {
             string deviceName = GetDeviceName(device);
-            this.nameDevicePairs.Remove(deviceName);
+            this.pNameDevicePairs.Remove(deviceName);
             this.cbxDevice.Items.Remove(deviceName);
 
             List<DataGridViewRow> rows = FindMappingRows(device);
@@ -107,8 +107,14 @@ namespace CL_Main
 
         #endregion
 
-
         #region private functions
+
+        private void Init()
+        {
+            pDeviceGroup.DeviceAdded += new DeviceEventHandler(this.AddDevice);
+            pDeviceGroup.DeviceRemoved += new DeviceEventHandler(this.RemoveDevice);
+            pDeviceGroup.DeviceUpdated += new DeviceEventHandler(this.UpdateDevice);
+        }
 
         private string GetDeviceName(Device device)
         {
@@ -125,7 +131,7 @@ namespace CL_Main
             }
 
             LogHelper.Log(string.Format("selected device: [{0}]", deviceName));
-            return (Device)nameDevicePairs[deviceName];
+            return (Device)pNameDevicePairs[deviceName];
         }
 
         private Channel GetSelectedChannel()
@@ -235,8 +241,8 @@ namespace CL_Main
 
             if (MessageBox.Show(content, "删除设备", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                this.deviceGroup.Remove(device, null);
-                RemoveDevice(device);
+                this.pDeviceGroup.Remove(device, null);
+                RemoveDevice(device, null);
             }
         }
 

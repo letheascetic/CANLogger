@@ -16,83 +16,77 @@ namespace CL_Main
 {
     public partial class FormStatus : DockContent
     {
-        private DeviceGroup pMeviceGroup = DeviceGroup.CreateInstance();
+        private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
         private List<Device> pDevices = new List<Device>();
         private List<UCCANStatus> pChannelStatusList = new List<UCCANStatus>();
+
+        #region public apis
 
         public FormStatus()
         {
             InitializeComponent();
-            InitLoadControls();
-        }
-
-        public bool AddDevice(Device newDevice)
-        {
-            if (newDevice == null)
-            {
-                LogHelper.Log("newDevice could not be null");
-                return false;
-            }
-
-            for (uint channelIndex = 0; channelIndex < newDevice.CANNum; channelIndex++)
-            {
-                Channel channel = newDevice.GetChannel(channelIndex);
-                AddChannel(channel);
-            }
-
-            pDevices.Add(newDevice);
-            return true;
-        }
-
-        public bool RemoveDevice(Device device)
-        {
-            if (device == null)
-            {
-                LogHelper.Log("device could not be null");
-                return false;
-            }
-
-            foreach (UCCANStatus pChannelStatus in pChannelStatusList)
-            {
-                if (Object.ReferenceEquals(device, pChannelStatus.GetChannel().ParentDevice))
-                {
-                    TabPage tabPage = (TabPage)pChannelStatus.Parent;
-
-                }
-            }
-
-            return false;
         }
 
         public void SetLanguage(string language)
         {
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(language);
             System.ComponentModel.ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
-
             resources.ApplyResources(this, "$this");
         }
 
-        private void InitLoadControls()
+        public void AddDevice(Device device, object paras)
         {
-            //UCStatus statusChannel1 = new UCStatus();
-            //TabPage tabPage1 = new TabPage();
-            //tabPage1.Text = "CAN1";
-            //tabPage1.Controls.Add(statusChannel1);
-            //statusChannel1.Dock = DockStyle.Fill;
-            //this.tabControl.Controls.Add(tabPage1);
+            for (uint channelIndex = 0; channelIndex < device.CANNum; channelIndex++)
+            {
+                Channel channel = device.GetChannel(channelIndex);
+                AddChannel(channel);
+            }
+            pDevices.Add(device);
+        }
 
-            //UCStatus statusChannel2 = new UCStatus();
-            //TabPage tabPage2 = new TabPage();
-            //tabPage2.Text = "CAN2";
-            //tabPage2.Controls.Add(statusChannel2);
-            //statusChannel2.Dock = DockStyle.Fill;
-            //this.tabControl.Controls.Add(tabPage2);
+        public void RemoveDevice(Device device, object paras)
+        {
+            List<UCCANStatus> pCANStatusList = GetMappingCANStatusList(device);
+            foreach (UCCANStatus pCANStatus in pCANStatusList)
+            {
+                pChannelStatusList.Remove(pCANStatus);
+                TabPage tabPage = (TabPage)pCANStatus.Parent;
+                tabControl.TabPages.Remove(tabPage);
+            }
+            pDevices.Remove(device);
+        }
+
+        public void UpdateDevice(Device device, object paras)
+        {
+
+        }
+
+        #endregion
+
+        #region private apis
+
+        private List<UCCANStatus> GetMappingCANStatusList(Device device)
+        {
+            List<UCCANStatus> pCANStatusList = new List<UCCANStatus>();
+            if (device == null)
+            {
+                return pCANStatusList;
+            }
+            foreach (UCCANStatus pCANStatus in this.pChannelStatusList)
+            {
+                Device parentDevice = pCANStatus.GetChannel().ParentDevice;
+                if (Object.ReferenceEquals(device, parentDevice))
+                {
+                    pCANStatusList.Add(pCANStatus);
+                }
+            }
+            return pCANStatusList;
         }
 
         private void AddChannel(Channel channel)
         {
             TabPage tabPage = new TabPage(channel.ChannelName);
-            
+
             UCCANStatus pChnanelStatus = new UCCANStatus(channel);
             pChnanelStatus.Parent = tabPage;
             pChnanelStatus.Dock = DockStyle.Fill;
@@ -102,9 +96,6 @@ namespace CL_Main
             pChannelStatusList.Add(pChnanelStatus);
         }
 
-        private void FormStatus_Load(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }
