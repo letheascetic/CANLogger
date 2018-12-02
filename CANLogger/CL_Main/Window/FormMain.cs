@@ -173,13 +173,13 @@ namespace CL_Main
 
         private void btnAddSet_Click(object sender, EventArgs e)
         {
-            Device device = this.formDevice.GetSelectedDevice();
+            Device device = this.formDevice.SelectedDevice;
             bool isNewDevice = device == null ? true : false;
 
             DialogDevice dialogDevice = new DialogDevice(device);
             if (dialogDevice.ShowDialog() == DialogResult.OK)
             {
-                this.formDevice.UpdateControls();
+                //this.formDevice.UpdateControls();
                 //this.formStatus.UpdateControls();
                 dialogDevice.Close();
             }

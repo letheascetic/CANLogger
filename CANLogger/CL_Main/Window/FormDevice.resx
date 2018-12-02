@@ -270,6 +270,15 @@
   <data name="cStatus.Width" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
+  <metadata name="cMode.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cMode.HeaderText" xml:space="preserve">
+    <value>模式</value>
+  </data>
+  <data name="cMode.Width" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
   <metadata name="cChannelName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -466,6 +475,12 @@
     <value>cStatus</value>
   </data>
   <data name="&gt;&gt;cStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cMode.Name" xml:space="preserve">
+    <value>cMode</value>
+  </data>
+  <data name="&gt;&gt;cMode.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cChannelName.Name" xml:space="preserve">

@@ -48,6 +48,7 @@
             this.sp4 = new System.Windows.Forms.ToolStripSeparator();
             this.dgvChannels = new System.Windows.Forms.DataGridView();
             this.cStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cMode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cChannelIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cBaudRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,6 +87,7 @@
             this.cbxDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbxDevice, "cbxDevice");
             this.cbxDevice.Name = "cbxDevice";
+            this.cbxDevice.SelectedIndexChanged += new System.EventHandler(this.cbxDevice_SelectedIndexChanged);
             // 
             // sp1
             // 
@@ -141,6 +143,7 @@
             // 
             resources.ApplyResources(this.tbxCAN, "tbxCAN");
             this.tbxCAN.Name = "tbxCAN";
+            this.tbxCAN.ReadOnly = true;
             // 
             // sp3
             // 
@@ -184,6 +187,7 @@
             this.dgvChannels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvChannels.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cStatus,
+            this.cMode,
             this.cChannelName,
             this.cChannelIndex,
             this.cBaudRate,
@@ -204,6 +208,12 @@
             this.cStatus.ReadOnly = true;
             this.cStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.cStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cMode
+            // 
+            resources.ApplyResources(this.cMode, "cMode");
+            this.cMode.Name = "cMode";
+            this.cMode.ReadOnly = true;
             // 
             // cChannelName
             // 
@@ -275,6 +285,7 @@
         private System.Windows.Forms.ToolStripMenuItem itemDeleteDevice;
         private System.Windows.Forms.ToolStripSeparator sp4;
         private System.Windows.Forms.DataGridViewTextBoxColumn cStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cMode;
         private System.Windows.Forms.DataGridViewTextBoxColumn cChannelName;
         private System.Windows.Forms.DataGridViewTextBoxColumn cChannelIndex;
         private System.Windows.Forms.DataGridViewTextBoxColumn cBaudRate;

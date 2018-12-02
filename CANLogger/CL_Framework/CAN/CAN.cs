@@ -6,13 +6,6 @@ using System.Text;
 
 namespace CL_Framework
 {
-    public enum CANMode : uint
-    {
-        MODE_NORMAL = 0,    //normal
-        MODE_LOM = 1,       //listen only
-        MODE_STM = 2        //self test mode
-    }
-
     [Flags]
     public enum CANResult : uint
     {

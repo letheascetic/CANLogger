@@ -15,7 +15,7 @@ namespace CL_Framework
 
     public class Device
     {
-        public static List<KeyValuePair<DeviceType, string>> DeviceTypies = new List<KeyValuePair<DeviceType, string>>();
+        public static readonly List<KeyValuePair<DeviceType, string>> DeviceTypies = new List<KeyValuePair<DeviceType, string>>();
         public static readonly string DEVICE_TYPE_UNKNOWN = "UNKNOWN";
         public static readonly string DEVICE_TYPE_USBCAN = "USBCAN";
         public static readonly string DEVICE_TYPE_USBCANII = "USBCAN-II";

@@ -1,12 +1,25 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace CL_Framework
 {
+    public enum CANMode : uint
+    {
+        MODE_NORMAL = 0,    //normal
+        MODE_LOM = 1,       //listen only
+        MODE_STM = 2        //self test mode
+    }
+
     public class Channel
     {
+        public static readonly Hashtable CANModes = new Hashtable();
+        public static readonly string CAN_MODE_NORMAL = "正常模式";
+        public static readonly string CAN_MODE_LOM = "只听模式";
+        public static readonly string CAN_MODE_STM = "自发自收";
+
         public static readonly int DEFAULT_BAUDRATE = 1000;
         public static readonly uint DEFAULT_ACC_CODE = 0x0;
         public static readonly uint DEFAULT_ACC_MASK = 0xffffffff;
@@ -38,6 +51,17 @@ namespace CL_Framework
         public CANMode Mode
         { get { return (CANMode)Enum.ToObject(typeof(CANMode), this.initConfig.Mode); } }
 
+        static Channel()
+        {
+            CANModes.Add(CANMode.MODE_NORMAL, CAN_MODE_NORMAL);
+            CANModes.Add(CANMode.MODE_LOM, CAN_MODE_LOM);
+            CANModes.Add(CANMode.MODE_STM, CAN_MODE_STM);
+        }
+
+        public static string GetCANModeDesc(CANMode mode)
+        {
+            return CANModes.ContainsKey(mode) ? (string)CANModes[mode] : null;
+        }
 
         public Channel(uint channelIndex, string channelName, Device parentDevice)
         {
