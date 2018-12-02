@@ -207,8 +207,40 @@ namespace CL_Main
 
         }
 
-        #endregion
+        private void itemAddDevice_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void itemConfigDevice_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void itemResetDevice_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void itemDeleteDevice_Click(object sender, EventArgs e)
+        {
+            Device device = this.selectedDevice;
+            if (device == null)
+            {
+                return;
+            }
+
+            string deviceName = GetDeviceName(device);
+            string content = string.Format("确定要删除当前设备（{0}）吗？", deviceName);
+
+            if (MessageBox.Show(content, "删除设备", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                this.deviceGroup.Remove(device, null);
+                RemoveDevice(device);
+            }
+        }
+
+        #endregion
 
     }
 }

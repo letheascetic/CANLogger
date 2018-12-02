@@ -110,24 +110,28 @@
             this.itemAddDevice.Image = global::CL_Main.Properties.Resources.add;
             this.itemAddDevice.Name = "itemAddDevice";
             resources.ApplyResources(this.itemAddDevice, "itemAddDevice");
+            this.itemAddDevice.Click += new System.EventHandler(this.itemAddDevice_Click);
             // 
             // itemConfigDevice
             // 
             this.itemConfigDevice.Image = global::CL_Main.Properties.Resources.config;
             this.itemConfigDevice.Name = "itemConfigDevice";
             resources.ApplyResources(this.itemConfigDevice, "itemConfigDevice");
+            this.itemConfigDevice.Click += new System.EventHandler(this.itemConfigDevice_Click);
             // 
             // itemResetDevice
             // 
             this.itemResetDevice.Image = global::CL_Main.Properties.Resources.resetall;
             this.itemResetDevice.Name = "itemResetDevice";
             resources.ApplyResources(this.itemResetDevice, "itemResetDevice");
+            this.itemResetDevice.Click += new System.EventHandler(this.itemResetDevice_Click);
             // 
             // itemDeleteDevice
             // 
             this.itemDeleteDevice.Image = global::CL_Main.Properties.Resources.delete;
             this.itemDeleteDevice.Name = "itemDeleteDevice";
             resources.ApplyResources(this.itemDeleteDevice, "itemDeleteDevice");
+            this.itemDeleteDevice.Click += new System.EventHandler(this.itemDeleteDevice_Click);
             // 
             // sp2
             // 

@@ -171,7 +171,7 @@ namespace CL_Main.Dialog
                     }
                 }
             }
-            this.deviceGroup.Add(this.device);
+            this.deviceGroup.Add(this.device, null);
             this.DialogResult = DialogResult.OK;
         }
 
@@ -189,7 +189,7 @@ namespace CL_Main.Dialog
                     }
                 }
             }
-            this.deviceGroup.Add(this.device);
+            this.deviceGroup.Add(this.device, null);
             this.DialogResult = DialogResult.OK;
         }
 
