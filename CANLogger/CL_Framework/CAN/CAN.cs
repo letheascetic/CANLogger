@@ -92,7 +92,7 @@ namespace CL_Framework
             }
             foreach (DictionaryEntry keyValuePair in table)
             {
-                if (keyValuePair.Value == value)
+                if (keyValuePair.Value.Equals(value))
                 {
                     return (string)keyValuePair.Key;
                 }

@@ -39,7 +39,7 @@ namespace CL_Framework
             return deviceGroup;
         }
 
-        public DeviceGroup()
+        private DeviceGroup()
         {
             devices = new List<Device>();
         }

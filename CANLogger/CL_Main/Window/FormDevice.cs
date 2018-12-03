@@ -119,7 +119,7 @@ namespace CL_Main
 
         private Device GetSelectedDevice()
         {
-            string deviceName = this.cbxDevice.SelectedText;
+            string deviceName = this.cbxDevice.SelectedItem.ToString();
             if (deviceName == null || deviceName.Equals(string.Empty))
             {
                 LogHelper.Log("no selected device.");
@@ -132,7 +132,7 @@ namespace CL_Main
 
         private Channel GetSelectedChannel()
         {
-            if (dgvChannels.CurrentRow == null)
+            if (dgvChannels.CurrentRow == null || dgvChannels.CurrentRow.Tag == null)
             {
                 LogHelper.Log("no selected channel.");
                 return null;
@@ -176,6 +176,12 @@ namespace CL_Main
             Device oldSelectedDevice = this.selectedDevice;
             Device newSelectedDevice = GetSelectedDevice();
 
+            if (object.ReferenceEquals(oldSelectedDevice, newSelectedDevice))
+            {
+                LogHelper.Log("selected device no change");
+                return;
+            }
+
             this.selectedDevice = newSelectedDevice;
 
             List<DataGridViewRow> oldSelectedDeviceMappingRows = FindMappingRows(oldSelectedDevice);
@@ -184,18 +190,17 @@ namespace CL_Main
                 row.Visible = false;
             }
 
-            List<DataGridViewRow> newSelectedDeviceMappingRows = FindMappingRows(oldSelectedDevice);
-            foreach (DataGridViewRow row in oldSelectedDeviceMappingRows)
+            List<DataGridViewRow> newSelectedDeviceMappingRows = FindMappingRows(newSelectedDevice);
+            foreach (DataGridViewRow row in newSelectedDeviceMappingRows)
             {
                 row.Visible = true;
             }
 
-            if (newSelectedDeviceMappingRows.Count > 0)
-            {
-                //默认选中指定Device的CAN0
-                newSelectedDeviceMappingRows[0].Selected = true;
-            }
-
+            //if (newSelectedDeviceMappingRows.Count > 0)
+            //{
+            //    //默认选中指定Device的CAN0
+            //    newSelectedDeviceMappingRows[0].Selected = true;
+            //}
         }
 
         private void dgvChannels_SelectionChanged(object sender, EventArgs e)
@@ -206,7 +211,6 @@ namespace CL_Main
             this.selectedChannel = newSelectedChannel;
             tbxCAN.Text = this.selectedChannel == null ? 
                 string.Empty : newSelectedChannel.ChannelName;
-
         }
 
         private void itemAddDevice_Click(object sender, EventArgs e)

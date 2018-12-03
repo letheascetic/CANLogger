@@ -22,7 +22,7 @@ namespace CL_Main
     public partial class FormMain : Form
     {
         private SkinEngine skinEngine;
-        private DeviceGroup pDeviceGroup = new DeviceGroup();
+        private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
 
         private List<FormData> pFormDatas= new List<FormData>();
         private FormDevice pFormDevice = new FormDevice();

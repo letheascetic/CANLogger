@@ -28,7 +28,20 @@ namespace CL_Main
 
         private void Init()
         {
-            //cbxSendMode.DataSource = Channel.CAN_SEND_MODE_LIST;
+            BindingSource bsSendMode = new BindingSource();
+            bsSendMode.DataSource = CAN.CAN_SEND_MODE_LIST.Keys;
+            cbxSendMode.DataSource = bsSendMode;
+            cbxSendMode.SelectedIndex = cbxSendMode.FindString(CAN.CAN_SEND_MODE_NORMAL);
+
+            BindingSource bsFrameType = new BindingSource();
+            bsFrameType.DataSource = CAN.CAN_FRAME_TYPE_LIST.Keys;
+            cbxFrameType.DataSource = bsFrameType;
+            cbxFrameType.SelectedIndex = cbxFrameType.FindString(CAN.CAN_FRAME_TYPE_DATA_FRAME);
+
+            BindingSource bsFrameFormat = new BindingSource();
+            bsFrameFormat.DataSource = CAN.CAN_FRAME_FORMAT_LIST.Keys;
+            cbxFrameFormat.DataSource = bsFrameFormat;
+            cbxFrameFormat.SelectedIndex = cbxFrameFormat.FindString(CAN.CAN_FRAME_FORMAT_STANDARD_FRAME);
         }
 
         #endregion
@@ -40,7 +53,32 @@ namespace CL_Main
             Init();
         }
 
-        #endregion
+        private void tbxSendNum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
+        private void tbxSendInterval_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && e.KeyChar != '.' && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxFrameID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+            if ((e.KeyChar >= 'a' && e.KeyChar <= 'f') || (e.KeyChar >= 'A' && e.KeyChar <= 'F')
+                || (e.KeyChar >= '0' && e.KeyChar <= '9') || (e.KeyChar == '\b'))
+            {
+                e.Handled = false;
+            }
+        }
+
+        #endregion
     }
 }

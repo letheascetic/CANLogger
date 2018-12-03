@@ -32,8 +32,8 @@
             this.lbFrameType = new System.Windows.Forms.Label();
             this.lbFrameFormat = new System.Windows.Forms.Label();
             this.cbxSendMode = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cbxFrameType = new System.Windows.Forms.ComboBox();
+            this.cbxFrameFormat = new System.Windows.Forms.ComboBox();
             this.pnl = new System.Windows.Forms.Panel();
             this.chbxIncData = new System.Windows.Forms.CheckBox();
             this.chbxIncID = new System.Windows.Forms.CheckBox();
@@ -43,10 +43,10 @@
             this.tbxFrameID = new System.Windows.Forms.TextBox();
             this.tbxSendNum = new System.Windows.Forms.TextBox();
             this.lbData = new System.Windows.Forms.Label();
-            this.tbxData = new System.Windows.Forms.TextBox();
+            this.tbxFrameData = new System.Windows.Forms.TextBox();
             this.lbSendInterval = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lbDesc2 = new System.Windows.Forms.Label();
+            this.tbxSendInterval = new System.Windows.Forms.TextBox();
+            this.lbSendIntervalDesc = new System.Windows.Forms.Label();
             this.btnSend = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.pnl.SuspendLayout();
@@ -92,27 +92,27 @@
             this.cbxSendMode.Size = new System.Drawing.Size(103, 28);
             this.cbxSendMode.TabIndex = 3;
             // 
-            // comboBox2
+            // cbxFrameType
             // 
-            this.comboBox2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cbxFrameType.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbxFrameType.FormattingEnabled = true;
+            this.cbxFrameType.Items.AddRange(new object[] {
             "数据帧"});
-            this.comboBox2.Location = new System.Drawing.Point(83, 38);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(103, 28);
-            this.comboBox2.TabIndex = 4;
+            this.cbxFrameType.Location = new System.Drawing.Point(83, 38);
+            this.cbxFrameType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbxFrameType.Name = "cbxFrameType";
+            this.cbxFrameType.Size = new System.Drawing.Size(103, 28);
+            this.cbxFrameType.TabIndex = 4;
             // 
-            // comboBox3
+            // cbxFrameFormat
             // 
-            this.comboBox3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(83, 70);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(103, 28);
-            this.comboBox3.TabIndex = 5;
+            this.cbxFrameFormat.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbxFrameFormat.FormattingEnabled = true;
+            this.cbxFrameFormat.Location = new System.Drawing.Point(83, 70);
+            this.cbxFrameFormat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbxFrameFormat.Name = "cbxFrameFormat";
+            this.cbxFrameFormat.Size = new System.Drawing.Size(103, 28);
+            this.cbxFrameFormat.TabIndex = 5;
             // 
             // pnl
             // 
@@ -120,7 +120,7 @@
             this.pnl.Controls.Add(this.chbxIncData);
             this.pnl.Controls.Add(this.chbxIncID);
             this.pnl.Controls.Add(this.lbDesc);
-            this.pnl.Location = new System.Drawing.Point(201, 4);
+            this.pnl.Location = new System.Drawing.Point(248, 5);
             this.pnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnl.Name = "pnl";
             this.pnl.Size = new System.Drawing.Size(545, 30);
@@ -158,7 +158,7 @@
             // lbFrameID
             // 
             this.lbFrameID.AutoSize = true;
-            this.lbFrameID.Location = new System.Drawing.Point(208, 43);
+            this.lbFrameID.Location = new System.Drawing.Point(230, 44);
             this.lbFrameID.Name = "lbFrameID";
             this.lbFrameID.Size = new System.Drawing.Size(83, 20);
             this.lbFrameID.TabIndex = 7;
@@ -167,7 +167,7 @@
             // lbSendNum
             // 
             this.lbSendNum.AutoSize = true;
-            this.lbSendNum.Location = new System.Drawing.Point(218, 74);
+            this.lbSendNum.Location = new System.Drawing.Point(240, 73);
             this.lbSendNum.Name = "lbSendNum";
             this.lbSendNum.Size = new System.Drawing.Size(73, 20);
             this.lbSendNum.TabIndex = 8;
@@ -176,66 +176,73 @@
             // tbxFrameID
             // 
             this.tbxFrameID.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbxFrameID.Location = new System.Drawing.Point(297, 38);
+            this.tbxFrameID.Location = new System.Drawing.Point(319, 39);
             this.tbxFrameID.Name = "tbxFrameID";
-            this.tbxFrameID.Size = new System.Drawing.Size(139, 27);
+            this.tbxFrameID.Size = new System.Drawing.Size(82, 27);
             this.tbxFrameID.TabIndex = 9;
+            this.tbxFrameID.Text = "00000000";
+            this.tbxFrameID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxFrameID_KeyPress);
             // 
             // tbxSendNum
             // 
             this.tbxSendNum.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbxSendNum.Location = new System.Drawing.Point(297, 69);
+            this.tbxSendNum.Location = new System.Drawing.Point(319, 70);
             this.tbxSendNum.Name = "tbxSendNum";
-            this.tbxSendNum.Size = new System.Drawing.Size(62, 27);
+            this.tbxSendNum.Size = new System.Drawing.Size(82, 27);
             this.tbxSendNum.TabIndex = 10;
+            this.tbxSendNum.Text = "1";
+            this.tbxSendNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSendNum_KeyPress);
             // 
             // lbData
             // 
             this.lbData.AutoSize = true;
-            this.lbData.Location = new System.Drawing.Point(471, 41);
+            this.lbData.Location = new System.Drawing.Point(501, 44);
             this.lbData.Name = "lbData";
             this.lbData.Size = new System.Drawing.Size(83, 20);
             this.lbData.TabIndex = 11;
             this.lbData.Text = "数据(HEX):";
             // 
-            // tbxData
+            // tbxFrameData
             // 
-            this.tbxData.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbxData.Location = new System.Drawing.Point(560, 38);
-            this.tbxData.Name = "tbxData";
-            this.tbxData.Size = new System.Drawing.Size(203, 27);
-            this.tbxData.TabIndex = 12;
+            this.tbxFrameData.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbxFrameData.Location = new System.Drawing.Point(590, 38);
+            this.tbxFrameData.Name = "tbxFrameData";
+            this.tbxFrameData.Size = new System.Drawing.Size(203, 27);
+            this.tbxFrameData.TabIndex = 12;
+            this.tbxFrameData.Text = "00 01 02 03 04 05 06 07";
             // 
             // lbSendInterval
             // 
             this.lbSendInterval.AutoSize = true;
-            this.lbSendInterval.Location = new System.Drawing.Point(450, 73);
+            this.lbSendInterval.Location = new System.Drawing.Point(480, 73);
             this.lbSendInterval.Name = "lbSendInterval";
             this.lbSendInterval.Size = new System.Drawing.Size(104, 20);
             this.lbSendInterval.TabIndex = 13;
             this.lbSendInterval.Text = "发送间隔(ms):";
             // 
-            // textBox1
+            // tbxSendInterval
             // 
-            this.textBox1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.Location = new System.Drawing.Point(560, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(89, 27);
-            this.textBox1.TabIndex = 14;
+            this.tbxSendInterval.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbxSendInterval.Location = new System.Drawing.Point(590, 71);
+            this.tbxSendInterval.Name = "tbxSendInterval";
+            this.tbxSendInterval.Size = new System.Drawing.Size(89, 27);
+            this.tbxSendInterval.TabIndex = 14;
+            this.tbxSendInterval.Text = "100";
+            this.tbxSendInterval.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSendInterval_KeyPress);
             // 
-            // lbDesc2
+            // lbSendIntervalDesc
             // 
-            this.lbDesc2.AutoSize = true;
-            this.lbDesc2.Font = new System.Drawing.Font("微软雅黑", 6.6F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbDesc2.Location = new System.Drawing.Point(666, 77);
-            this.lbDesc2.Name = "lbDesc2";
-            this.lbDesc2.Size = new System.Drawing.Size(112, 16);
-            this.lbDesc2.TabIndex = 15;
-            this.lbDesc2.Text = "(发送最小间隔0.1ms)";
+            this.lbSendIntervalDesc.AutoSize = true;
+            this.lbSendIntervalDesc.Font = new System.Drawing.Font("微软雅黑", 6.6F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbSendIntervalDesc.Location = new System.Drawing.Point(685, 77);
+            this.lbSendIntervalDesc.Name = "lbSendIntervalDesc";
+            this.lbSendIntervalDesc.Size = new System.Drawing.Size(112, 16);
+            this.lbSendIntervalDesc.TabIndex = 15;
+            this.lbSendIntervalDesc.Text = "(发送最小间隔0.1ms)";
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(794, 30);
+            this.btnSend.Location = new System.Drawing.Point(888, 31);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(90, 30);
             this.btnSend.TabIndex = 17;
@@ -244,7 +251,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(794, 66);
+            this.btnStop.Location = new System.Drawing.Point(888, 66);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(90, 30);
             this.btnStop.TabIndex = 18;
@@ -258,18 +265,18 @@
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnSend);
-            this.Controls.Add(this.lbDesc2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lbSendIntervalDesc);
+            this.Controls.Add(this.tbxSendInterval);
             this.Controls.Add(this.lbSendInterval);
-            this.Controls.Add(this.tbxData);
+            this.Controls.Add(this.tbxFrameData);
             this.Controls.Add(this.lbData);
             this.Controls.Add(this.tbxSendNum);
             this.Controls.Add(this.tbxFrameID);
             this.Controls.Add(this.lbSendNum);
             this.Controls.Add(this.lbFrameID);
             this.Controls.Add(this.pnl);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cbxFrameFormat);
+            this.Controls.Add(this.cbxFrameType);
             this.Controls.Add(this.cbxSendMode);
             this.Controls.Add(this.lbFrameFormat);
             this.Controls.Add(this.lbFrameType);
@@ -277,7 +284,7 @@
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UCNormalSendMode";
-            this.Size = new System.Drawing.Size(894, 107);
+            this.Size = new System.Drawing.Size(985, 103);
             this.Load += new System.EventHandler(this.UCNormalSendMode_Load);
             this.pnl.ResumeLayout(false);
             this.pnl.PerformLayout();
@@ -292,8 +299,8 @@
         private System.Windows.Forms.Label lbFrameType;
         private System.Windows.Forms.Label lbFrameFormat;
         private System.Windows.Forms.ComboBox cbxSendMode;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cbxFrameType;
+        private System.Windows.Forms.ComboBox cbxFrameFormat;
         private System.Windows.Forms.Panel pnl;
         private System.Windows.Forms.Label lbDesc;
         private System.Windows.Forms.CheckBox chbxIncID;
@@ -303,10 +310,10 @@
         private System.Windows.Forms.TextBox tbxFrameID;
         private System.Windows.Forms.TextBox tbxSendNum;
         private System.Windows.Forms.Label lbData;
-        private System.Windows.Forms.TextBox tbxData;
+        private System.Windows.Forms.TextBox tbxFrameData;
         private System.Windows.Forms.Label lbSendInterval;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label lbDesc2;
+        private System.Windows.Forms.TextBox tbxSendInterval;
+        private System.Windows.Forms.Label lbSendIntervalDesc;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnStop;
     }

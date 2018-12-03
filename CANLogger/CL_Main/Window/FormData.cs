@@ -18,6 +18,7 @@ namespace CL_Main
     {
         private readonly static int SEND_MODE_NORMAL = 0;
         private readonly static int SEND_MODE_LIST = 1;
+        private readonly static string[] SEND_MODE_DESC = new string[] { "普通发送模式", "列表发送模式" };
 
         private Channel channel = null;
         private UCNormalSendMode pUCSendModeNormal = null;
@@ -66,6 +67,7 @@ namespace CL_Main
                 this.pUCSendModeNormal.Dock = DockStyle.Fill;
                 this.pUCSendModeNormal.Visible = true;
             }
+            this.btnSendMode.Text = SEND_MODE_DESC[this.sendMode];
         }
 
         #endregion
