@@ -85,6 +85,11 @@ namespace CL_Framework
             return channelIndex >= this.CANNum ? null : this.channels[channelIndex];
         }
 
+        public string GetDeviceName()
+        {
+            return string.Join("-", deviceTypeDesc, deviceIndex);
+        }
+
         private void InitCAN(UInt32 canNum)
         {
             channels = new Channel[canNum];

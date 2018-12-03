@@ -207,7 +207,7 @@
     <value>6, 27</value>
   </data>
   <data name="itemStartCAN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 26</value>
+    <value>216, 26</value>
   </data>
   <data name="itemStartCAN.Text" xml:space="preserve">
     <value>启动CAN</value>
@@ -216,7 +216,7 @@
     <value>启动当前选择的CAN</value>
   </data>
   <data name="itemResetCAN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 26</value>
+    <value>216, 26</value>
   </data>
   <data name="itemResetCAN.Text" xml:space="preserve">
     <value>复位CAN</value>

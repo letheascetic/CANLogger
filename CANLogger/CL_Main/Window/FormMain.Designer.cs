@@ -30,16 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.btnAddSet = new System.Windows.Forms.ToolStripButton();
-            this.btnReset = new System.Windows.Forms.ToolStripButton();
-            this.btnDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.lbFrameFormat = new System.Windows.Forms.ToolStripLabel();
-            this.cbxFrameFormat = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.lbIDFormat = new System.Windows.Forms.ToolStripLabel();
-            this.cbxIDFormat = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.lbSelectDevice = new System.Windows.Forms.ToolStripLabel();
+            this.cbxSelectDevice = new System.Windows.Forms.ToolStripComboBox();
+            this.sp1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnOperateDevice = new System.Windows.Forms.ToolStripDropDownButton();
+            this.itemAddDevice = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemConfigDevice = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemResetDevice = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemDeleteDevice = new System.Windows.Forms.ToolStripMenuItem();
+            this.sp2 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,81 +62,70 @@
             resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnAddSet,
-            this.btnReset,
-            this.btnDelete,
-            this.toolStripSeparator1,
-            this.lbFrameFormat,
-            this.cbxFrameFormat,
-            this.toolStripSeparator2,
-            this.lbIDFormat,
-            this.cbxIDFormat,
-            this.toolStripSeparator3});
+            this.lbSelectDevice,
+            this.cbxSelectDevice,
+            this.sp1,
+            this.btnOperateDevice,
+            this.sp2});
             this.toolStrip.Name = "toolStrip";
             // 
-            // btnAddSet
+            // lbSelectDevice
             // 
-            this.btnAddSet.Image = global::CL_Main.Properties.Resources.add;
-            resources.ApplyResources(this.btnAddSet, "btnAddSet");
-            this.btnAddSet.Name = "btnAddSet";
-            this.btnAddSet.Click += new System.EventHandler(this.btnAddSet_Click);
+            this.lbSelectDevice.Name = "lbSelectDevice";
+            resources.ApplyResources(this.lbSelectDevice, "lbSelectDevice");
             // 
-            // btnReset
+            // cbxSelectDevice
             // 
-            this.btnReset.Image = global::CL_Main.Properties.Resources.reset;
-            resources.ApplyResources(this.btnReset, "btnReset");
-            this.btnReset.Name = "btnReset";
+            this.cbxSelectDevice.BackColor = System.Drawing.SystemColors.Control;
+            this.cbxSelectDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbxSelectDevice, "cbxSelectDevice");
+            this.cbxSelectDevice.Name = "cbxSelectDevice";
+            this.cbxSelectDevice.SelectedIndexChanged += new System.EventHandler(this.cbxSelectDevice_SelectedIndexChanged);
             // 
-            // btnDelete
+            // sp1
             // 
-            this.btnDelete.Image = global::CL_Main.Properties.Resources.delete;
-            resources.ApplyResources(this.btnDelete, "btnDelete");
-            this.btnDelete.Name = "btnDelete";
+            this.sp1.Name = "sp1";
+            resources.ApplyResources(this.sp1, "sp1");
             // 
-            // toolStripSeparator1
+            // btnOperateDevice
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.btnOperateDevice.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemAddDevice,
+            this.itemConfigDevice,
+            this.itemResetDevice,
+            this.itemDeleteDevice});
+            this.btnOperateDevice.Image = global::CL_Main.Properties.Resources.opertion;
+            resources.ApplyResources(this.btnOperateDevice, "btnOperateDevice");
+            this.btnOperateDevice.Name = "btnOperateDevice";
             // 
-            // lbFrameFormat
+            // itemAddDevice
             // 
-            this.lbFrameFormat.Name = "lbFrameFormat";
-            resources.ApplyResources(this.lbFrameFormat, "lbFrameFormat");
+            this.itemAddDevice.Image = global::CL_Main.Properties.Resources.add;
+            this.itemAddDevice.Name = "itemAddDevice";
+            resources.ApplyResources(this.itemAddDevice, "itemAddDevice");
             // 
-            // cbxFrameFormat
+            // itemConfigDevice
             // 
-            resources.ApplyResources(this.cbxFrameFormat, "cbxFrameFormat");
-            this.cbxFrameFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxFrameFormat.DropDownWidth = 60;
-            this.cbxFrameFormat.Items.AddRange(new object[] {
-            resources.GetString("cbxFrameFormat.Items"),
-            resources.GetString("cbxFrameFormat.Items1"),
-            resources.GetString("cbxFrameFormat.Items2")});
-            this.cbxFrameFormat.Name = "cbxFrameFormat";
+            this.itemConfigDevice.Image = global::CL_Main.Properties.Resources.config;
+            this.itemConfigDevice.Name = "itemConfigDevice";
+            resources.ApplyResources(this.itemConfigDevice, "itemConfigDevice");
             // 
-            // toolStripSeparator2
+            // itemResetDevice
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            this.itemResetDevice.Image = global::CL_Main.Properties.Resources.resetall;
+            this.itemResetDevice.Name = "itemResetDevice";
+            resources.ApplyResources(this.itemResetDevice, "itemResetDevice");
             // 
-            // lbIDFormat
+            // itemDeleteDevice
             // 
-            this.lbIDFormat.Name = "lbIDFormat";
-            resources.ApplyResources(this.lbIDFormat, "lbIDFormat");
+            this.itemDeleteDevice.Image = global::CL_Main.Properties.Resources.delete;
+            this.itemDeleteDevice.Name = "itemDeleteDevice";
+            resources.ApplyResources(this.itemDeleteDevice, "itemDeleteDevice");
             // 
-            // cbxIDFormat
+            // sp2
             // 
-            resources.ApplyResources(this.cbxIDFormat, "cbxIDFormat");
-            this.cbxIDFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxIDFormat.DropDownWidth = 60;
-            this.cbxIDFormat.Items.AddRange(new object[] {
-            resources.GetString("cbxIDFormat.Items")});
-            this.cbxIDFormat.Name = "cbxIDFormat";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            this.sp2.Name = "sp2";
+            resources.ApplyResources(this.sp2, "sp2");
             // 
             // statusStrip
             // 
@@ -233,6 +221,7 @@
             // 
             this.menuItemAbout.Name = "menuItemAbout";
             resources.ApplyResources(this.menuItemAbout, "menuItemAbout");
+            this.menuItemAbout.Click += new System.EventHandler(this.menuItemAbout_Click);
             // 
             // dockPanel
             // 
@@ -265,13 +254,7 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripLabel lbFrameFormat;
-        private System.Windows.Forms.ToolStripComboBox cbxFrameFormat;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripLabel lbIDFormat;
-        private System.Windows.Forms.ToolStripComboBox cbxIDFormat;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator sp1;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem menuItemFile;
@@ -285,9 +268,14 @@
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
         private System.Windows.Forms.ToolStripMenuItem menuItemSkin;
         private System.Windows.Forms.ToolStripMenuItem menuItemSkinDefault;
-        private System.Windows.Forms.ToolStripButton btnAddSet;
-        private System.Windows.Forms.ToolStripButton btnReset;
-        private System.Windows.Forms.ToolStripButton btnDelete;
+        private System.Windows.Forms.ToolStripLabel lbSelectDevice;
+        private System.Windows.Forms.ToolStripComboBox cbxSelectDevice;
+        private System.Windows.Forms.ToolStripDropDownButton btnOperateDevice;
+        private System.Windows.Forms.ToolStripMenuItem itemAddDevice;
+        private System.Windows.Forms.ToolStripMenuItem itemConfigDevice;
+        private System.Windows.Forms.ToolStripMenuItem itemResetDevice;
+        private System.Windows.Forms.ToolStripMenuItem itemDeleteDevice;
+        private System.Windows.Forms.ToolStripSeparator sp2;
     }
 }
 

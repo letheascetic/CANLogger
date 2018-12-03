@@ -13,8 +13,10 @@ namespace CL_Main.Dialog
 {
     public partial class DialogDevice : Form
     {
-        private DeviceGroup deviceGroup = DeviceGroup.CreateInstance();
+        private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
         private Device device = null;
+
+        #region public apis
 
         public DialogDevice(Device device)
         {
@@ -27,18 +29,22 @@ namespace CL_Main.Dialog
             return this.device;
         }
 
-        private void InitLoadControls()
+        #endregion
+
+        #region private functions
+
+        private void Init()
         {
             //init load top panel
             Version version = Assembly.GetExecutingAssembly().GetName().Version;
-            lbVersion.Text += string.Join(".", new object[] { version.Major, version.Minor, version.Build});
+            lbVersion.Text += string.Join(".", new object[] { version.Major, version.Minor, version.Build });
 
             //init load select panel
             //load cbxSelectDevice data source
             cbxSelectDevice.DataSource = Device.DeviceTypies;
             cbxSelectDevice.ValueMember = "Key";
             cbxSelectDevice.DisplayMember = "Value";
-            cbxSelectDevice.SelectedIndex = device != null ? 
+            cbxSelectDevice.SelectedIndex = device != null ?
                 cbxSelectDevice.FindString(device.DeviceTypeDesc) : cbxSelectDevice.FindString(Device.DEVICE_TYPE_USBCANII);
             cbxSelectDevice.Enabled = device == null ? true : false;
 
@@ -97,7 +103,7 @@ namespace CL_Main.Dialog
         {
             Device device = null;
             // get new device index
-            UInt32 deviceIndex = deviceGroup.GetNewDeviceIndex(deviceType);
+            UInt32 deviceIndex = pDeviceGroup.GetNewDeviceIndex(deviceType);
             // create new device
             if (Device.CreateDevice(deviceType, out device) == CANResult.STATUS_OK)
             {
@@ -106,9 +112,13 @@ namespace CL_Main.Dialog
             return null;
         }
 
+        #endregion
+
+        #region events
+
         private void DialogDevice_Load(object sender, EventArgs e)
         {
-            InitLoadControls();
+            Init();
         }
 
         private void btnOpenDevice_Click(object sender, EventArgs e)
@@ -116,8 +126,9 @@ namespace CL_Main.Dialog
             DeviceType deviceType = (DeviceType)Enum.Parse(typeof(DeviceType), cbxSelectDevice.SelectedValue.ToString());
             Device newDevice = null;
 
-            if (device == null) //try to open a new device
+            if (device == null)
             {
+                LogHelper.Log("try to open a new device");
                 newDevice = CreateDevice(deviceType);
                 if (newDevice == null)
                 {
@@ -131,22 +142,27 @@ namespace CL_Main.Dialog
 
             if (device.DeviceType == deviceType)
             {
-                if (!device.IsDeviceOpen)   
+                if (!device.IsDeviceOpen)
                 {
+                    LogHelper.Log(string.Format(
+                        "try to re-open an old device: [{0}-{1}]", device.DeviceTypeDesc, device.DeviceIndex));
                     device.OpenDevice();
                     return;
                 }
-                // device already open
+                LogHelper.Log(string.Format("device already opened: [{0}-{1}]",
+                    device.DeviceTypeDesc, device.DeviceIndex));
                 return;
             }
 
-            // try to open another device
-            // close the old device firstly
             if (device.IsDeviceOpen)
             {
+                LogHelper.Log(string.Format(
+                    "try to open another device, close the old device firstly: [{0}-{1}]",
+                    device.DeviceTypeDesc, device.DeviceIndex));
                 device.CloseDevice();
             }
-            // create new device
+
+            LogHelper.Log("try to open a new device");
             newDevice = CreateDevice(deviceType);
             if (device == null)
             {
@@ -171,7 +187,7 @@ namespace CL_Main.Dialog
                     }
                 }
             }
-            this.deviceGroup.Add(this.device, null);
+            this.pDeviceGroup.Add(this.device, null);
             this.DialogResult = DialogResult.OK;
         }
 
@@ -189,9 +205,10 @@ namespace CL_Main.Dialog
                     }
                 }
             }
-            this.deviceGroup.Add(this.device, null);
+            this.pDeviceGroup.Add(this.device, null);
             this.DialogResult = DialogResult.OK;
         }
 
+        #endregion
     }
 }

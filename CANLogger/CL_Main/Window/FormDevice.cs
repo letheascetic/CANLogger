@@ -1,4 +1,5 @@
 ﻿using CL_Framework;
+using CL_Main.Dialog;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -46,7 +47,7 @@ namespace CL_Main
 
         public void AddDevice(Device device, object paras)
         {
-            string deviceName = GetDeviceName(device);
+            string deviceName = device.GetDeviceName();
             pNameDevicePairs.Add(deviceName, device);
 
             this.cbxDevice.Items.Add(deviceName);
@@ -72,7 +73,7 @@ namespace CL_Main
         /// <param name="device"></param>
         public void UpdateDevice(Device device, object paras)
         {
-            string deviceName = GetDeviceName(device);
+            string deviceName = device.GetDeviceName();
 
             List<DataGridViewRow> mappingRows = FindMappingRows(device);
             foreach (DataGridViewRow row in mappingRows)
@@ -89,7 +90,7 @@ namespace CL_Main
 
         public void RemoveDevice(Device device, object paras)
         {
-            string deviceName = GetDeviceName(device);
+            string deviceName = device.GetDeviceName();
             this.pNameDevicePairs.Remove(deviceName);
             this.cbxDevice.Items.Remove(deviceName);
 
@@ -114,11 +115,6 @@ namespace CL_Main
             pDeviceGroup.DeviceAdded += new DeviceEventHandler(this.AddDevice);
             pDeviceGroup.DeviceRemoved += new DeviceEventHandler(this.RemoveDevice);
             pDeviceGroup.DeviceUpdated += new DeviceEventHandler(this.UpdateDevice);
-        }
-
-        private string GetDeviceName(Device device)
-        {
-            return string.Join("-", device.DeviceTypeDesc, device.DeviceIndex);
         }
 
         private Device GetSelectedDevice()
@@ -215,6 +211,8 @@ namespace CL_Main
 
         private void itemAddDevice_Click(object sender, EventArgs e)
         {
+            DialogDevice dialogDevice = new DialogDevice(null);
+
 
         }
 
@@ -236,7 +234,7 @@ namespace CL_Main
                 return;
             }
 
-            string deviceName = GetDeviceName(device);
+            string deviceName = device.GetDeviceName();
             string content = string.Format("确定要删除当前设备（{0}）吗？", deviceName);
 
             if (MessageBox.Show(content, "删除设备", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)

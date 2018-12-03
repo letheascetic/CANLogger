@@ -2,6 +2,7 @@
 using CL_Main.Dialog;
 using Sunisoft.IrisSkin;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,32 +22,59 @@ namespace CL_Main
     public partial class FormMain : Form
     {
         private SkinEngine skinEngine;
-        private DeviceGroup deviceGroup = new DeviceGroup();
+        private DeviceGroup pDeviceGroup = new DeviceGroup();
 
-        private List<FormData> formDataList = new List<FormData>();
-        private FormDevice formDevice = new FormDevice();
-        private FormStatus formStatus = new FormStatus();
+        private List<FormData> pFormDatas= new List<FormData>();
+        private FormDevice pFormDevice = new FormDevice();
+        private FormStatus pFormStatus = new FormStatus();
 
+        private Hashtable pNameDevicePairs = new Hashtable();
+
+        private Device selectedDevice = null;
+        private Channel selectedChannel = null;
+
+        #region public apis
 
         public FormMain()
         {
             InitializeComponent();
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
+        public void AddDevice(Device device, object paras)
         {
-            Thread thread = new Thread(new ThreadStart(Loading));
-            thread.IsBackground = true;
-            thread.Start();
+            string deviceName = device.GetDeviceName();
+            pNameDevicePairs.Add(deviceName, device);
 
-            InitVarialbes();
-            InitLoadControls();
-            thread.Join();
+            this.cbxSelectDevice.Items.Add(deviceName);
+            for (uint channelIndex = 0; channelIndex < device.CANNum; channelIndex++)
+            {
+                Channel channel = device.GetChannel(channelIndex);
+                FormData pFormData = new FormData(channel);
+                pFormData.Show(this.dockPanel, DockState.Document);
+                pFormDatas.Add(pFormData);
+            }
+            this.cbxSelectDevice.SelectedIndex = this.cbxSelectDevice.FindString(deviceName);
         }
 
-        private void InitVarialbes()
+        public void RemoveDevice(Device device, object paras)
         {
-            
+
+        }
+
+        public void UpdateDevice(Device device, object paras)
+        {
+
+        }
+
+        #endregion
+
+        #region private functions
+
+        private void Init()
+        {
+            pDeviceGroup.DeviceAdded += new DeviceEventHandler(AddDevice);
+            pDeviceGroup.DeviceRemoved += new DeviceEventHandler(RemoveDevice);
+            pDeviceGroup.DeviceUpdated += new DeviceEventHandler(UpdateDevice);
         }
 
         private void Loading()
@@ -79,8 +107,9 @@ namespace CL_Main
 
             string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             this.Text += version;
-
             LogHelper.Log(string.Format("get CAN Logger version: [{0}]", version));
+
+            menuItemLanguage.Visible = false;
 
             //init & load FormData
             //FormData formData1 = new FormData();
@@ -89,15 +118,12 @@ namespace CL_Main
             //formData2.Show(formData1.Pane, null);
 
             // init & load FormDevice
-            formDevice.Show(this.dockPanel, DockState.DockBottom);
-
+            pFormDevice.Show(this.dockPanel, DockState.DockBottom);
             //init & load FormStatus
-            formStatus.Show(formDevice.Pane, DockAlignment.Right, 0.5);
-
-            this.Activate();
+            pFormStatus.Show(pFormDevice.Pane, DockAlignment.Right, 0.5);
         }
 
-        private void SetLanguage(string language) 
+        private void SetLanguage(string language)
         {
             LogHelper.Log(string.Format("SetLanguage To {0}...", language));
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(language);
@@ -105,21 +131,44 @@ namespace CL_Main
 
             resources.ApplyResources(this, "$this");
 
-            resources.ApplyResources(this.btnAddSet, this.btnAddSet.Name);
-            resources.ApplyResources(this.lbFrameFormat, this.lbFrameFormat.Name);
-            resources.ApplyResources(this.lbIDFormat, this.lbIDFormat.Name);
-
-            cbxFrameFormat.Items[0] = resources.GetString("cbxFrameFormat.Items");
-            cbxFrameFormat.Items[1] = resources.GetString("cbxFrameFormat.Items1");
-            cbxFrameFormat.Items[2] = resources.GetString("cbxFrameFormat.Items2");
-
-            cbxIDFormat.Items[0] = resources.GetString("cbxIDFormat.Items");
-
+            //resources.ApplyResources(this.lbFrameFormat, this.lbFrameFormat.Name);
+            //resources.ApplyResources(this.lbIDFormat, this.lbIDFormat.Name);
+            //cbxFrameFormat.Items[0] = resources.GetString("cbxFrameFormat.Items");
+            //cbxFrameFormat.Items[1] = resources.GetString("cbxFrameFormat.Items1");
+            //cbxFrameFormat.Items[2] = resources.GetString("cbxFrameFormat.Items2");
+            //cbxIDFormat.Items[0] = resources.GetString("cbxIDFormat.Items");
         }
 
-        private void UpdateControls()
+        private Device GetSelectedDevice()
         {
+            string deviceName = this.cbxSelectDevice.SelectedText;
+            if (deviceName == null || deviceName.Equals(string.Empty))
+            {
+                LogHelper.Log("no selected device.");
+                return null;
+            }
 
+            LogHelper.Log(string.Format("selected device: [{0}]", deviceName));
+            return (Device)pNameDevicePairs[deviceName];
+        }
+
+        #endregion
+
+        #region form & controlers events
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(new ThreadStart(Loading));
+            thread.IsBackground = true;
+            thread.Start();
+
+            Init();
+            InitLoadControls();
+            thread.Join();
+
+            // show add device dialog
+
+            this.Activate();
         }
 
         private void menuItemLanguage_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -132,7 +181,7 @@ namespace CL_Main
             }
 
             this.Cursor = Cursors.WaitCursor;
-    
+
             SetLanguage((string)item.Tag);
 
             int oldIndex = Convert.ToInt32(menuItemLanguage.Tag);
@@ -173,7 +222,7 @@ namespace CL_Main
 
         private void btnAddSet_Click(object sender, EventArgs e)
         {
-            Device device = this.formDevice.SelectedDevice;
+            Device device = this.pFormDevice.SelectedDevice;
             bool isNewDevice = device == null ? true : false;
 
             DialogDevice dialogDevice = new DialogDevice(device);
@@ -184,6 +233,22 @@ namespace CL_Main
                 dialogDevice.Close();
             }
         }
+
+        private void cbxSelectDevice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Device oldSelectedDevice = this.selectedDevice;
+            Device newSelectedDevice = GetSelectedDevice();
+
+            this.selectedDevice = newSelectedDevice;
+        }
+
+        private void menuItemAbout_Click(object sender, EventArgs e)
+        {
+            new AboutUs().ShowDialog();
+        }
+
+        #endregion
+
 
     }
 }

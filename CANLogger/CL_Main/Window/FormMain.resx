@@ -128,89 +128,34 @@
   <data name="toolStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
   </data>
-  <data name="btnAddSet.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="lbSelectDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 24</value>
   </data>
-  <data name="btnAddSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 24</value>
+  <data name="lbSelectDevice.Text" xml:space="preserve">
+    <value>选择设备:</value>
   </data>
-  <data name="btnAddSet.Text" xml:space="preserve">
-    <value>添加/设置</value>
+  <data name="cbxSelectDevice.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
-  <data name="btnReset.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="cbxSelectDevice.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 6.60000038pt</value>
   </data>
-  <data name="btnReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 24</value>
-  </data>
-  <data name="btnReset.Text" xml:space="preserve">
-    <value>复位</value>
-  </data>
-  <data name="btnDelete.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 24</value>
-  </data>
-  <data name="btnDelete.Text" xml:space="preserve">
-    <value>删除设备</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 27</value>
-  </data>
-  <data name="lbFrameFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 24</value>
-  </data>
-  <data name="lbFrameFormat.Text" xml:space="preserve">
-    <value>帧显示格式：</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="cbxFrameFormat.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cbxFrameFormat.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 7.8pt</value>
-  </data>
-  <data name="cbxFrameFormat.Items" xml:space="preserve">
-    <value>二进制</value>
-  </data>
-  <data name="cbxFrameFormat.Items1" xml:space="preserve">
-    <value>十进制</value>
-  </data>
-  <data name="cbxFrameFormat.Items2" xml:space="preserve">
-    <value>十六进制</value>
-  </data>
-  <data name="cbxFrameFormat.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="cbxFrameFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 27</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 27</value>
-  </data>
-  <data name="lbIDFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 24</value>
-  </data>
-  <data name="lbIDFormat.Text" xml:space="preserve">
-    <value>ID格式：</value>
-  </data>
-  <data name="cbxIDFormat.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="cbxIDFormat.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 7.8pt</value>
-  </data>
-  <data name="cbxIDFormat.Items" xml:space="preserve">
-    <value>ID靠右对齐</value>
-  </data>
-  <data name="cbxIDFormat.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="cbxIDFormat.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="cbxSelectDevice.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 27</value>
   </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="sp1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 27</value>
+  </data>
+  <data name="btnOperateDevice.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnOperateDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 24</value>
+  </data>
+  <data name="btnOperateDevice.Text" xml:space="preserve">
+    <value>操作设备</value>
+  </data>
+  <data name="sp2.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
   </data>
   <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
@@ -219,6 +164,7 @@
   <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>1382, 27</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -236,6 +182,39 @@
   </data>
   <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="itemAddDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 26</value>
+  </data>
+  <data name="itemAddDevice.Text" xml:space="preserve">
+    <value>添加设备</value>
+  </data>
+  <data name="itemConfigDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 26</value>
+  </data>
+  <data name="itemConfigDevice.Text" xml:space="preserve">
+    <value>配置设备</value>
+  </data>
+  <data name="itemConfigDevice.ToolTipText" xml:space="preserve">
+    <value>复位所有CAN通道</value>
+  </data>
+  <data name="itemResetDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 26</value>
+  </data>
+  <data name="itemResetDevice.Text" xml:space="preserve">
+    <value>复位设备</value>
+  </data>
+  <data name="itemResetDevice.ToolTipText" xml:space="preserve">
+    <value>复位所有CAN通道</value>
+  </data>
+  <data name="itemDeleteDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 26</value>
+  </data>
+  <data name="itemDeleteDevice.Text" xml:space="preserve">
+    <value>删除设备</value>
+  </data>
+  <data name="itemDeleteDevice.ToolTipText" xml:space="preserve">
+    <value>复位所有CAN通道</value>
   </data>
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>138, 17</value>
@@ -285,32 +264,11 @@
   <data name="menuItemOption.Text" xml:space="preserve">
     <value>操作</value>
   </data>
-  <data name="menuItemSkinDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 26</value>
-  </data>
-  <data name="menuItemSkinDefault.Text" xml:space="preserve">
-    <value>Default</value>
-  </data>
   <data name="menuItemSkin.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 24</value>
   </data>
   <data name="menuItemSkin.Text" xml:space="preserve">
     <value>皮肤</value>
-  </data>
-  <data name="menuItemLanguageCN.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="menuItemLanguageCN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 26</value>
-  </data>
-  <data name="menuItemLanguageCN.Text" xml:space="preserve">
-    <value>简体中文</value>
-  </data>
-  <data name="menuItemLanguageEN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 26</value>
-  </data>
-  <data name="menuItemLanguageEN.Text" xml:space="preserve">
-    <value>英语</value>
   </data>
   <data name="menuItemLanguage.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -325,16 +283,16 @@
     <value>设置语言</value>
   </data>
   <data name="menuItemManual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 26</value>
+    <value>216, 26</value>
   </data>
   <data name="menuItemManual.Text" xml:space="preserve">
     <value>用户手册</value>
   </data>
   <data name="menuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 26</value>
+    <value>216, 26</value>
   </data>
   <data name="menuItemAbout.Text" xml:space="preserve">
-    <value>关于</value>
+    <value>关于我们</value>
   </data>
   <data name="menuItemHelp.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 24</value>
@@ -365,6 +323,27 @@
   </data>
   <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="menuItemSkinDefault.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 26</value>
+  </data>
+  <data name="menuItemSkinDefault.Text" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="menuItemLanguageCN.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="menuItemLanguageCN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 26</value>
+  </data>
+  <data name="menuItemLanguageCN.Text" xml:space="preserve">
+    <value>简体中文</value>
+  </data>
+  <data name="menuItemLanguageEN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 26</value>
+  </data>
+  <data name="menuItemLanguageEN.Text" xml:space="preserve">
+    <value>英语</value>
   </data>
   <data name="dockPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4928,64 +4907,58 @@
   <data name="$this.Text" xml:space="preserve">
     <value>CAN Logger v</value>
   </data>
-  <data name="&gt;&gt;btnAddSet.Name" xml:space="preserve">
-    <value>btnAddSet</value>
+  <data name="&gt;&gt;lbSelectDevice.Name" xml:space="preserve">
+    <value>lbSelectDevice</value>
   </data>
-  <data name="&gt;&gt;btnAddSet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnReset.Name" xml:space="preserve">
-    <value>btnReset</value>
-  </data>
-  <data name="&gt;&gt;btnReset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnDelete.Name" xml:space="preserve">
-    <value>btnDelete</value>
-  </data>
-  <data name="&gt;&gt;btnDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
-    <value>toolStripSeparator1</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbFrameFormat.Name" xml:space="preserve">
-    <value>lbFrameFormat</value>
-  </data>
-  <data name="&gt;&gt;lbFrameFormat.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbSelectDevice.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cbxFrameFormat.Name" xml:space="preserve">
-    <value>cbxFrameFormat</value>
+  <data name="&gt;&gt;cbxSelectDevice.Name" xml:space="preserve">
+    <value>cbxSelectDevice</value>
   </data>
-  <data name="&gt;&gt;cbxFrameFormat.Type" xml:space="preserve">
+  <data name="&gt;&gt;cbxSelectDevice.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
-    <value>toolStripSeparator2</value>
+  <data name="&gt;&gt;sp1.Name" xml:space="preserve">
+    <value>sp1</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+  <data name="&gt;&gt;sp1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbIDFormat.Name" xml:space="preserve">
-    <value>lbIDFormat</value>
+  <data name="&gt;&gt;btnOperateDevice.Name" xml:space="preserve">
+    <value>btnOperateDevice</value>
   </data>
-  <data name="&gt;&gt;lbIDFormat.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnOperateDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cbxIDFormat.Name" xml:space="preserve">
-    <value>cbxIDFormat</value>
+  <data name="&gt;&gt;itemAddDevice.Name" xml:space="preserve">
+    <value>itemAddDevice</value>
   </data>
-  <data name="&gt;&gt;cbxIDFormat.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;itemAddDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
-    <value>toolStripSeparator3</value>
+  <data name="&gt;&gt;itemConfigDevice.Name" xml:space="preserve">
+    <value>itemConfigDevice</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
+  <data name="&gt;&gt;itemConfigDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;itemResetDevice.Name" xml:space="preserve">
+    <value>itemResetDevice</value>
+  </data>
+  <data name="&gt;&gt;itemResetDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;itemDeleteDevice.Name" xml:space="preserve">
+    <value>itemDeleteDevice</value>
+  </data>
+  <data name="&gt;&gt;itemDeleteDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sp2.Name" xml:space="preserve">
+    <value>sp2</value>
+  </data>
+  <data name="&gt;&gt;sp2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItemFile.Name" xml:space="preserve">

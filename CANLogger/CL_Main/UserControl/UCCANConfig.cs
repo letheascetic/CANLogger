@@ -15,7 +15,6 @@ namespace CL_Main
         private Channel channel = null;
         private bool isConfigured = false;
 
-
         public UCCANConfig(Channel channel)
         {
             InitializeComponent();
