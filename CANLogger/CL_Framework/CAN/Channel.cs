@@ -6,48 +6,8 @@ using System.Text;
 
 namespace CL_Framework
 {
-    public enum CAN_MODE : uint
-    {
-        NORMAL = 0,    //normal
-        LOM = 1,       //listen only
-        STM = 2        //self test mode
-    }
-
-    public enum CAN_SEND_MODE : uint
-    {
-        NORMAL = 0,
-        SINGLE = 1
-    }
-
-    public enum CAN_FRAME_TYPE : uint
-    {
-        DATA_FRAME = 0,       //数据帧
-        REMOTE_FRAME = 1      //远程帧
-    }
-
-    public enum CAN_FRAME_FORMAT : uint
-    {
-        STANDARD_FRAME = 0,     //标准帧
-        EXTEND_FRAME = 1        //扩展帧
-    }
-
     public class Channel
     {
-        //------------------------------------------------------------------------------
-        public static readonly Hashtable CAN_MODE_LIST = new Hashtable();
-        public static readonly Hashtable CAN_SEND_MODE_LIST = new Hashtable();
-        public static readonly Hashtable CAN_FRAME_TYPE_LIST = new Hashtable();
-        public static readonly Hashtable CAN_FRAME_FORMAT_LIST = new Hashtable();
-        //------------------------------------------------------------------------------
-        public static readonly string CAN_MODE_NORMAL = "正常模式";
-        public static readonly string CAN_MODE_LOM = "只听模式";
-        public static readonly string CAN_MODE_STM = "自发自收";
-        public static readonly string CAN_SEND_MODE_NORMAL = "正常发送";
-        public static readonly string CAN_SEND_MODE_SINGLE = "单次发送";
-        public static readonly string CAN_FRAME_TYPE_DATA_FRAME = "数据帧";
-        public static readonly string CAN_FRAME_TYPE_REMOTE_FRAME = "远程帧";
-        public static readonly string CAN_FRAME_FORMAT_STANDARD_FRAME = "标准帧";
-        public static readonly string CAN_FRAME_FORMAT_EXTEND_FRAME = "扩展帧";
         //------------------------------------------------------------------------------
         public static readonly int DEFAULT_BAUDRATE = 1000;
         public static readonly uint DEFAULT_ACC_CODE = 0x0;
@@ -78,45 +38,6 @@ namespace CL_Framework
 
         public CAN_MODE Mode
         { get { return (CAN_MODE)Enum.ToObject(typeof(CAN_MODE), this.initConfig.Mode); } }
-
-        static Channel()
-        {
-            CAN_MODE_LIST.Add(CAN_MODE.NORMAL, CAN_MODE_NORMAL);
-            CAN_MODE_LIST.Add(CAN_MODE.LOM, CAN_MODE_LOM);
-            CAN_MODE_LIST.Add(CAN_MODE.STM, CAN_MODE_STM);
-
-            CAN_SEND_MODE_LIST.Add(CAN_SEND_MODE.NORMAL, CAN_SEND_MODE_NORMAL);
-            CAN_SEND_MODE_LIST.Add(CAN_SEND_MODE.SINGLE, CAN_SEND_MODE_SINGLE);
-
-            CAN_FRAME_TYPE_LIST.Add(CAN_FRAME_TYPE.DATA_FRAME, CAN_FRAME_TYPE_DATA_FRAME);
-            CAN_FRAME_TYPE_LIST.Add(CAN_FRAME_TYPE.REMOTE_FRAME, CAN_FRAME_TYPE_REMOTE_FRAME);
-
-            CAN_FRAME_FORMAT_LIST.Add(CAN_FRAME_FORMAT.STANDARD_FRAME, CAN_FRAME_FORMAT_STANDARD_FRAME);
-            CAN_FRAME_FORMAT_LIST.Add(CAN_FRAME_FORMAT.EXTEND_FRAME, CAN_FRAME_FORMAT_EXTEND_FRAME);
-        }
-
-        public static string GetCANModeDesc(CAN_MODE mode)
-        {
-            return CAN_MODE_LIST.ContainsKey(mode) ? (string)CAN_MODE_LIST[mode] : null;
-        }
-
-        public static string GetCANSendModeDesc(CAN_SEND_MODE canSendMode)
-        {
-            return CAN_SEND_MODE_LIST.ContainsKey(canSendMode) ? 
-                (string)CAN_SEND_MODE_LIST[canSendMode] : null;
-        }
-
-        public static string GetCANFrameTypeDesc(CAN_FRAME_TYPE canFrameType)
-        {
-            return CAN_FRAME_TYPE_LIST.ContainsKey(canFrameType) ?
-                (string)CAN_FRAME_TYPE_LIST[canFrameType] : null;
-        }
-
-        public static string GetCANFrameFormatDesc(CAN_FRAME_FORMAT canFrameFormat)
-        {
-            return CAN_FRAME_FORMAT_LIST.ContainsKey(canFrameFormat) ?
-                (string)CAN_FRAME_FORMAT_LIST[canFrameFormat] : null;
-        }
 
         public Channel(uint channelIndex, string channelName, Device parentDevice)
         {

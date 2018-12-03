@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DialogDevice));
             this.panelTop = new System.Windows.Forms.Panel();
             this.lbVersion = new System.Windows.Forms.Label();
             this.panelBottom = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnConfigOnly = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.panelSelect = new System.Windows.Forms.Panel();
             this.btnOpenDevice = new System.Windows.Forms.Button();
@@ -50,13 +52,14 @@
             this.cSerialNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelConfig = new System.Windows.Forms.Panel();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.btnConfigOnly = new System.Windows.Forms.Button();
+            this.cANBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelTop.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelSelect.SuspendLayout();
             this.panelList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevice)).BeginInit();
             this.panelConfig.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cANBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -79,6 +82,13 @@
             this.panelBottom.Controls.Add(this.btnStart);
             resources.ApplyResources(this.panelBottom, "panelBottom");
             this.panelBottom.Name = "panelBottom";
+            // 
+            // btnConfigOnly
+            // 
+            resources.ApplyResources(this.btnConfigOnly, "btnConfigOnly");
+            this.btnConfigOnly.Name = "btnConfigOnly";
+            this.btnConfigOnly.UseVisualStyleBackColor = true;
+            this.btnConfigOnly.Click += new System.EventHandler(this.btnConfigOnly_Click);
             // 
             // btnStart
             // 
@@ -211,12 +221,9 @@
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             // 
-            // btnConfigOnly
+            // cANBindingSource
             // 
-            resources.ApplyResources(this.btnConfigOnly, "btnConfigOnly");
-            this.btnConfigOnly.Name = "btnConfigOnly";
-            this.btnConfigOnly.UseVisualStyleBackColor = true;
-            this.btnConfigOnly.Click += new System.EventHandler(this.btnConfigOnly_Click);
+            this.cANBindingSource.DataSource = typeof(CL_Framework.CAN);
             // 
             // DialogDevice
             // 
@@ -238,6 +245,7 @@
             this.panelList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevice)).EndInit();
             this.panelConfig.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cANBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -266,5 +274,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cChannelNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn cSerialNO;
         private System.Windows.Forms.Button btnConfigOnly;
+        private System.Windows.Forms.BindingSource cANBindingSource;
     }
 }

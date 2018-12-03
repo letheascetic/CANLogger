@@ -58,7 +58,7 @@ namespace CL_Main
                 dgvChannels.Rows[index].Visible = false;
                 dgvChannels.Rows[index].Tag = channel;
                 dgvChannels.Rows[index].Cells[0].Value = "";
-                dgvChannels.Rows[index].Cells[1].Value = Channel.GetCANModeDesc(channel.Mode);
+                dgvChannels.Rows[index].Cells[1].Value = CAN.FindCANModeKey(channel.Mode);
                 dgvChannels.Rows[index].Cells[2].Value = channel.ChannelName;
                 dgvChannels.Rows[index].Cells[3].Value = channel.ChannelIndex;
                 dgvChannels.Rows[index].Cells[4].Value = channel.BaudRate;
@@ -80,7 +80,7 @@ namespace CL_Main
             {
                 Channel channel = (Channel)row.Tag;
                 row.Cells[0].Value = "";
-                row.Cells[1].Value = Channel.GetCANModeDesc(channel.Mode);
+                row.Cells[1].Value = CAN.FindCANModeKey(channel.Mode);
                 row.Cells[2].Value = channel.ChannelName;
                 row.Cells[3].Value = channel.ChannelIndex;
                 row.Cells[4].Value = channel.BaudRate;

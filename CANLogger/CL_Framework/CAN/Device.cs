@@ -6,20 +6,8 @@ using System.Text;
 
 namespace CL_Framework
 {
-    public enum DEVICE_TYPE : uint
-    {   
-        UNKNOWN = 0,
-        USBCAN = 3,
-        USBCANII = 4
-    }
-
     public class Device
     {
-        public static readonly List<KeyValuePair<DEVICE_TYPE, string>> DeviceTypies = new List<KeyValuePair<DEVICE_TYPE, string>>();
-        public static readonly string DEVICE_TYPE_UNKNOWN = "UNKNOWN";
-        public static readonly string DEVICE_TYPE_USBCAN = "USBCAN";
-        public static readonly string DEVICE_TYPE_USBCANII = "USBCAN-II";
-
         private static readonly uint DEVICE_CANNUM_MAXIMUM = 2;
 
         private bool isDeviceOpen;
@@ -48,33 +36,10 @@ namespace CL_Framework
         public uint CANNum
         { get { return deviceInfo.CANNum > DEVICE_CANNUM_MAXIMUM ? DEVICE_CANNUM_MAXIMUM : deviceInfo.CANNum; } }
 
-
-        static Device()
-        {
-            DeviceTypies.Add(new KeyValuePair<DEVICE_TYPE, string>(DEVICE_TYPE.USBCAN, DEVICE_TYPE_USBCAN));
-            DeviceTypies.Add(new KeyValuePair<DEVICE_TYPE, string>(DEVICE_TYPE.USBCANII, DEVICE_TYPE_USBCANII));
-        }
-
-        public static string GetDeviceDesc(DEVICE_TYPE deviceType)
-        {
-            if (deviceType == DEVICE_TYPE.UNKNOWN)
-            {
-                return Device.DEVICE_TYPE_UNKNOWN;
-            }
-            foreach (KeyValuePair<DEVICE_TYPE, string> keyValuePair in DeviceTypies)
-            {
-                if (keyValuePair.Key == deviceType)
-                {
-                    return keyValuePair.Value;
-                }
-            }
-            return null;
-        }
-
         private Device(DEVICE_TYPE deviceType)
         {
             this.deviceType = deviceType;
-            this.deviceTypeDesc = GetDeviceDesc(deviceType);
+            this.deviceTypeDesc = CAN.FindDeviceTypeKey(deviceType);
             this.deviceIndex = DeviceGroup.CreateInstance().GetNewDeviceIndex(deviceType);
             this.isDeviceOpen = false;
             this.deviceInfo = new BoardInfo();

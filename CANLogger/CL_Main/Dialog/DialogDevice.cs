@@ -41,11 +41,14 @@ namespace CL_Main.Dialog
 
             //init load select panel
             //load cbxSelectDevice data source
-            cbxSelectDevice.DataSource = Device.DeviceTypies;
-            cbxSelectDevice.ValueMember = "Key";
-            cbxSelectDevice.DisplayMember = "Value";
+            BindingSource bs = new BindingSource();
+            bs.DataSource = CAN.DEVICE_TYPE_LIST.Keys;
+            cbxSelectDevice.DataSource = bs;
+            //cbxSelectDevice.DataSource = CAN.DEVICE_TYPE_LIST.Keys;
+            //cbxSelectDevice.ValueMember = "Key";
+            //cbxSelectDevice.DisplayMember = "Value";
             cbxSelectDevice.SelectedIndex = device != null ?
-                cbxSelectDevice.FindString(device.DeviceTypeDesc) : cbxSelectDevice.FindString(Device.DEVICE_TYPE_USBCANII);
+                cbxSelectDevice.FindString(device.DeviceTypeDesc) : cbxSelectDevice.FindString(CAN.DEVICE_TYPE_USBCANII);
             cbxSelectDevice.Enabled = device == null ? true : false;
 
             UpdateControls();
@@ -123,7 +126,9 @@ namespace CL_Main.Dialog
 
         private void btnOpenDevice_Click(object sender, EventArgs e)
         {
-            DEVICE_TYPE deviceType = (DEVICE_TYPE)Enum.Parse(typeof(DEVICE_TYPE), cbxSelectDevice.SelectedValue.ToString());
+            string deviceTypeDesc = cbxSelectDevice.SelectedValue.ToString();
+            DEVICE_TYPE deviceType = (DEVICE_TYPE)CAN.DEVICE_TYPE_LIST[deviceTypeDesc];
+            //DEVICE_TYPE deviceType = (DEVICE_TYPE)Enum.Parse(typeof(DEVICE_TYPE), cbxSelectDevice.SelectedValue.ToString());
             Device newDevice = null;
 
             if (device == null)
