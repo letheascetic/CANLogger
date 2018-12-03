@@ -50,6 +50,7 @@ namespace CL_Main
             {
                 Channel channel = device.GetChannel(channelIndex);
                 FormData pFormData = new FormData(channel);
+                //pFormData.Text = channel.ChannelName;
                 pFormData.Show(this.dockPanel, DockState.Document);
                 pFormDatas.Add(pFormData);
             }
@@ -220,20 +221,6 @@ namespace CL_Main
             this.Cursor = Cursors.Default;
         }
 
-        private void btnAddSet_Click(object sender, EventArgs e)
-        {
-            Device device = this.pFormDevice.SelectedDevice;
-            bool isNewDevice = device == null ? true : false;
-
-            DialogDevice dialogDevice = new DialogDevice(device);
-            if (dialogDevice.ShowDialog() == DialogResult.OK)
-            {
-                //this.formDevice.UpdateControls();
-                //this.formStatus.UpdateControls();
-                dialogDevice.Close();
-            }
-        }
-
         private void cbxSelectDevice_SelectedIndexChanged(object sender, EventArgs e)
         {
             Device oldSelectedDevice = this.selectedDevice;
@@ -245,6 +232,16 @@ namespace CL_Main
         private void menuItemAbout_Click(object sender, EventArgs e)
         {
             new AboutUs().ShowDialog();
+        }
+
+        private void itemAddDevice_Click(object sender, EventArgs e)
+        {
+            DialogDevice pDialogDevice = new DialogDevice(null);
+            if (pDialogDevice.ShowDialog() == DialogResult.OK)
+            {
+                this.pDeviceGroup.Add(pDialogDevice.GetDevice(), null);
+                pDialogDevice.Close();
+            }
         }
 
         #endregion

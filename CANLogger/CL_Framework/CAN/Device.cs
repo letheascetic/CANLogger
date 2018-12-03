@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CL_Framework
 {
-    public enum DeviceType : UInt32
+    public enum DEVICE_TYPE : uint
     {   
         UNKNOWN = 0,
         USBCAN = 3,
@@ -15,7 +15,7 @@ namespace CL_Framework
 
     public class Device
     {
-        public static readonly List<KeyValuePair<DeviceType, string>> DeviceTypies = new List<KeyValuePair<DeviceType, string>>();
+        public static readonly List<KeyValuePair<DEVICE_TYPE, string>> DeviceTypies = new List<KeyValuePair<DEVICE_TYPE, string>>();
         public static readonly string DEVICE_TYPE_UNKNOWN = "UNKNOWN";
         public static readonly string DEVICE_TYPE_USBCAN = "USBCAN";
         public static readonly string DEVICE_TYPE_USBCANII = "USBCAN-II";
@@ -23,14 +23,14 @@ namespace CL_Framework
         private static readonly uint DEVICE_CANNUM_MAXIMUM = 2;
 
         private bool isDeviceOpen;
-        private DeviceType deviceType;
+        private DEVICE_TYPE deviceType;
         private string deviceTypeDesc;
         private UInt32 deviceIndex;
         private BoardInfo deviceInfo;
         
         private Channel[] channels;
         
-        public DeviceType DeviceType
+        public DEVICE_TYPE DeviceType
         { get { return deviceType; } }
 
         public string DeviceTypeDesc
@@ -51,17 +51,17 @@ namespace CL_Framework
 
         static Device()
         {
-            DeviceTypies.Add(new KeyValuePair<DeviceType, string>(DeviceType.USBCAN, DEVICE_TYPE_USBCAN));
-            DeviceTypies.Add(new KeyValuePair<DeviceType, string>(DeviceType.USBCANII, DEVICE_TYPE_USBCANII));
+            DeviceTypies.Add(new KeyValuePair<DEVICE_TYPE, string>(DEVICE_TYPE.USBCAN, DEVICE_TYPE_USBCAN));
+            DeviceTypies.Add(new KeyValuePair<DEVICE_TYPE, string>(DEVICE_TYPE.USBCANII, DEVICE_TYPE_USBCANII));
         }
 
-        public static string GetDeviceDesc(DeviceType deviceType)
+        public static string GetDeviceDesc(DEVICE_TYPE deviceType)
         {
-            if (deviceType == DeviceType.UNKNOWN)
+            if (deviceType == DEVICE_TYPE.UNKNOWN)
             {
                 return Device.DEVICE_TYPE_UNKNOWN;
             }
-            foreach (KeyValuePair<DeviceType, string> keyValuePair in DeviceTypies)
+            foreach (KeyValuePair<DEVICE_TYPE, string> keyValuePair in DeviceTypies)
             {
                 if (keyValuePair.Key == deviceType)
                 {
@@ -71,7 +71,7 @@ namespace CL_Framework
             return null;
         }
 
-        private Device(DeviceType deviceType)
+        private Device(DEVICE_TYPE deviceType)
         {
             this.deviceType = deviceType;
             this.deviceTypeDesc = GetDeviceDesc(deviceType);
@@ -102,7 +102,7 @@ namespace CL_Framework
             }
         }
 
-        public static CANResult CreateDevice(DeviceType deviceType, out Device device)
+        public static CANResult CreateDevice(DEVICE_TYPE deviceType, out Device device)
         {
             device = null;
             //CANResult canResult = CANResult.STATUS_ERR;

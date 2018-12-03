@@ -146,6 +146,39 @@
   <data name="sp1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
   </data>
+  <data name="itemAddDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="itemAddDevice.Text" xml:space="preserve">
+    <value>添加设备</value>
+  </data>
+  <data name="itemConfigDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="itemConfigDevice.Text" xml:space="preserve">
+    <value>配置设备</value>
+  </data>
+  <data name="itemConfigDevice.ToolTipText" xml:space="preserve">
+    <value>复位所有CAN通道</value>
+  </data>
+  <data name="itemResetDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="itemResetDevice.Text" xml:space="preserve">
+    <value>复位设备</value>
+  </data>
+  <data name="itemResetDevice.ToolTipText" xml:space="preserve">
+    <value>复位所有CAN通道</value>
+  </data>
+  <data name="itemDeleteDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="itemDeleteDevice.Text" xml:space="preserve">
+    <value>删除设备</value>
+  </data>
+  <data name="itemDeleteDevice.ToolTipText" xml:space="preserve">
+    <value>复位所有CAN通道</value>
+  </data>
   <data name="btnOperateDevice.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -182,39 +215,6 @@
   </data>
   <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="itemAddDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 26</value>
-  </data>
-  <data name="itemAddDevice.Text" xml:space="preserve">
-    <value>添加设备</value>
-  </data>
-  <data name="itemConfigDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 26</value>
-  </data>
-  <data name="itemConfigDevice.Text" xml:space="preserve">
-    <value>配置设备</value>
-  </data>
-  <data name="itemConfigDevice.ToolTipText" xml:space="preserve">
-    <value>复位所有CAN通道</value>
-  </data>
-  <data name="itemResetDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 26</value>
-  </data>
-  <data name="itemResetDevice.Text" xml:space="preserve">
-    <value>复位设备</value>
-  </data>
-  <data name="itemResetDevice.ToolTipText" xml:space="preserve">
-    <value>复位所有CAN通道</value>
-  </data>
-  <data name="itemDeleteDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 26</value>
-  </data>
-  <data name="itemDeleteDevice.Text" xml:space="preserve">
-    <value>删除设备</value>
-  </data>
-  <data name="itemDeleteDevice.ToolTipText" xml:space="preserve">
-    <value>复位所有CAN通道</value>
   </data>
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>138, 17</value>
@@ -264,11 +264,32 @@
   <data name="menuItemOption.Text" xml:space="preserve">
     <value>操作</value>
   </data>
+  <data name="menuItemSkinDefault.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 26</value>
+  </data>
+  <data name="menuItemSkinDefault.Text" xml:space="preserve">
+    <value>Default</value>
+  </data>
   <data name="menuItemSkin.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 24</value>
   </data>
   <data name="menuItemSkin.Text" xml:space="preserve">
     <value>皮肤</value>
+  </data>
+  <data name="menuItemLanguageCN.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="menuItemLanguageCN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 26</value>
+  </data>
+  <data name="menuItemLanguageCN.Text" xml:space="preserve">
+    <value>简体中文</value>
+  </data>
+  <data name="menuItemLanguageEN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 26</value>
+  </data>
+  <data name="menuItemLanguageEN.Text" xml:space="preserve">
+    <value>英语</value>
   </data>
   <data name="menuItemLanguage.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -283,13 +304,13 @@
     <value>设置语言</value>
   </data>
   <data name="menuItemManual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="menuItemManual.Text" xml:space="preserve">
     <value>用户手册</value>
   </data>
   <data name="menuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="menuItemAbout.Text" xml:space="preserve">
     <value>关于我们</value>
@@ -323,27 +344,6 @@
   </data>
   <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="menuItemSkinDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 26</value>
-  </data>
-  <data name="menuItemSkinDefault.Text" xml:space="preserve">
-    <value>Default</value>
-  </data>
-  <data name="menuItemLanguageCN.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="menuItemLanguageCN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 26</value>
-  </data>
-  <data name="menuItemLanguageCN.Text" xml:space="preserve">
-    <value>简体中文</value>
-  </data>
-  <data name="menuItemLanguageEN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 26</value>
-  </data>
-  <data name="menuItemLanguageEN.Text" xml:space="preserve">
-    <value>英语</value>
   </data>
   <data name="dockPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

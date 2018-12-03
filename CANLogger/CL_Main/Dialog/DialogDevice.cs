@@ -99,7 +99,7 @@ namespace CL_Main.Dialog
             }
         }
 
-        private Device CreateDevice(DeviceType deviceType)
+        private Device CreateDevice(DEVICE_TYPE deviceType)
         {
             Device device = null;
             // get new device index
@@ -123,7 +123,7 @@ namespace CL_Main.Dialog
 
         private void btnOpenDevice_Click(object sender, EventArgs e)
         {
-            DeviceType deviceType = (DeviceType)Enum.Parse(typeof(DeviceType), cbxSelectDevice.SelectedValue.ToString());
+            DEVICE_TYPE deviceType = (DEVICE_TYPE)Enum.Parse(typeof(DEVICE_TYPE), cbxSelectDevice.SelectedValue.ToString());
             Device newDevice = null;
 
             if (device == null)
@@ -187,7 +187,7 @@ namespace CL_Main.Dialog
                     }
                 }
             }
-            this.pDeviceGroup.Add(this.device, null);
+            //this.pDeviceGroup.Add(this.device, null);
             this.DialogResult = DialogResult.OK;
         }
 
@@ -205,7 +205,7 @@ namespace CL_Main.Dialog
                     }
                 }
             }
-            this.pDeviceGroup.Add(this.device, null);
+            //this.pDeviceGroup.Add(this.device, null);
             this.DialogResult = DialogResult.OK;
         }
 

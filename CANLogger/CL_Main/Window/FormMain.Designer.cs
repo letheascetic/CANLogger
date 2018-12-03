@@ -103,6 +103,7 @@
             this.itemAddDevice.Image = global::CL_Main.Properties.Resources.add;
             this.itemAddDevice.Name = "itemAddDevice";
             resources.ApplyResources(this.itemAddDevice, "itemAddDevice");
+            this.itemAddDevice.Click += new System.EventHandler(this.itemAddDevice_Click);
             // 
             // itemConfigDevice
             // 

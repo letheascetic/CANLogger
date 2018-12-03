@@ -44,7 +44,7 @@ namespace CL_Framework
             devices = new List<Device>();
         }
         
-        public UInt32 GetNewDeviceIndex(DeviceType deviceType)
+        public UInt32 GetNewDeviceIndex(DEVICE_TYPE deviceType)
         {
             List<UInt32> indexList = new List<uint>();
             lock (locker)
@@ -62,9 +62,9 @@ namespace CL_Framework
             }
         }
 
-        public Device GetDevice(DeviceType deviceType, UInt32 deviceIndex)
+        public Device GetDevice(DEVICE_TYPE deviceType, UInt32 deviceIndex)
         {
-            if (deviceType == DeviceType.UNKNOWN)
+            if (deviceType == DEVICE_TYPE.UNKNOWN)
             {
                 return null;
             }

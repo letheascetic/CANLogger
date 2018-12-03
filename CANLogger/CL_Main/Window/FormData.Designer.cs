@@ -31,34 +31,33 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFrameID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFrameType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFrameFormat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDataLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlReceiveIcon = new System.Windows.Forms.Panel();
-            this.ucSendModeList = new CL_Main.UCListSendMode();
             this.pnlSendIcon = new System.Windows.Forms.Panel();
             this.toolStripSend = new System.Windows.Forms.ToolStrip();
             this.btnSendMode = new System.Windows.Forms.ToolStripButton();
             this.btnSendFile = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.sp4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.btnContinueShow = new System.Windows.Forms.ToolStripButton();
             this.btnStopShow = new System.Windows.Forms.ToolStripButton();
             this.btnShowMode = new System.Windows.Forms.ToolStripButton();
             this.btnClear = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.sp1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnFilter = new System.Windows.Forms.ToolStripButton();
             this.cbxFilter = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.sp2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSave = new System.Windows.Forms.ToolStripButton();
             this.btnRTSave = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ucSendModeNormal = new CL_Main.UCNormalSendMode();
+            this.sp3 = new System.Windows.Forms.ToolStripSeparator();
+            this.pnlSend = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -81,8 +80,7 @@
             // splitContainer.Panel2
             // 
             resources.ApplyResources(this.splitContainer.Panel2, "splitContainer.Panel2");
-            this.splitContainer.Panel2.Controls.Add(this.ucSendModeNormal);
-            this.splitContainer.Panel2.Controls.Add(this.ucSendModeList);
+            this.splitContainer.Panel2.Controls.Add(this.pnlSend);
             this.splitContainer.Panel2.Controls.Add(this.pnlSendIcon);
             this.splitContainer.Panel2.Controls.Add(this.toolStripSend);
             // 
@@ -95,78 +93,75 @@
             this.dgvData.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8});
+            this.cNO,
+            this.cTimeStamp,
+            this.cStatus,
+            this.cFrameID,
+            this.cFrameType,
+            this.cFrameFormat,
+            this.cDataLength,
+            this.cData});
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
             this.dgvData.RowTemplate.Height = 27;
             // 
-            // dataGridViewTextBoxColumn1
+            // cNO
             // 
-            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            resources.ApplyResources(this.cNO, "cNO");
+            this.cNO.Name = "cNO";
+            this.cNO.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn2
+            // cTimeStamp
             // 
-            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            resources.ApplyResources(this.cTimeStamp, "cTimeStamp");
+            this.cTimeStamp.Name = "cTimeStamp";
+            this.cTimeStamp.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn3
+            // cStatus
             // 
-            resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            resources.ApplyResources(this.cStatus, "cStatus");
+            this.cStatus.Name = "cStatus";
+            this.cStatus.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn4
+            // cFrameID
             // 
-            resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            resources.ApplyResources(this.cFrameID, "cFrameID");
+            this.cFrameID.Name = "cFrameID";
+            this.cFrameID.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn5
+            // cFrameType
             // 
-            resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            resources.ApplyResources(this.cFrameType, "cFrameType");
+            this.cFrameType.Name = "cFrameType";
+            this.cFrameType.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn6
+            // cFrameFormat
             // 
-            resources.ApplyResources(this.dataGridViewTextBoxColumn6, "dataGridViewTextBoxColumn6");
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            resources.ApplyResources(this.cFrameFormat, "cFrameFormat");
+            this.cFrameFormat.Name = "cFrameFormat";
+            this.cFrameFormat.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn7
+            // cDataLength
             // 
-            resources.ApplyResources(this.dataGridViewTextBoxColumn7, "dataGridViewTextBoxColumn7");
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            resources.ApplyResources(this.cDataLength, "cDataLength");
+            this.cDataLength.Name = "cDataLength";
+            this.cDataLength.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn8
+            // cData
             // 
-            resources.ApplyResources(this.dataGridViewTextBoxColumn8, "dataGridViewTextBoxColumn8");
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            resources.ApplyResources(this.cData, "cData");
+            this.cData.Name = "cData";
+            this.cData.ReadOnly = true;
             // 
             // pnlReceiveIcon
             // 
+            this.pnlReceiveIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.pnlReceiveIcon, "pnlReceiveIcon");
             this.pnlReceiveIcon.Name = "pnlReceiveIcon";
             // 
-            // ucSendModeList
-            // 
-            resources.ApplyResources(this.ucSendModeList, "ucSendModeList");
-            this.ucSendModeList.Name = "ucSendModeList";
-            // 
             // pnlSendIcon
             // 
+            this.pnlSendIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.pnlSendIcon, "pnlSendIcon");
             this.pnlSendIcon.Name = "pnlSendIcon";
             // 
@@ -177,7 +172,7 @@
             this.toolStripSend.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnSendMode,
             this.btnSendFile,
-            this.toolStripSeparator3});
+            this.sp4});
             resources.ApplyResources(this.toolStripSend, "toolStripSend");
             this.toolStripSend.Name = "toolStripSend";
             // 
@@ -194,10 +189,10 @@
             resources.ApplyResources(this.btnSendFile, "btnSendFile");
             this.btnSendFile.Name = "btnSendFile";
             // 
-            // toolStripSeparator3
+            // sp4
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            this.sp4.Name = "sp4";
+            resources.ApplyResources(this.sp4, "sp4");
             // 
             // toolStrip
             // 
@@ -208,13 +203,13 @@
             this.btnStopShow,
             this.btnShowMode,
             this.btnClear,
-            this.toolStripSeparator4,
+            this.sp1,
             this.btnFilter,
             this.cbxFilter,
-            this.toolStripSeparator1,
+            this.sp2,
             this.btnSave,
             this.btnRTSave,
-            this.toolStripSeparator2});
+            this.sp3});
             resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Name = "toolStrip";
             // 
@@ -242,10 +237,10 @@
             resources.ApplyResources(this.btnClear, "btnClear");
             this.btnClear.Name = "btnClear";
             // 
-            // toolStripSeparator4
+            // sp1
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            this.sp1.Name = "sp1";
+            resources.ApplyResources(this.sp1, "sp1");
             // 
             // btnFilter
             // 
@@ -259,10 +254,10 @@
             resources.ApplyResources(this.cbxFilter, "cbxFilter");
             this.cbxFilter.Name = "cbxFilter";
             // 
-            // toolStripSeparator1
+            // sp2
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.sp2.Name = "sp2";
+            resources.ApplyResources(this.sp2, "sp2");
             // 
             // btnSave
             // 
@@ -276,15 +271,15 @@
             resources.ApplyResources(this.btnRTSave, "btnRTSave");
             this.btnRTSave.Name = "btnRTSave";
             // 
-            // toolStripSeparator2
+            // sp3
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            this.sp3.Name = "sp3";
+            resources.ApplyResources(this.sp3, "sp3");
             // 
-            // ucSendModeNormal
+            // pnlSend
             // 
-            resources.ApplyResources(this.ucSendModeNormal, "ucSendModeNormal");
-            this.ucSendModeNormal.Name = "ucSendModeNormal";
+            resources.ApplyResources(this.pnlSend, "pnlSend");
+            this.pnlSend.Name = "pnlSend";
             // 
             // FormData
             // 
@@ -317,31 +312,30 @@
         private System.Windows.Forms.ToolStripButton btnContinueShow;
         private System.Windows.Forms.ToolStripButton btnStopShow;
         private System.Windows.Forms.ToolStripButton btnShowMode;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator sp1;
         private System.Windows.Forms.ToolStripButton btnFilter;
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.ToolStripButton btnClear;
         private System.Windows.Forms.ToolStripComboBox cbxFilter;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator sp2;
         private System.Windows.Forms.ToolStripButton btnSave;
         private System.Windows.Forms.ToolStripButton btnRTSave;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator sp3;
         private System.Windows.Forms.ToolStrip toolStripSend;
         private System.Windows.Forms.ToolStripButton btnSendFile;
         private System.Windows.Forms.ToolStripButton btnSendMode;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator sp4;
         private System.Windows.Forms.Panel pnlSendIcon;
         private System.Windows.Forms.DataGridView dgvData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.Panel pnlReceiveIcon;
-        private UCListSendMode ucSendModeList;
-        private UCNormalSendMode ucSendModeNormal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cTimeStamp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cFrameID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cFrameType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cFrameFormat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cDataLength;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cData;
+        private System.Windows.Forms.Panel pnlSend;
     }
 }

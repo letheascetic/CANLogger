@@ -31,7 +31,7 @@
             this.lbSendMode = new System.Windows.Forms.Label();
             this.lbFrameType = new System.Windows.Forms.Label();
             this.lbFrameFormat = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxSendMode = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.pnl = new System.Windows.Forms.Panel();
@@ -55,58 +55,63 @@
             // lbSendMode
             // 
             this.lbSendMode.AutoSize = true;
-            this.lbSendMode.Location = new System.Drawing.Point(19, 7);
+            this.lbSendMode.Location = new System.Drawing.Point(4, 8);
             this.lbSendMode.Name = "lbSendMode";
-            this.lbSendMode.Size = new System.Drawing.Size(84, 20);
+            this.lbSendMode.Size = new System.Drawing.Size(73, 20);
             this.lbSendMode.TabIndex = 0;
-            this.lbSendMode.Text = "发送方式：";
+            this.lbSendMode.Text = "发送方式:";
             // 
             // lbFrameType
             // 
             this.lbFrameType.AutoSize = true;
-            this.lbFrameType.Location = new System.Drawing.Point(19, 47);
+            this.lbFrameType.Location = new System.Drawing.Point(19, 41);
             this.lbFrameType.Name = "lbFrameType";
-            this.lbFrameType.Size = new System.Drawing.Size(69, 20);
+            this.lbFrameType.Size = new System.Drawing.Size(58, 20);
             this.lbFrameType.TabIndex = 1;
-            this.lbFrameType.Text = "帧类型：";
+            this.lbFrameType.Text = "帧类型:";
             // 
             // lbFrameFormat
             // 
             this.lbFrameFormat.AutoSize = true;
-            this.lbFrameFormat.Location = new System.Drawing.Point(19, 87);
+            this.lbFrameFormat.Location = new System.Drawing.Point(19, 74);
             this.lbFrameFormat.Name = "lbFrameFormat";
-            this.lbFrameFormat.Size = new System.Drawing.Size(69, 20);
+            this.lbFrameFormat.Size = new System.Drawing.Size(58, 20);
             this.lbFrameFormat.TabIndex = 2;
-            this.lbFrameFormat.Text = "帧格式：";
+            this.lbFrameFormat.Text = "帧格式:";
             // 
-            // comboBox1
+            // cbxSendMode
             // 
-            this.comboBox1.Font = new System.Drawing.Font("微软雅黑", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(109, 4);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(103, 27);
-            this.comboBox1.TabIndex = 3;
+            this.cbxSendMode.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbxSendMode.FormattingEnabled = true;
+            this.cbxSendMode.Items.AddRange(new object[] {
+            "正常发送",
+            "单次发送"});
+            this.cbxSendMode.Location = new System.Drawing.Point(83, 5);
+            this.cbxSendMode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbxSendMode.Name = "cbxSendMode";
+            this.cbxSendMode.Size = new System.Drawing.Size(103, 28);
+            this.cbxSendMode.TabIndex = 3;
             // 
             // comboBox2
             // 
-            this.comboBox2.Font = new System.Drawing.Font("微软雅黑", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBox2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(109, 44);
+            this.comboBox2.Items.AddRange(new object[] {
+            "数据帧"});
+            this.comboBox2.Location = new System.Drawing.Point(83, 38);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(103, 27);
+            this.comboBox2.Size = new System.Drawing.Size(103, 28);
             this.comboBox2.TabIndex = 4;
             // 
             // comboBox3
             // 
-            this.comboBox3.Font = new System.Drawing.Font("微软雅黑", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBox3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(109, 83);
+            this.comboBox3.Location = new System.Drawing.Point(83, 70);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(103, 27);
+            this.comboBox3.Size = new System.Drawing.Size(103, 28);
             this.comboBox3.TabIndex = 5;
             // 
             // pnl
@@ -115,16 +120,16 @@
             this.pnl.Controls.Add(this.chbxIncData);
             this.pnl.Controls.Add(this.chbxIncID);
             this.pnl.Controls.Add(this.lbDesc);
-            this.pnl.Location = new System.Drawing.Point(234, 4);
+            this.pnl.Location = new System.Drawing.Point(201, 4);
             this.pnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnl.Name = "pnl";
-            this.pnl.Size = new System.Drawing.Size(545, 36);
+            this.pnl.Size = new System.Drawing.Size(545, 30);
             this.pnl.TabIndex = 6;
             // 
             // chbxIncData
             // 
             this.chbxIncData.AutoSize = true;
-            this.chbxIncData.Location = new System.Drawing.Point(311, 11);
+            this.chbxIncData.Location = new System.Drawing.Point(309, 3);
             this.chbxIncData.Name = "chbxIncData";
             this.chbxIncData.Size = new System.Drawing.Size(196, 24);
             this.chbxIncData.TabIndex = 9;
@@ -134,7 +139,7 @@
             // chbxIncID
             // 
             this.chbxIncID.AutoSize = true;
-            this.chbxIncID.Location = new System.Drawing.Point(121, 11);
+            this.chbxIncID.Location = new System.Drawing.Point(121, 3);
             this.chbxIncID.Name = "chbxIncID";
             this.chbxIncID.Size = new System.Drawing.Size(166, 24);
             this.chbxIncID.TabIndex = 8;
@@ -144,7 +149,7 @@
             // lbDesc
             // 
             this.lbDesc.AutoSize = true;
-            this.lbDesc.Location = new System.Drawing.Point(16, 12);
+            this.lbDesc.Location = new System.Drawing.Point(16, 3);
             this.lbDesc.Name = "lbDesc";
             this.lbDesc.Size = new System.Drawing.Size(99, 20);
             this.lbDesc.TabIndex = 7;
@@ -153,76 +158,76 @@
             // lbFrameID
             // 
             this.lbFrameID.AutoSize = true;
-            this.lbFrameID.Location = new System.Drawing.Point(229, 53);
+            this.lbFrameID.Location = new System.Drawing.Point(208, 43);
             this.lbFrameID.Name = "lbFrameID";
-            this.lbFrameID.Size = new System.Drawing.Size(94, 20);
+            this.lbFrameID.Size = new System.Drawing.Size(83, 20);
             this.lbFrameID.TabIndex = 7;
-            this.lbFrameID.Text = "帧ID(HEX)：";
+            this.lbFrameID.Text = "帧ID(HEX):";
             // 
             // lbSendNum
             // 
             this.lbSendNum.AutoSize = true;
-            this.lbSendNum.Location = new System.Drawing.Point(229, 88);
+            this.lbSendNum.Location = new System.Drawing.Point(218, 74);
             this.lbSendNum.Name = "lbSendNum";
-            this.lbSendNum.Size = new System.Drawing.Size(84, 20);
+            this.lbSendNum.Size = new System.Drawing.Size(73, 20);
             this.lbSendNum.TabIndex = 8;
-            this.lbSendNum.Text = "发送次数：";
+            this.lbSendNum.Text = "发送次数:";
             // 
             // tbxFrameID
             // 
-            this.tbxFrameID.Font = new System.Drawing.Font("微软雅黑", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbxFrameID.Location = new System.Drawing.Point(329, 48);
+            this.tbxFrameID.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbxFrameID.Location = new System.Drawing.Point(297, 38);
             this.tbxFrameID.Name = "tbxFrameID";
-            this.tbxFrameID.Size = new System.Drawing.Size(139, 25);
+            this.tbxFrameID.Size = new System.Drawing.Size(139, 27);
             this.tbxFrameID.TabIndex = 9;
             // 
             // tbxSendNum
             // 
-            this.tbxSendNum.Font = new System.Drawing.Font("微软雅黑", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbxSendNum.Location = new System.Drawing.Point(329, 81);
+            this.tbxSendNum.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbxSendNum.Location = new System.Drawing.Point(297, 69);
             this.tbxSendNum.Name = "tbxSendNum";
-            this.tbxSendNum.Size = new System.Drawing.Size(89, 25);
+            this.tbxSendNum.Size = new System.Drawing.Size(62, 27);
             this.tbxSendNum.TabIndex = 10;
             // 
             // lbData
             // 
             this.lbData.AutoSize = true;
-            this.lbData.Location = new System.Drawing.Point(491, 51);
+            this.lbData.Location = new System.Drawing.Point(471, 41);
             this.lbData.Name = "lbData";
-            this.lbData.Size = new System.Drawing.Size(94, 20);
+            this.lbData.Size = new System.Drawing.Size(83, 20);
             this.lbData.TabIndex = 11;
-            this.lbData.Text = "数据(HEX)：";
+            this.lbData.Text = "数据(HEX):";
             // 
             // tbxData
             // 
-            this.tbxData.Font = new System.Drawing.Font("微软雅黑", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbxData.Location = new System.Drawing.Point(591, 48);
+            this.tbxData.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbxData.Location = new System.Drawing.Point(560, 38);
             this.tbxData.Name = "tbxData";
-            this.tbxData.Size = new System.Drawing.Size(203, 25);
+            this.tbxData.Size = new System.Drawing.Size(203, 27);
             this.tbxData.TabIndex = 12;
             // 
             // lbSendInterval
             // 
             this.lbSendInterval.AutoSize = true;
-            this.lbSendInterval.Location = new System.Drawing.Point(470, 88);
+            this.lbSendInterval.Location = new System.Drawing.Point(450, 73);
             this.lbSendInterval.Name = "lbSendInterval";
-            this.lbSendInterval.Size = new System.Drawing.Size(115, 20);
+            this.lbSendInterval.Size = new System.Drawing.Size(104, 20);
             this.lbSendInterval.TabIndex = 13;
-            this.lbSendInterval.Text = "发送间隔(ms)：";
+            this.lbSendInterval.Text = "发送间隔(ms):";
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("微软雅黑", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.Location = new System.Drawing.Point(591, 81);
+            this.textBox1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox1.Location = new System.Drawing.Point(560, 69);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(89, 25);
+            this.textBox1.Size = new System.Drawing.Size(89, 27);
             this.textBox1.TabIndex = 14;
             // 
             // lbDesc2
             // 
             this.lbDesc2.AutoSize = true;
             this.lbDesc2.Font = new System.Drawing.Font("微软雅黑", 6.6F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbDesc2.Location = new System.Drawing.Point(695, 87);
+            this.lbDesc2.Location = new System.Drawing.Point(666, 77);
             this.lbDesc2.Name = "lbDesc2";
             this.lbDesc2.Size = new System.Drawing.Size(112, 16);
             this.lbDesc2.TabIndex = 15;
@@ -230,7 +235,7 @@
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(823, 37);
+            this.btnSend.Location = new System.Drawing.Point(794, 30);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(90, 30);
             this.btnSend.TabIndex = 17;
@@ -239,7 +244,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(823, 77);
+            this.btnStop.Location = new System.Drawing.Point(794, 66);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(90, 30);
             this.btnStop.TabIndex = 18;
@@ -248,9 +253,9 @@
             // 
             // UCNormalSendMode
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.lbDesc2);
@@ -265,14 +270,15 @@
             this.Controls.Add(this.pnl);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbxSendMode);
             this.Controls.Add(this.lbFrameFormat);
             this.Controls.Add(this.lbFrameType);
             this.Controls.Add(this.lbSendMode);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UCNormalSendMode";
-            this.Size = new System.Drawing.Size(924, 120);
+            this.Size = new System.Drawing.Size(894, 107);
+            this.Load += new System.EventHandler(this.UCNormalSendMode_Load);
             this.pnl.ResumeLayout(false);
             this.pnl.PerformLayout();
             this.ResumeLayout(false);
@@ -285,7 +291,7 @@
         private System.Windows.Forms.Label lbSendMode;
         private System.Windows.Forms.Label lbFrameType;
         private System.Windows.Forms.Label lbFrameFormat;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxSendMode;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Panel pnl;
