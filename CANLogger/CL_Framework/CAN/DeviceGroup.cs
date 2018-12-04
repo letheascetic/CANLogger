@@ -10,7 +10,6 @@ namespace CL_Framework
     /// <summary>
     /// 单列模式
     /// </summary>
-    /// 
     public class DeviceGroup
     {
         private volatile static DeviceGroup deviceGroup = null;
@@ -19,12 +18,13 @@ namespace CL_Framework
         public event DeviceEventHandler DeviceAdded;
         public event DeviceEventHandler DeviceRemoved;
         public event DeviceEventHandler DeviceUpdated;
+        public event DeviceEventHandler SelectedDeviceChanged;
 
         private List<Device> devices;
+        private Device selectedDevice = null;
         
         public List<Device> Devices
         { get { return devices; } }
-
 
         public static DeviceGroup CreateInstance()
         {
@@ -81,7 +81,12 @@ namespace CL_Framework
             }
         }
 
-        public bool Add(Device device, object paras)
+        public Device GetSelectedDevice()
+        {
+            return this.selectedDevice;
+        }
+
+        public bool Add(Device device)
         {
             if (device == null)
             {
@@ -90,8 +95,7 @@ namespace CL_Framework
             
             if (GetDevice(device.DeviceType, device.DeviceIndex) != null)
             {
-                LogHelper.Log(string.Format("add device failed, this device[{0}-{1}] already in device group",
-                                device.DeviceTypeDesc, device.DeviceIndex));
+                LogHelper.Log(string.Format("add device failed, this device[{0}] already in device group", device.GetDeviceName()));
                 return false;
             }
 
@@ -102,13 +106,13 @@ namespace CL_Framework
             
             if (DeviceAdded != null)
             {
-                DeviceAdded.Invoke(device, paras);
+                DeviceAdded.Invoke(device, null);
             }
 
             return true;
         }
 
-        public bool Remove(Device device, object paras)
+        public bool Remove(Device device)
         {
             if (device == null)
             {
@@ -117,8 +121,7 @@ namespace CL_Framework
 
             if (GetDevice(device.DeviceType, device.DeviceIndex) == null)
             {
-                LogHelper.Log(string.Format("delete device failed, no this device[{0}-{1}] in device group", 
-                    device.DeviceTypeDesc, device.DeviceIndex));
+                LogHelper.Log(string.Format("delete device failed, no this device[{0}] in device group", device.GetDeviceName()));
                 return false;
             }
 
@@ -129,12 +132,12 @@ namespace CL_Framework
             
             if (DeviceRemoved != null)
             {
-                DeviceRemoved.Invoke(device, paras);
+                DeviceRemoved.Invoke(device, null);
             }
             return true;
         }
 
-        public bool Update(Device device, object paras)
+        public bool Update(Device device)
         {
             if (device == null)
             {
@@ -143,17 +146,34 @@ namespace CL_Framework
 
             if (GetDevice(device.DeviceType, device.DeviceIndex) == null)
             {
-                LogHelper.Log(string.Format("update device failed, no this device[{0}-{1}] in device group",
-                    device.DeviceTypeDesc, device.DeviceIndex));
+                LogHelper.Log(string.Format("update device failed, no this device[{0}] in device group", device.GetDeviceName()));
                 return false;
             }
 
             if (DeviceUpdated != null)
             {
-                DeviceUpdated.Invoke(device, paras);
+                DeviceUpdated.Invoke(device, null);
             }
             return true;
         }
 
+        public bool ChangeSelectedDevice(Device device)
+        {
+            if (device == null)
+            {
+                return false;
+            }
+            if (GetDevice(device.DeviceType, device.DeviceIndex) == null)
+            {
+                LogHelper.Log(string.Format("change selected device failed, no this device[{0}] in device group", device.GetDeviceName()));
+                return false;
+            }
+            this.selectedDevice = device;
+            if (this.SelectedDeviceChanged != null)
+            {
+                this.SelectedDeviceChanged.Invoke(device, null);
+            }
+            return true;
+        }
     }
 }

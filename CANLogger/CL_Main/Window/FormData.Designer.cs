@@ -40,6 +40,7 @@
             this.cDataLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlReceiveIcon = new System.Windows.Forms.Panel();
+            this.pnlSend = new System.Windows.Forms.Panel();
             this.pnlSendIcon = new System.Windows.Forms.Panel();
             this.toolStripSend = new System.Windows.Forms.ToolStrip();
             this.btnSendMode = new System.Windows.Forms.ToolStripButton();
@@ -57,7 +58,6 @@
             this.btnSave = new System.Windows.Forms.ToolStripButton();
             this.btnRTSave = new System.Windows.Forms.ToolStripButton();
             this.sp3 = new System.Windows.Forms.ToolStripSeparator();
-            this.pnlSend = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -158,6 +158,11 @@
             this.pnlReceiveIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.pnlReceiveIcon, "pnlReceiveIcon");
             this.pnlReceiveIcon.Name = "pnlReceiveIcon";
+            // 
+            // pnlSend
+            // 
+            resources.ApplyResources(this.pnlSend, "pnlSend");
+            this.pnlSend.Name = "pnlSend";
             // 
             // pnlSendIcon
             // 
@@ -275,11 +280,6 @@
             // 
             this.sp3.Name = "sp3";
             resources.ApplyResources(this.sp3, "sp3");
-            // 
-            // pnlSend
-            // 
-            resources.ApplyResources(this.pnlSend, "pnlSend");
-            this.pnlSend.Name = "pnlSend";
             // 
             // FormData
             // 

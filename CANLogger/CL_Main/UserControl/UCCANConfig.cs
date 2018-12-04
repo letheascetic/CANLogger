@@ -45,8 +45,8 @@ namespace CL_Main
                 return true;
             }
 
-            Channel.ConfigMode(mode, ref config);
-            Channel.ConfigBaudRate(baudRate, ref config);
+            CAN.ConfigMode(mode, ref config);
+            CAN.ConfigBaudRate(baudRate, ref config);
 
             if (channel.InitCAN(baudRate, ref config) == CANResult.STATUS_ERR)
             {

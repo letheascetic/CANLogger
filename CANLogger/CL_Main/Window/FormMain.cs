@@ -21,8 +21,6 @@ namespace CL_Main
 {
     public partial class FormMain : Form
     {
-        private event DeviceEventHandler selectedDeviceChanged;
-
         private SkinEngine skinEngine;
         private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
 
@@ -31,7 +29,7 @@ namespace CL_Main
         private FormStatus pFormStatus = new FormStatus();
 
         private Hashtable pNameDevicePairs = new Hashtable();
-        private Device selectedDevice = null;
+        //private Device selectedDevice = null;
 
         #region public apis
 
@@ -87,7 +85,6 @@ namespace CL_Main
             pDeviceGroup.DeviceAdded += new DeviceEventHandler(AddDevice);
             pDeviceGroup.DeviceRemoved += new DeviceEventHandler(RemoveDevice);
             pDeviceGroup.DeviceUpdated += new DeviceEventHandler(UpdateDevice);
-            this.selectedDeviceChanged += new DeviceEventHandler(this.pFormDevice.ChangeSelectedDevice);
         }
 
         private void Loading()
@@ -253,14 +250,15 @@ namespace CL_Main
 
         private void cbxSelectDevice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Device oldSelectedDevice = this.selectedDevice;
+            Device oldSelectedDevice = this.pDeviceGroup.GetSelectedDevice();
             Device newSelectedDevice = GetSelectedDevice();
+            this.pDeviceGroup.ChangeSelectedDevice(newSelectedDevice);
 
-            this.selectedDevice = newSelectedDevice;
-            if (this.selectedDeviceChanged != null)
-            {
-                this.selectedDeviceChanged.Invoke(this.selectedDevice, null);
-            }
+            //this.selectedDevice = newSelectedDevice;
+            //if (this.selectedDeviceChanged != null)
+            //{
+            //    this.selectedDeviceChanged.Invoke(this.selectedDevice, null);
+            //}
         }
 
         private void menuItemAbout_Click(object sender, EventArgs e)
@@ -273,32 +271,63 @@ namespace CL_Main
             DialogDevice pDialogDevice = new DialogDevice(null);
             if (pDialogDevice.ShowDialog() == DialogResult.OK)
             {
-                this.pDeviceGroup.Add(pDialogDevice.GetDevice(), null);
+                this.pDeviceGroup.Add(pDialogDevice.GetDevice());
                 pDialogDevice.Close();
             }
         }
 
         private void itemDeleteDevice_Click(object sender, EventArgs e)
         {
-            if (this.selectedDevice == null)
+            Device device = this.pDeviceGroup.GetSelectedDevice();
+            if (device == null)
             {
                 MessageBox.Show("请选择要删除的设备.");
                 return;
             }
 
-            string deviceName = this.selectedDevice.GetDeviceName();
+            string deviceName = device.GetDeviceName();
             string content = string.Format("确定要删除当前设备[{0}]吗？", deviceName);
 
-            DialogResult dialogResult = MessageBox.Show(content, "删除设备",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult dialogResult = MessageBox.Show(content, "删除设备", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.OK)
             {
-                this.pDeviceGroup.Remove(this.selectedDevice, null);
+                this.pDeviceGroup.Remove(device);
             }
         }
 
+        private void itemConfigDevice_Click(object sender, EventArgs e)
+        {
+            Device device = this.pDeviceGroup.GetSelectedDevice();
+            if (device == null)
+            {
+                MessageBox.Show("请选择要配置的设备.");
+                return;
+            }
+            DialogDevice pDialogDevice = new DialogDevice(device);
+            if (pDialogDevice.ShowDialog() == DialogResult.OK)
+            {
+                this.pDeviceGroup.Update(pDialogDevice.GetDevice());
+                pDialogDevice.Close();
+            }
+        }
+
+        private void itemResetDevice_Click(object sender, EventArgs e)
+        {
+            Device device = this.pDeviceGroup.GetSelectedDevice();
+            if (device == null)
+            {
+                MessageBox.Show("请选择要复位的设备.");
+                return;
+            }
+            string deviceName = device.GetDeviceName();
+            string content = string.Format("确定要复位当前设备[{0}]吗？", deviceName);
+            DialogResult dialogResult = MessageBox.Show(content, "复位设备", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.OK)
+            {
+                device.ResetAll();
+                this.pDeviceGroup.Update(device);
+            }
+        }
         #endregion
-
-
     }
 }

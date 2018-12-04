@@ -52,6 +52,10 @@
             this.menuItemManual = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.menuItemView = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewData = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewDevice = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewStatus = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -110,12 +114,14 @@
             this.itemConfigDevice.Image = global::CL_Main.Properties.Resources.config;
             this.itemConfigDevice.Name = "itemConfigDevice";
             resources.ApplyResources(this.itemConfigDevice, "itemConfigDevice");
+            this.itemConfigDevice.Click += new System.EventHandler(this.itemConfigDevice_Click);
             // 
             // itemResetDevice
             // 
             this.itemResetDevice.Image = global::CL_Main.Properties.Resources.resetall;
             this.itemResetDevice.Name = "itemResetDevice";
             resources.ApplyResources(this.itemResetDevice, "itemResetDevice");
+            this.itemResetDevice.Click += new System.EventHandler(this.itemResetDevice_Click);
             // 
             // itemDeleteDevice
             // 
@@ -143,6 +149,7 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemFile,
             this.menuItemOption,
+            this.menuItemView,
             this.menuItemSkin,
             this.menuItemLanguage,
             this.menuItemHelp});
@@ -232,6 +239,40 @@
             this.dockPanel.DockBottomPortion = 0.3D;
             this.dockPanel.Name = "dockPanel";
             // 
+            // menuItemView
+            // 
+            this.menuItemView.Checked = true;
+            this.menuItemView.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuItemView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemViewData,
+            this.menuItemViewDevice,
+            this.menuItemViewStatus});
+            this.menuItemView.Image = global::CL_Main.Properties.Resources.skin;
+            this.menuItemView.Name = "menuItemView";
+            resources.ApplyResources(this.menuItemView, "menuItemView");
+            this.menuItemView.Tag = "0";
+            // 
+            // menuItemViewData
+            // 
+            this.menuItemViewData.Checked = true;
+            this.menuItemViewData.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuItemViewData.Name = "menuItemViewData";
+            resources.ApplyResources(this.menuItemViewData, "menuItemViewData");
+            // 
+            // menuItemViewDevice
+            // 
+            this.menuItemViewDevice.Checked = true;
+            this.menuItemViewDevice.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuItemViewDevice.Name = "menuItemViewDevice";
+            resources.ApplyResources(this.menuItemViewDevice, "menuItemViewDevice");
+            // 
+            // menuItemViewStatus
+            // 
+            this.menuItemViewStatus.Checked = true;
+            this.menuItemViewStatus.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuItemViewStatus.Name = "menuItemViewStatus";
+            resources.ApplyResources(this.menuItemViewStatus, "menuItemViewStatus");
+            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -278,6 +319,10 @@
         private System.Windows.Forms.ToolStripMenuItem itemResetDevice;
         private System.Windows.Forms.ToolStripMenuItem itemDeleteDevice;
         private System.Windows.Forms.ToolStripSeparator sp2;
+        private System.Windows.Forms.ToolStripMenuItem menuItemView;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewData;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewDevice;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewStatus;
     }
 }
 

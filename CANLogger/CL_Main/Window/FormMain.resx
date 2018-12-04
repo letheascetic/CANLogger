@@ -147,13 +147,13 @@
     <value>6, 27</value>
   </data>
   <data name="itemAddDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="itemAddDevice.Text" xml:space="preserve">
     <value>添加设备</value>
   </data>
   <data name="itemConfigDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="itemConfigDevice.Text" xml:space="preserve">
     <value>配置设备</value>
@@ -162,7 +162,7 @@
     <value>复位所有CAN通道</value>
   </data>
   <data name="itemResetDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="itemResetDevice.Text" xml:space="preserve">
     <value>复位设备</value>
@@ -171,7 +171,7 @@
     <value>复位所有CAN通道</value>
   </data>
   <data name="itemDeleteDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="itemDeleteDevice.Text" xml:space="preserve">
     <value>删除设备</value>
@@ -264,8 +264,32 @@
   <data name="menuItemOption.Text" xml:space="preserve">
     <value>操作</value>
   </data>
+  <data name="menuItemViewData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="menuItemViewData.Text" xml:space="preserve">
+    <value>数据窗口</value>
+  </data>
+  <data name="menuItemViewDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="menuItemViewDevice.Text" xml:space="preserve">
+    <value>设备窗口</value>
+  </data>
+  <data name="menuItemViewStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 26</value>
+  </data>
+  <data name="menuItemViewStatus.Text" xml:space="preserve">
+    <value>状态窗口</value>
+  </data>
+  <data name="menuItemView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 24</value>
+  </data>
+  <data name="menuItemView.Text" xml:space="preserve">
+    <value>视图</value>
+  </data>
   <data name="menuItemSkinDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 26</value>
+    <value>216, 26</value>
   </data>
   <data name="menuItemSkinDefault.Text" xml:space="preserve">
     <value>Default</value>
@@ -5019,6 +5043,30 @@
     <value>menuItemAbout</value>
   </data>
   <data name="&gt;&gt;menuItemAbout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemView.Name" xml:space="preserve">
+    <value>menuItemView</value>
+  </data>
+  <data name="&gt;&gt;menuItemView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemViewData.Name" xml:space="preserve">
+    <value>menuItemViewData</value>
+  </data>
+  <data name="&gt;&gt;menuItemViewData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemViewDevice.Name" xml:space="preserve">
+    <value>menuItemViewDevice</value>
+  </data>
+  <data name="&gt;&gt;menuItemViewDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemViewStatus.Name" xml:space="preserve">
+    <value>menuItemViewStatus</value>
+  </data>
+  <data name="&gt;&gt;menuItemViewStatus.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

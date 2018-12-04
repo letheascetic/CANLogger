@@ -16,6 +16,7 @@ namespace CL_Main
 {
     public partial class FormStatus : DockContent
     {
+        private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
         private List<UCCANStatus> pChannelStatusList = new List<UCCANStatus>();
 
         #region public apis
@@ -62,6 +63,13 @@ namespace CL_Main
 
         #region private apis
 
+        private void Init()
+        {
+            pDeviceGroup.DeviceAdded += new DeviceEventHandler(this.AddDevice);
+            pDeviceGroup.DeviceRemoved += new DeviceEventHandler(this.RemoveDevice);
+            pDeviceGroup.DeviceUpdated += new DeviceEventHandler(this.UpdateDevice);
+        }
+
         private List<UCCANStatus> GetMappingCANStatusList(Device device)
         {
             List<UCCANStatus> pCANStatusList = new List<UCCANStatus>();
@@ -91,6 +99,15 @@ namespace CL_Main
             tabControl.TabPages.Add(tabPage);
 
             pChannelStatusList.Add(pChnanelStatus);
+        }
+
+        #endregion
+
+        #region events
+
+        private void FormStatus_Load(object sender, EventArgs e)
+        {
+            Init();
         }
 
         #endregion

@@ -8,8 +8,6 @@ namespace CL_Framework
 {
     public class Device
     {
-        private static readonly uint DEVICE_CANNUM_MAXIMUM = 2;
-
         private bool isDeviceOpen;
         private DEVICE_TYPE deviceType;
         private string deviceTypeDesc;
@@ -34,7 +32,7 @@ namespace CL_Framework
         { get { return deviceInfo; } set { deviceInfo = value; } }
 
         public uint CANNum
-        { get { return deviceInfo.CANNum > DEVICE_CANNUM_MAXIMUM ? DEVICE_CANNUM_MAXIMUM : deviceInfo.CANNum; } }
+        { get { return deviceInfo.CANNum > CAN.DEVICE_CANNUM_MAXIMUM ? CAN.DEVICE_CANNUM_MAXIMUM : deviceInfo.CANNum; } }
 
         private Device(DEVICE_TYPE deviceType)
         {
@@ -159,6 +157,14 @@ namespace CL_Framework
         public CANResult ResetCAN(UInt32 canIndex)
         {
             return channels[canIndex].ResetCAN();
+        }
+
+        public void ResetAll()
+        {
+            foreach (Channel channel in channels)
+            {
+                channel.ResetCAN();
+            }
         }
 
     }

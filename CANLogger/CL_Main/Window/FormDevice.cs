@@ -136,6 +136,7 @@ namespace CL_Main
             pDeviceGroup.DeviceAdded += new DeviceEventHandler(this.AddDevice);
             pDeviceGroup.DeviceRemoved += new DeviceEventHandler(this.RemoveDevice);
             pDeviceGroup.DeviceUpdated += new DeviceEventHandler(this.UpdateDevice);
+            pDeviceGroup.SelectedDeviceChanged += new DeviceEventHandler(this.ChangeSelectedDevice);
         }
 
         private void ChangeSelectedChannel()
