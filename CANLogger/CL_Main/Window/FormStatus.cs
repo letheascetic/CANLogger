@@ -16,8 +16,6 @@ namespace CL_Main
 {
     public partial class FormStatus : DockContent
     {
-        private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
-        private List<Device> pDevices = new List<Device>();
         private List<UCCANStatus> pChannelStatusList = new List<UCCANStatus>();
 
         #region public apis
@@ -41,7 +39,6 @@ namespace CL_Main
                 Channel channel = device.GetChannel(channelIndex);
                 AddChannel(channel);
             }
-            pDevices.Add(device);
         }
 
         public void RemoveDevice(Device device, object paras)
@@ -52,8 +49,8 @@ namespace CL_Main
                 pChannelStatusList.Remove(pCANStatus);
                 TabPage tabPage = (TabPage)pCANStatus.Parent;
                 tabControl.TabPages.Remove(tabPage);
+                tabPage.Dispose();
             }
-            pDevices.Remove(device);
         }
 
         public void UpdateDevice(Device device, object paras)

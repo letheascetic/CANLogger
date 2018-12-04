@@ -19,7 +19,6 @@ namespace CL_Main
     public partial class FormDevice : DockContent
     {
         private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
-        private Hashtable pNameDevicePairs = new Hashtable();
 
         private Device selectedDevice = null;
         private Channel selectedChannel = null;
@@ -47,10 +46,6 @@ namespace CL_Main
 
         public void AddDevice(Device device, object paras)
         {
-            string deviceName = device.GetDeviceName();
-            pNameDevicePairs.Add(deviceName, device);
-
-            this.cbxDevice.Items.Add(deviceName);
             for (uint channelIndex = 0; channelIndex < device.CANNum; channelIndex++)
             {
                 Channel channel = device.GetChannel(channelIndex);
@@ -63,8 +58,6 @@ namespace CL_Main
                 dgvChannels.Rows[index].Cells[3].Value = channel.ChannelIndex;
                 dgvChannels.Rows[index].Cells[4].Value = channel.BaudRate;
             }
-
-            this.cbxDevice.SelectedIndex = this.cbxDevice.FindString(deviceName);
         }
 
         /// <summary>
@@ -73,8 +66,6 @@ namespace CL_Main
         /// <param name="device"></param>
         public void UpdateDevice(Device device, object paras)
         {
-            string deviceName = device.GetDeviceName();
-
             List<DataGridViewRow> mappingRows = FindMappingRows(device);
             foreach (DataGridViewRow row in mappingRows)
             {
@@ -85,27 +76,57 @@ namespace CL_Main
                 row.Cells[3].Value = channel.ChannelIndex;
                 row.Cells[4].Value = channel.BaudRate;
             }
-            this.cbxDevice.SelectedIndex = this.cbxDevice.FindString(deviceName);
         }
 
         public void RemoveDevice(Device device, object paras)
         {
-            string deviceName = device.GetDeviceName();
-            this.pNameDevicePairs.Remove(deviceName);
-            this.cbxDevice.Items.Remove(deviceName);
-
             List<DataGridViewRow> rows = FindMappingRows(device);
             foreach (DataGridViewRow row in rows)
             {
                 dgvChannels.Rows.Remove(row);
             }
 
-            if (cbxDevice.Items.Count > 0 && cbxDevice.SelectedIndex < 0)
+            if (object.ReferenceEquals(device, this.selectedDevice))
             {
-                cbxDevice.SelectedIndex = 0;
+                this.selectedDevice = null;
+                this.tbxDevice.Text = string.Empty;
+            }
+
+            if (this.selectedChannel != null && object.ReferenceEquals(device, this.selectedChannel.ParentDevice))
+            {
+                this.selectedChannel = null;
+                this.tbxCAN.Text = string.Empty;
             }
         }
 
+        public void ChangeSelectedDevice(Device device, object paras)
+        {
+            Device oldSelectedDevice = this.selectedDevice;
+            if (object.ReferenceEquals(oldSelectedDevice, device))
+            {
+                LogHelper.Log("selected device no change");
+                return;
+            }
+
+            this.selectedDevice = device;
+            this.tbxDevice.Text = device == null ? string.Empty : device.GetDeviceName();
+
+            List<DataGridViewRow> oldSelectedDeviceMappingRows = FindMappingRows(oldSelectedDevice);
+            foreach (DataGridViewRow row in oldSelectedDeviceMappingRows)
+            {
+                row.Visible = false;
+            }
+
+            List<DataGridViewRow> newSelectedDeviceMappingRows = FindMappingRows(device);
+            foreach (DataGridViewRow row in newSelectedDeviceMappingRows)
+            {
+                row.Visible = true;
+            }
+
+            dgvChannels.CurrentCell = newSelectedDeviceMappingRows[0].Cells[0];     //获取焦点
+            ChangeSelectedChannel();
+        }
+        
         #endregion
 
         #region private functions
@@ -117,17 +138,19 @@ namespace CL_Main
             pDeviceGroup.DeviceUpdated += new DeviceEventHandler(this.UpdateDevice);
         }
 
-        private Device GetSelectedDevice()
+        private void ChangeSelectedChannel()
         {
-            string deviceName = this.cbxDevice.SelectedItem.ToString();
-            if (deviceName == null || deviceName.Equals(string.Empty))
+            Channel oldSelectedChannel = this.selectedChannel;
+            Channel newSelectedChannel = GetSelectedChannel();
+
+            if (object.ReferenceEquals(oldSelectedChannel, newSelectedChannel))
             {
-                LogHelper.Log("no selected device.");
-                return null;
+                LogHelper.Log("selected channel no change");
+                return;
             }
 
-            LogHelper.Log(string.Format("selected device: [{0}]", deviceName));
-            return (Device)pNameDevicePairs[deviceName];
+            this.selectedChannel = newSelectedChannel;
+            this.tbxCAN.Text = this.selectedChannel == null ? string.Empty : newSelectedChannel.ChannelName;
         }
 
         private Channel GetSelectedChannel()
@@ -171,81 +194,9 @@ namespace CL_Main
             
         }
 
-        private void cbxDevice_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Device oldSelectedDevice = this.selectedDevice;
-            Device newSelectedDevice = GetSelectedDevice();
-
-            if (object.ReferenceEquals(oldSelectedDevice, newSelectedDevice))
-            {
-                LogHelper.Log("selected device no change");
-                return;
-            }
-
-            this.selectedDevice = newSelectedDevice;
-
-            List<DataGridViewRow> oldSelectedDeviceMappingRows = FindMappingRows(oldSelectedDevice);
-            foreach (DataGridViewRow row in oldSelectedDeviceMappingRows)
-            {
-                row.Visible = false;
-            }
-
-            List<DataGridViewRow> newSelectedDeviceMappingRows = FindMappingRows(newSelectedDevice);
-            foreach (DataGridViewRow row in newSelectedDeviceMappingRows)
-            {
-                row.Visible = true;
-            }
-
-            //if (newSelectedDeviceMappingRows.Count > 0)
-            //{
-            //    //默认选中指定Device的CAN0
-            //    newSelectedDeviceMappingRows[0].Selected = true;
-            //}
-        }
-
         private void dgvChannels_SelectionChanged(object sender, EventArgs e)
         {
-            Channel oldSelectedChannel = this.selectedChannel;
-            Channel newSelectedChannel = GetSelectedChannel();
-
-            this.selectedChannel = newSelectedChannel;
-            tbxCAN.Text = this.selectedChannel == null ? 
-                string.Empty : newSelectedChannel.ChannelName;
-        }
-
-        private void itemAddDevice_Click(object sender, EventArgs e)
-        {
-            DialogDevice dialogDevice = new DialogDevice(null);
-
-
-        }
-
-        private void itemConfigDevice_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void itemResetDevice_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void itemDeleteDevice_Click(object sender, EventArgs e)
-        {
-            Device device = this.selectedDevice;
-            if (device == null)
-            {
-                return;
-            }
-
-            string deviceName = device.GetDeviceName();
-            string content = string.Format("确定要删除当前设备（{0}）吗？", deviceName);
-
-            if (MessageBox.Show(content, "删除设备", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-            {
-                this.pDeviceGroup.Remove(device, null);
-                RemoveDevice(device, null);
-            }
+            ChangeSelectedChannel();
         }
 
         #endregion

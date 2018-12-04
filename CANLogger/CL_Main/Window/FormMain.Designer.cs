@@ -122,6 +122,7 @@
             this.itemDeleteDevice.Image = global::CL_Main.Properties.Resources.delete;
             this.itemDeleteDevice.Name = "itemDeleteDevice";
             resources.ApplyResources(this.itemDeleteDevice, "itemDeleteDevice");
+            this.itemDeleteDevice.Click += new System.EventHandler(this.itemDeleteDevice_Click);
             // 
             // sp2
             // 

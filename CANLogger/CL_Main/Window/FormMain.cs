@@ -21,17 +21,17 @@ namespace CL_Main
 {
     public partial class FormMain : Form
     {
+        private event DeviceEventHandler selectedDeviceChanged;
+
         private SkinEngine skinEngine;
         private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
 
-        private List<FormData> pFormDatas= new List<FormData>();
+        private List<FormData> pFormDatas = new List<FormData>();
         private FormDevice pFormDevice = new FormDevice();
         private FormStatus pFormStatus = new FormStatus();
 
         private Hashtable pNameDevicePairs = new Hashtable();
-
         private Device selectedDevice = null;
-        private Channel selectedChannel = null;
 
         #region public apis
 
@@ -50,7 +50,6 @@ namespace CL_Main
             {
                 Channel channel = device.GetChannel(channelIndex);
                 FormData pFormData = new FormData(channel);
-                //pFormData.Text = channel.ChannelName;
                 pFormData.Show(this.dockPanel, DockState.Document);
                 pFormDatas.Add(pFormData);
             }
@@ -59,7 +58,19 @@ namespace CL_Main
 
         public void RemoveDevice(Device device, object paras)
         {
+            string deviceName = device.GetDeviceName();
+            pNameDevicePairs.Remove(deviceName);
+            
+            List<FormData> pFormDatas = FindMappingFormDatas(device);
+            foreach (FormData pFormData in pFormDatas)
+            {
+                this.dockPanel.Controls.Remove(pFormData);
+                this.pFormDatas.Remove(pFormData);
+                pFormData.Close();
+            }
 
+            this.cbxSelectDevice.Items.Remove(deviceName);
+            this.cbxSelectDevice.SelectedIndex = this.cbxSelectDevice.Items.Count > 0 ? 0 : -1;
         }
 
         public void UpdateDevice(Device device, object paras)
@@ -76,6 +87,7 @@ namespace CL_Main
             pDeviceGroup.DeviceAdded += new DeviceEventHandler(AddDevice);
             pDeviceGroup.DeviceRemoved += new DeviceEventHandler(RemoveDevice);
             pDeviceGroup.DeviceUpdated += new DeviceEventHandler(UpdateDevice);
+            this.selectedDeviceChanged += new DeviceEventHandler(this.pFormDevice.ChangeSelectedDevice);
         }
 
         private void Loading()
@@ -142,7 +154,7 @@ namespace CL_Main
 
         private Device GetSelectedDevice()
         {
-            string deviceName = this.cbxSelectDevice.SelectedText;
+            string deviceName = this.cbxSelectDevice.SelectedItem.ToString();
             if (deviceName == null || deviceName.Equals(string.Empty))
             {
                 LogHelper.Log("no selected device.");
@@ -151,6 +163,24 @@ namespace CL_Main
 
             LogHelper.Log(string.Format("selected device: [{0}]", deviceName));
             return (Device)pNameDevicePairs[deviceName];
+        }
+
+        private List<FormData> FindMappingFormDatas(Device device)
+        {
+            List<FormData> pMappingFormDatas = new List<FormData>();
+            if (device == null)
+            {
+                return pFormDatas;
+            }
+
+            foreach (FormData pFormData in this.pFormDatas)
+            {
+                if (object.ReferenceEquals(pFormData.GetChannel().ParentDevice, device))
+                {
+                    pMappingFormDatas.Add(pFormData);
+                }
+            }
+            return pMappingFormDatas;
         }
 
         #endregion
@@ -227,6 +257,10 @@ namespace CL_Main
             Device newSelectedDevice = GetSelectedDevice();
 
             this.selectedDevice = newSelectedDevice;
+            if (this.selectedDeviceChanged != null)
+            {
+                this.selectedDeviceChanged.Invoke(this.selectedDevice, null);
+            }
         }
 
         private void menuItemAbout_Click(object sender, EventArgs e)
@@ -241,6 +275,25 @@ namespace CL_Main
             {
                 this.pDeviceGroup.Add(pDialogDevice.GetDevice(), null);
                 pDialogDevice.Close();
+            }
+        }
+
+        private void itemDeleteDevice_Click(object sender, EventArgs e)
+        {
+            if (this.selectedDevice == null)
+            {
+                MessageBox.Show("请选择要删除的设备.");
+                return;
+            }
+
+            string deviceName = this.selectedDevice.GetDeviceName();
+            string content = string.Format("确定要删除当前设备[{0}]吗？", deviceName);
+
+            DialogResult dialogResult = MessageBox.Show(content, "删除设备",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.OK)
+            {
+                this.pDeviceGroup.Remove(this.selectedDevice, null);
             }
         }
 

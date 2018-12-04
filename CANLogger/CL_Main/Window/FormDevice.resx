@@ -125,67 +125,18 @@
     <value>微软雅黑, 9pt</value>
   </data>
   <data name="lbDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 24</value>
+    <value>88, 24</value>
   </data>
   <data name="lbDevice.Text" xml:space="preserve">
-    <value>选择设备:</value>
+    <value>选择的设备:</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="cbxDevice.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="cbxDevice.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="tbxDevice.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 6.60000038pt</value>
   </data>
-  <data name="cbxDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 27</value>
+  <data name="tbxDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 27</value>
   </data>
   <data name="sp1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 27</value>
-  </data>
-  <data name="itemAddDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
-  </data>
-  <data name="itemAddDevice.Text" xml:space="preserve">
-    <value>添加设备</value>
-  </data>
-  <data name="itemConfigDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
-  </data>
-  <data name="itemConfigDevice.Text" xml:space="preserve">
-    <value>配置设备</value>
-  </data>
-  <data name="itemConfigDevice.ToolTipText" xml:space="preserve">
-    <value>复位所有CAN通道</value>
-  </data>
-  <data name="itemResetDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
-  </data>
-  <data name="itemResetDevice.Text" xml:space="preserve">
-    <value>复位设备</value>
-  </data>
-  <data name="itemResetDevice.ToolTipText" xml:space="preserve">
-    <value>复位所有CAN通道</value>
-  </data>
-  <data name="itemDeleteDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
-  </data>
-  <data name="itemDeleteDevice.Text" xml:space="preserve">
-    <value>删除设备</value>
-  </data>
-  <data name="itemDeleteDevice.ToolTipText" xml:space="preserve">
-    <value>复位所有CAN通道</value>
-  </data>
-  <data name="btnOption.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 24</value>
-  </data>
-  <data name="btnOption.Text" xml:space="preserve">
-    <value>操作设备</value>
-  </data>
-  <data name="sp2.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
   </data>
   <data name="lbCAN.Size" type="System.Drawing.Size, System.Drawing">
@@ -201,13 +152,13 @@
     <value>微软雅黑, 6.60000038pt</value>
   </data>
   <data name="tbxCAN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 27</value>
+    <value>160, 27</value>
   </data>
-  <data name="sp3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="sp2.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
   </data>
   <data name="itemStartCAN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>147, 26</value>
   </data>
   <data name="itemStartCAN.Text" xml:space="preserve">
     <value>启动CAN</value>
@@ -216,7 +167,7 @@
     <value>启动当前选择的CAN</value>
   </data>
   <data name="itemResetCAN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>147, 26</value>
   </data>
   <data name="itemResetCAN.Text" xml:space="preserve">
     <value>复位CAN</value>
@@ -233,7 +184,7 @@
   <data name="btnOptionCAN.Text" xml:space="preserve">
     <value>配置CAN</value>
   </data>
-  <data name="sp4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="sp3.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
   </data>
   <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
@@ -324,6 +275,7 @@
   <data name="cBusFlow.Width" type="System.Int32, mscorlib">
     <value>98</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="dgvChannels.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -381,52 +333,16 @@
   <data name="&gt;&gt;lbDevice.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cbxDevice.Name" xml:space="preserve">
-    <value>cbxDevice</value>
+  <data name="&gt;&gt;tbxDevice.Name" xml:space="preserve">
+    <value>tbxDevice</value>
   </data>
-  <data name="&gt;&gt;cbxDevice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tbxDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;sp1.Name" xml:space="preserve">
     <value>sp1</value>
   </data>
   <data name="&gt;&gt;sp1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnOption.Name" xml:space="preserve">
-    <value>btnOption</value>
-  </data>
-  <data name="&gt;&gt;btnOption.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;itemAddDevice.Name" xml:space="preserve">
-    <value>itemAddDevice</value>
-  </data>
-  <data name="&gt;&gt;itemAddDevice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;itemConfigDevice.Name" xml:space="preserve">
-    <value>itemConfigDevice</value>
-  </data>
-  <data name="&gt;&gt;itemConfigDevice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;itemResetDevice.Name" xml:space="preserve">
-    <value>itemResetDevice</value>
-  </data>
-  <data name="&gt;&gt;itemResetDevice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;itemDeleteDevice.Name" xml:space="preserve">
-    <value>itemDeleteDevice</value>
-  </data>
-  <data name="&gt;&gt;itemDeleteDevice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;sp2.Name" xml:space="preserve">
-    <value>sp2</value>
-  </data>
-  <data name="&gt;&gt;sp2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbCAN.Name" xml:space="preserve">
@@ -441,10 +357,10 @@
   <data name="&gt;&gt;tbxCAN.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;sp3.Name" xml:space="preserve">
-    <value>sp3</value>
+  <data name="&gt;&gt;sp2.Name" xml:space="preserve">
+    <value>sp2</value>
   </data>
-  <data name="&gt;&gt;sp3.Type" xml:space="preserve">
+  <data name="&gt;&gt;sp2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnOptionCAN.Name" xml:space="preserve">
@@ -465,10 +381,10 @@
   <data name="&gt;&gt;itemResetCAN.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;sp4.Name" xml:space="preserve">
-    <value>sp4</value>
+  <data name="&gt;&gt;sp3.Name" xml:space="preserve">
+    <value>sp3</value>
   </data>
-  <data name="&gt;&gt;sp4.Type" xml:space="preserve">
+  <data name="&gt;&gt;sp3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cStatus.Name" xml:space="preserve">

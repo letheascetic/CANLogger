@@ -34,6 +34,11 @@ namespace CL_Main
             this.channel = channel;
         }
 
+        public Channel GetChannel()
+        {
+            return this.channel;
+        }
+
         #endregion
 
         #region private functions
@@ -85,20 +90,6 @@ namespace CL_Main
             resources.ApplyResources(this.btnFilter, this.btnFilter.Name);
 
         }
-
-        //private void Init()
-        //{
-        //    //ucSendModeNormal.Visible = SendMode == SEND_MODE_NORMAL ? true : false;
-
-        //    //ucSendModeList = new UCListSendMode();
-        //    //ucSendModeList.Parent = splitContainer.Panel2;
-        //    //ucSendModeList.Dock = DockStyle.Fill;
-        //    //ucSendModeList.Visible = SendMode == SEND_MODE_LIST ? true : false;
-
-        //    //this.Text = channelName;
-        //    //btnContinueShow.Enabled = !IsShowing;
-        //    //btnStopShow.Enabled = IsShowing;
-        //}
 
         #region events
         
