@@ -121,12 +121,6 @@ namespace CL_Main
 
             menuItemLanguage.Visible = false;
 
-            //init & load FormData
-            //FormData formData1 = new FormData();
-            // formData2 = new FormData();
-            //formData1.Show(this.dockPanel, DockState.Document);
-            //formData2.Show(formData1.Pane, null);
-
             // init & load FormDevice
             pFormDevice.Show(this.dockPanel, DockState.DockBottom);
             //init & load FormStatus
@@ -328,6 +322,30 @@ namespace CL_Main
                 this.pDeviceGroup.Update(device);
             }
         }
+
+        private void menuItemViewData_Click(object sender, EventArgs e)
+        {
+            foreach (FormData pFormData in this.pFormDatas)
+            {
+                pFormData.Visible = true;
+                pFormData.Activate();
+            }
+        }
+
+        private void menuItemViewDevice_Click(object sender, EventArgs e)
+        {
+            this.pFormDevice.Visible = true;
+            this.pFormDevice.Activate();
+        }
+
+        private void menuItemViewStatus_Click(object sender, EventArgs e)
+        {
+            this.pFormStatus.Visible = true;
+            this.pFormStatus.Activate();
+        }
+
         #endregion
+
+
     }
 }

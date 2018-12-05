@@ -43,6 +43,10 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemView = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewData = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewDevice = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewStatus = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSkin = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSkinDefault = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLanguage = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,10 +56,6 @@
             this.menuItemManual = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.menuItemView = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemViewData = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemViewDevice = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemViewStatus = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -167,6 +167,37 @@
             this.menuItemOption.Name = "menuItemOption";
             resources.ApplyResources(this.menuItemOption, "menuItemOption");
             // 
+            // menuItemView
+            // 
+            this.menuItemView.Checked = true;
+            this.menuItemView.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuItemView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemViewData,
+            this.menuItemViewDevice,
+            this.menuItemViewStatus});
+            this.menuItemView.Image = global::CL_Main.Properties.Resources.skin;
+            this.menuItemView.Name = "menuItemView";
+            resources.ApplyResources(this.menuItemView, "menuItemView");
+            this.menuItemView.Tag = "0";
+            // 
+            // menuItemViewData
+            // 
+            this.menuItemViewData.Name = "menuItemViewData";
+            resources.ApplyResources(this.menuItemViewData, "menuItemViewData");
+            this.menuItemViewData.Click += new System.EventHandler(this.menuItemViewData_Click);
+            // 
+            // menuItemViewDevice
+            // 
+            this.menuItemViewDevice.Name = "menuItemViewDevice";
+            resources.ApplyResources(this.menuItemViewDevice, "menuItemViewDevice");
+            this.menuItemViewDevice.Click += new System.EventHandler(this.menuItemViewDevice_Click);
+            // 
+            // menuItemViewStatus
+            // 
+            this.menuItemViewStatus.Name = "menuItemViewStatus";
+            resources.ApplyResources(this.menuItemViewStatus, "menuItemViewStatus");
+            this.menuItemViewStatus.Click += new System.EventHandler(this.menuItemViewStatus_Click);
+            // 
             // menuItemSkin
             // 
             this.menuItemSkin.Checked = true;
@@ -238,40 +269,6 @@
             resources.ApplyResources(this.dockPanel, "dockPanel");
             this.dockPanel.DockBottomPortion = 0.3D;
             this.dockPanel.Name = "dockPanel";
-            // 
-            // menuItemView
-            // 
-            this.menuItemView.Checked = true;
-            this.menuItemView.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuItemView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemViewData,
-            this.menuItemViewDevice,
-            this.menuItemViewStatus});
-            this.menuItemView.Image = global::CL_Main.Properties.Resources.skin;
-            this.menuItemView.Name = "menuItemView";
-            resources.ApplyResources(this.menuItemView, "menuItemView");
-            this.menuItemView.Tag = "0";
-            // 
-            // menuItemViewData
-            // 
-            this.menuItemViewData.Checked = true;
-            this.menuItemViewData.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuItemViewData.Name = "menuItemViewData";
-            resources.ApplyResources(this.menuItemViewData, "menuItemViewData");
-            // 
-            // menuItemViewDevice
-            // 
-            this.menuItemViewDevice.Checked = true;
-            this.menuItemViewDevice.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuItemViewDevice.Name = "menuItemViewDevice";
-            resources.ApplyResources(this.menuItemViewDevice, "menuItemViewDevice");
-            // 
-            // menuItemViewStatus
-            // 
-            this.menuItemViewStatus.Checked = true;
-            this.menuItemViewStatus.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuItemViewStatus.Name = "menuItemViewStatus";
-            resources.ApplyResources(this.menuItemViewStatus, "menuItemViewStatus");
             // 
             // FormMain
             // 

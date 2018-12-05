@@ -289,6 +289,7 @@
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.toolStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.HideOnClose = true;
             this.Name = "FormData";
             this.Load += new System.EventHandler(this.FormData_Load);
             this.splitContainer.Panel1.ResumeLayout(false);

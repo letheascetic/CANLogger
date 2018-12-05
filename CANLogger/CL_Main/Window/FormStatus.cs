@@ -101,6 +101,14 @@ namespace CL_Main
             pChannelStatusList.Add(pChnanelStatus);
         }
 
+        //protected override void OnFormClosing(FormClosingEventArgs e)
+        //{
+        //    this.VisibleState = DockState.
+        //    e.Cancel = true;
+        //    //e.Cancel = cancel;
+        //    //base.OnFormClosing(e);
+        //}
+
         #endregion
 
         #region events
