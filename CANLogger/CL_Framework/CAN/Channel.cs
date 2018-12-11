@@ -1,21 +1,34 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Timers;
 
 namespace CL_Framework
 {
     public class Channel
     {
+        private static readonly uint DEFAULT_RCV_TIMER_INTERVAL = 50;
+        private static readonly uint DEFAULT_STATUS_ERRORINFO_TIMER_INTERVAL = 1000;
+        private static readonly uint DEFAULT_STATUS_ERRORINFO_STACK_MAXIMUM = 100;
         //------------------------------------------------------------------------------
         private uint channelIndex;
         private string channelName;
         private int baudRate;
-        private bool isStarted;
+        private bool isInitialized = false;
+        private bool isStarted = false;
         
-        private Device parentDevice;
+        private Device parentDevice = null;
         private InitConfig initConfig;
+
+        private ConcurrentQueue<CANErrInfo> pCANErrorInfoQueue = new ConcurrentQueue<CANErrInfo>();
+        private ConcurrentQueue<CANStatus> pCANStatusQueue = new ConcurrentQueue<CANStatus>();
+        private ConcurrentQueue<CANOBJ> pCANRevBufQueue = new ConcurrentQueue<CANOBJ>();
+
+        private Timer pStatusTimer;
+        private Timer pRcvTimer;
         //------------------------------------------------------------------------------
         public InitConfig Config
         { get { return initConfig; } }
@@ -38,78 +51,361 @@ namespace CL_Framework
         public CAN_MODE Mode
         { get { return (CAN_MODE)Enum.ToObject(typeof(CAN_MODE), this.initConfig.Mode); } }
 
+        public bool IsInitialized
+        { get { return isInitialized; } }
+
         public Channel(uint channelIndex, string channelName, Device parentDevice)
         {
+            this.isStarted = false;
+            this.isInitialized = false;
+
+            this.pStatusTimer = new Timer();
+            this.pStatusTimer.Interval = DEFAULT_STATUS_ERRORINFO_TIMER_INTERVAL;
+            this.pStatusTimer.Elapsed += StatusTimer_Elapsed;
+
+            this.pRcvTimer = new Timer();
+            this.pRcvTimer.Interval = DEFAULT_RCV_TIMER_INTERVAL;
+            this.pRcvTimer.Elapsed += RcvTimer_Elapsed;
+
             this.channelIndex = channelIndex;
             this.channelName = channelName;
             this.parentDevice = parentDevice;
+
             this.initConfig = CAN.CreateBasicInitConfig();
-            this.baudRate = CAN.DEFAULT_BAUDRATE;
+            this.baudRate = CAN.CHANNEL_DEFAULT_BAUDRATE;
+
+            this.InitCAN(this.baudRate, ref this.initConfig);
+
+            this.pStatusTimer.Start();
+            this.pRcvTimer.Start();
         }
-        
-        public CANResult InitCAN(int baudRate, ref InitConfig initConfig)
+
+        public uint InitCAN(int baudRate, ref InitConfig initConfig)
         {
             InitConfig config = CAN.CreateBasicInitConfig();
             CAN.ConfigBaudRate(baudRate, ref config);
+
             if (config.Timing0 != initConfig.Timing0 || config.Timing1 != initConfig.Timing1)
             {
-                return CANResult.STATUS_ERR;
+                LogHelper.Log(string.Format("baudrate[{0}] and initConfig[0x{1}:0x{2}] not match",
+                    baudRate, initConfig.Timing0.ToString("x"), initConfig.Timing1.ToString("x")));
+                return (uint)CAN_RESULT.ERR_UNKNOWN;
             }
 
             this.baudRate = baudRate;
             this.initConfig = initConfig;
-            return CANDLL.InitCAN((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex, ref initConfig);
+            if (CANDLL.InitCAN((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex, ref initConfig) == CANDLLResult.STATUS_OK)
+            {
+                LogHelper.Log(string.Format("init channel[{0}] successful.", channelName));
+                this.isInitialized = true;
+                return (uint)CAN_RESULT.SUCCESSFUL;
+            }
+
+            this.isInitialized = false;
+            uint result = (uint)CAN_RESULT.ERR_UNKNOWN;
+            CANErrInfo pCANErrorInfo;
+            if (ReadErrInfo(out pCANErrorInfo) == (uint)CAN_RESULT.SUCCESSFUL)
+            {
+                result = pCANErrorInfo.ErrCode;
+            }
+
+            LogHelper.Log(string.Format("init channel[{0}] failed: [0x{1}].", channelName, result.ToString("x")));
+            return result;
         }
 
-        public CANResult ReadErrInfo(out CANErrInfo canErrInfo)
+        public uint ReadErrInfo(out CANErrInfo canErrInfo)
         {
-            return CANDLL.ReadErrInfo((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex, out canErrInfo);
+            if (CANDLL.ReadErrInfo((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, 
+                (int)channelIndex, out canErrInfo) == CANDLLResult.STATUS_OK)
+            {
+                LogHelper.Log(string.Format("channel[{0}] read error info successful.", channelName));
+                return (uint)CAN_RESULT.SUCCESSFUL;
+            }
+            LogHelper.Log(string.Format("channel[{0}] read error info failed.", channelName));
+            return (uint)CAN_RESULT.ERR_UNKNOWN;
         }
 
-        public CANResult ReadCanStatus(out CANStatus canStatus)
+        public uint ReadCanStatus(out CANStatus canStatus)
         {
-            return CANDLL.ReadCanStatus((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex, out canStatus);
+            if (CANDLL.ReadCanStatus((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex,
+                channelIndex, out canStatus) == CANDLLResult.STATUS_OK)
+            {
+                LogHelper.Log(string.Format("channel[{0}] read can status successful.", channelName));
+                return (uint)CAN_RESULT.SUCCESSFUL;
+            }
+            LogHelper.Log(string.Format("channel[{0}] read can status failed.", channelName));
+            return (uint)CAN_RESULT.ERR_UNKNOWN;
         }
 
-        public CANResult GetReference(UInt32 refType, IntPtr data)
+        public uint GetReference(UInt32 refType, IntPtr data)
         {
-            return CANDLL.GetReference((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex, refType, data);
+            if (CANDLL.GetReference((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex,
+                channelIndex, refType, data) == CANDLLResult.STATUS_OK)
+            {
+                LogHelper.Log(string.Format("channel[{0}] read reference successful.", channelName));
+                return (uint)CAN_RESULT.SUCCESSFUL;
+            }
+            LogHelper.Log(string.Format("channel[{0}] read reference failed.", channelName));
+            return (uint)CAN_RESULT.ERR_UNKNOWN;
         }
 
-        public CANResult SetReference(UInt32 refType, IntPtr data)
+        public uint SetReference(UInt32 refType, IntPtr data)
         {
-            return CANDLL.SetReference((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex, refType, data);
+            if (CANDLL.SetReference((uint)parentDevice.DeviceType, parentDevice.DeviceIndex,
+                channelIndex, refType, data) == CANDLLResult.STATUS_OK)
+            {
+                LogHelper.Log(string.Format("channel[{0}] set reference successful.", channelName));
+                return (uint)CAN_RESULT.SUCCESSFUL;
+            }
+
+            CANErrInfo pCANErrorInfo;
+            uint result = (uint)CAN_RESULT.ERR_UNKNOWN;
+            if (ReadErrInfo(out pCANErrorInfo) == (uint)CAN_RESULT.SUCCESSFUL)
+            {
+                result = pCANErrorInfo.ErrCode;
+            }
+
+            LogHelper.Log(string.Format("channel[{0}] set reference failed: [0x{1}].", channelName, result.ToString("x")));
+            return result;
         }
 
-        public UInt32 GetReceiveNum()
+        public uint GetReceiveNum()
         {
-            return CANDLL.GetReceiveNum((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex);
+            return CANDLL.GetReceiveNum((uint)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex);
         }
 
-        public CANResult ClearBuffer()
+        public uint ClearBuffer()
         {
-            return CANDLL.ClearBuffer((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex);
+            if (CANDLL.ClearBuffer((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex,
+                channelIndex) == CANDLLResult.STATUS_OK)
+            {
+                LogHelper.Log(string.Format("channel[{0}] clear buffer successful.", channelName));
+                return (uint)CAN_RESULT.SUCCESSFUL;
+            }
+
+            CANErrInfo pCANErrorInfo;
+            uint result = (uint)CAN_RESULT.ERR_UNKNOWN;
+            if (ReadErrInfo(out pCANErrorInfo) == (uint)CAN_RESULT.SUCCESSFUL)
+            {
+                result = pCANErrorInfo.ErrCode;
+            }
+
+            LogHelper.Log(string.Format("channel[{0}] clear buffer failed: [0x{1}].", channelName, result.ToString("x")));
+            return result;
         }
 
-        public CANResult StartCAN()
+        public uint StartCAN()
         {
-            return CANDLL.StartCAN((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex);
+            if(this.isStarted)
+            {
+                LogHelper.Log(string.Format("channel[{0}] already start.", channelName));
+                return (uint)CAN_RESULT.SUCCESSFUL;
+            }
+
+            if (CANDLL.StartCAN((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex,
+                channelIndex) == CANDLLResult.STATUS_OK)
+            {
+                LogHelper.Log(string.Format("channel[{0}] start successful.", channelName));
+                this.isStarted = true;
+                return (uint)CAN_RESULT.SUCCESSFUL;
+            }
+
+            this.isStarted = false;
+            CANErrInfo pCANErrorInfo;
+            uint result = (uint)CAN_RESULT.ERR_UNKNOWN;
+            if (ReadErrInfo(out pCANErrorInfo) == (uint)CAN_RESULT.SUCCESSFUL)
+            {
+                result = pCANErrorInfo.ErrCode;
+            }
+
+            LogHelper.Log(string.Format("channel[{0}] start failed: [0x{1}].", channelName, result.ToString("x")));
+            return result;
         }
 
-        public UInt32 Transmit(CANOBJ[] canFrames, UInt32 canFrameLength)
+        public uint Transmit(CANOBJ[] canFrames, UInt32 canFrameLength)
         {
-            return CANDLL.Transmit((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex, canFrames, canFrameLength);
+            if (canFrames.Length < canFrameLength)
+            {
+                LogHelper.Log(string.Format("channel[{0}] CAN frames[{1}] less than num[{2}] to send.", channelName, canFrames.Length, canFrameLength));
+                canFrameLength = (uint)canFrames.Length;
+            }
+            uint realSendNum = CANDLL.Transmit((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex, canFrames, canFrameLength);
+            LogHelper.Log(string.Format("channel[{0}] transmit [{1}/{2}] messages successful.", channelName, realSendNum, canFrameLength));
+            return realSendNum;
         }
 
-        public UInt32 Receive(out CANOBJ[] canFrames, UInt32 canFrameLength, Int32 waitMilliseconds)
+        public uint Receive(out CANOBJ[] canFrames, UInt32 canFrameLength, Int32 waitMilliseconds)
         {
-            return CANDLL.Receive((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex,
+            uint realRcvNum = CANDLL.Receive((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex,
                 out canFrames, canFrameLength, waitMilliseconds);
+            if (realRcvNum != uint.MaxValue)
+            {
+                LogHelper.Log(string.Format("channel[{0}] receive [{1}] messages successful.", channelName, realRcvNum));
+                return realRcvNum;
+            }
+
+            CANErrInfo pCANErrorInfo;
+            uint result = (uint)CAN_RESULT.ERR_UNKNOWN;
+            if (ReadErrInfo(out pCANErrorInfo) == (uint)CAN_RESULT.SUCCESSFUL)
+            {
+                result = pCANErrorInfo.ErrCode;
+            }
+
+            LogHelper.Log(string.Format("channel[{0}] receive failed: [0x{1}].", channelName, pCANErrorInfo.ErrCode.ToString("x")));
+            return realRcvNum;
         }
 
-        public CANResult ResetCAN()
+        public uint ResetCAN()
         {
-            return CANDLL.ResetCAN((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex);
+            if (!this.isStarted)
+            {
+                LogHelper.Log(string.Format("channel[{0}] already reset.", channelName));
+                return (uint)CAN_RESULT.SUCCESSFUL;
+            }
+
+            if (CANDLL.ResetCAN((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex,
+                channelIndex) == CANDLLResult.STATUS_OK)
+            {
+                LogHelper.Log(string.Format("channel[{0}] reset successful.", channelName));
+                this.isStarted = false;
+                return (uint)CAN_RESULT.SUCCESSFUL;
+
+            }
+
+            CANErrInfo pCANErrorInfo;
+            uint result = (uint)CAN_RESULT.ERR_UNKNOWN;
+            if (ReadErrInfo(out pCANErrorInfo) == (uint)CAN_RESULT.SUCCESSFUL)
+            {
+                result = pCANErrorInfo.ErrCode;
+            }
+
+            LogHelper.Log(string.Format("channel[{0}] reset failed: [0x{1}].", channelName, result.ToString("x")));
+            return result;
+        }
+
+        private void StatusTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            if (!this.isInitialized)
+            {
+                return;
+            }
+
+            CANStatus pCANStatus;
+            CANErrInfo pCANErrorInfo;
+            this.pStatusTimer.Stop();
+
+            try
+            {
+                if (ReadCanStatus(out pCANStatus) == (uint)CAN_RESULT.SUCCESSFUL)
+                {
+                    if (this.pCANStatusQueue.Count >= DEFAULT_STATUS_ERRORINFO_STACK_MAXIMUM)
+                    {
+                        ReleaseStatusQueue((int)DEFAULT_STATUS_ERRORINFO_STACK_MAXIMUM >> 1);
+                    }
+                    this.pCANStatusQueue.Enqueue(pCANStatus);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log("Read CAN Status Exception", ex);
+            }
+
+            try
+            {
+                if (ReadErrInfo(out pCANErrorInfo) == (uint)CAN_RESULT.SUCCESSFUL)
+                {
+                    if (this.pCANErrorInfoQueue.Count >= DEFAULT_STATUS_ERRORINFO_STACK_MAXIMUM)
+                    {
+                        ReleaseErrorInfoQueue((int)DEFAULT_STATUS_ERRORINFO_STACK_MAXIMUM >> 1);
+                    }
+                    this.pCANErrorInfoQueue.Enqueue(pCANErrorInfo);
+                }
+            }
+            catch(Exception ex)
+            {
+                LogHelper.Log("Read CAN Error Info Exception", ex);
+            }
+
+            this.pStatusTimer.Start();
+        }
+
+        private void RcvTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            if(!this.isStarted)
+            {
+                return;
+            }
+
+            this.pRcvTimer.Stop();
+
+            try
+            {
+                uint numToRcv = GetReceiveNum();
+                LogHelper.Log(string.Format("[{0}] messages need to receive.", numToRcv));
+                if (numToRcv <= 0)
+                {
+                    return;
+                }
+
+                int waitTime = 1000;
+                CANOBJ[] pCANFrames = new CANOBJ[numToRcv];
+                uint realRcvNum = Receive(out pCANFrames, numToRcv, waitTime);
+                LogHelper.Log(string.Format("[{0}] messages received.", realRcvNum));
+
+                if (realRcvNum == uint.MaxValue)
+                {
+                    LogHelper.Log("receive messages failed.");
+                    return;
+                }
+
+                int numToRelease = this.pCANRevBufQueue.Count + (int)realRcvNum - (int)CAN.CHANNEL_REC_BUF_MAXIMUM;
+                if (numToRelease > 0)
+                {
+                    ReleaseRcvBufQueue(numToRelease);
+                }
+                
+                for (uint index = 0; index < realRcvNum; index++)
+                {
+                    this.pCANRevBufQueue.Enqueue(pCANFrames[index]);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log("receive messages exception.", ex);
+            }
+            finally
+            {
+                this.pRcvTimer.Start();
+            }
+
+        }
+
+        private void ReleaseRcvBufQueue(int numToRelease)
+        {
+            CANOBJ pCANOBJ;
+            for (int i = 0; i < numToRelease; i++)
+            {
+                this.pCANRevBufQueue.TryDequeue(out pCANOBJ);
+            }
+        }
+
+        private void ReleaseStatusQueue(int numToRelease)
+        {
+            CANStatus pCANStatus;
+            for (int i = 0; i < numToRelease; i++)
+            {
+                this.pCANStatusQueue.TryDequeue(out pCANStatus);
+            }
+        }
+
+        private void ReleaseErrorInfoQueue(int numToRelease)
+        {
+            CANErrInfo pCANErrorInfo;
+            for (int i = 0; i < numToRelease; i++)
+            {
+                this.pCANErrorInfoQueue.TryDequeue(out pCANErrorInfo);
+            }
         }
 
     }

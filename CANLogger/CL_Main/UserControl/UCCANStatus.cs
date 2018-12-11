@@ -14,12 +14,16 @@ namespace CL_Main
 {
     public partial class UCCANStatus : UserControl
     {
+        private CANErrInfo pCANError = new CANErrInfo();
+        private CANStatus pCANStatus = new CANStatus();
         private Channel channel = null;
 
         public UCCANStatus(Channel channel)
         {
             InitializeComponent();
             this.channel = channel;
+            this.Name = channel.ChannelName;
+            this.timer.Start();
         }
 
         public Channel GetChannel()
@@ -27,9 +31,13 @@ namespace CL_Main
             return channel;
         }
 
-        private void UCCANStatus_Load(object sender, EventArgs e)
+        private void timer_Tick(object sender, EventArgs e)
         {
-            this.Name = channel.ChannelName;
+            if (channel.IsInitialized)
+            {
+                //channel.ReadCanStatus(out this.pCANStatus);
+                channel.ReadErrInfo(out this.pCANError);
+            }
         }
     }
 }

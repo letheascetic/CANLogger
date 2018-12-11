@@ -15,6 +15,9 @@ namespace CL_Framework
         private BoardInfo deviceInfo;
         
         private Channel[] channels;
+
+        public Channel[] Channels
+        { get { return channels; } }
         
         public DEVICE_TYPE DeviceType
         { get { return deviceType; } }
@@ -65,106 +68,95 @@ namespace CL_Framework
             }
         }
 
-        public static CANResult CreateDevice(DEVICE_TYPE deviceType, out Device device)
+        public static uint CreateDevice(DEVICE_TYPE deviceType, out Device device)
         {
             device = null;
-            //CANResult canResult = CANResult.STATUS_ERR;
+
             Device newDevice = new Device(deviceType);
 
-            if (newDevice.OpenDevice() == CANResult.STATUS_ERR)
+            uint result = newDevice.OpenDevice();
+            if (result != (uint)CAN_RESULT.SUCCESSFUL)
             {
-                return CANResult.STATUS_ERR;
+                LogHelper.Log(string.Format("create device[{0}] failed.", newDevice.GetDeviceName()));
+                return result;
             }
 
-            if (newDevice.ReadBoardInfo() == CANResult.STATUS_ERR)
+            result = newDevice.ReadBoardInfo();
+            if (result != (uint)CAN_RESULT.SUCCESSFUL)
             {
-                return CANResult.STATUS_ERR;
+                LogHelper.Log(string.Format("create device[{0}] failed.", newDevice.GetDeviceName()));
+                return result;
             }
 
             newDevice.InitCAN(newDevice.CANNum);
             device = newDevice;
 
-            return CANResult.STATUS_OK;
-        }
-
-        public CANResult OpenDevice()
-        {
-            CANResult result = CANDLL.OpenDevice((UInt32)deviceType, deviceIndex, 0);
-            isDeviceOpen = result == CANResult.STATUS_OK ? true : false;
+            LogHelper.Log(string.Format("create device[{0}] successful.", newDevice.GetDeviceName()));
             return result;
         }
 
-        public CANResult CloseDevice()
+        public uint OpenDevice()
         {
-            return CANDLL.CloseDevice((UInt32)deviceType, deviceIndex);
-        }
-
-        public CANResult InitCAN(UInt32 canIndex, int baudRate, ref InitConfig initConfig)
-        {
-            return channels[canIndex].InitCAN(baudRate, ref initConfig);
-        }
-
-        private CANResult ReadBoardInfo()
-        {
-            return CANDLL.ReadBoardInfo((UInt32)deviceType, deviceIndex, out deviceInfo);
-        }
-
-        public CANResult ReadErrInfo(UInt32 canIndex, out CANErrInfo canErrInfo)
-        {
-            return channels[canIndex].ReadErrInfo(out canErrInfo);
-        }
-
-        public CANResult ReadCanStatus(UInt32 canIndex, out CANStatus canStatus)
-        {
-            return channels[canIndex].ReadCanStatus(out canStatus);
-        }
-
-        public CANResult GetReference(UInt32 canIndex, UInt32 refType, IntPtr data)
-        {
-            return channels[canIndex].GetReference(refType, data);
-        }
-
-        public CANResult SetReference(UInt32 canIndex, UInt32 refType, IntPtr data)
-        {
-            return channels[canIndex].SetReference(refType, data);
-        }
-
-        public UInt32 GetReceiveNum(UInt32 canIndex)
-        {
-            return channels[canIndex].GetReceiveNum();
-        }
-
-        public CANResult ClearBuffer(UInt32 canIndex)
-        {
-            return channels[canIndex].ClearBuffer();
-        }
-
-        public CANResult StartCAN(UInt32 canIndex)
-        {
-            return channels[canIndex].StartCAN();
-        }
-
-        public UInt32 Transmit(UInt32 canIndex, CANOBJ[] canFrames, UInt32 canFrameLength)
-        {
-            return channels[canIndex].Transmit(canFrames, canFrameLength);
-        }
-
-        public UInt32 Receive(UInt32 canIndex, out CANOBJ[] canFrames, UInt32 canFrameLength, Int32 waitMilliseconds)
-        {
-            return channels[canIndex].Receive(out canFrames, canFrameLength, waitMilliseconds);
-        }
-
-        public CANResult ResetCAN(UInt32 canIndex)
-        {
-            return channels[canIndex].ResetCAN();
-        }
-
-        public void ResetAll()
-        {
-            foreach (Channel channel in channels)
+            if(this.isDeviceOpen)
             {
-                channel.ResetCAN();
+                LogHelper.Log(string.Format("device[{0}] already open", this.GetDeviceName()));
+                return (uint)CAN_RESULT.SUCCESSFUL;
             }
+
+            if (CANDLL.OpenDevice((UInt32)deviceType, deviceIndex, 0) == CANDLLResult.STATUS_OK)
+            {
+                LogHelper.Log(string.Format("open device[{0}] successful", this.GetDeviceName()));
+                isDeviceOpen = true;
+                return (uint)CAN_RESULT.SUCCESSFUL;
+            }
+
+            uint result = (uint)CAN_RESULT.ERR_UNKNOWN;
+            CANErrInfo pCANErrorInfo;
+            if (CANDLL.ReadErrInfo((uint)this.deviceType, this.deviceIndex, -1, out pCANErrorInfo) == CANDLLResult.STATUS_OK)
+            {
+                result = pCANErrorInfo.ErrCode;
+            }
+
+            LogHelper.Log(string.Format("open device[{0}] failed: [0x{1}]", this.GetDeviceName(), result.ToString("x")));
+            return result;
+        }
+
+        public uint CloseDevice()
+        {
+            if (CANDLL.CloseDevice((UInt32)deviceType, deviceIndex) == CANDLLResult.STATUS_OK)
+            {
+                LogHelper.Log(string.Format("close device[{0}] successful", this.GetDeviceName()));
+                return (uint)CAN_RESULT.SUCCESSFUL;
+            }
+
+            uint result = (uint)CAN_RESULT.ERR_UNKNOWN;
+            CANErrInfo pCANErrorInfo;
+            if (CANDLL.ReadErrInfo((uint)this.deviceType, this.deviceIndex, -1, out pCANErrorInfo) == CANDLLResult.STATUS_OK)
+            {
+                result = pCANErrorInfo.ErrCode;
+            }
+
+            LogHelper.Log(string.Format("close device[{0}] failed: [0x{1}]", this.GetDeviceName(), result.ToString("x")));
+            return result;
+        }
+
+        private uint ReadBoardInfo()
+        {
+            if (CANDLL.ReadBoardInfo((UInt32)deviceType, deviceIndex, out deviceInfo) == CANDLLResult.STATUS_OK)
+            {
+                LogHelper.Log(string.Format("device[{0}] read board info successful", this.GetDeviceName()));
+                return (uint)CAN_RESULT.SUCCESSFUL;
+            }
+
+            uint result = (uint)CAN_RESULT.ERR_UNKNOWN;
+            CANErrInfo pCANErrorInfo;
+            if (CANDLL.ReadErrInfo((uint)this.deviceType, this.deviceIndex, -1, out pCANErrorInfo) == CANDLLResult.STATUS_OK)
+            {
+                result = pCANErrorInfo.ErrCode;
+            }
+
+            LogHelper.Log(string.Format("device[{0}] read board info failed: [0x{1}]", this.GetDeviceName(), result.ToString("x")));
+            return result;
         }
 
     }

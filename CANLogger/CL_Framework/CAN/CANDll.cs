@@ -7,7 +7,7 @@ using System.Text;
 namespace CL_Framework
 {
     [Flags]
-    public enum CANResult : uint
+    public enum CANDLLResult : uint
     {
         STATUS_ERR = 0x00000,
         STATUS_OK = 0x00001,
@@ -87,45 +87,45 @@ namespace CL_Framework
     public static class CANDLL
     {
         [DllImport("ECANVCI64.dll", EntryPoint = "OpenDevice")]
-        public static extern CANResult OpenDevice(
+        public static extern CANDLLResult OpenDevice(
             UInt32 DeviceType,
             UInt32 DeviceIndex,
             UInt32 Reserved);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "CloseDevice")]
-        public static extern CANResult CloseDevice(
+        public static extern CANDLLResult CloseDevice(
             UInt32 DeviceType,
             UInt32 DeviceIndex);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "InitCAN")]
-        public static extern CANResult InitCAN(
+        public static extern CANDLLResult InitCAN(
             UInt32 DeviceType,
             UInt32 DeviceIndex,
             UInt32 CANIndex,
             ref InitConfig InitConfig);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "ReadBoardInfo")]
-        public static extern CANResult ReadBoardInfo(
+        public static extern CANDLLResult ReadBoardInfo(
             UInt32 DeviceType,
             UInt32 DeviceIndex,
             out BoardInfo BoardInfo);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "ReadErrInfo")]
-        public static extern CANResult ReadErrInfo(
+        public static extern CANDLLResult ReadErrInfo(
             UInt32 DeviceType,
             UInt32 DeviceIndex,
-            UInt32 CANIndex,
+            int CANIndex,
             out CANErrInfo CANErrInfo);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "ReadCanStatus")]
-        public static extern CANResult ReadCanStatus(
+        public static extern CANDLLResult ReadCanStatus(
             UInt32 DeviceType,
             UInt32 DeviceIndex,
             UInt32 CANIndex,
             out CANStatus CANStatus);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "GetReference")]
-        public static extern CANResult GetReference(
+        public static extern CANDLLResult GetReference(
             UInt32 DeviceType,
             UInt32 DeviceIndex,
             UInt32 CANIndex,
@@ -133,7 +133,7 @@ namespace CL_Framework
             IntPtr data);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "SetReference")]
-        public static extern CANResult SetReference(
+        public static extern CANDLLResult SetReference(
             UInt32 DeviceType,
             UInt32 DeviceIndex,
             UInt32 CANIndex,
@@ -147,13 +147,13 @@ namespace CL_Framework
             UInt32 CANIndex);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "ClearBuffer")]
-        public static extern CANResult ClearBuffer(
+        public static extern CANDLLResult ClearBuffer(
             UInt32 DeviceType,
             UInt32 DeviceIndex,
             UInt32 CANIndex);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "StartCAN")]
-        public static extern CANResult StartCAN(
+        public static extern CANDLLResult StartCAN(
             UInt32 DeviceType,
             UInt32 DeviceIndex,
             UInt32 CANIndex);
@@ -176,7 +176,7 @@ namespace CL_Framework
             Int32 WaitTime);
 
         [DllImport("ECANVCI64.dll", EntryPoint = "ResetCAN")]
-        public static extern CANResult ResetCAN(
+        public static extern CANDLLResult ResetCAN(
             UInt32 DeviceType,
             UInt32 DeviceIndex,
             UInt32 CANIndex);

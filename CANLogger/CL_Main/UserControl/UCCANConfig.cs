@@ -48,7 +48,7 @@ namespace CL_Main
             CAN.ConfigMode(mode, ref config);
             CAN.ConfigBaudRate(baudRate, ref config);
 
-            if (channel.InitCAN(baudRate, ref config) == CANResult.STATUS_ERR)
+            if (channel.InitCAN(baudRate, ref config) != (uint)CAN_RESULT.SUCCESSFUL)
             {
                 isConfigured = false;
                 return false;
@@ -59,7 +59,7 @@ namespace CL_Main
 
         private bool StartCAN()
         {
-            return channel.StartCAN() == CANResult.STATUS_OK ? true : false;
+            return channel.StartCAN() == (uint)CAN_RESULT.SUCCESSFUL ? true : false;
         }
 
         private void UCCANConfig_Load(object sender, EventArgs e)

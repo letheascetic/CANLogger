@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gbxControlStatus = new System.Windows.Forms.GroupBox();
             this.lbBusArbErr = new System.Windows.Forms.Label();
             this.lbBusDataErr = new System.Windows.Forms.Label();
@@ -65,6 +66,7 @@
             this.lbRcvErrNum = new System.Windows.Forms.Label();
             this.lbSendErr = new System.Windows.Forms.Label();
             this.lbRcvErr = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.gbxControlStatus.SuspendLayout();
             this.gbxBusStatus.SuspendLayout();
             this.gbxBusErr.SuspendLayout();
@@ -425,6 +427,11 @@
             this.lbRcvErr.TabIndex = 14;
             this.lbRcvErr.Text = "接收错误:";
             // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // UCCANStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -437,7 +444,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UCCANStatus";
             this.Size = new System.Drawing.Size(470, 137);
-            this.Load += new System.EventHandler(this.UCCANStatus_Load);
             this.gbxControlStatus.ResumeLayout(false);
             this.gbxControlStatus.PerformLayout();
             this.gbxBusStatus.ResumeLayout(false);
@@ -487,5 +493,6 @@
         private System.Windows.Forms.Label lbRcvErr;
         private System.Windows.Forms.Label lbSendErrNum;
         private System.Windows.Forms.Label lbRcvErrNum;
+        private System.Windows.Forms.Timer timer;
     }
 }

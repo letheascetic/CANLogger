@@ -91,23 +91,12 @@ namespace CL_Main
         private void AddChannel(Channel channel)
         {
             TabPage tabPage = new TabPage(channel.ChannelName);
-
             UCCANStatus pChnanelStatus = new UCCANStatus(channel);
             pChnanelStatus.Parent = tabPage;
             pChnanelStatus.Dock = DockStyle.Fill;
-
             tabControl.TabPages.Add(tabPage);
-
             pChannelStatusList.Add(pChnanelStatus);
         }
-
-        //protected override void OnFormClosing(FormClosingEventArgs e)
-        //{
-        //    this.VisibleState = DockState.
-        //    e.Cancel = true;
-        //    //e.Cancel = cancel;
-        //    //base.OnFormClosing(e);
-        //}
 
         #endregion
 

@@ -193,6 +193,20 @@ namespace CL_Main
             this.Activate();
         }
 
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            foreach (Device device in pDeviceGroup.Devices)
+            {
+                device.CloseDevice();
+            }
+            foreach(FormData pFormData in pFormDatas)
+            {
+                pFormData.Close();
+            }
+            pFormStatus.Close();
+            pFormDevice.Close();
+        }
+
         private void menuItemLanguage_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             LogHelper.Log(string.Format("menuItemLanguage_DropDownItemClicked -> clickedItem: [{0}]", e.ClickedItem.Text));
@@ -318,7 +332,10 @@ namespace CL_Main
             DialogResult dialogResult = MessageBox.Show(content, "复位设备", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.OK)
             {
-                device.ResetAll();
+                foreach (Channel channel in device.Channels)
+                {
+                    channel.ResetCAN();
+                }
                 this.pDeviceGroup.Update(device);
             }
         }
@@ -345,7 +362,6 @@ namespace CL_Main
         }
 
         #endregion
-
 
     }
 }

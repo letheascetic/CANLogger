@@ -281,6 +281,7 @@
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.Name = "FormMain";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();

@@ -108,7 +108,7 @@ namespace CL_Main.Dialog
             // get new device index
             UInt32 deviceIndex = pDeviceGroup.GetNewDeviceIndex(deviceType);
             // create new device
-            if (Device.CreateDevice(deviceType, out device) == CANResult.STATUS_OK)
+            if (Device.CreateDevice(deviceType, out device) == (uint)CAN_RESULT.SUCCESSFUL)
             {
                 return device;
             }
@@ -192,7 +192,6 @@ namespace CL_Main.Dialog
                     }
                 }
             }
-            //this.pDeviceGroup.Add(this.device, null);
             this.DialogResult = DialogResult.OK;
         }
 

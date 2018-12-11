@@ -6,6 +6,15 @@ using System.Text;
 
 namespace CL_Framework
 {
+    public enum CAN_RESULT : uint
+    {
+        SUCCESSFUL = 0x00000000,
+        ERR_DEVICEOPENED = 0x00000100,
+        ERR_DEVICEOPEN = 0x00000200,
+        ERR_DEVICENOTOPEN = 0x00000400,
+        ERR_UNKNOWN = 0xFFFFFFFF
+    }
+
     public enum DEVICE_TYPE : uint
     {
         UNKNOWN = 0,
@@ -43,10 +52,11 @@ namespace CL_Framework
         //------------------------------------------------------------------------------
         public static readonly uint DEVICE_CANNUM_MAXIMUM = 2;
         //------------------------------------------------------------------------------
-        public static readonly int DEFAULT_BAUDRATE = 1000;
-        public static readonly uint DEFAULT_ACC_CODE = 0x0;
-        public static readonly uint DEFAULT_ACC_MASK = 0xffffffff;
-        public static readonly byte DEFAULT_FILTER = 0x0;
+        public static readonly uint CHANNEL_REC_BUF_MAXIMUM = 130000;
+        public static readonly int CHANNEL_DEFAULT_BAUDRATE = 1000;
+        public static readonly uint CHANNEL_DEFAULT_ACC_CODE = 0x0;
+        public static readonly uint CHANNEL_DEFAULT_ACC_MASK = 0xffffffff;
+        public static readonly byte CHANNEL_DEFAULT_FILTER = 0x0;
         //------------------------------------------------------------------------------
         public static readonly string DEVICE_TYPE_UNKNOWN = "UNKNOWN";
         public static readonly string DEVICE_TYPE_USBCAN = "USBCAN";
@@ -139,23 +149,22 @@ namespace CL_Framework
         public static InitConfig CreateBasicInitConfig()
         {
             InitConfig initConfig = new InitConfig();
-            initConfig.AccCode = CAN.DEFAULT_ACC_CODE;
-            initConfig.AccMask = CAN.DEFAULT_ACC_MASK;
-            initConfig.Filter = CAN.DEFAULT_FILTER;
+            initConfig.AccCode = CAN.CHANNEL_DEFAULT_ACC_CODE;
+            initConfig.AccMask = CAN.CHANNEL_DEFAULT_ACC_MASK;
+            initConfig.Filter = CAN.CHANNEL_DEFAULT_FILTER;
 
-            ConfigBaudRate(CAN.DEFAULT_BAUDRATE, ref initConfig);
+            ConfigBaudRate(CAN.CHANNEL_DEFAULT_BAUDRATE, ref initConfig);
             ConfigMode(CAN_MODE.NORMAL, ref initConfig);
 
             return initConfig;
         }
 
-        public static CANResult ConfigMode(CAN_MODE mode, ref InitConfig initConfig)
+        public static void ConfigMode(CAN_MODE mode, ref InitConfig initConfig)
         {
             initConfig.Mode = (byte)mode;
-            return CANResult.STATUS_OK;
         }
 
-        public static CANResult ConfigBaudRate(int baudRate, ref InitConfig initConfig)
+        public static void ConfigBaudRate(int baudRate, ref InitConfig initConfig)
         {
             switch (baudRate)
             {
@@ -224,7 +233,6 @@ namespace CL_Framework
                     initConfig.Timing1 = 0x14;
                     break;
             }
-            return CANResult.STATUS_OK;
         }
 
 
