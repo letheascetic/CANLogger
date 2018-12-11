@@ -20,6 +20,7 @@ namespace CL_Main
         private readonly static int SEND_MODE_LIST = 1;
         private readonly static string[] SEND_MODE_DESC = new string[] { "普通发送模式", "列表发送模式" };
 
+        private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
         private Channel channel = null;
         private UCNormalSendMode pUCSendModeNormal = null;
         private UCListSendMode pUCSendModeList = null;
@@ -51,7 +52,15 @@ namespace CL_Main
             this.pnlSend.Controls.Add(this.pUCSendModeNormal);
             this.pnlSend.Controls.Add(this.pUCSendModeList);
 
+            pDeviceGroup.ChannelUpdated += new ChannelEventHandler(this.UpdateChannel);
+
             ChangeSendMode();
+        }
+
+        private void Finish()
+        {
+            pDeviceGroup.ChannelUpdated -= this.UpdateChannel;
+            this.Dispose();
         }
 
         private void ChangeSendMode()
@@ -84,15 +93,19 @@ namespace CL_Main
 
             resources.ApplyResources(this, "$this");
 
-            resources.ApplyResources(this.btnContinueShow, this.btnContinueShow.Name);
-            resources.ApplyResources(this.btnStopShow, this.btnStopShow.Name);
+            resources.ApplyResources(this.btnStartReset, this.btnStartReset.Name);
             resources.ApplyResources(this.btnShowMode, this.btnShowMode.Name);
             resources.ApplyResources(this.btnFilter, this.btnFilter.Name);
 
         }
 
+        public void UpdateChannel(Channel channel, object paras)
+        {
+
+        }
+
         #region events
-        
+
         private void FormData_Load(object sender, EventArgs e)
         {
             Init();
@@ -103,9 +116,32 @@ namespace CL_Main
             ChangeSendMode();
         }
 
+        private void btnStartReset_Click(object sender, EventArgs e)
+        {
+            if (channel.IsStarted)
+            {
+                //string deviceName = device.GetDeviceName();
+                //string content = string.Format("确定要删除当前设备[{0}]吗？", deviceName);
+
+                //DialogResult dialogResult = MessageBox.Show(content, "删除设备", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                //if (dialogResult == DialogResult.OK)
+                //{
+                    
+                //}
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormData_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Finish();
+        }
+
         #endregion
-
-
 
 
     }

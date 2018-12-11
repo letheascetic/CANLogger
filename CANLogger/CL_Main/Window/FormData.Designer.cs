@@ -47,8 +47,7 @@
             this.btnSendFile = new System.Windows.Forms.ToolStripButton();
             this.sp4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.btnContinueShow = new System.Windows.Forms.ToolStripButton();
-            this.btnStopShow = new System.Windows.Forms.ToolStripButton();
+            this.btnStartReset = new System.Windows.Forms.ToolStripButton();
             this.btnShowMode = new System.Windows.Forms.ToolStripButton();
             this.btnClear = new System.Windows.Forms.ToolStripButton();
             this.sp1 = new System.Windows.Forms.ToolStripSeparator();
@@ -204,8 +203,7 @@
             this.toolStrip.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnContinueShow,
-            this.btnStopShow,
+            this.btnStartReset,
             this.btnShowMode,
             this.btnClear,
             this.sp1,
@@ -218,17 +216,12 @@
             resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Name = "toolStrip";
             // 
-            // btnContinueShow
+            // btnStartReset
             // 
-            this.btnContinueShow.Image = global::CL_Main.Properties.Resources.start;
-            resources.ApplyResources(this.btnContinueShow, "btnContinueShow");
-            this.btnContinueShow.Name = "btnContinueShow";
-            // 
-            // btnStopShow
-            // 
-            this.btnStopShow.Image = global::CL_Main.Properties.Resources.stop;
-            resources.ApplyResources(this.btnStopShow, "btnStopShow");
-            this.btnStopShow.Name = "btnStopShow";
+            this.btnStartReset.Image = global::CL_Main.Properties.Resources.start;
+            resources.ApplyResources(this.btnStartReset, "btnStartReset");
+            this.btnStartReset.Name = "btnStartReset";
+            this.btnStartReset.Click += new System.EventHandler(this.btnStartReset_Click);
             // 
             // btnShowMode
             // 
@@ -241,6 +234,7 @@
             this.btnClear.Image = global::CL_Main.Properties.Resources.clear;
             resources.ApplyResources(this.btnClear, "btnClear");
             this.btnClear.Name = "btnClear";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // sp1
             // 
@@ -291,6 +285,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.HideOnClose = true;
             this.Name = "FormData";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormData_FormClosing);
             this.Load += new System.EventHandler(this.FormData_Load);
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel2.ResumeLayout(false);
@@ -310,8 +305,7 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripButton btnContinueShow;
-        private System.Windows.Forms.ToolStripButton btnStopShow;
+        private System.Windows.Forms.ToolStripButton btnStartReset;
         private System.Windows.Forms.ToolStripButton btnShowMode;
         private System.Windows.Forms.ToolStripSeparator sp1;
         private System.Windows.Forms.ToolStripButton btnFilter;

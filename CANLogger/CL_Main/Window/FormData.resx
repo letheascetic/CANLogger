@@ -399,23 +399,14 @@
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="btnContinueShow.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="btnStartReset.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="btnContinueShow.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnStartReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 25</value>
   </data>
-  <data name="btnContinueShow.Text" xml:space="preserve">
-    <value>继续显示</value>
-  </data>
-  <data name="btnStopShow.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnStopShow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 25</value>
-  </data>
-  <data name="btnStopShow.Text" xml:space="preserve">
-    <value>暂停显示</value>
+  <data name="btnStartReset.Text" xml:space="preserve">
+    <value>启动通道</value>
   </data>
   <data name="btnShowMode.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -881,16 +872,10 @@
   <data name="&gt;&gt;sp4.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnContinueShow.Name" xml:space="preserve">
-    <value>btnContinueShow</value>
+  <data name="&gt;&gt;btnStartReset.Name" xml:space="preserve">
+    <value>btnStartReset</value>
   </data>
-  <data name="&gt;&gt;btnContinueShow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnStopShow.Name" xml:space="preserve">
-    <value>btnStopShow</value>
-  </data>
-  <data name="&gt;&gt;btnStopShow.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnStartReset.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnShowMode.Name" xml:space="preserve">

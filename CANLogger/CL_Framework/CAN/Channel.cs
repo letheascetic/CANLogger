@@ -341,23 +341,23 @@ namespace CL_Framework
             try
             {
                 uint numToRcv = GetReceiveNum();
-                LogHelper.Log(string.Format("[{0}] messages need to receive.", numToRcv));
                 if (numToRcv <= 0)
                 {
                     return;
                 }
 
+                LogHelper.Log(string.Format("channel[{0}] has [{1}] messages to receive.", channelName, numToRcv));
+
                 int waitTime = 1000;
                 CANOBJ[] pCANFrames = new CANOBJ[numToRcv];
                 uint realRcvNum = Receive(out pCANFrames, numToRcv, waitTime);
-                LogHelper.Log(string.Format("[{0}] messages received.", realRcvNum));
 
                 if (realRcvNum == uint.MaxValue)
                 {
-                    LogHelper.Log("receive messages failed.");
                     return;
                 }
 
+                LogHelper.Log(string.Format("channel[{0}] current rev buf queue size: [{1}].", channelName, this.pCANRevBufQueue.Count));
                 int numToRelease = this.pCANRevBufQueue.Count + (int)realRcvNum - (int)CAN.CHANNEL_REC_BUF_MAXIMUM;
                 if (numToRelease > 0)
                 {
@@ -372,17 +372,17 @@ namespace CL_Framework
             }
             catch (Exception ex)
             {
-                LogHelper.Log("receive messages exception.", ex);
+                LogHelper.Log(string.Format("channel[{0}] receive messages exception.", channelName), ex);
             }
             finally
             {
                 this.pRcvTimer.Start();
             }
-
         }
 
         private void ReleaseRcvBufQueue(int numToRelease)
         {
+            LogHelper.Log(string.Format("channel[{0}] release rcv buf queue size: [{1}].", channelName, numToRelease));
             CANOBJ pCANOBJ;
             for (int i = 0; i < numToRelease; i++)
             {
@@ -392,6 +392,7 @@ namespace CL_Framework
 
         private void ReleaseStatusQueue(int numToRelease)
         {
+            LogHelper.Log(string.Format("channel[{0}] release status queue size: [{1}].", channelName, numToRelease));
             CANStatus pCANStatus;
             for (int i = 0; i < numToRelease; i++)
             {
@@ -401,6 +402,7 @@ namespace CL_Framework
 
         private void ReleaseErrorInfoQueue(int numToRelease)
         {
+            LogHelper.Log(string.Format("channel[{0}] release error info queue size: [{1}].", channelName, numToRelease));
             CANErrInfo pCANErrorInfo;
             for (int i = 0; i < numToRelease; i++)
             {

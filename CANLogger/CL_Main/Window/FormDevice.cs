@@ -52,7 +52,7 @@ namespace CL_Main
                 int index = dgvChannels.Rows.Add();
                 dgvChannels.Rows[index].Visible = false;
                 dgvChannels.Rows[index].Tag = channel;
-                dgvChannels.Rows[index].Cells[0].Value = "";
+                dgvChannels.Rows[index].Cells[0].Value = channel.IsStarted ? "启动" : "复位";
                 dgvChannels.Rows[index].Cells[1].Value = CAN.FindCANModeKey(channel.Mode);
                 dgvChannels.Rows[index].Cells[2].Value = channel.ChannelName;
                 dgvChannels.Rows[index].Cells[3].Value = channel.ChannelIndex;
@@ -70,7 +70,7 @@ namespace CL_Main
             foreach (DataGridViewRow row in mappingRows)
             {
                 Channel channel = (Channel)row.Tag;
-                row.Cells[0].Value = "";
+                row.Cells[0].Value = channel.IsStarted ? "启动" : "复位";
                 row.Cells[1].Value = CAN.FindCANModeKey(channel.Mode);
                 row.Cells[2].Value = channel.ChannelName;
                 row.Cells[3].Value = channel.ChannelIndex;
@@ -122,11 +122,24 @@ namespace CL_Main
             {
                 row.Visible = true;
             }
-
+            
             dgvChannels.CurrentCell = newSelectedDeviceMappingRows[0].Cells[0];     //获取焦点
             ChangeSelectedChannel();
         }
-        
+
+        public void UpdateChannel(Channel channel, object paras)
+        {
+            List<DataGridViewRow> mappingRows = FindMappingRows(channel);
+            foreach (DataGridViewRow row in mappingRows)
+            {
+                row.Cells[0].Value = channel.IsStarted ? "启动" : "复位";
+                row.Cells[1].Value = CAN.FindCANModeKey(channel.Mode);
+                row.Cells[2].Value = channel.ChannelName;
+                row.Cells[3].Value = channel.ChannelIndex;
+                row.Cells[4].Value = channel.BaudRate;
+            }
+        }
+
         #endregion
 
         #region private functions
@@ -137,6 +150,18 @@ namespace CL_Main
             pDeviceGroup.DeviceRemoved += new DeviceEventHandler(this.RemoveDevice);
             pDeviceGroup.DeviceUpdated += new DeviceEventHandler(this.UpdateDevice);
             pDeviceGroup.SelectedDeviceChanged += new DeviceEventHandler(this.ChangeSelectedDevice);
+            pDeviceGroup.ChannelUpdated += new ChannelEventHandler(this.UpdateChannel);
+        }
+
+        private void Finish()
+        {
+            pDeviceGroup.DeviceAdded -= this.AddDevice;
+            pDeviceGroup.DeviceRemoved -= this.RemoveDevice;
+            pDeviceGroup.DeviceUpdated -= this.UpdateDevice;
+            pDeviceGroup.SelectedDeviceChanged -= this.ChangeSelectedDevice;
+            pDeviceGroup.ChannelUpdated -= this.UpdateChannel;
+
+            this.Dispose();
         }
 
         private void ChangeSelectedChannel()
@@ -186,21 +211,42 @@ namespace CL_Main
             return rows;
         }
 
+        private List<DataGridViewRow> FindMappingRows(Channel channel)
+        {
+            List<DataGridViewRow> rows = new List<DataGridViewRow>();
+            if (channel == null)
+            {
+                return rows;
+            }
+
+            foreach (DataGridViewRow row in dgvChannels.Rows)
+            {
+                Channel rowChannel = (Channel)row.Tag;
+                if (Object.ReferenceEquals(rowChannel, channel))
+                {
+                    rows.Add(row);
+                }
+            }
+
+            return rows;
+        }
+
         #endregion
 
         #region events
-
-        private void FormDevice_Load(object sender, EventArgs e)
-        {
-            
-        }
 
         private void dgvChannels_SelectionChanged(object sender, EventArgs e)
         {
             ChangeSelectedChannel();
         }
 
+        private void FormDevice_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Finish();
+        }
+
         #endregion
+
 
     }
 }

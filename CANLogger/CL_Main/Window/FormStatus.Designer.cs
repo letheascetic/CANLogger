@@ -48,7 +48,7 @@
             this.HideOnClose = true;
             this.Name = "FormStatus";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Load += new System.EventHandler(this.FormStatus_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormStatus_FormClosing);
             this.ResumeLayout(false);
 
         }

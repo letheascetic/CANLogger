@@ -157,6 +157,24 @@
   <data name="sp2.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
   </data>
+  <data name="itemStartCAN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 26</value>
+  </data>
+  <data name="itemStartCAN.Text" xml:space="preserve">
+    <value>启动CAN</value>
+  </data>
+  <data name="itemStartCAN.ToolTipText" xml:space="preserve">
+    <value>启动当前选择的CAN</value>
+  </data>
+  <data name="itemResetCAN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 26</value>
+  </data>
+  <data name="itemResetCAN.Text" xml:space="preserve">
+    <value>复位CAN</value>
+  </data>
+  <data name="itemResetCAN.ToolTipText" xml:space="preserve">
+    <value>复位当前选择的CAN</value>
+  </data>
   <data name="btnOptionCAN.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -193,70 +211,6 @@
   </data>
   <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="itemStartCAN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 26</value>
-  </data>
-  <data name="itemStartCAN.Text" xml:space="preserve">
-    <value>启动CAN</value>
-  </data>
-  <data name="itemStartCAN.ToolTipText" xml:space="preserve">
-    <value>启动当前选择的CAN</value>
-  </data>
-  <data name="itemResetCAN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 26</value>
-  </data>
-  <data name="itemResetCAN.Text" xml:space="preserve">
-    <value>复位CAN</value>
-  </data>
-  <data name="itemResetCAN.ToolTipText" xml:space="preserve">
-    <value>复位当前选择的CAN</value>
-  </data>
-  <metadata name="cStatus.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cMode.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cChannelName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cChannelIndex.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cBaudRate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cBusLoad.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cBusFlow.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dgvChannels.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="dgvChannels.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
-  </data>
-  <data name="dgvChannels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>645, 155</value>
-  </data>
-  <data name="dgvChannels.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;dgvChannels.Name" xml:space="preserve">
-    <value>dgvChannels</value>
-  </data>
-  <data name="&gt;&gt;dgvChannels.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvChannels.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;dgvChannels.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <metadata name="cStatus.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -320,6 +274,31 @@
   </data>
   <data name="cBusFlow.Width" type="System.Int32, mscorlib">
     <value>98</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dgvChannels.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dgvChannels.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 27</value>
+  </data>
+  <data name="dgvChannels.Size" type="System.Drawing.Size, System.Drawing">
+    <value>645, 155</value>
+  </data>
+  <data name="dgvChannels.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;dgvChannels.Name" xml:space="preserve">
+    <value>dgvChannels</value>
+  </data>
+  <data name="&gt;&gt;dgvChannels.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvChannels.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dgvChannels.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

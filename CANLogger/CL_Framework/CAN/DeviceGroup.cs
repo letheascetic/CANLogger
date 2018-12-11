@@ -6,6 +6,7 @@ using System.Text;
 namespace CL_Framework
 {
     public delegate void DeviceEventHandler(Device device, Object paras);
+    public delegate void ChannelEventHandler(Channel channel, Object paras);
 
     /// <summary>
     /// 单列模式
@@ -19,6 +20,7 @@ namespace CL_Framework
         public event DeviceEventHandler DeviceRemoved;
         public event DeviceEventHandler DeviceUpdated;
         public event DeviceEventHandler SelectedDeviceChanged;
+        public event ChannelEventHandler ChannelUpdated;
 
         private List<Device> devices;
         private Device selectedDevice = null;
@@ -175,5 +177,27 @@ namespace CL_Framework
             }
             return true;
         }
+
+        public bool UpdateChannel(Channel channel)
+        {
+            if (channel == null)
+            {
+                return false;
+            }
+
+            Device device = channel.ParentDevice;
+            if (GetDevice(device.DeviceType, device.DeviceIndex) == null)
+            {
+                LogHelper.Log(string.Format("update channel failed, no parent device[{0}] in device group", device.GetDeviceName()));
+                return false;
+            }
+
+            if(this.ChannelUpdated != null)
+            {
+                this.ChannelUpdated.Invoke(channel, null);
+            }
+            return true;
+        }
+
     }
 }

@@ -209,7 +209,6 @@ namespace CL_Main.Dialog
                     }
                 }
             }
-            //this.pDeviceGroup.Add(this.device, null);
             this.DialogResult = DialogResult.OK;
         }
 

@@ -24,6 +24,7 @@ namespace CL_Main
         public FormStatus()
         {
             InitializeComponent();
+            Init();
         }
 
         public void SetLanguage(string language)
@@ -70,6 +71,15 @@ namespace CL_Main
             pDeviceGroup.DeviceUpdated += new DeviceEventHandler(this.UpdateDevice);
         }
 
+        private void Finish()
+        {
+            pDeviceGroup.DeviceAdded -= this.AddDevice;
+            pDeviceGroup.DeviceRemoved -= this.RemoveDevice;
+            pDeviceGroup.DeviceUpdated -= this.UpdateDevice;
+
+            this.Dispose();
+        }
+
         private List<UCCANStatus> GetMappingCANStatusList(Device device)
         {
             List<UCCANStatus> pCANStatusList = new List<UCCANStatus>();
@@ -102,11 +112,13 @@ namespace CL_Main
 
         #region events
 
-        private void FormStatus_Load(object sender, EventArgs e)
+        private void FormStatus_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Init();
+            Finish();
         }
 
         #endregion
+
+
     }
 }

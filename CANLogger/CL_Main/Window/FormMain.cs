@@ -199,12 +199,15 @@ namespace CL_Main
             {
                 device.CloseDevice();
             }
+
             foreach(FormData pFormData in pFormDatas)
             {
                 pFormData.Close();
             }
             pFormStatus.Close();
             pFormDevice.Close();
+
+            this.Dispose();
         }
 
         private void menuItemLanguage_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -261,12 +264,6 @@ namespace CL_Main
             Device oldSelectedDevice = this.pDeviceGroup.GetSelectedDevice();
             Device newSelectedDevice = GetSelectedDevice();
             this.pDeviceGroup.ChangeSelectedDevice(newSelectedDevice);
-
-            //this.selectedDevice = newSelectedDevice;
-            //if (this.selectedDeviceChanged != null)
-            //{
-            //    this.selectedDeviceChanged.Invoke(this.selectedDevice, null);
-            //}
         }
 
         private void menuItemAbout_Click(object sender, EventArgs e)
