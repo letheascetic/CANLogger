@@ -1,4 +1,4 @@
-﻿namespace CL_Main.Dialog
+﻿namespace CL_Main
 {
     partial class DialogDevice
     {

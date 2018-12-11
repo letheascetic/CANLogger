@@ -1,4 +1,5 @@
 ﻿using CL_Framework;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,10 +10,12 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
-namespace CL_Main.Dialog
+namespace CL_Main
 {
     public partial class DialogDevice : Form
     {
+        private static readonly ILog Logger = LogManager.GetLogger("info");
+
         private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
         private Device device = null;
 
@@ -133,7 +136,7 @@ namespace CL_Main.Dialog
 
             if (device == null)
             {
-                LogHelper.Log("try to open a new device");
+                Logger.Info("try to open a new device");
                 newDevice = CreateDevice(deviceType);
                 if (newDevice == null)
                 {
@@ -149,25 +152,25 @@ namespace CL_Main.Dialog
             {
                 if (!device.IsDeviceOpen)
                 {
-                    LogHelper.Log(string.Format(
+                    Logger.Info(string.Format(
                         "try to re-open an old device: [{0}-{1}]", device.DeviceTypeDesc, device.DeviceIndex));
                     device.OpenDevice();
                     return;
                 }
-                LogHelper.Log(string.Format("device already opened: [{0}-{1}]",
+                Logger.Info(string.Format("device already opened: [{0}-{1}]",
                     device.DeviceTypeDesc, device.DeviceIndex));
                 return;
             }
 
             if (device.IsDeviceOpen)
             {
-                LogHelper.Log(string.Format(
+                Logger.Info(string.Format(
                     "try to open another device, close the old device firstly: [{0}-{1}]",
                     device.DeviceTypeDesc, device.DeviceIndex));
                 device.CloseDevice();
             }
 
-            LogHelper.Log("try to open a new device");
+            Logger.Info("try to open a new device");
             newDevice = CreateDevice(deviceType);
             if (device == null)
             {

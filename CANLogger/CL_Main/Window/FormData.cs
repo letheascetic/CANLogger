@@ -46,11 +46,23 @@ namespace CL_Main
 
         private void Init()
         {
+
             this.Text = channel.ChannelName;
             this.pUCSendModeNormal = new UCNormalSendMode(this.channel);
             this.pUCSendModeList = new UCListSendMode(this.channel);
             this.pnlSend.Controls.Add(this.pUCSendModeNormal);
             this.pnlSend.Controls.Add(this.pUCSendModeList);
+
+            if (channel.IsStarted)
+            {
+                this.btnStartReset.Text = "复位CAN";
+                this.btnStartReset.Image = global::CL_Main.Properties.Resources.stop;
+            }
+            else
+            {
+                this.btnStartReset.Text = "启动CAN";
+                this.btnStartReset.Image = global::CL_Main.Properties.Resources.start;
+            }
 
             pDeviceGroup.ChannelUpdated += new ChannelEventHandler(this.UpdateChannel);
 
@@ -120,20 +132,35 @@ namespace CL_Main
         {
             if (channel.IsStarted)
             {
-                //string deviceName = device.GetDeviceName();
-                //string content = string.Format("确定要删除当前设备[{0}]吗？", deviceName);
-
-                //DialogResult dialogResult = MessageBox.Show(content, "删除设备", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                //if (dialogResult == DialogResult.OK)
-                //{
-                    
-                //}
+                string content = string.Format("确定要复位当前CAN通道[{0}]吗？", channel.ChannelName);
+                DialogResult dialogResult = MessageBox.Show(content, "复位CAN", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.OK)
+                {
+                    if (channel.ResetCAN() == (uint)CAN_RESULT.SUCCESSFUL)
+                    {
+                        pDeviceGroup.UpdateChannel(channel);
+                        return;
+                    }
+                    MessageBox.Show(string.Format("复位当前CAN通道[{0}]失败.", channel.ChannelName));
+                }
+            }
+            else
+            {
+                if (channel.StartCAN() == (uint)CAN_RESULT.SUCCESSFUL)
+                {
+                    pDeviceGroup.UpdateChannel(channel);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("启动当前CAN通道[{0}]失败.", channel.ChannelName));
+                }
             }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-
+            this.dgvData.Rows.Clear();
         }
 
         private void FormData_FormClosing(object sender, FormClosingEventArgs e)

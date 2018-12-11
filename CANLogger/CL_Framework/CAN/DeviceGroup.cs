@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace CL_Framework
     /// </summary>
     public class DeviceGroup
     {
+        private static readonly ILog Logger = LogManager.GetLogger("info");
         private volatile static DeviceGroup deviceGroup = null;
         private static readonly object locker = new object();
 
@@ -97,7 +99,7 @@ namespace CL_Framework
             
             if (GetDevice(device.DeviceType, device.DeviceIndex) != null)
             {
-                LogHelper.Log(string.Format("add device failed, this device[{0}] already in device group", device.GetDeviceName()));
+                Logger.Info(string.Format("add device failed, this device[{0}] already in device group", device.GetDeviceName()));
                 return false;
             }
 
@@ -123,7 +125,7 @@ namespace CL_Framework
 
             if (GetDevice(device.DeviceType, device.DeviceIndex) == null)
             {
-                LogHelper.Log(string.Format("delete device failed, no this device[{0}] in device group", device.GetDeviceName()));
+                Logger.Info(string.Format("delete device failed, no this device[{0}] in device group", device.GetDeviceName()));
                 return false;
             }
 
@@ -148,7 +150,7 @@ namespace CL_Framework
 
             if (GetDevice(device.DeviceType, device.DeviceIndex) == null)
             {
-                LogHelper.Log(string.Format("update device failed, no this device[{0}] in device group", device.GetDeviceName()));
+                Logger.Info(string.Format("update device failed, no this device[{0}] in device group", device.GetDeviceName()));
                 return false;
             }
 
@@ -167,7 +169,7 @@ namespace CL_Framework
             }
             if (GetDevice(device.DeviceType, device.DeviceIndex) == null)
             {
-                LogHelper.Log(string.Format("change selected device failed, no this device[{0}] in device group", device.GetDeviceName()));
+                Logger.Info(string.Format("change selected device failed, no this device[{0}] in device group", device.GetDeviceName()));
                 return false;
             }
             this.selectedDevice = device;
@@ -188,7 +190,7 @@ namespace CL_Framework
             Device device = channel.ParentDevice;
             if (GetDevice(device.DeviceType, device.DeviceIndex) == null)
             {
-                LogHelper.Log(string.Format("update channel failed, no parent device[{0}] in device group", device.GetDeviceName()));
+                Logger.Info(string.Format("update channel failed, no parent device[{0}] in device group", device.GetDeviceName()));
                 return false;
             }
 

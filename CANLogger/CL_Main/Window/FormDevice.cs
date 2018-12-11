@@ -1,5 +1,5 @@
 ﻿using CL_Framework;
-using CL_Main.Dialog;
+using log4net;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,8 +18,9 @@ namespace CL_Main
 {
     public partial class FormDevice : DockContent
     {
-        private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
+        private static readonly ILog Logger = log4net.LogManager.GetLogger("info");
 
+        private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
         private Device selectedDevice = null;
         private Channel selectedChannel = null;
 
@@ -104,7 +105,7 @@ namespace CL_Main
             Device oldSelectedDevice = this.selectedDevice;
             if (object.ReferenceEquals(oldSelectedDevice, device))
             {
-                LogHelper.Log("selected device no change");
+                Logger.Info("selected device no change");
                 return;
             }
 
@@ -171,7 +172,7 @@ namespace CL_Main
 
             if (object.ReferenceEquals(oldSelectedChannel, newSelectedChannel))
             {
-                LogHelper.Log("selected channel no change");
+                Logger.Info("selected channel no change");
                 return;
             }
 
@@ -183,11 +184,11 @@ namespace CL_Main
         {
             if (dgvChannels.CurrentRow == null || dgvChannels.CurrentRow.Tag == null)
             {
-                LogHelper.Log("no selected channel.");
+                Logger.Info("no selected channel.");
                 return null;
             }
             Channel channel = (Channel)dgvChannels.CurrentRow.Tag;
-            LogHelper.Log(string.Format("selected channel: [{0}]", channel.ChannelName));
+            Logger.Info(string.Format("selected channel: [{0}]", channel.ChannelName));
             return channel;
         }
 

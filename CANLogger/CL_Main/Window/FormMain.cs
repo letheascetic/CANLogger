@@ -1,5 +1,5 @@
 ﻿using CL_Framework;
-using CL_Main.Dialog;
+using log4net;
 using Sunisoft.IrisSkin;
 using System;
 using System.Collections;
@@ -21,6 +21,8 @@ namespace CL_Main
 {
     public partial class FormMain : Form
     {
+        private static readonly ILog Logger = log4net.LogManager.GetLogger("info");
+
         private SkinEngine skinEngine;
         private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
 
@@ -101,7 +103,7 @@ namespace CL_Main
             int index = 0;
             skins.ForEach(skinFile =>
             {
-                LogHelper.Log(string.Format("get skin file: [{0}]", skinFile));
+                Logger.Info(string.Format("get skin file: [{0}]", skinFile));
                 string itemText = Path.GetFileNameWithoutExtension(skinFile);
                 ToolStripMenuItem skinItem = new ToolStripMenuItem(itemText);
                 skinItem.Tag = skinFile;
@@ -117,7 +119,7 @@ namespace CL_Main
 
             string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             this.Text += version;
-            LogHelper.Log(string.Format("get CAN Logger version: [{0}]", version));
+            Logger.Info(string.Format("get CAN Logger version: [{0}]", version));
 
             menuItemLanguage.Visible = false;
 
@@ -129,7 +131,7 @@ namespace CL_Main
 
         private void SetLanguage(string language)
         {
-            LogHelper.Log(string.Format("SetLanguage To {0}...", language));
+            Logger.Info(string.Format("SetLanguage To {0}...", language));
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(language);
             System.ComponentModel.ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
 
@@ -148,11 +150,11 @@ namespace CL_Main
             string deviceName = this.cbxSelectDevice.SelectedItem.ToString();
             if (deviceName == null || deviceName.Equals(string.Empty))
             {
-                LogHelper.Log("no selected device.");
+                Logger.Info("no selected device.");
                 return null;
             }
 
-            LogHelper.Log(string.Format("selected device: [{0}]", deviceName));
+            Logger.Info(string.Format("selected device: [{0}]", deviceName));
             return (Device)pNameDevicePairs[deviceName];
         }
 
@@ -212,7 +214,7 @@ namespace CL_Main
 
         private void menuItemLanguage_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            LogHelper.Log(string.Format("menuItemLanguage_DropDownItemClicked -> clickedItem: [{0}]", e.ClickedItem.Text));
+            Logger.Info(string.Format("menuItemLanguage_DropDownItemClicked -> clickedItem: [{0}]", e.ClickedItem.Text));
             ToolStripMenuItem item = (ToolStripMenuItem)e.ClickedItem;
             if (item.Checked)
             {
@@ -236,7 +238,7 @@ namespace CL_Main
 
         private void menuItemSkin_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            LogHelper.Log(string.Format("menuItemSkin_DropDownItemClicked -> clickedItem: [{0}]", e.ClickedItem.Text));
+            Logger.Info(string.Format("menuItemSkin_DropDownItemClicked -> clickedItem: [{0}]", e.ClickedItem.Text));
             ToolStripMenuItem item = (ToolStripMenuItem)e.ClickedItem;
             if (item.Checked)
             {

@@ -14,8 +14,6 @@ namespace CL_Main
 {
     public partial class UCCANStatus : UserControl
     {
-        private CANErrInfo pCANError = new CANErrInfo();
-        private CANStatus pCANStatus = new CANStatus();
         private Channel channel = null;
 
         public UCCANStatus(Channel channel)
@@ -36,7 +34,7 @@ namespace CL_Main
             if (channel.IsInitialized)
             {
                 //channel.ReadCanStatus(out this.pCANStatus);
-                channel.ReadErrInfo(out this.pCANError);
+                //channel.ReadErrInfo(out this.pCANError);
             }
         }
     }

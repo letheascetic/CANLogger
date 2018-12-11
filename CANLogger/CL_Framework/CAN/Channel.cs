@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace CL_Framework
 {
     public class Channel
     {
+        private static readonly ILog Logger = log4net.LogManager.GetLogger("info");
         private static readonly uint DEFAULT_RCV_TIMER_INTERVAL = 50;
         private static readonly uint DEFAULT_STATUS_ERRORINFO_TIMER_INTERVAL = 1000;
         private static readonly uint DEFAULT_STATUS_ERRORINFO_STACK_MAXIMUM = 100;
@@ -87,7 +89,7 @@ namespace CL_Framework
 
             if (config.Timing0 != initConfig.Timing0 || config.Timing1 != initConfig.Timing1)
             {
-                LogHelper.Log(string.Format("baudrate[{0}] and initConfig[0x{1}:0x{2}] not match",
+                Logger.Info(string.Format("baudrate[{0}] and initConfig[0x{1}:0x{2}] not match",
                     baudRate, initConfig.Timing0.ToString("x"), initConfig.Timing1.ToString("x")));
                 return (uint)CAN_RESULT.ERR_UNKNOWN;
             }
@@ -96,7 +98,7 @@ namespace CL_Framework
             this.initConfig = initConfig;
             if (CANDLL.InitCAN((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex, ref initConfig) == CANDLLResult.STATUS_OK)
             {
-                LogHelper.Log(string.Format("init channel[{0}] successful.", channelName));
+                Logger.Info(string.Format("init channel[{0}] successful.", channelName));
                 this.isInitialized = true;
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
@@ -109,7 +111,7 @@ namespace CL_Framework
                 result = pCANErrorInfo.ErrCode;
             }
 
-            LogHelper.Log(string.Format("init channel[{0}] failed: [0x{1}].", channelName, result.ToString("x")));
+            Logger.Info(string.Format("init channel[{0}] failed: [0x{1}].", channelName, result.ToString("x")));
             return result;
         }
 
@@ -118,10 +120,10 @@ namespace CL_Framework
             if (CANDLL.ReadErrInfo((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, 
                 (int)channelIndex, out canErrInfo) == CANDLLResult.STATUS_OK)
             {
-                LogHelper.Log(string.Format("channel[{0}] read error info successful.", channelName));
+                Logger.Info(string.Format("channel[{0}] read error info successful.", channelName));
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
-            LogHelper.Log(string.Format("channel[{0}] read error info failed.", channelName));
+            Logger.Info(string.Format("channel[{0}] read error info failed.", channelName));
             return (uint)CAN_RESULT.ERR_UNKNOWN;
         }
 
@@ -130,10 +132,10 @@ namespace CL_Framework
             if (CANDLL.ReadCanStatus((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex,
                 channelIndex, out canStatus) == CANDLLResult.STATUS_OK)
             {
-                LogHelper.Log(string.Format("channel[{0}] read can status successful.", channelName));
+                Logger.Info(string.Format("channel[{0}] read can status successful.", channelName));
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
-            LogHelper.Log(string.Format("channel[{0}] read can status failed.", channelName));
+            Logger.Info(string.Format("channel[{0}] read can status failed.", channelName));
             return (uint)CAN_RESULT.ERR_UNKNOWN;
         }
 
@@ -142,10 +144,10 @@ namespace CL_Framework
             if (CANDLL.GetReference((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex,
                 channelIndex, refType, data) == CANDLLResult.STATUS_OK)
             {
-                LogHelper.Log(string.Format("channel[{0}] read reference successful.", channelName));
+                Logger.Info(string.Format("channel[{0}] read reference successful.", channelName));
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
-            LogHelper.Log(string.Format("channel[{0}] read reference failed.", channelName));
+            Logger.Info(string.Format("channel[{0}] read reference failed.", channelName));
             return (uint)CAN_RESULT.ERR_UNKNOWN;
         }
 
@@ -154,7 +156,7 @@ namespace CL_Framework
             if (CANDLL.SetReference((uint)parentDevice.DeviceType, parentDevice.DeviceIndex,
                 channelIndex, refType, data) == CANDLLResult.STATUS_OK)
             {
-                LogHelper.Log(string.Format("channel[{0}] set reference successful.", channelName));
+                Logger.Info(string.Format("channel[{0}] set reference successful.", channelName));
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
 
@@ -165,7 +167,7 @@ namespace CL_Framework
                 result = pCANErrorInfo.ErrCode;
             }
 
-            LogHelper.Log(string.Format("channel[{0}] set reference failed: [0x{1}].", channelName, result.ToString("x")));
+            Logger.Info(string.Format("channel[{0}] set reference failed: [0x{1}].", channelName, result.ToString("x")));
             return result;
         }
 
@@ -179,7 +181,7 @@ namespace CL_Framework
             if (CANDLL.ClearBuffer((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex,
                 channelIndex) == CANDLLResult.STATUS_OK)
             {
-                LogHelper.Log(string.Format("channel[{0}] clear buffer successful.", channelName));
+                Logger.Info(string.Format("channel[{0}] clear buffer successful.", channelName));
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
 
@@ -190,7 +192,7 @@ namespace CL_Framework
                 result = pCANErrorInfo.ErrCode;
             }
 
-            LogHelper.Log(string.Format("channel[{0}] clear buffer failed: [0x{1}].", channelName, result.ToString("x")));
+            Logger.Info(string.Format("channel[{0}] clear buffer failed: [0x{1}].", channelName, result.ToString("x")));
             return result;
         }
 
@@ -198,14 +200,14 @@ namespace CL_Framework
         {
             if(this.isStarted)
             {
-                LogHelper.Log(string.Format("channel[{0}] already start.", channelName));
+                Logger.Info(string.Format("channel[{0}] already start.", channelName));
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
 
             if (CANDLL.StartCAN((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex,
                 channelIndex) == CANDLLResult.STATUS_OK)
             {
-                LogHelper.Log(string.Format("channel[{0}] start successful.", channelName));
+                Logger.Info(string.Format("channel[{0}] start successful.", channelName));
                 this.isStarted = true;
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
@@ -218,7 +220,7 @@ namespace CL_Framework
                 result = pCANErrorInfo.ErrCode;
             }
 
-            LogHelper.Log(string.Format("channel[{0}] start failed: [0x{1}].", channelName, result.ToString("x")));
+            Logger.Info(string.Format("channel[{0}] start failed: [0x{1}].", channelName, result.ToString("x")));
             return result;
         }
 
@@ -226,11 +228,11 @@ namespace CL_Framework
         {
             if (canFrames.Length < canFrameLength)
             {
-                LogHelper.Log(string.Format("channel[{0}] CAN frames[{1}] less than num[{2}] to send.", channelName, canFrames.Length, canFrameLength));
+                Logger.Info(string.Format("channel[{0}] CAN frames[{1}] less than num[{2}] to send.", channelName, canFrames.Length, canFrameLength));
                 canFrameLength = (uint)canFrames.Length;
             }
             uint realSendNum = CANDLL.Transmit((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex, canFrames, canFrameLength);
-            LogHelper.Log(string.Format("channel[{0}] transmit [{1}/{2}] messages successful.", channelName, realSendNum, canFrameLength));
+            Logger.Info(string.Format("channel[{0}] transmit [{1}/{2}] messages successful.", channelName, realSendNum, canFrameLength));
             return realSendNum;
         }
 
@@ -240,7 +242,7 @@ namespace CL_Framework
                 out canFrames, canFrameLength, waitMilliseconds);
             if (realRcvNum != uint.MaxValue)
             {
-                LogHelper.Log(string.Format("channel[{0}] receive [{1}] messages successful.", channelName, realRcvNum));
+                Logger.Info(string.Format("channel[{0}] receive [{1}] messages successful.", channelName, realRcvNum));
                 return realRcvNum;
             }
 
@@ -251,7 +253,7 @@ namespace CL_Framework
                 result = pCANErrorInfo.ErrCode;
             }
 
-            LogHelper.Log(string.Format("channel[{0}] receive failed: [0x{1}].", channelName, pCANErrorInfo.ErrCode.ToString("x")));
+            Logger.Info(string.Format("channel[{0}] receive failed: [0x{1}].", channelName, pCANErrorInfo.ErrCode.ToString("x")));
             return realRcvNum;
         }
 
@@ -259,14 +261,14 @@ namespace CL_Framework
         {
             if (!this.isStarted)
             {
-                LogHelper.Log(string.Format("channel[{0}] already reset.", channelName));
+                Logger.Info(string.Format("channel[{0}] already reset.", channelName));
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
 
             if (CANDLL.ResetCAN((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex,
                 channelIndex) == CANDLLResult.STATUS_OK)
             {
-                LogHelper.Log(string.Format("channel[{0}] reset successful.", channelName));
+                Logger.Info(string.Format("channel[{0}] reset successful.", channelName));
                 this.isStarted = false;
                 return (uint)CAN_RESULT.SUCCESSFUL;
 
@@ -279,7 +281,7 @@ namespace CL_Framework
                 result = pCANErrorInfo.ErrCode;
             }
 
-            LogHelper.Log(string.Format("channel[{0}] reset failed: [0x{1}].", channelName, result.ToString("x")));
+            Logger.Info(string.Format("channel[{0}] reset failed: [0x{1}].", channelName, result.ToString("x")));
             return result;
         }
 
@@ -307,7 +309,7 @@ namespace CL_Framework
             }
             catch (Exception ex)
             {
-                LogHelper.Log("Read CAN Status Exception", ex);
+                Logger.Error("Read CAN Status Exception", ex);
             }
 
             try
@@ -323,7 +325,7 @@ namespace CL_Framework
             }
             catch(Exception ex)
             {
-                LogHelper.Log("Read CAN Error Info Exception", ex);
+                Logger.Error("Read CAN Error Info Exception", ex);
             }
 
             this.pStatusTimer.Start();
@@ -346,7 +348,7 @@ namespace CL_Framework
                     return;
                 }
 
-                LogHelper.Log(string.Format("channel[{0}] has [{1}] messages to receive.", channelName, numToRcv));
+                Logger.Info(string.Format("channel[{0}] has [{1}] messages to receive.", channelName, numToRcv));
 
                 int waitTime = 1000;
                 CANOBJ[] pCANFrames = new CANOBJ[numToRcv];
@@ -357,7 +359,7 @@ namespace CL_Framework
                     return;
                 }
 
-                LogHelper.Log(string.Format("channel[{0}] current rev buf queue size: [{1}].", channelName, this.pCANRevBufQueue.Count));
+                Logger.Info(string.Format("channel[{0}] current rev buf queue size: [{1}].", channelName, this.pCANRevBufQueue.Count));
                 int numToRelease = this.pCANRevBufQueue.Count + (int)realRcvNum - (int)CAN.CHANNEL_REC_BUF_MAXIMUM;
                 if (numToRelease > 0)
                 {
@@ -372,7 +374,7 @@ namespace CL_Framework
             }
             catch (Exception ex)
             {
-                LogHelper.Log(string.Format("channel[{0}] receive messages exception.", channelName), ex);
+                Logger.Info(string.Format("channel[{0}] receive messages exception.", channelName), ex);
             }
             finally
             {
@@ -382,7 +384,7 @@ namespace CL_Framework
 
         private void ReleaseRcvBufQueue(int numToRelease)
         {
-            LogHelper.Log(string.Format("channel[{0}] release rcv buf queue size: [{1}].", channelName, numToRelease));
+            Logger.Info(string.Format("channel[{0}] release rcv buf queue size: [{1}].", channelName, numToRelease));
             CANOBJ pCANOBJ;
             for (int i = 0; i < numToRelease; i++)
             {
@@ -392,7 +394,7 @@ namespace CL_Framework
 
         private void ReleaseStatusQueue(int numToRelease)
         {
-            LogHelper.Log(string.Format("channel[{0}] release status queue size: [{1}].", channelName, numToRelease));
+            Logger.Info(string.Format("channel[{0}] release status queue size: [{1}].", channelName, numToRelease));
             CANStatus pCANStatus;
             for (int i = 0; i < numToRelease; i++)
             {
@@ -402,7 +404,7 @@ namespace CL_Framework
 
         private void ReleaseErrorInfoQueue(int numToRelease)
         {
-            LogHelper.Log(string.Format("channel[{0}] release error info queue size: [{1}].", channelName, numToRelease));
+            Logger.Info(string.Format("channel[{0}] release error info queue size: [{1}].", channelName, numToRelease));
             CANErrInfo pCANErrorInfo;
             for (int i = 0; i < numToRelease; i++)
             {

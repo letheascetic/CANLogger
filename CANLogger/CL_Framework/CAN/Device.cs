@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ namespace CL_Framework
 {
     public class Device
     {
+        private static readonly ILog Logger = LogManager.GetLogger("info");
+
         private bool isDeviceOpen;
         private DEVICE_TYPE deviceType;
         private string deviceTypeDesc;
@@ -77,21 +80,21 @@ namespace CL_Framework
             uint result = newDevice.OpenDevice();
             if (result != (uint)CAN_RESULT.SUCCESSFUL)
             {
-                LogHelper.Log(string.Format("create device[{0}] failed.", newDevice.GetDeviceName()));
+                Logger.Info(string.Format("create device[{0}] failed.", newDevice.GetDeviceName()));
                 return result;
             }
 
             result = newDevice.ReadBoardInfo();
             if (result != (uint)CAN_RESULT.SUCCESSFUL)
             {
-                LogHelper.Log(string.Format("create device[{0}] failed.", newDevice.GetDeviceName()));
+                Logger.Info(string.Format("create device[{0}] failed.", newDevice.GetDeviceName()));
                 return result;
             }
 
             newDevice.InitCAN(newDevice.CANNum);
             device = newDevice;
 
-            LogHelper.Log(string.Format("create device[{0}] successful.", newDevice.GetDeviceName()));
+            Logger.Info(string.Format("create device[{0}] successful.", newDevice.GetDeviceName()));
             return result;
         }
 
@@ -99,13 +102,13 @@ namespace CL_Framework
         {
             if(this.isDeviceOpen)
             {
-                LogHelper.Log(string.Format("device[{0}] already open", this.GetDeviceName()));
+                Logger.Info(string.Format("device[{0}] already open", this.GetDeviceName()));
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
 
             if (CANDLL.OpenDevice((UInt32)deviceType, deviceIndex, 0) == CANDLLResult.STATUS_OK)
             {
-                LogHelper.Log(string.Format("open device[{0}] successful", this.GetDeviceName()));
+                Logger.Info(string.Format("open device[{0}] successful", this.GetDeviceName()));
                 isDeviceOpen = true;
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
@@ -117,7 +120,7 @@ namespace CL_Framework
                 result = pCANErrorInfo.ErrCode;
             }
 
-            LogHelper.Log(string.Format("open device[{0}] failed: [0x{1}]", this.GetDeviceName(), result.ToString("x")));
+            Logger.Info(string.Format("open device[{0}] failed: [0x{1}]", this.GetDeviceName(), result.ToString("x")));
             return result;
         }
 
@@ -125,7 +128,7 @@ namespace CL_Framework
         {
             if (CANDLL.CloseDevice((UInt32)deviceType, deviceIndex) == CANDLLResult.STATUS_OK)
             {
-                LogHelper.Log(string.Format("close device[{0}] successful", this.GetDeviceName()));
+                Logger.Info(string.Format("close device[{0}] successful", this.GetDeviceName()));
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
 
@@ -136,7 +139,7 @@ namespace CL_Framework
                 result = pCANErrorInfo.ErrCode;
             }
 
-            LogHelper.Log(string.Format("close device[{0}] failed: [0x{1}]", this.GetDeviceName(), result.ToString("x")));
+            Logger.Info(string.Format("close device[{0}] failed: [0x{1}]", this.GetDeviceName(), result.ToString("x")));
             return result;
         }
 
@@ -144,7 +147,7 @@ namespace CL_Framework
         {
             if (CANDLL.ReadBoardInfo((UInt32)deviceType, deviceIndex, out deviceInfo) == CANDLLResult.STATUS_OK)
             {
-                LogHelper.Log(string.Format("device[{0}] read board info successful", this.GetDeviceName()));
+                Logger.Info(string.Format("device[{0}] read board info successful", this.GetDeviceName()));
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
 
@@ -155,7 +158,7 @@ namespace CL_Framework
                 result = pCANErrorInfo.ErrCode;
             }
 
-            LogHelper.Log(string.Format("device[{0}] read board info failed: [0x{1}]", this.GetDeviceName(), result.ToString("x")));
+            Logger.Info(string.Format("device[{0}] read board info failed: [0x{1}]", this.GetDeviceName(), result.ToString("x")));
             return result;
         }
 
