@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.cNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cFrameID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +59,7 @@
             this.btnSave = new System.Windows.Forms.ToolStripButton();
             this.btnRTSave = new System.Windows.Forms.ToolStripButton();
             this.sp3 = new System.Windows.Forms.ToolStripSeparator();
+            this.rcvTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -93,6 +96,7 @@
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cNO,
+            this.cTime,
             this.cTimeStamp,
             this.cStatus,
             this.cFrameID,
@@ -109,6 +113,12 @@
             resources.ApplyResources(this.cNO, "cNO");
             this.cNO.Name = "cNO";
             this.cNO.ReadOnly = true;
+            // 
+            // cTime
+            // 
+            resources.ApplyResources(this.cTime, "cTime");
+            this.cTime.Name = "cTime";
+            this.cTime.ReadOnly = true;
             // 
             // cTimeStamp
             // 
@@ -275,6 +285,10 @@
             this.sp3.Name = "sp3";
             resources.ApplyResources(this.sp3, "sp3");
             // 
+            // rcvTimer
+            // 
+            this.rcvTimer.Tick += new System.EventHandler(this.rcvTimer_Tick);
+            // 
             // FormData
             // 
             resources.ApplyResources(this, "$this");
@@ -323,7 +337,10 @@
         private System.Windows.Forms.Panel pnlSendIcon;
         private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.Panel pnlReceiveIcon;
+        private System.Windows.Forms.Panel pnlSend;
+        private System.Windows.Forms.Timer rcvTimer;
         private System.Windows.Forms.DataGridViewTextBoxColumn cNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTimeStamp;
         private System.Windows.Forms.DataGridViewTextBoxColumn cStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFrameID;
@@ -331,6 +348,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cFrameFormat;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDataLength;
         private System.Windows.Forms.DataGridViewTextBoxColumn cData;
-        private System.Windows.Forms.Panel pnlSend;
     }
 }

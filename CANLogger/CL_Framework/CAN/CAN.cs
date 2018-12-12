@@ -44,13 +44,47 @@ namespace CL_Framework
     public enum CAN_FRAME_FORMAT : uint
     {
         STANDARD_FRAME = 0,     //标准帧
-        EXTEND_FRAME = 1        //扩展帧
+        EXTENDED_FRAME = 1        //扩展帧
+    }
+
+    public enum CAN_FRAME_DIRECTION : byte
+    {
+        SEND = 0,       //发送
+        RECEIVE = 1     //接收
+    }
+
+    public enum CAN_FRAME_STATUS : byte
+    {
+        SUCCESS = 0,    //发送或接收成功
+        FAILED = 1      //发送或接收失败
+    }
+
+    public enum CAN_FRAME_TIME_FLAG : byte
+    {
+        INVALID = 0,        //时间戳无效
+        VALID = 1           //时间戳有效
+    }
+
+    public struct CAN_FRAME
+    {
+        public CANOBJ CANObj;
+        public DateTime Time;
+        public CAN_FRAME_DIRECTION Direction;
+        public CAN_FRAME_STATUS Status;
+
+        public CAN_FRAME(CANOBJ pCANObj, DateTime time, CAN_FRAME_DIRECTION direction, CAN_FRAME_STATUS status)
+        {
+            this.CANObj = pCANObj;
+            this.Time = time;
+            this.Direction = direction;
+            this.Status = status;
+        }
     }
 
     public static class CAN
     {
-        //------------------------------------------------------------------------------
-        public static readonly uint DEVICE_CANNUM_MAXIMUM = 2;
+        public static readonly uint STANDARD_FRAME_ID_MAXIMUM = 0x000001FF;
+        public static readonly uint EXTENDED_FRAME_ID_MAXIMUM = 0x1FFFFFFF;
         //------------------------------------------------------------------------------
         public static readonly uint CHANNEL_REC_BUF_MAXIMUM = 130000;
         public static readonly int CHANNEL_DEFAULT_BAUDRATE = 1000;
@@ -58,6 +92,7 @@ namespace CL_Framework
         public static readonly uint CHANNEL_DEFAULT_ACC_MASK = 0xffffffff;
         public static readonly byte CHANNEL_DEFAULT_FILTER = 0x0;
         //------------------------------------------------------------------------------
+        public static readonly uint DEVICE_CANNUM_MAXIMUM = 2;
         public static readonly string DEVICE_TYPE_UNKNOWN = "UNKNOWN";
         public static readonly string DEVICE_TYPE_USBCAN = "USBCAN";
         public static readonly string DEVICE_TYPE_USBCANII = "USBCAN-II";
@@ -98,7 +133,7 @@ namespace CL_Framework
             CAN_FRAME_TYPE_LIST.Add(CAN_FRAME_TYPE_REMOTE_FRAME, CAN_FRAME_TYPE.REMOTE_FRAME);
 
             CAN_FRAME_FORMAT_LIST.Add(CAN_FRAME_FORMAT_STANDARD_FRAME, CAN_FRAME_FORMAT.STANDARD_FRAME);
-            CAN_FRAME_FORMAT_LIST.Add(CAN_FRAME_FORMAT_EXTEND_FRAME, CAN_FRAME_FORMAT.EXTEND_FRAME);
+            CAN_FRAME_FORMAT_LIST.Add(CAN_FRAME_FORMAT_EXTEND_FRAME, CAN_FRAME_FORMAT.EXTENDED_FRAME);
         }
 
         public static string FindKey(object value, Hashtable table)
@@ -234,7 +269,5 @@ namespace CL_Framework
                     break;
             }
         }
-
-
     }
 }

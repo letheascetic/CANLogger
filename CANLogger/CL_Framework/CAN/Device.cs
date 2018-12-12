@@ -161,6 +161,5 @@ namespace CL_Framework
             Logger.Info(string.Format("device[{0}] read board info failed: [0x{1}]", this.GetDeviceName(), result.ToString("x")));
             return result;
         }
-
     }
 }

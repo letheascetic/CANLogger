@@ -177,8 +177,9 @@
             // 
             this.tbxFrameID.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tbxFrameID.Location = new System.Drawing.Point(319, 39);
+            this.tbxFrameID.MaxLength = 8;
             this.tbxFrameID.Name = "tbxFrameID";
-            this.tbxFrameID.Size = new System.Drawing.Size(82, 27);
+            this.tbxFrameID.Size = new System.Drawing.Size(93, 27);
             this.tbxFrameID.TabIndex = 9;
             this.tbxFrameID.Text = "00000000";
             this.tbxFrameID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxFrameID_KeyPress);
@@ -187,8 +188,9 @@
             // 
             this.tbxSendNum.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tbxSendNum.Location = new System.Drawing.Point(319, 70);
+            this.tbxSendNum.MaxLength = 9;
             this.tbxSendNum.Name = "tbxSendNum";
-            this.tbxSendNum.Size = new System.Drawing.Size(82, 27);
+            this.tbxSendNum.Size = new System.Drawing.Size(93, 27);
             this.tbxSendNum.TabIndex = 10;
             this.tbxSendNum.Text = "1";
             this.tbxSendNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSendNum_KeyPress);
@@ -210,6 +212,7 @@
             this.tbxFrameData.Size = new System.Drawing.Size(203, 27);
             this.tbxFrameData.TabIndex = 12;
             this.tbxFrameData.Text = "00 01 02 03 04 05 06 07";
+            this.tbxFrameData.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxFrameData_KeyPress);
             // 
             // lbSendInterval
             // 
@@ -224,8 +227,9 @@
             // 
             this.tbxSendInterval.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tbxSendInterval.Location = new System.Drawing.Point(590, 71);
+            this.tbxSendInterval.MaxLength = 10;
             this.tbxSendInterval.Name = "tbxSendInterval";
-            this.tbxSendInterval.Size = new System.Drawing.Size(89, 27);
+            this.tbxSendInterval.Size = new System.Drawing.Size(93, 27);
             this.tbxSendInterval.TabIndex = 14;
             this.tbxSendInterval.Text = "100";
             this.tbxSendInterval.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSendInterval_KeyPress);

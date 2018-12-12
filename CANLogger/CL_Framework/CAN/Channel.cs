@@ -27,11 +27,14 @@ namespace CL_Framework
 
         private ConcurrentQueue<CANErrInfo> pCANErrorInfoQueue = new ConcurrentQueue<CANErrInfo>();
         private ConcurrentQueue<CANStatus> pCANStatusQueue = new ConcurrentQueue<CANStatus>();
-        private ConcurrentQueue<CANOBJ> pCANRevBufQueue = new ConcurrentQueue<CANOBJ>();
+        private ConcurrentQueue<CAN_FRAME> pCANRcvBufQueue = new ConcurrentQueue<CAN_FRAME>();
 
         private Timer pStatusTimer;
         private Timer pRcvTimer;
         //------------------------------------------------------------------------------
+        public ConcurrentQueue<CAN_FRAME> RcvBufQueue
+        { get { return pCANRcvBufQueue; } }
+
         public InitConfig Config
         { get { return initConfig; } }
 
@@ -139,7 +142,7 @@ namespace CL_Framework
             return (uint)CAN_RESULT.ERR_UNKNOWN;
         }
 
-        public uint GetReference(UInt32 refType, IntPtr data)
+        public uint GetReference(uint refType, IntPtr data)
         {
             if (CANDLL.GetReference((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex,
                 channelIndex, refType, data) == CANDLLResult.STATUS_OK)
@@ -151,7 +154,7 @@ namespace CL_Framework
             return (uint)CAN_RESULT.ERR_UNKNOWN;
         }
 
-        public uint SetReference(UInt32 refType, IntPtr data)
+        public uint SetReference(uint refType, IntPtr data)
         {
             if (CANDLL.SetReference((uint)parentDevice.DeviceType, parentDevice.DeviceIndex,
                 channelIndex, refType, data) == CANDLLResult.STATUS_OK)
@@ -171,7 +174,7 @@ namespace CL_Framework
             return result;
         }
 
-        public uint GetReceiveNum()
+        private uint GetReceiveNum()
         {
             return CANDLL.GetReceiveNum((uint)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex);
         }
@@ -224,25 +227,34 @@ namespace CL_Framework
             return result;
         }
 
-        public uint Transmit(CANOBJ[] canFrames, UInt32 canFrameLength)
+        public uint Transmit(CAN_FRAME[] pCanFrames)
         {
-            if (canFrames.Length < canFrameLength)
+            CANOBJ[] pCANObjs = new CANOBJ[pCanFrames.Length];
+            for (int index = 0; index < pCanFrames.Length; index++)
             {
-                Logger.Info(string.Format("channel[{0}] CAN frames[{1}] less than num[{2}] to send.", channelName, canFrames.Length, canFrameLength));
-                canFrameLength = (uint)canFrames.Length;
+                pCANObjs[index] = pCanFrames[index].CANObj;
             }
-            uint realSendNum = CANDLL.Transmit((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex, canFrames, canFrameLength);
-            Logger.Info(string.Format("channel[{0}] transmit [{1}/{2}] messages successful.", channelName, realSendNum, canFrameLength));
+
+            uint realSendNum = CANDLL.Transmit((uint)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex, pCANObjs, (uint)pCANObjs.Length);
+            Logger.Info(string.Format("channel[{0}] transmit [{1}/{2}] messages successful.", channelName, realSendNum, pCANObjs.Length));
             return realSendNum;
         }
 
-        public uint Receive(out CANOBJ[] canFrames, UInt32 canFrameLength, Int32 waitMilliseconds)
+        public uint Receive(out CAN_FRAME[] pCanFrames, uint length, int waitMilliseconds)
         {
-            uint realRcvNum = CANDLL.Receive((UInt32)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex,
-                out canFrames, canFrameLength, waitMilliseconds);
+            pCanFrames = new CAN_FRAME[length];
+            CANOBJ[] pCANObjs = new CANOBJ[length];
+
+            uint realRcvNum = CANDLL.Receive((uint)parentDevice.DeviceType, parentDevice.DeviceIndex, channelIndex,
+                out pCANObjs, length, waitMilliseconds);
+
             if (realRcvNum != uint.MaxValue)
             {
                 Logger.Info(string.Format("channel[{0}] receive [{1}] messages successful.", channelName, realRcvNum));
+                for (int index = 0; index < realRcvNum; index++)
+                {
+                    pCanFrames[index] = new CAN_FRAME(pCANObjs[index], DateTime.Now, CAN_FRAME_DIRECTION.RECEIVE, CAN_FRAME_STATUS.SUCCESS);
+                }
                 return realRcvNum;
             }
 
@@ -309,7 +321,7 @@ namespace CL_Framework
             }
             catch (Exception ex)
             {
-                Logger.Error("Read CAN Status Exception", ex);
+                Logger.Debug("Read CAN Status Exception", ex);
             }
 
             try
@@ -325,7 +337,7 @@ namespace CL_Framework
             }
             catch(Exception ex)
             {
-                Logger.Error("Read CAN Error Info Exception", ex);
+                Logger.Debug("Read CAN Error Info Exception", ex);
             }
 
             this.pStatusTimer.Start();
@@ -351,7 +363,7 @@ namespace CL_Framework
                 Logger.Info(string.Format("channel[{0}] has [{1}] messages to receive.", channelName, numToRcv));
 
                 int waitTime = 1000;
-                CANOBJ[] pCANFrames = new CANOBJ[numToRcv];
+                CAN_FRAME[] pCANFrames = new CAN_FRAME[numToRcv];
                 uint realRcvNum = Receive(out pCANFrames, numToRcv, waitTime);
 
                 if (realRcvNum == uint.MaxValue)
@@ -359,8 +371,8 @@ namespace CL_Framework
                     return;
                 }
 
-                Logger.Info(string.Format("channel[{0}] current rev buf queue size: [{1}].", channelName, this.pCANRevBufQueue.Count));
-                int numToRelease = this.pCANRevBufQueue.Count + (int)realRcvNum - (int)CAN.CHANNEL_REC_BUF_MAXIMUM;
+                Logger.Info(string.Format("channel[{0}] current rev buf queue size: [{1}].", channelName, this.pCANRcvBufQueue.Count));
+                int numToRelease = this.pCANRcvBufQueue.Count + (int)realRcvNum - (int)CAN.CHANNEL_REC_BUF_MAXIMUM;
                 if (numToRelease > 0)
                 {
                     ReleaseRcvBufQueue(numToRelease);
@@ -368,13 +380,13 @@ namespace CL_Framework
                 
                 for (uint index = 0; index < realRcvNum; index++)
                 {
-                    this.pCANRevBufQueue.Enqueue(pCANFrames[index]);
+                    this.pCANRcvBufQueue.Enqueue(pCANFrames[index]);
                 }
 
             }
             catch (Exception ex)
             {
-                Logger.Info(string.Format("channel[{0}] receive messages exception.", channelName), ex);
+                Logger.Error(string.Format("channel[{0}] receive messages exception.", channelName), ex);
             }
             finally
             {
@@ -385,10 +397,10 @@ namespace CL_Framework
         private void ReleaseRcvBufQueue(int numToRelease)
         {
             Logger.Info(string.Format("channel[{0}] release rcv buf queue size: [{1}].", channelName, numToRelease));
-            CANOBJ pCANOBJ;
+            CAN_FRAME pCANFrame;
             for (int i = 0; i < numToRelease; i++)
             {
-                this.pCANRevBufQueue.TryDequeue(out pCANOBJ);
+                this.pCANRcvBufQueue.TryDequeue(out pCANFrame);
             }
         }
 
