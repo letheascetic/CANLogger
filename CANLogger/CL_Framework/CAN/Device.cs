@@ -9,73 +9,66 @@ namespace CL_Framework
 {
     public class Device
     {
+        ///////////////////////////////////////////////////////////////////////////////////////////
         private static readonly ILog Logger = LogManager.GetLogger("info");
-
-        private bool isDeviceOpen;
-        private DEVICE_TYPE deviceType;
-        private string deviceTypeDesc;
-        private UInt32 deviceIndex;
-        private BoardInfo deviceInfo;
-        
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        private bool m_IsDeviceOpen;
+        private DEVICE_TYPE m_DeviceType;
+        private string m_DeviceTypeDesc;
+        private UInt32 m_DeviceIndex;
+        private BOARD_INFO p_DeviceInfo;
         private Channel[] channels;
-
+        ///////////////////////////////////////////////////////////////////////////////////////////
         public Channel[] Channels
         { get { return channels; } }
-        
         public DEVICE_TYPE DeviceType
-        { get { return deviceType; } }
-
+        { get { return m_DeviceType; } }
         public string DeviceTypeDesc
-        { get { return deviceTypeDesc; } }
-
+        { get { return m_DeviceTypeDesc; } }
         public UInt32 DeviceIndex
-        { get { return deviceIndex; } }
-
+        { get { return m_DeviceIndex; } }
         public Boolean IsDeviceOpen
-        { get { return isDeviceOpen; } }
-
-        public BoardInfo DeviceInfo
-        { get { return deviceInfo; } set { deviceInfo = value; } }
-
+        { get { return m_IsDeviceOpen; } }
+        public BOARD_INFO DeviceInfo
+        { get { return p_DeviceInfo; } set { p_DeviceInfo = value; } }
         public uint CANNum
-        { get { return deviceInfo.CANNum > CAN.DEVICE_CANNUM_MAXIMUM ? CAN.DEVICE_CANNUM_MAXIMUM : deviceInfo.CANNum; } }
-
-        private Device(DEVICE_TYPE deviceType)
+        { get { return p_DeviceInfo.CANNum > CAN.DEVICE_CANNUM_MAXIMUM ? CAN.DEVICE_CANNUM_MAXIMUM : p_DeviceInfo.CANNum; } }
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        private Device(DEVICE_TYPE mDeviceType)
         {
-            this.deviceType = deviceType;
-            this.deviceTypeDesc = CAN.FindDeviceTypeKey(deviceType);
-            this.deviceIndex = DeviceGroup.CreateInstance().GetNewDeviceIndex(deviceType);
-            this.isDeviceOpen = false;
-            this.deviceInfo = new BoardInfo();
+            this.m_DeviceType = mDeviceType;
+            this.m_DeviceTypeDesc = CAN.FindDeviceTypeKey(mDeviceType);
+            this.m_DeviceIndex = DeviceGroup.CreateInstance().GetNewDeviceIndex(mDeviceType);
+            this.m_IsDeviceOpen = false;
+            this.p_DeviceInfo = new BOARD_INFO();
         }
 
-        public Channel GetChannel(uint channelIndex)
+        public Channel GetChannel(uint mChannelIndex)
         {
-            return channelIndex >= this.CANNum ? null : this.channels[channelIndex];
+            return mChannelIndex >= this.CANNum ? null : this.channels[mChannelIndex];
         }
 
         public string GetDeviceName()
         {
-            return string.Join("-", deviceTypeDesc, deviceIndex);
+            return string.Join("-", m_DeviceTypeDesc, m_DeviceIndex);
         }
 
-        private void InitCAN(UInt32 canNum)
+        private void InitCAN(UInt32 mCANNum)
         {
-            channels = new Channel[canNum];
-            for (UInt32 canIndex = 0; canIndex < canNum; canIndex++)
+            channels = new Channel[mCANNum];
+            for (UInt32 nIndex = 0; nIndex < mCANNum; nIndex++)
             {
-                string channelName = string.Join("-", 
-                    new string[] { this.deviceTypeDesc, this.deviceIndex.ToString(), "CAN" + canIndex.ToString() });
-                Channel channel = new Channel(canIndex, channelName, this);
-                channels[canIndex] = channel;
+                string mChannelName = string.Join("-", new string[] { m_DeviceTypeDesc, m_DeviceIndex.ToString(), "CAN" + nIndex.ToString() });
+                Channel channel = new Channel(nIndex, mChannelName, this);
+                channels[nIndex] = channel;
             }
         }
 
-        public static uint CreateDevice(DEVICE_TYPE deviceType, out Device device)
+        public static uint CreateDevice(DEVICE_TYPE mDeviceType, out Device device)
         {
             device = null;
 
-            Device newDevice = new Device(deviceType);
+            Device newDevice = new Device(mDeviceType);
 
             uint result = newDevice.OpenDevice();
             if (result != (uint)CAN_RESULT.SUCCESSFUL)
@@ -98,24 +91,28 @@ namespace CL_Framework
             return result;
         }
 
+        /// <summary>
+        /// 打开设备
+        /// </summary>
+        /// <returns></returns>
         public uint OpenDevice()
         {
-            if(this.isDeviceOpen)
+            if(this.m_IsDeviceOpen)
             {
                 Logger.Info(string.Format("device[{0}] already open", this.GetDeviceName()));
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
 
-            if (CANDLL.OpenDevice((UInt32)deviceType, deviceIndex, 0) == CANDLLResult.STATUS_OK)
+            if (CANDLL.OpenDevice((UInt32)m_DeviceType, m_DeviceIndex, 0) == CAN.CAN_DLL_RESULT_SUCCESS)
             {
                 Logger.Info(string.Format("open device[{0}] successful", this.GetDeviceName()));
-                isDeviceOpen = true;
+                m_IsDeviceOpen = true;
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
 
             uint result = (uint)CAN_RESULT.ERR_UNKNOWN;
-            CANErrInfo pCANErrorInfo;
-            if (CANDLL.ReadErrInfo((uint)this.deviceType, this.deviceIndex, -1, out pCANErrorInfo) == CANDLLResult.STATUS_OK)
+            CAN_ERR_INFO pCANErrorInfo = new CAN_ERR_INFO();
+            if (CANDLL.ReadErrInfo((UInt32)m_DeviceType, m_DeviceIndex, -1, ref pCANErrorInfo) == CAN.CAN_DLL_RESULT_SUCCESS)
             {
                 result = pCANErrorInfo.ErrCode;
             }
@@ -124,17 +121,21 @@ namespace CL_Framework
             return result;
         }
 
+        /// <summary>
+        /// 关闭设备
+        /// </summary>
+        /// <returns></returns>
         public uint CloseDevice()
         {
-            if (CANDLL.CloseDevice((UInt32)deviceType, deviceIndex) == CANDLLResult.STATUS_OK)
+            if (CANDLL.CloseDevice((UInt32)m_DeviceType, m_DeviceIndex) == CAN.CAN_DLL_RESULT_SUCCESS)
             {
                 Logger.Info(string.Format("close device[{0}] successful", this.GetDeviceName()));
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
 
             uint result = (uint)CAN_RESULT.ERR_UNKNOWN;
-            CANErrInfo pCANErrorInfo;
-            if (CANDLL.ReadErrInfo((uint)this.deviceType, this.deviceIndex, -1, out pCANErrorInfo) == CANDLLResult.STATUS_OK)
+            CAN_ERR_INFO pCANErrorInfo = new CAN_ERR_INFO();
+            if (CANDLL.ReadErrInfo((uint)m_DeviceType, m_DeviceIndex, -1, ref pCANErrorInfo) == CAN.CAN_DLL_RESULT_SUCCESS)
             {
                 result = pCANErrorInfo.ErrCode;
             }
@@ -143,17 +144,21 @@ namespace CL_Framework
             return result;
         }
 
+        /// <summary>
+        /// 读取板卡信息
+        /// </summary>
+        /// <returns></returns>
         private uint ReadBoardInfo()
         {
-            if (CANDLL.ReadBoardInfo((UInt32)deviceType, deviceIndex, out deviceInfo) == CANDLLResult.STATUS_OK)
+            if (CANDLL.ReadBoardInfo((UInt32)m_DeviceType, m_DeviceIndex, ref p_DeviceInfo) == CAN.CAN_DLL_RESULT_SUCCESS)
             {
                 Logger.Info(string.Format("device[{0}] read board info successful", this.GetDeviceName()));
                 return (uint)CAN_RESULT.SUCCESSFUL;
             }
 
             uint result = (uint)CAN_RESULT.ERR_UNKNOWN;
-            CANErrInfo pCANErrorInfo;
-            if (CANDLL.ReadErrInfo((uint)this.deviceType, this.deviceIndex, -1, out pCANErrorInfo) == CANDLLResult.STATUS_OK)
+            CAN_ERR_INFO pCANErrorInfo = new CAN_ERR_INFO();
+            if (CANDLL.ReadErrInfo((UInt32)m_DeviceType, m_DeviceIndex, -1, ref pCANErrorInfo) == CAN.CAN_DLL_RESULT_SUCCESS)
             {
                 result = pCANErrorInfo.ErrCode;
             }

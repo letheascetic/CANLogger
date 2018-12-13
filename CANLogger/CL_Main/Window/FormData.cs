@@ -289,7 +289,7 @@ namespace CL_Main
             //can data length
             this.row.Cells[7].Value = this.pCANFrame.CANObj.DataLen;
             //can data
-            this.row.Cells[8].Value = string.Join(" ", this.pCANFrame.CANObj.data);
+            this.row.Cells[8].Value = string.Join(" ", this.pCANFrame.CANObj.Data);
         }
 
     }

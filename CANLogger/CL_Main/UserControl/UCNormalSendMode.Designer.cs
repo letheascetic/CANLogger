@@ -252,6 +252,7 @@
             this.btnSend.TabIndex = 17;
             this.btnSend.Text = "发送";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // btnStop
             // 
@@ -261,6 +262,7 @@
             this.btnStop.TabIndex = 18;
             this.btnStop.Text = "停止";
             this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // UCNormalSendMode
             // 

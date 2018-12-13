@@ -26,6 +26,7 @@ namespace CL_Main
         private static readonly uint FRAME_DATA_LENGTH_MAXIMUM = 8;
 
         private Channel channel;
+        private bool isSending = false;
 
         #region public apis
 
@@ -158,10 +159,11 @@ namespace CL_Main
                 Logger.Info(string.Format("channel[{0}] send data format error: [{1}].", channel.ChannelName, tbxFrameData.Text), e);
                 return false;
             }
+
             return true;
         }
 
-        private IEnumerable<CAN_FRAME> CreateCANFrame()
+        private IEnumerable<CAN_FRAME> GetCANFrames()
         {
             CAN_SEND_MODE sendMode = (CAN_SEND_MODE)CAN.CAN_SEND_MODE_LIST[this.cbxSendMode.SelectedItem.ToString()];
             CAN_FRAME_TYPE frameType = (CAN_FRAME_TYPE)CAN.CAN_FRAME_TYPE_LIST[this.cbxFrameType.SelectedItem];
@@ -169,7 +171,7 @@ namespace CL_Main
 
             uint id = Convert.ToUInt32(tbxFrameID.Text, 16);
             uint sendNum = Convert.ToUInt32(this.tbxSendNum.Text, 10);
-            double sendInterval = Convert.ToDouble(this.tbxSendInterval.Text);
+            //double sendInterval = Convert.ToDouble(this.tbxSendInterval.Text);
             string[] dataArr = new Regex("[\\s]+").Replace(this.tbxFrameData.Text.Trim(), " ").Split(' ');
             byte dataLen = (byte)dataArr.Length;
             StringBuilder sbBuilder = new StringBuilder();
@@ -184,13 +186,13 @@ namespace CL_Main
             
             for (uint index = 0; index < sendNum; index++)
             {
-                CANOBJ pCANObj = new CANOBJ();
+                CAN_OBJ pCANObj = new CAN_OBJ();
                 pCANObj.ID = incID ? id + index : id;
                 pCANObj.DataLen = dataLen;
 
-                pCANObj.data = new byte[FRAME_DATA_LENGTH_MAXIMUM];
+                pCANObj.Data = new byte[FRAME_DATA_LENGTH_MAXIMUM];
                 ulong ulData = incData ? data + index : data;
-                Array.Copy(BitConverter.GetBytes(ulData), pCANObj.data, dataLen);
+                Array.Copy(BitConverter.GetBytes(ulData), pCANObj.Data, dataLen);
 
                 pCANObj.SendType = (byte)sendMode;
                 pCANObj.RemoteFlag = (byte)frameType;
@@ -241,6 +243,40 @@ namespace CL_Main
             if (!FRAME_DATA_CHAR_SET.Contains(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            if (isSending || !Check())
+            {
+                return;
+            }
+            //double sendInterval = Convert.ToDouble(this.tbxSendInterval.Text);
+
+            IEnumerable<CAN_FRAME> pCANFrames = GetCANFrames();
+            IEnumerator<CAN_FRAME> pFramesQueue = pCANFrames.GetEnumerator();
+
+            uint count = 0;
+            CAN_FRAME[] pFrames = new CAN_FRAME[100];
+            while (pFramesQueue.MoveNext())
+            {
+                pFrames[count++] = pFramesQueue.Current;
+                if (count == 100)
+                {
+                    channel.Transmit(pFrames, 100);
+                    pFrames = new CAN_FRAME[100];
+                    count = 0;
+                }
+            }
+            channel.Transmit(pFrames, count);
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            if (!isSending)
+            {
+                return;
             }
         }
 

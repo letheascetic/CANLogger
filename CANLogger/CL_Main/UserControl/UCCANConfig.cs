@@ -34,7 +34,7 @@ namespace CL_Main
 
         private bool ConfigCAN()
         {
-            InitConfig config = channel.Config;
+            INIT_CONFIG config = channel.Config;
 
             CAN_MODE mode = (CAN_MODE)Enum.ToObject(typeof(CAN_MODE), this.cbxCANMode.SelectedIndex);
             int baudRate = Convert.ToInt32(cbxCANBaudRate.SelectedItem);
