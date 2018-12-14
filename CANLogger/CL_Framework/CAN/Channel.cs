@@ -15,12 +15,14 @@ namespace CL_Framework
         ///////////////////////////////////////////////////////////////////////////////////////////
         private static readonly ILog Logger = log4net.LogManager.GetLogger("info");
         private static readonly uint DEFAULT_RCV_TIMER_INTERVAL = 50;
+        private static readonly uint DEFAULT_SEND_TIMER_INTERVAL = 50;
         private static readonly uint DEFAULT_STATUS_ERRORINFO_TIMER_INTERVAL = 1000;
         private static readonly uint DEFAULT_STATUS_ERRORINFO_STACK_MAXIMUM = 10;
         private static readonly uint DEFAULT_RESEND_INTERVAL = 3000;     //发送失败重新发送间隔(ms)
         ///////////////////////////////////////////////////////////////////////////////////////////
         private int m_BaudRate;
         private Timer p_RcvTimer;
+        private Timer p_SendTimer;
         private Timer p_StatusTimer;
         private uint m_ChannelIndex;
         private string m_ChannelName;
@@ -30,7 +32,9 @@ namespace CL_Framework
         private Device p_ParentDevice = null;
         private ConcurrentQueue<CAN_ERR_INFO> p_CANErrorInfoQueue = new ConcurrentQueue<CAN_ERR_INFO>();
         private ConcurrentQueue<CAN_STATUS> p_CANStatusQueue = new ConcurrentQueue<CAN_STATUS>();
-        private ConcurrentQueue<CAN_FRAME> p_CANRcvBufQueue = new ConcurrentQueue<CAN_FRAME>();
+        private ConcurrentQueue<CAN_FRAME> p_CANRcvBufQueue = new ConcurrentQueue<CAN_FRAME>();         //接收到的帧队列
+        private ConcurrentQueue<CAN_FRAME> p_CANSendingBufQueue = new ConcurrentQueue<CAN_FRAME>();     //等待发送的帧队列
+        private ConcurrentQueue<CAN_FRAME> p_CANSendedBufQueue = new ConcurrentQueue<CAN_FRAME>();      //已经发送的帧队列
         ///////////////////////////////////////////////////////////////////////////////////////////
         public INIT_CONFIG Config
         { get { return p_InitConfig; } }
@@ -61,6 +65,10 @@ namespace CL_Framework
             this.p_RcvTimer = new Timer();
             this.p_RcvTimer.Interval = DEFAULT_RCV_TIMER_INTERVAL;
             this.p_RcvTimer.Elapsed += RcvTimer_Elapsed;
+
+            this.p_SendTimer = new Timer();
+            this.p_SendTimer.Interval = DEFAULT_SEND_TIMER_INTERVAL;
+            this.p_SendTimer.Elapsed += SendTimer_Elapsed;
 
             this.m_ChannelIndex = mChannelIndex;
             this.m_ChannelName = mChannelName;
@@ -283,6 +291,18 @@ namespace CL_Framework
             }
         }
 
+        unsafe public void Transmit(CAN_FRAME[] pCanFrames)
+        {
+            uint nTimeOut = DEFAULT_RESEND_INTERVAL;
+            SetReference((uint)CAN_REFERENCE_REFTYPE.CONFIG_RESEND_TIMEOUT, (byte*)&nTimeOut);
+
+            int length = pCanFrames.Length;
+            for (int index = 0; index < length; index++)
+            {
+                this.p_CANSendingBufQueue.Enqueue(pCanFrames[index]);
+            }
+        }
+
         /// <summary>
         /// 复位CAN
         /// </summary>
@@ -333,7 +353,7 @@ namespace CL_Framework
 
         private void RcvBufEnqueue(CAN_FRAME[] pCANFrames, uint length)
         {
-            Logger.Info(string.Format("channel[{0}] current rev buf queue size: [{1}].", m_ChannelName, this.p_CANRcvBufQueue.Count));
+            Logger.Info(string.Format("channel[{0}] current rcv buf queue size: [{1}].", m_ChannelName, this.p_CANRcvBufQueue.Count));
             int numToRelease = this.p_CANRcvBufQueue.Count + (int)length - (int)CAN.CHANNEL_REC_BUF_MAXIMUM;
             if (numToRelease > 0)
             {
@@ -388,7 +408,7 @@ namespace CL_Framework
 
                 if (realRcvNum != uint.MaxValue)
                 {
-                    Logger.Info(string.Format("channel[{0}] receive [{1}] messages successful.", m_ChannelName, realRcvNum));
+                    Logger.Info(string.Format("channel[{0}] receive [{1}/{2}] messages successful.", m_ChannelName, realRcvNum, length));
                     pCanFrames = new CAN_FRAME[realRcvNum];
                     for (int index = 0; index < realRcvNum; index++)
                     {
@@ -416,6 +436,44 @@ namespace CL_Framework
                 Logger.Error(string.Format("channel[{0}] receive exception.", m_ChannelName), e);
                 return realRcvNum;
             }
+        }
+
+        /// <summary>
+        /// 发送CAN帧数据
+        /// </summary>
+        /// <param name="length">需要发送的帧数</param>
+        /// <returns>成功发送的帧数</returns>
+        private uint Transmit(uint length)
+        {
+            uint nSuccessNum = 0;
+            for(int index = 0; index < length; index++)
+            {
+                CAN_FRAME pCANFrame;
+                if (this.p_CANSendingBufQueue.TryDequeue(out pCANFrame))
+                {
+                    if (CANDLL.Transmit((uint)p_ParentDevice.DeviceType, p_ParentDevice.DeviceIndex, m_ChannelIndex, ref pCANFrame.CANObj, 1) == 1)
+                    {
+                        pCANFrame.Status = CAN_FRAME_STATUS.SUCCESS;
+                        pCANFrame.Time = DateTime.Now;
+                        nSuccessNum++;
+                        Logger.Debug(string.Format("channel[{0}] transmit a message successful.", m_ChannelName));
+                    }
+                    else
+                    {
+                        CAN_ERR_INFO pCANErrInfo = new CAN_ERR_INFO();
+                        if(ReadErrInfo(ref pCANErrInfo) == (uint)CAN_RESULT.SUCCESSFUL)
+                        {
+                            pCANFrame.CANErrInfo = pCANErrInfo;
+                        }
+                        pCANFrame.Status = CAN_FRAME_STATUS.FAILED;
+                        pCANFrame.Time = DateTime.Now;
+                        Logger.Info(string.Format("channel[{0}] transmit a message failed: [{1}]", m_ChannelName, pCANErrInfo.ErrCode));
+                    }
+                    this.p_CANSendedBufQueue.Enqueue(pCANFrame);
+                }
+            }
+            Logger.Info(string.Format("channel[{0}] transmit [{1}/{2}] messages successful.", m_ChannelName, nSuccessNum, length));
+            return nSuccessNum;
         }
 
         /// <summary>
@@ -504,6 +562,18 @@ namespace CL_Framework
                 Logger.Error(string.Format("channel[{0}] receive messages exception.", m_ChannelName), ex);
             }
             this.p_RcvTimer.Start();
+        }
+
+        private void SendTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            if(!this.IsStarted)
+            {
+                return;
+            }
+            this.p_SendTimer.Stop();
+            int length = this.p_CANSendingBufQueue.Count;
+
+            this.p_SendTimer.Start();
         }
 
         #endregion

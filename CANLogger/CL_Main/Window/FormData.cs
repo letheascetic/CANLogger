@@ -28,7 +28,9 @@ namespace CL_Main
         private Channel channel = null;
         private UCListSendMode p_UCSendModeList = null;
         private UCNormalSendMode p_UCSendModeNormal = null;
+        private readonly object locker = new object();
         private List<CAN_DATA> p_CANDataQueue = new List<CAN_DATA>();
+
         private int m_SendMode = SEND_MODE_LIST;
         /************************************************************************************/
         #region public apis
@@ -50,24 +52,15 @@ namespace CL_Main
 
         private void Init()
         {
+            this.p_DeviceGroup.ChannelUpdated += new ChannelEventHandler(this.UpdateChannel);
+
             this.Text = channel.ChannelName;
             this.p_UCSendModeNormal = new UCNormalSendMode(this.channel);
             this.p_UCSendModeList = new UCListSendMode(this.channel);
             this.pnlSend.Controls.Add(this.p_UCSendModeNormal);
             this.pnlSend.Controls.Add(this.p_UCSendModeList);
 
-            if (channel.IsStarted)
-            {
-                this.btnStartReset.Text = "复位CAN";
-                this.btnStartReset.Image = global::CL_Main.Properties.Resources.stop;
-            }
-            else
-            {
-                this.btnStartReset.Text = "启动CAN";
-                this.btnStartReset.Image = global::CL_Main.Properties.Resources.start;
-            }
-
-            p_DeviceGroup.ChannelUpdated += new ChannelEventHandler(this.UpdateChannel);
+            this.UpdateChannel(this.channel, null);
 
             ChangeSendMode();
         }
@@ -101,16 +94,21 @@ namespace CL_Main
 
         private void Receive()
         {
+            uint length = channel.GetRcvBufSize();
             CAN_FRAME[] pCANFrames;
-            uint nRealNum = channel.Receive(out pCANFrames, channel.GetRcvBufSize());
+            uint nRealNum = channel.Receive(out pCANFrames, length);
 
-            for (int index = 0; index < pCANFrames.Length; index++)
+            Logger.Info(string.Format("FormData[{0}] gets [{1}/{2}] frames from rcv buf queue.", channel.ChannelName, nRealNum, length));
+            lock (locker)
             {
-                long mQueueIndex = this.p_CANDataQueue.Count + 1;
-                int nRowIndex = this.dgvData.Rows.Add();
-                DataGridViewRow row = this.dgvData.Rows[nRowIndex];
-                CAN_DATA pCANData = new CAN_DATA(mQueueIndex, pCANFrames[index], row);
-                this.p_CANDataQueue.Add(pCANData);
+                for (int index = 0; index < pCANFrames.Length; index++)
+                {
+                    long mQueueIndex = this.p_CANDataQueue.Count + 1;
+                    int nRowIndex = this.dgvData.Rows.Add();
+                    DataGridViewRow row = this.dgvData.Rows[nRowIndex];
+                    CAN_DATA pCANData = new CAN_DATA(mQueueIndex, pCANFrames[index], row);
+                    this.p_CANDataQueue.Add(pCANData);
+                }
             }
         }
 
@@ -134,11 +132,13 @@ namespace CL_Main
             {
                 if (channel.IsStarted)
                 {
+                    this.rcvTimer.Start();
                     this.btnStartReset.Text = "复位CAN";
                     this.btnStartReset.Image = global::CL_Main.Properties.Resources.stop;
                 }
                 else
                 {
+                    this.rcvTimer.Stop();
                     this.btnStartReset.Text = "启动CAN";
                     this.btnStartReset.Image = global::CL_Main.Properties.Resources.start;
                 }
@@ -295,7 +295,7 @@ namespace CL_Main
                 //Marshal.Copy((IntPtr)pData, data, 0, (int)CAN.FRAME_DATA_LENGTH_MAXIMUM);
                 for (int index = 0; index < this.p_CANFrame.CANObj.DataLen; index++)
                 {
-                    sb.Append(Convert.ToString(pData[index], 16)).Append(" ");
+                    sb.Append(Convert.ToString(pData[index], 16).PadLeft(2, '0')).Append(" ");
                 }
             }
             this.row.Cells[8].Value = string.Join(" ", sb.ToString().Trim());

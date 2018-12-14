@@ -109,6 +109,7 @@ namespace CL_Framework
     public struct CAN_FRAME
     {
         public CAN_OBJ CANObj;
+        public CAN_ERR_INFO CANErrInfo;
         public DateTime Time;
         public CAN_FRAME_DIRECTION Direction;
         public CAN_FRAME_STATUS Status;
@@ -119,6 +120,7 @@ namespace CL_Framework
             this.Time = time;
             this.Direction = direction;
             this.Status = status;
+            this.CANErrInfo = new CAN_ERR_INFO();
         }
     }
 

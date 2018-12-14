@@ -23,6 +23,8 @@ namespace CL_Framework
         public event DeviceEventHandler DeviceRemoved;
         public event DeviceEventHandler DeviceUpdated;
         public event DeviceEventHandler SelectedDeviceChanged;
+        //public event ChannelEventHandler ChannelStarted;
+        //public event ChannelEventHandler ChannelReset;
         public event ChannelEventHandler ChannelUpdated;
         ///////////////////////////////////////////////////////////////////////////////////////////
         private List<Device> devices;

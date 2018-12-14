@@ -73,7 +73,11 @@ namespace CL_Main
 
         public void UpdateDevice(Device device, object paras)
         {
-
+            List<FormData> pFormDatas = FindMappingFormDatas(device);
+            foreach (FormData pFormData in pFormDatas)
+            {
+                pFormData.UpdateChannel(pFormData.GetChannel(), paras);
+            }
         }
 
         #endregion
@@ -294,6 +298,10 @@ namespace CL_Main
             DialogResult dialogResult = MessageBox.Show(content, "删除设备", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.OK)
             {
+                foreach (Channel channel in device.Channels)
+                {
+                    channel.ResetCAN();
+                }
                 this.p_DeviceGroup.Remove(device);
             }
         }

@@ -203,7 +203,7 @@ namespace CL_Main
                 pCANObj.TimeFlag = (byte)CAN_FRAME_TIME_FLAG.INVALID;
                 pCANObj.TimeStamp = 0;
 
-                pCANFrames[index] = new CAN_FRAME(pCANObj, DateTime.Now, CAN_FRAME_DIRECTION.SEND, CAN_FRAME_STATUS.SUCCESS);
+                pCANFrames[index] = new CAN_FRAME(pCANObj, DateTime.Now, CAN_FRAME_DIRECTION.SEND, CAN_FRAME_STATUS.FAILED);
             }
             return pCANFrames;
         }
@@ -256,23 +256,8 @@ namespace CL_Main
                 return;
             }
             //double sendInterval = Convert.ToDouble(this.tbxSendInterval.Text);
-
-            IEnumerable<CAN_FRAME> pCANFrames = GetCANFrames();
-            IEnumerator<CAN_FRAME> pFramesQueue = pCANFrames.GetEnumerator();
-
-            uint count = 0;
-            CAN_FRAME[] pFrames = new CAN_FRAME[100];
-            while (pFramesQueue.MoveNext())
-            {
-                pFrames[count++] = pFramesQueue.Current;
-                if (count == 100)
-                {
-                    channel.Transmit(pFrames, 100);
-                    pFrames = new CAN_FRAME[100];
-                    count = 0;
-                }
-            }
-            channel.Transmit(pFrames, count);
+            CAN_FRAME[] pCANFrames = GetCANFrames();
+            channel.Transmit(pCANFrames);
         }
 
         private void btnStop_Click(object sender, EventArgs e)
