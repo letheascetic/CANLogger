@@ -19,21 +19,19 @@ namespace CL_Framework
         private static readonly uint DEFAULT_STATUS_ERRORINFO_STACK_MAXIMUM = 10;
         private static readonly uint DEFAULT_RESEND_INTERVAL = 3000;     //发送失败重新发送间隔(ms)
         ///////////////////////////////////////////////////////////////////////////////////////////
+        private int m_BaudRate;
+        private Timer p_RcvTimer;
+        private Timer p_StatusTimer;
         private uint m_ChannelIndex;
         private string m_ChannelName;
-        private int m_BaudRate;
-        private bool m_IsInitialized = false;
-        private bool m_IsStarted = false;
-        private Device p_ParentDevice = null;
         private INIT_CONFIG p_InitConfig;
+        private bool m_IsStarted = false;
+        private bool m_IsInitialized = false;
+        private Device p_ParentDevice = null;
         private ConcurrentQueue<CAN_ERR_INFO> p_CANErrorInfoQueue = new ConcurrentQueue<CAN_ERR_INFO>();
         private ConcurrentQueue<CAN_STATUS> p_CANStatusQueue = new ConcurrentQueue<CAN_STATUS>();
         private ConcurrentQueue<CAN_FRAME> p_CANRcvBufQueue = new ConcurrentQueue<CAN_FRAME>();
-        private Timer p_StatusTimer;
-        private Timer p_RcvTimer;
         ///////////////////////////////////////////////////////////////////////////////////////////
-        public ConcurrentQueue<CAN_FRAME> RcvBufQueue
-        { get { return p_CANRcvBufQueue; } }
         public INIT_CONFIG Config
         { get { return p_InitConfig; } }
         public uint ChannelIndex
@@ -191,12 +189,12 @@ namespace CL_Framework
         }
 
         /// <summary>
-        /// 读取CAN接收到的帧数
+        /// 返回当前缓冲区中CAN的帧数
         /// </summary>
         /// <returns></returns>
-        private uint GetReceiveNum()
+        public uint GetRcvBufSize()
         {
-            return CANDLL.GetReceiveNum((uint)p_ParentDevice.DeviceType, p_ParentDevice.DeviceIndex, m_ChannelIndex);
+            return (uint)this.p_CANRcvBufQueue.Count;
         }
 
         /// <summary>
@@ -286,13 +284,100 @@ namespace CL_Framework
         }
 
         /// <summary>
+        /// 复位CAN
+        /// </summary>
+        /// <returns></returns>
+        public uint ResetCAN()
+        {
+            if (!this.m_IsStarted)
+            {
+                Logger.Info(string.Format("channel[{0}] already reset.", m_ChannelName));
+                return (uint)CAN_RESULT.SUCCESSFUL;
+            }
+
+            if (CANDLL.ResetCAN((UInt32)p_ParentDevice.DeviceType, p_ParentDevice.DeviceIndex, m_ChannelIndex) == CAN.CAN_DLL_RESULT_SUCCESS)
+            {
+                Logger.Info(string.Format("channel[{0}] reset successful.", m_ChannelName));
+                this.m_IsStarted = false;
+                return (uint)CAN_RESULT.SUCCESSFUL;
+            }
+
+            CAN_ERR_INFO pCANErrorInfo = new CAN_ERR_INFO();
+            uint result = (uint)CAN_RESULT.ERR_UNKNOWN;
+            if (ReadErrInfo(ref pCANErrorInfo) == (uint)CAN_RESULT.SUCCESSFUL)
+            {
+                result = pCANErrorInfo.ErrCode;
+            }
+
+            Logger.Info(string.Format("channel[{0}] reset failed: [0x{1}].", m_ChannelName, result.ToString("x")));
+            return result;
+        }
+
+        public uint Receive(out CAN_FRAME[] pCanFrames, uint length)
+        {
+            pCanFrames = new CAN_FRAME[length];
+            uint nRealNum = 0;
+            for (uint index = 0; index < length; index++)
+            {
+                CAN_FRAME pCANFrame;
+                if (this.p_CANRcvBufQueue.TryDequeue(out pCANFrame))
+                {
+                    pCanFrames[nRealNum++] = pCANFrame;
+                }
+            }
+            pCanFrames = pCanFrames.Take((int)nRealNum).ToArray<CAN_FRAME>();
+            return nRealNum;
+        }
+
+        #region private functions
+
+        private void RcvBufEnqueue(CAN_FRAME[] pCANFrames, uint length)
+        {
+            Logger.Info(string.Format("channel[{0}] current rev buf queue size: [{1}].", m_ChannelName, this.p_CANRcvBufQueue.Count));
+            int numToRelease = this.p_CANRcvBufQueue.Count + (int)length - (int)CAN.CHANNEL_REC_BUF_MAXIMUM;
+            if (numToRelease > 0)
+            {
+                Logger.Info(string.Format("channel[{0}] release rcv buf queue size: [{1}].", m_ChannelName, numToRelease));
+                CAN_FRAME pCANFrame;
+                for (int i = 0; i < numToRelease; i++)
+                {
+                    this.p_CANRcvBufQueue.TryDequeue(out pCANFrame);
+                }
+            }
+            for (uint index = 0; index < length; index++)
+            {
+                this.p_CANRcvBufQueue.Enqueue(pCANFrames[index]);
+            }
+        }
+
+        private void ReleaseStatusQueue(int numToRelease)
+        {
+            Logger.Info(string.Format("channel[{0}] release status queue size: [{1}].", m_ChannelName, numToRelease));
+            CAN_STATUS pCANStatus;
+            for (int i = 0; i < numToRelease; i++)
+            {
+                this.p_CANStatusQueue.TryDequeue(out pCANStatus);
+            }
+        }
+
+        private void ReleaseErrorInfoQueue(int numToRelease)
+        {
+            Logger.Info(string.Format("channel[{0}] release error info queue size: [{1}].", m_ChannelName, numToRelease));
+            CAN_ERR_INFO pCANErrorInfo;
+            for (int i = 0; i < numToRelease; i++)
+            {
+                this.p_CANErrorInfoQueue.TryDequeue(out pCANErrorInfo);
+            }
+        }
+
+        /// <summary>
         /// 接收CAN帧数据
         /// </summary>
         /// <param name="pCanFrames">接收到的帧数组</param>
         /// <param name="length">需要接收的帧数</param>
         /// <param name="waitMilliseconds">等待时间ms</param>
         /// <returns>实际接收的帧数</returns>
-        public uint Receive(out CAN_FRAME[] pCanFrames, uint length, int waitMilliseconds)
+        private uint Receive(out CAN_FRAME[] pCanFrames, uint length, int waitMilliseconds)
         {
             uint realRcvNum = 0;
             pCanFrames = null;
@@ -334,36 +419,18 @@ namespace CL_Framework
         }
 
         /// <summary>
-        /// 复位CAN
+        /// 读取CAN接收到的帧数
         /// </summary>
         /// <returns></returns>
-        public uint ResetCAN()
+        private uint GetReceiveNum()
         {
-            if (!this.m_IsStarted)
-            {
-                Logger.Info(string.Format("channel[{0}] already reset.", m_ChannelName));
-                return (uint)CAN_RESULT.SUCCESSFUL;
-            }
-
-            if (CANDLL.ResetCAN((UInt32)p_ParentDevice.DeviceType, p_ParentDevice.DeviceIndex, m_ChannelIndex) == CAN.CAN_DLL_RESULT_SUCCESS)
-            {
-                Logger.Info(string.Format("channel[{0}] reset successful.", m_ChannelName));
-                this.m_IsStarted = false;
-                return (uint)CAN_RESULT.SUCCESSFUL;
-            }
-
-            CAN_ERR_INFO pCANErrorInfo = new CAN_ERR_INFO();
-            uint result = (uint)CAN_RESULT.ERR_UNKNOWN;
-            if (ReadErrInfo(ref pCANErrorInfo) == (uint)CAN_RESULT.SUCCESSFUL)
-            {
-                result = pCANErrorInfo.ErrCode;
-            }
-
-            Logger.Info(string.Format("channel[{0}] reset failed: [0x{1}].", m_ChannelName, result.ToString("x")));
-            return result;
+            return CANDLL.GetReceiveNum((uint)p_ParentDevice.DeviceType, p_ParentDevice.DeviceIndex, m_ChannelIndex);
         }
 
-        #region private functions
+        #endregion
+
+        #region events
+
         private void StatusTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             if (!this.m_IsInitialized)
@@ -428,7 +495,7 @@ namespace CL_Framework
                     uint realRcvNum = Receive(out pCANFrames, numToRcv, waitTime);
                     if (realRcvNum != uint.MaxValue)
                     {
-                        CANFramesEnqueue(pCANFrames, realRcvNum);
+                        RcvBufEnqueue(pCANFrames, realRcvNum);
                     }
                 }
             }
@@ -437,45 +504,6 @@ namespace CL_Framework
                 Logger.Error(string.Format("channel[{0}] receive messages exception.", m_ChannelName), ex);
             }
             this.p_RcvTimer.Start();
-        }
-
-        private void CANFramesEnqueue(CAN_FRAME[] pCANFrames, uint length)
-        {
-            Logger.Info(string.Format("channel[{0}] current rev buf queue size: [{1}].", m_ChannelName, this.p_CANRcvBufQueue.Count));
-            int numToRelease = this.p_CANRcvBufQueue.Count + (int)length - (int)CAN.CHANNEL_REC_BUF_MAXIMUM;
-            if (numToRelease > 0)
-            {
-                Logger.Info(string.Format("channel[{0}] release rcv buf queue size: [{1}].", m_ChannelName, numToRelease));
-                CAN_FRAME pCANFrame;
-                for (int i = 0; i < numToRelease; i++)
-                {
-                    this.p_CANRcvBufQueue.TryDequeue(out pCANFrame);
-                }
-            }
-            for (uint index = 0; index < length; index++)
-            {
-                this.p_CANRcvBufQueue.Enqueue(pCANFrames[index]);
-            }
-        }
-
-        private void ReleaseStatusQueue(int numToRelease)
-        {
-            Logger.Info(string.Format("channel[{0}] release status queue size: [{1}].", m_ChannelName, numToRelease));
-            CAN_STATUS pCANStatus;
-            for (int i = 0; i < numToRelease; i++)
-            {
-                this.p_CANStatusQueue.TryDequeue(out pCANStatus);
-            }
-        }
-
-        private void ReleaseErrorInfoQueue(int numToRelease)
-        {
-            Logger.Info(string.Format("channel[{0}] release error info queue size: [{1}].", m_ChannelName, numToRelease));
-            CAN_ERR_INFO pCANErrorInfo;
-            for (int i = 0; i < numToRelease; i++)
-            {
-                this.p_CANErrorInfoQueue.TryDequeue(out pCANErrorInfo);
-            }
         }
 
         #endregion

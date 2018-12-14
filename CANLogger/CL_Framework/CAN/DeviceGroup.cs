@@ -14,33 +14,34 @@ namespace CL_Framework
     /// </summary>
     public class DeviceGroup
     {
+        ///////////////////////////////////////////////////////////////////////////////////////////
         private static readonly ILog Logger = LogManager.GetLogger("info");
-        private volatile static DeviceGroup deviceGroup = null;
+        private volatile static DeviceGroup p_DeviceGroup = null;
         private static readonly object locker = new object();
-
+        ///////////////////////////////////////////////////////////////////////////////////////////
         public event DeviceEventHandler DeviceAdded;
         public event DeviceEventHandler DeviceRemoved;
         public event DeviceEventHandler DeviceUpdated;
         public event DeviceEventHandler SelectedDeviceChanged;
         public event ChannelEventHandler ChannelUpdated;
-
+        ///////////////////////////////////////////////////////////////////////////////////////////
         private List<Device> devices;
-        private Device selectedDevice = null;
-        
+        private Device p_SelectedDevice = null;
+        ///////////////////////////////////////////////////////////////////////////////////////////
         public List<Device> Devices
         { get { return devices; } }
-
+        ///////////////////////////////////////////////////////////////////////////////////////////
         public static DeviceGroup CreateInstance()
         {
-            if (deviceGroup == null)
+            if (p_DeviceGroup == null)
             {
                 lock (locker)
                 {
-                    if (deviceGroup == null)
-                        deviceGroup = new DeviceGroup();
+                    if (p_DeviceGroup == null)
+                        p_DeviceGroup = new DeviceGroup();
                 }
             }
-            return deviceGroup;
+            return p_DeviceGroup;
         }
 
         private DeviceGroup()
@@ -87,7 +88,7 @@ namespace CL_Framework
 
         public Device GetSelectedDevice()
         {
-            return this.selectedDevice;
+            return this.p_SelectedDevice;
         }
 
         public bool Add(Device device)
@@ -172,7 +173,7 @@ namespace CL_Framework
                 Logger.Info(string.Format("change selected device failed, no this device[{0}] in device group", device.GetDeviceName()));
                 return false;
             }
-            this.selectedDevice = device;
+            this.p_SelectedDevice = device;
             if (this.SelectedDeviceChanged != null)
             {
                 this.SelectedDeviceChanged.Invoke(device, null);

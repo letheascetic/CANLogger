@@ -14,11 +14,12 @@ namespace CL_Main
 {
     public partial class DialogDevice : Form
     {
+        /************************************************************************************/
         private static readonly ILog Logger = LogManager.GetLogger("info");
-
-        private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
+        /************************************************************************************/
+        private DeviceGroup p_DeviceGroup = DeviceGroup.CreateInstance();
         private Device device = null;
-
+        /************************************************************************************/
         #region public apis
 
         public DialogDevice(Device device)
@@ -109,7 +110,7 @@ namespace CL_Main
         {
             Device device = null;
             // get new device index
-            UInt32 deviceIndex = pDeviceGroup.GetNewDeviceIndex(deviceType);
+            UInt32 deviceIndex = p_DeviceGroup.GetNewDeviceIndex(deviceType);
             // create new device
             if (Device.CreateDevice(deviceType, out device) == (uint)CAN_RESULT.SUCCESSFUL)
             {

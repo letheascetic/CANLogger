@@ -1,4 +1,5 @@
 ﻿using CL_Framework;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +17,12 @@ namespace CL_Main
 {
     public partial class FormStatus : DockContent
     {
-        private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
-        private List<UCCANStatus> pChannelStatusList = new List<UCCANStatus>();
-
+        /************************************************************************************/
+        private static readonly ILog Logger = log4net.LogManager.GetLogger("info");
+        /************************************************************************************/
+        private DeviceGroup p_DeviceGroup = DeviceGroup.CreateInstance();
+        private List<UCCANStatus> p_ChannelStatusList = new List<UCCANStatus>();
+        /************************************************************************************/
         #region public apis
 
         public FormStatus()
@@ -48,7 +52,7 @@ namespace CL_Main
             List<UCCANStatus> pCANStatusList = GetMappingCANStatusList(device);
             foreach (UCCANStatus pCANStatus in pCANStatusList)
             {
-                pChannelStatusList.Remove(pCANStatus);
+                p_ChannelStatusList.Remove(pCANStatus);
                 TabPage tabPage = (TabPage)pCANStatus.Parent;
                 tabControl.TabPages.Remove(tabPage);
                 tabPage.Dispose();
@@ -66,16 +70,16 @@ namespace CL_Main
 
         private void Init()
         {
-            pDeviceGroup.DeviceAdded += new DeviceEventHandler(this.AddDevice);
-            pDeviceGroup.DeviceRemoved += new DeviceEventHandler(this.RemoveDevice);
-            pDeviceGroup.DeviceUpdated += new DeviceEventHandler(this.UpdateDevice);
+            p_DeviceGroup.DeviceAdded += new DeviceEventHandler(this.AddDevice);
+            p_DeviceGroup.DeviceRemoved += new DeviceEventHandler(this.RemoveDevice);
+            p_DeviceGroup.DeviceUpdated += new DeviceEventHandler(this.UpdateDevice);
         }
 
         private void Finish()
         {
-            pDeviceGroup.DeviceAdded -= this.AddDevice;
-            pDeviceGroup.DeviceRemoved -= this.RemoveDevice;
-            pDeviceGroup.DeviceUpdated -= this.UpdateDevice;
+            p_DeviceGroup.DeviceAdded -= this.AddDevice;
+            p_DeviceGroup.DeviceRemoved -= this.RemoveDevice;
+            p_DeviceGroup.DeviceUpdated -= this.UpdateDevice;
 
             this.Dispose();
         }
@@ -87,7 +91,7 @@ namespace CL_Main
             {
                 return pCANStatusList;
             }
-            foreach (UCCANStatus pCANStatus in this.pChannelStatusList)
+            foreach (UCCANStatus pCANStatus in this.p_ChannelStatusList)
             {
                 Device parentDevice = pCANStatus.GetChannel().ParentDevice;
                 if (Object.ReferenceEquals(device, parentDevice))
@@ -105,7 +109,7 @@ namespace CL_Main
             pChnanelStatus.Parent = tabPage;
             pChnanelStatus.Dock = DockStyle.Fill;
             tabControl.TabPages.Add(tabPage);
-            pChannelStatusList.Add(pChnanelStatus);
+            p_ChannelStatusList.Add(pChnanelStatus);
         }
 
         #endregion
@@ -118,7 +122,6 @@ namespace CL_Main
         }
 
         #endregion
-
 
     }
 }

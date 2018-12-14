@@ -15,6 +15,9 @@ namespace CL_Framework
         ERR_UNKNOWN = 0xFFFFFFFF
     }
 
+    /// <summary>
+    /// 设备类型
+    /// </summary>
     public enum DEVICE_TYPE : uint
     {
         UNKNOWN = 0,
@@ -22,6 +25,9 @@ namespace CL_Framework
         USBCANII = 4
     }
 
+    /// <summary>
+    /// CAN工作模式
+    /// </summary>
     public enum CAN_MODE : uint
     {
         NORMAL = 0,    //normal
@@ -29,42 +35,63 @@ namespace CL_Framework
         STM = 2        //self test mode
     }
 
+    /// <summary>
+    /// CAN发送模式
+    /// </summary>
     public enum CAN_SEND_MODE : uint
     {
         NORMAL = 0,
         SINGLE = 1
     }
 
+    /// <summary>
+    /// CAN帧类型
+    /// </summary>
     public enum CAN_FRAME_TYPE : uint
     {
         DATA_FRAME = 0,       //数据帧
         REMOTE_FRAME = 1      //远程帧
     }
 
+    /// <summary>
+    /// CAN帧（ID）格式
+    /// </summary>
     public enum CAN_FRAME_FORMAT : uint
     {
         STANDARD_FRAME = 0,     //标准帧
-        EXTENDED_FRAME = 1        //扩展帧
+        EXTENDED_FRAME = 1      //扩展帧
     }
 
+    /// <summary>
+    /// CAN传输方向
+    /// </summary>
     public enum CAN_FRAME_DIRECTION : byte
     {
         SEND = 0,       //发送
         RECEIVE = 1     //接收
     }
 
+    /// <summary>
+    /// CAN帧传输结果
+    /// </summary>
     public enum CAN_FRAME_STATUS : byte
     {
         SUCCESS = 0,    //发送或接收成功
         FAILED = 1      //发送或接收失败
     }
 
+    /// <summary>
+    /// 时间戳有效标识符
+    /// </summary>
     public enum CAN_FRAME_TIME_FLAG : byte
     {
         INVALID = 0,        //时间戳无效
         VALID = 1           //时间戳有效
     }
 
+    /// <summary>
+    /// CAN配置参数类型
+    /// </summary>
     public enum CAN_REFERENCE_REFTYPE : uint
     {
         CONFIG_BAUDRATE = 0,
@@ -76,6 +103,9 @@ namespace CL_Framework
         CLEAR_AUTO_SEND = 6
     }
 
+    /// <summary>
+    /// 自定义的CAN帧结构体
+    /// </summary>
     public struct CAN_FRAME
     {
         public CAN_OBJ CANObj;
@@ -99,6 +129,7 @@ namespace CL_Framework
         ///////////////////////////////////////////////////////////////////////////////////////////
         public static readonly uint STANDARD_FRAME_ID_MAXIMUM = 0x000001FF;
         public static readonly uint EXTENDED_FRAME_ID_MAXIMUM = 0x1FFFFFFF;
+        public static readonly uint FRAME_DATA_LENGTH_MAXIMUM = 8;
         ///////////////////////////////////////////////////////////////////////////////////////////
         public static readonly uint CHANNEL_REC_BUF_MAXIMUM = 130000;
         public static readonly int CHANNEL_DEFAULT_BAUDRATE = 1000;

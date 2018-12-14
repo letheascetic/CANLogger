@@ -21,18 +21,16 @@ namespace CL_Main
 {
     public partial class FormMain : Form
     {
+        /************************************************************************************/
         private static readonly ILog Logger = log4net.LogManager.GetLogger("info");
-
-        private SkinEngine skinEngine;
-        private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
-
-        private List<FormData> pFormDatas = new List<FormData>();
-        private FormDevice pFormDevice = new FormDevice();
-        private FormStatus pFormStatus = new FormStatus();
-
-        private Hashtable pNameDevicePairs = new Hashtable();
-        //private Device selectedDevice = null;
-
+        /************************************************************************************/
+        private SkinEngine p_SkinEngine;
+        private DeviceGroup p_DeviceGroup = DeviceGroup.CreateInstance();
+        private List<FormData> p_FormDatas = new List<FormData>();
+        private FormDevice p_FormDevice = new FormDevice();
+        private FormStatus p_FormStatus = new FormStatus();
+        private Hashtable p_NameDevicePairs = new Hashtable();
+        /************************************************************************************/
         #region public apis
 
         public FormMain()
@@ -43,7 +41,7 @@ namespace CL_Main
         public void AddDevice(Device device, object paras)
         {
             string deviceName = device.GetDeviceName();
-            pNameDevicePairs.Add(deviceName, device);
+            p_NameDevicePairs.Add(deviceName, device);
 
             this.cbxSelectDevice.Items.Add(deviceName);
             for (uint channelIndex = 0; channelIndex < device.CANNum; channelIndex++)
@@ -51,7 +49,7 @@ namespace CL_Main
                 Channel channel = device.GetChannel(channelIndex);
                 FormData pFormData = new FormData(channel);
                 pFormData.Show(this.dockPanel, DockState.Document);
-                pFormDatas.Add(pFormData);
+                p_FormDatas.Add(pFormData);
             }
             this.cbxSelectDevice.SelectedIndex = this.cbxSelectDevice.FindString(deviceName);
         }
@@ -59,13 +57,13 @@ namespace CL_Main
         public void RemoveDevice(Device device, object paras)
         {
             string deviceName = device.GetDeviceName();
-            pNameDevicePairs.Remove(deviceName);
+            p_NameDevicePairs.Remove(deviceName);
             
             List<FormData> pFormDatas = FindMappingFormDatas(device);
             foreach (FormData pFormData in pFormDatas)
             {
                 this.dockPanel.Controls.Remove(pFormData);
-                this.pFormDatas.Remove(pFormData);
+                this.p_FormDatas.Remove(pFormData);
                 pFormData.Close();
             }
 
@@ -84,9 +82,9 @@ namespace CL_Main
 
         private void Init()
         {
-            pDeviceGroup.DeviceAdded += new DeviceEventHandler(AddDevice);
-            pDeviceGroup.DeviceRemoved += new DeviceEventHandler(RemoveDevice);
-            pDeviceGroup.DeviceUpdated += new DeviceEventHandler(UpdateDevice);
+            p_DeviceGroup.DeviceAdded += new DeviceEventHandler(AddDevice);
+            p_DeviceGroup.DeviceRemoved += new DeviceEventHandler(RemoveDevice);
+            p_DeviceGroup.DeviceUpdated += new DeviceEventHandler(UpdateDevice);
         }
 
         private void Loading()
@@ -97,7 +95,7 @@ namespace CL_Main
 
         private void InitLoadSkinMenuItems()
         {
-            skinEngine = new SkinEngine();
+            p_SkinEngine = new SkinEngine();
             List<string> skins = Directory.GetFiles(Application.StartupPath + @"\skins\", "*.ssk").ToList();
 
             int index = 0;
@@ -124,9 +122,9 @@ namespace CL_Main
             menuItemLanguage.Visible = false;
 
             // init & load FormDevice
-            pFormDevice.Show(this.dockPanel, DockState.DockBottom);
+            p_FormDevice.Show(this.dockPanel, DockState.DockBottom);
             //init & load FormStatus
-            pFormStatus.Show(pFormDevice.Pane, DockAlignment.Right, 0.5);
+            p_FormStatus.Show(p_FormDevice.Pane, DockAlignment.Right, 0.5);
         }
 
         private void SetLanguage(string language)
@@ -155,7 +153,7 @@ namespace CL_Main
             }
 
             Logger.Info(string.Format("selected device: [{0}]", deviceName));
-            return (Device)pNameDevicePairs[deviceName];
+            return (Device)p_NameDevicePairs[deviceName];
         }
 
         private List<FormData> FindMappingFormDatas(Device device)
@@ -163,10 +161,10 @@ namespace CL_Main
             List<FormData> pMappingFormDatas = new List<FormData>();
             if (device == null)
             {
-                return pFormDatas;
+                return pMappingFormDatas;
             }
 
-            foreach (FormData pFormData in this.pFormDatas)
+            foreach (FormData pFormData in this.p_FormDatas)
             {
                 if (object.ReferenceEquals(pFormData.GetChannel().ParentDevice, device))
                 {
@@ -190,24 +188,22 @@ namespace CL_Main
             InitLoadControls();
             thread.Join();
 
-            // show add device dialog
-
             this.Activate();
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            foreach (Device device in pDeviceGroup.Devices)
+            foreach (Device device in p_DeviceGroup.Devices)
             {
                 device.CloseDevice();
             }
 
-            foreach(FormData pFormData in pFormDatas)
+            foreach(FormData pFormData in p_FormDatas)
             {
                 pFormData.Close();
             }
-            pFormStatus.Close();
-            pFormDevice.Close();
+            p_FormStatus.Close();
+            p_FormDevice.Close();
 
             this.Dispose();
         }
@@ -248,7 +244,7 @@ namespace CL_Main
             this.Cursor = Cursors.WaitCursor;
 
             string skinFile = item.Tag == null ? null : (string)item.Tag;
-            skinEngine.SkinFile = skinFile;
+            p_SkinEngine.SkinFile = skinFile;
 
             int oldIndex = Convert.ToInt32(menuItemSkin.Tag);
             ToolStripMenuItem oldItem = (ToolStripMenuItem)menuItemSkin.DropDownItems[oldIndex];
@@ -263,9 +259,9 @@ namespace CL_Main
 
         private void cbxSelectDevice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Device oldSelectedDevice = this.pDeviceGroup.GetSelectedDevice();
+            Device oldSelectedDevice = this.p_DeviceGroup.GetSelectedDevice();
             Device newSelectedDevice = GetSelectedDevice();
-            this.pDeviceGroup.ChangeSelectedDevice(newSelectedDevice);
+            this.p_DeviceGroup.ChangeSelectedDevice(newSelectedDevice);
         }
 
         private void menuItemAbout_Click(object sender, EventArgs e)
@@ -278,14 +274,14 @@ namespace CL_Main
             DialogDevice pDialogDevice = new DialogDevice(null);
             if (pDialogDevice.ShowDialog() == DialogResult.OK)
             {
-                this.pDeviceGroup.Add(pDialogDevice.GetDevice());
+                this.p_DeviceGroup.Add(pDialogDevice.GetDevice());
                 pDialogDevice.Close();
             }
         }
 
         private void itemDeleteDevice_Click(object sender, EventArgs e)
         {
-            Device device = this.pDeviceGroup.GetSelectedDevice();
+            Device device = this.p_DeviceGroup.GetSelectedDevice();
             if (device == null)
             {
                 MessageBox.Show("请选择要删除的设备.");
@@ -298,13 +294,13 @@ namespace CL_Main
             DialogResult dialogResult = MessageBox.Show(content, "删除设备", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.OK)
             {
-                this.pDeviceGroup.Remove(device);
+                this.p_DeviceGroup.Remove(device);
             }
         }
 
         private void itemConfigDevice_Click(object sender, EventArgs e)
         {
-            Device device = this.pDeviceGroup.GetSelectedDevice();
+            Device device = this.p_DeviceGroup.GetSelectedDevice();
             if (device == null)
             {
                 MessageBox.Show("请选择要配置的设备.");
@@ -313,14 +309,14 @@ namespace CL_Main
             DialogDevice pDialogDevice = new DialogDevice(device);
             if (pDialogDevice.ShowDialog() == DialogResult.OK)
             {
-                this.pDeviceGroup.Update(pDialogDevice.GetDevice());
+                this.p_DeviceGroup.Update(pDialogDevice.GetDevice());
                 pDialogDevice.Close();
             }
         }
 
         private void itemResetDevice_Click(object sender, EventArgs e)
         {
-            Device device = this.pDeviceGroup.GetSelectedDevice();
+            Device device = this.p_DeviceGroup.GetSelectedDevice();
             if (device == null)
             {
                 MessageBox.Show("请选择要复位的设备.");
@@ -335,13 +331,13 @@ namespace CL_Main
                 {
                     channel.ResetCAN();
                 }
-                this.pDeviceGroup.Update(device);
+                this.p_DeviceGroup.Update(device);
             }
         }
 
         private void menuItemViewData_Click(object sender, EventArgs e)
         {
-            foreach (FormData pFormData in this.pFormDatas)
+            foreach (FormData pFormData in this.p_FormDatas)
             {
                 pFormData.Visible = true;
                 pFormData.Activate();
@@ -350,14 +346,14 @@ namespace CL_Main
 
         private void menuItemViewDevice_Click(object sender, EventArgs e)
         {
-            this.pFormDevice.Visible = true;
-            this.pFormDevice.Activate();
+            this.p_FormDevice.Visible = true;
+            this.p_FormDevice.Activate();
         }
 
         private void menuItemViewStatus_Click(object sender, EventArgs e)
         {
-            this.pFormStatus.Visible = true;
-            this.pFormStatus.Activate();
+            this.p_FormStatus.Visible = true;
+            this.p_FormStatus.Activate();
         }
 
         #endregion

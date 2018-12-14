@@ -1,4 +1,5 @@
 ﻿using CL_Framework;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,19 +18,19 @@ namespace CL_Main
 {
     public partial class FormData : DockContent
     {
+        /************************************************************************************/
         private readonly static int SEND_MODE_NORMAL = 0;
         private readonly static int SEND_MODE_LIST = 1;
         private readonly static string[] SEND_MODE_DESC = new string[] { "普通发送模式", "列表发送模式" };
-
-        private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
+        private readonly static ILog Logger = log4net.LogManager.GetLogger("info");
+        /************************************************************************************/
+        private DeviceGroup p_DeviceGroup = DeviceGroup.CreateInstance();
         private Channel channel = null;
-        private UCNormalSendMode pUCSendModeNormal = null;
-        private UCListSendMode pUCSendModeList = null;
-
-        private List<CANData> pCANDataQueue = new List<CANData>();
-
-        private int sendMode = SEND_MODE_LIST;
-
+        private UCListSendMode p_UCSendModeList = null;
+        private UCNormalSendMode p_UCSendModeNormal = null;
+        private List<CAN_DATA> p_CANDataQueue = new List<CAN_DATA>();
+        private int m_SendMode = SEND_MODE_LIST;
+        /************************************************************************************/
         #region public apis
 
         public FormData(Channel channel)
@@ -49,10 +51,10 @@ namespace CL_Main
         private void Init()
         {
             this.Text = channel.ChannelName;
-            this.pUCSendModeNormal = new UCNormalSendMode(this.channel);
-            this.pUCSendModeList = new UCListSendMode(this.channel);
-            this.pnlSend.Controls.Add(this.pUCSendModeNormal);
-            this.pnlSend.Controls.Add(this.pUCSendModeList);
+            this.p_UCSendModeNormal = new UCNormalSendMode(this.channel);
+            this.p_UCSendModeList = new UCListSendMode(this.channel);
+            this.pnlSend.Controls.Add(this.p_UCSendModeNormal);
+            this.pnlSend.Controls.Add(this.p_UCSendModeList);
 
             if (channel.IsStarted)
             {
@@ -65,45 +67,51 @@ namespace CL_Main
                 this.btnStartReset.Image = global::CL_Main.Properties.Resources.start;
             }
 
-            pDeviceGroup.ChannelUpdated += new ChannelEventHandler(this.UpdateChannel);
+            p_DeviceGroup.ChannelUpdated += new ChannelEventHandler(this.UpdateChannel);
 
             ChangeSendMode();
         }
 
         private void Finish()
         {
-            pDeviceGroup.ChannelUpdated -= this.UpdateChannel;
+            p_DeviceGroup.ChannelUpdated -= this.UpdateChannel;
             this.Dispose();
         }
 
         private void ChangeSendMode()
         {
-            if (sendMode == SEND_MODE_NORMAL)
+            if (m_SendMode == SEND_MODE_NORMAL)
             {
-                sendMode = SEND_MODE_LIST;
-                this.pUCSendModeNormal.Dock = DockStyle.None;
-                this.pUCSendModeNormal.Visible = false;
-                this.pUCSendModeList.Dock = DockStyle.Fill;
-                this.pUCSendModeList.Visible = true;
+                m_SendMode = SEND_MODE_LIST;
+                this.p_UCSendModeNormal.Dock = DockStyle.None;
+                this.p_UCSendModeNormal.Visible = false;
+                this.p_UCSendModeList.Dock = DockStyle.Fill;
+                this.p_UCSendModeList.Visible = true;
             }
             else
             {
-                sendMode = SEND_MODE_NORMAL;
-                this.pUCSendModeList.Dock = DockStyle.None;
-                this.pUCSendModeList.Visible = false;
-                this.pUCSendModeNormal.Dock = DockStyle.Fill;
-                this.pUCSendModeNormal.Visible = true;
+                m_SendMode = SEND_MODE_NORMAL;
+                this.p_UCSendModeList.Dock = DockStyle.None;
+                this.p_UCSendModeList.Visible = false;
+                this.p_UCSendModeNormal.Dock = DockStyle.Fill;
+                this.p_UCSendModeNormal.Visible = true;
             }
-            this.btnSendMode.Text = SEND_MODE_DESC[this.sendMode];
+            this.btnSendMode.Text = SEND_MODE_DESC[this.m_SendMode];
         }
 
-        private void ReceiveData(CAN_FRAME pCANFrame)
+        private void Receive()
         {
-            long queueIndex = this.pCANDataQueue.Count + 1;
-            int index = this.dgvData.Rows.Add();
-            DataGridViewRow row = this.dgvData.Rows[index];
-            CANData pCANData = new CANData(queueIndex, pCANFrame, row);
-            this.pCANDataQueue.Add(pCANData);
+            CAN_FRAME[] pCANFrames;
+            uint nRealNum = channel.Receive(out pCANFrames, channel.GetRcvBufSize());
+
+            for (int index = 0; index < pCANFrames.Length; index++)
+            {
+                long mQueueIndex = this.p_CANDataQueue.Count + 1;
+                int nRowIndex = this.dgvData.Rows.Add();
+                DataGridViewRow row = this.dgvData.Rows[nRowIndex];
+                CAN_DATA pCANData = new CAN_DATA(mQueueIndex, pCANFrames[index], row);
+                this.p_CANDataQueue.Add(pCANData);
+            }
         }
 
         #endregion
@@ -159,7 +167,7 @@ namespace CL_Main
                 {
                     if (channel.ResetCAN() == (uint)CAN_RESULT.SUCCESSFUL)
                     {
-                        pDeviceGroup.UpdateChannel(channel);
+                        p_DeviceGroup.UpdateChannel(channel);
                         return;
                     }
                     MessageBox.Show(string.Format("复位当前CAN通道[{0}]失败.", channel.ChannelName));
@@ -169,7 +177,7 @@ namespace CL_Main
             {
                 if (channel.StartCAN() == (uint)CAN_RESULT.SUCCESSFUL)
                 {
-                    pDeviceGroup.UpdateChannel(channel);
+                    p_DeviceGroup.UpdateChannel(channel);
                     return;
                 }
                 else
@@ -191,19 +199,10 @@ namespace CL_Main
 
         private void rcvTimer_Tick(object sender, EventArgs e)
         {
-            if (channel.RcvBufQueue.Count > 0)
+            if (channel.GetRcvBufSize() > 0)
             {
                 this.rcvTimer.Stop();
-
-                int count = channel.RcvBufQueue.Count;
-                for (int index = 0; index < count; index++)
-                {
-                    CAN_FRAME pCANFrame;
-                    if (channel.RcvBufQueue.TryDequeue(out pCANFrame))
-                    {
-                        ReceiveData(pCANFrame);
-                    }
-                }
+                this.Receive();
                 this.rcvTimer.Start();
             }
         }
@@ -212,8 +211,9 @@ namespace CL_Main
 
     }
 
-    class CANData
+    class CAN_DATA
     {
+        /************************************************************************************/
         private static readonly string DATA_FRAME_DESC = "DATA";
         private static readonly string REMOTE_FRAME_DESC = "RTR";
         private static readonly string STANDARD_FRAME_DESC = "STANDARD";
@@ -222,54 +222,52 @@ namespace CL_Main
         private static readonly string SEND_FAILED_DESC = "发送失败";
         private static readonly string RECEIVE_SUCCESS_DESC = "接收成功";
         private static readonly string RECEIVE_FAILED_DESC = "接收失败";
-
-        private long queueIndex;
+        /************************************************************************************/
+        private long m_QueueIndex;
         private DataGridViewRow row = null;
-        private CAN_FRAME pCANFrame;
-        
+        private CAN_FRAME p_CANFrame;
+        /************************************************************************************/
         public DataGridViewRow Row
         { get { return this.row; } }
-
         public bool Visible
         { get { return this.row.Visible; } set { this.row.Visible = value; } }
-
         public long QueueIndex
-        { get { return this.queueIndex; } }
-
-        public CANData(long queueIndex, CAN_FRAME pCANFrame, DataGridViewRow row)
+        { get { return this.m_QueueIndex; } }
+        /************************************************************************************/
+        public CAN_DATA(long mQueueIndex, CAN_FRAME pCANFrame, DataGridViewRow row)
         {
-            this.queueIndex = queueIndex;
-            this.pCANFrame = pCANFrame;
+            this.m_QueueIndex = mQueueIndex;
+            this.p_CANFrame = pCANFrame;
             this.row = row;
             this.Init();
         }
 
-        private void Init()
+        unsafe private void Init()
         {
             //queue index
-            this.row.Cells[0].Value = this.queueIndex;
+            this.row.Cells[0].Value = this.m_QueueIndex;
             //local time
-            this.row.Cells[1].Value = this.pCANFrame.Time.ToString();
+            this.row.Cells[1].Value = this.p_CANFrame.Time.ToString();
             //time stamp
             this.row.Cells[2].Value = string.Empty;
-            if (this.pCANFrame.CANObj.TimeFlag == (byte)CAN_FRAME_TIME_FLAG.INVALID)
+            if (this.p_CANFrame.CANObj.TimeFlag == (byte)CAN_FRAME_TIME_FLAG.INVALID)
             {
-                this.row.Cells[2].Value = this.pCANFrame.CANObj.TimeStamp;
+                this.row.Cells[2].Value = this.p_CANFrame.CANObj.TimeStamp;
             }
             //can send/receive status
-            if (this.pCANFrame.Direction == CAN_FRAME_DIRECTION.RECEIVE)
+            if (this.p_CANFrame.Direction == CAN_FRAME_DIRECTION.RECEIVE)
             {
-                this.row.Cells[3].Value = this.pCANFrame.Status == CAN_FRAME_STATUS.SUCCESS ? RECEIVE_SUCCESS_DESC : RECEIVE_FAILED_DESC;
+                this.row.Cells[3].Value = this.p_CANFrame.Status == CAN_FRAME_STATUS.SUCCESS ? RECEIVE_SUCCESS_DESC : RECEIVE_FAILED_DESC;
             }
             else
             {
-                this.row.Cells[3].Value = this.pCANFrame.Status == CAN_FRAME_STATUS.SUCCESS ? SEND_SUCCESS_DESC : SEND_FAILED_DESC;
+                this.row.Cells[3].Value = this.p_CANFrame.Status == CAN_FRAME_STATUS.SUCCESS ? SEND_SUCCESS_DESC : SEND_FAILED_DESC;
             }
 
             //can id
-            this.row.Cells[4].Value = this.pCANFrame.CANObj.ID.ToString("x");
+            this.row.Cells[4].Value = this.p_CANFrame.CANObj.ID.ToString("x");
             //can frame type
-            if (this.pCANFrame.CANObj.RemoteFlag == (byte)CAN_FRAME_TYPE.DATA_FRAME)
+            if (this.p_CANFrame.CANObj.RemoteFlag == (byte)CAN_FRAME_TYPE.DATA_FRAME)
             {
                 this.row.Cells[5].Value = DATA_FRAME_DESC;
             }
@@ -278,7 +276,7 @@ namespace CL_Main
                 this.row.Cells[5].Value = REMOTE_FRAME_DESC;
             }
             //can frame format
-            if (this.pCANFrame.CANObj.ExternFlag == (byte)CAN_FRAME_FORMAT.STANDARD_FRAME)
+            if (this.p_CANFrame.CANObj.ExternFlag == (byte)CAN_FRAME_FORMAT.STANDARD_FRAME)
             {
                 this.row.Cells[6].Value = STANDARD_FRAME_DESC;
             }
@@ -287,9 +285,20 @@ namespace CL_Main
                 this.row.Cells[6].Value = EXTENDED_FRAME_DESC;
             }
             //can data length
-            this.row.Cells[7].Value = this.pCANFrame.CANObj.DataLen;
+            this.row.Cells[7].Value = this.p_CANFrame.CANObj.DataLen;
             //can data
-            this.row.Cells[8].Value = string.Join(" ", this.pCANFrame.CANObj.Data);
+
+            StringBuilder sb = new StringBuilder();
+            //byte[] data = new byte[CAN.FRAME_DATA_LENGTH_MAXIMUM];
+            fixed (byte* pData = this.p_CANFrame.CANObj.Data)
+            {
+                //Marshal.Copy((IntPtr)pData, data, 0, (int)CAN.FRAME_DATA_LENGTH_MAXIMUM);
+                for (int index = 0; index < this.p_CANFrame.CANObj.DataLen; index++)
+                {
+                    sb.Append(Convert.ToString(pData[index], 16)).Append(" ");
+                }
+            }
+            this.row.Cells[8].Value = string.Join(" ", sb.ToString().Trim());
         }
 
     }

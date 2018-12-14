@@ -18,18 +18,18 @@ namespace CL_Main
 {
     public partial class FormDevice : DockContent
     {
+        /************************************************************************************/
         private static readonly ILog Logger = log4net.LogManager.GetLogger("info");
-
-        private DeviceGroup pDeviceGroup = DeviceGroup.CreateInstance();
-        private Device selectedDevice = null;
-        private Channel selectedChannel = null;
-
+        /************************************************************************************/
+        private DeviceGroup p_DeviceGroup = DeviceGroup.CreateInstance();
+        private Device p_SelectedDevice = null;
+        private Channel p_SelectedChannel = null;
+        /************************************************************************************/
         public Device SelectedDevice
-        { get { return selectedDevice; } }
-
+        { get { return p_SelectedDevice; } }
         public Channel SelectedChannel
-        { get { return selectedChannel; } }
-
+        { get { return p_SelectedChannel; } }
+        /************************************************************************************/
         #region public apis
 
         public FormDevice()
@@ -87,29 +87,29 @@ namespace CL_Main
                 dgvChannels.Rows.Remove(row);
             }
 
-            if (object.ReferenceEquals(device, this.selectedDevice))
+            if (object.ReferenceEquals(device, this.p_SelectedDevice))
             {
-                this.selectedDevice = null;
+                this.p_SelectedChannel = null;
                 this.tbxDevice.Text = string.Empty;
             }
 
-            if (this.selectedChannel != null && object.ReferenceEquals(device, this.selectedChannel.ParentDevice))
+            if (this.p_SelectedChannel != null && object.ReferenceEquals(device, this.p_SelectedChannel.ParentDevice))
             {
-                this.selectedChannel = null;
+                this.p_SelectedChannel = null;
                 this.tbxCAN.Text = string.Empty;
             }
         }
 
         public void ChangeSelectedDevice(Device device, object paras)
         {
-            Device oldSelectedDevice = this.selectedDevice;
+            Device oldSelectedDevice = this.p_SelectedDevice;
             if (object.ReferenceEquals(oldSelectedDevice, device))
             {
                 Logger.Info("selected device no change");
                 return;
             }
 
-            this.selectedDevice = device;
+            this.p_SelectedDevice = device;
             this.tbxDevice.Text = device == null ? string.Empty : device.GetDeviceName();
 
             List<DataGridViewRow> oldSelectedDeviceMappingRows = FindMappingRows(oldSelectedDevice);
@@ -147,27 +147,27 @@ namespace CL_Main
 
         private void Init()
         {
-            pDeviceGroup.DeviceAdded += new DeviceEventHandler(this.AddDevice);
-            pDeviceGroup.DeviceRemoved += new DeviceEventHandler(this.RemoveDevice);
-            pDeviceGroup.DeviceUpdated += new DeviceEventHandler(this.UpdateDevice);
-            pDeviceGroup.SelectedDeviceChanged += new DeviceEventHandler(this.ChangeSelectedDevice);
-            pDeviceGroup.ChannelUpdated += new ChannelEventHandler(this.UpdateChannel);
+            p_DeviceGroup.DeviceAdded += new DeviceEventHandler(this.AddDevice);
+            p_DeviceGroup.DeviceRemoved += new DeviceEventHandler(this.RemoveDevice);
+            p_DeviceGroup.DeviceUpdated += new DeviceEventHandler(this.UpdateDevice);
+            p_DeviceGroup.SelectedDeviceChanged += new DeviceEventHandler(this.ChangeSelectedDevice);
+            p_DeviceGroup.ChannelUpdated += new ChannelEventHandler(this.UpdateChannel);
         }
 
         private void Finish()
         {
-            pDeviceGroup.DeviceAdded -= this.AddDevice;
-            pDeviceGroup.DeviceRemoved -= this.RemoveDevice;
-            pDeviceGroup.DeviceUpdated -= this.UpdateDevice;
-            pDeviceGroup.SelectedDeviceChanged -= this.ChangeSelectedDevice;
-            pDeviceGroup.ChannelUpdated -= this.UpdateChannel;
+            p_DeviceGroup.DeviceAdded -= this.AddDevice;
+            p_DeviceGroup.DeviceRemoved -= this.RemoveDevice;
+            p_DeviceGroup.DeviceUpdated -= this.UpdateDevice;
+            p_DeviceGroup.SelectedDeviceChanged -= this.ChangeSelectedDevice;
+            p_DeviceGroup.ChannelUpdated -= this.UpdateChannel;
 
             this.Dispose();
         }
 
         private void ChangeSelectedChannel()
         {
-            Channel oldSelectedChannel = this.selectedChannel;
+            Channel oldSelectedChannel = this.p_SelectedChannel;
             Channel newSelectedChannel = GetSelectedChannel();
 
             if (object.ReferenceEquals(oldSelectedChannel, newSelectedChannel))
@@ -176,8 +176,8 @@ namespace CL_Main
                 return;
             }
 
-            this.selectedChannel = newSelectedChannel;
-            this.tbxCAN.Text = this.selectedChannel == null ? string.Empty : newSelectedChannel.ChannelName;
+            this.p_SelectedChannel = newSelectedChannel;
+            this.tbxCAN.Text = this.p_SelectedChannel == null ? string.Empty : newSelectedChannel.ChannelName;
         }
 
         private Channel GetSelectedChannel()

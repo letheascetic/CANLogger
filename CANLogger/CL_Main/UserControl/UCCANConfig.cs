@@ -13,7 +13,7 @@ namespace CL_Main
     public partial class UCCANConfig : UserControl
     {
         private Channel channel = null;
-        private bool isConfigured = false;
+        private bool m_IsConfigured = false;
 
         public UCCANConfig(Channel channel)
         {
@@ -39,7 +39,7 @@ namespace CL_Main
             CAN_MODE mode = (CAN_MODE)Enum.ToObject(typeof(CAN_MODE), this.cbxCANMode.SelectedIndex);
             int baudRate = Convert.ToInt32(cbxCANBaudRate.SelectedItem);
 
-            if (isConfigured && mode == channel.Mode && baudRate == channel.BaudRate)
+            if (m_IsConfigured && mode == channel.Mode && baudRate == channel.BaudRate)
             {
                 // already configured, no need to update
                 return true;
@@ -50,10 +50,10 @@ namespace CL_Main
 
             if (channel.InitCAN(baudRate, ref config) != (uint)CAN_RESULT.SUCCESSFUL)
             {
-                isConfigured = false;
+                m_IsConfigured = false;
                 return false;
             }
-            isConfigured = true;
+            m_IsConfigured = true;
             return true;
         }
 
