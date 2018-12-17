@@ -112,6 +112,26 @@ namespace CL_Main
             }
         }
 
+        private void GetSended()
+        {
+            uint length = channel.GetSendedBufSize();
+            CAN_FRAME[] pCANFrames;
+            uint nRealNum = channel.GetSended(out pCANFrames, length);
+
+            Logger.Info(string.Format("FormData[{0}] gets [{1}/{2}] frames from sended buf queue.", channel.ChannelName, nRealNum, length));
+            lock (locker)
+            {
+                for (int index = 0; index < pCANFrames.Length; index++)
+                {
+                    long mQueueIndex = this.p_CANDataQueue.Count + 1;
+                    int nRowIndex = this.dgvData.Rows.Add();
+                    DataGridViewRow row = this.dgvData.Rows[nRowIndex];
+                    CAN_DATA pCANData = new CAN_DATA(mQueueIndex, pCANFrames[index], row);
+                    this.p_CANDataQueue.Add(pCANData);
+                }
+            }
+        }
+
         #endregion
 
         public void SetLanguage(string language)
@@ -132,13 +152,13 @@ namespace CL_Main
             {
                 if (channel.IsStarted)
                 {
-                    this.rcvTimer.Start();
+                    this.displayTimer.Start();
                     this.btnStartReset.Text = "复位CAN";
                     this.btnStartReset.Image = global::CL_Main.Properties.Resources.stop;
                 }
                 else
                 {
-                    this.rcvTimer.Stop();
+                    this.displayTimer.Stop();
                     this.btnStartReset.Text = "启动CAN";
                     this.btnStartReset.Image = global::CL_Main.Properties.Resources.start;
                 }
@@ -197,13 +217,20 @@ namespace CL_Main
             Finish();
         }
 
-        private void rcvTimer_Tick(object sender, EventArgs e)
+        private void displayTimer_Tick(object sender, EventArgs e)
         {
-            if (channel.GetRcvBufSize() > 0)
+            if (channel.GetRcvBufSize() > 0 || channel.GetSendedBufSize() > 0)
             {
-                this.rcvTimer.Stop();
-                this.Receive();
-                this.rcvTimer.Start();
+                this.displayTimer.Stop();
+                if (channel.GetRcvBufSize() > 0)
+                {
+                    this.Receive();
+                }
+                if (channel.GetSendedBufSize() > 0)
+                {
+                    this.GetSended();
+                }
+                this.displayTimer.Start();
             }
         }
 
@@ -247,9 +274,9 @@ namespace CL_Main
             //queue index
             this.row.Cells[0].Value = this.m_QueueIndex;
             //local time
-            this.row.Cells[1].Value = this.p_CANFrame.Time.ToString();
+            this.row.Cells[1].Value = this.p_CANFrame.Time.ToString("yyyy-MM-dd hh:mm:ss.ffff");
             //time stamp
-            this.row.Cells[2].Value = string.Empty;
+            this.row.Cells[2].Value = this.p_CANFrame.CANObj.TimeStamp.ToString("N0");
             if (this.p_CANFrame.CANObj.TimeFlag == (byte)CAN_FRAME_TIME_FLAG.INVALID)
             {
                 this.row.Cells[2].Value = this.p_CANFrame.CANObj.TimeStamp;

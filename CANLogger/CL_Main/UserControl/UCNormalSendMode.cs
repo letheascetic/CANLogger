@@ -191,7 +191,23 @@ namespace CL_Main
             for (uint index = 0; index < mSendNum; index++)
             {
                 CAN_OBJ pCANObj = new CAN_OBJ();
-                pCANObj.ID = incID ? id + index : id;
+                if (!incID)
+                {
+                    pCANObj.ID = id;
+                }
+                else
+                {
+                    pCANObj.ID = id + index;
+                    if (mFrameFormat == CAN_FRAME_FORMAT.STANDARD_FRAME && pCANObj.ID > CAN.STANDARD_FRAME_ID_MAXIMUM)
+                    {
+                        pCANObj.ID = CAN.STANDARD_FRAME_ID_MAXIMUM;
+                    }
+                    else if (mFrameFormat == CAN_FRAME_FORMAT.EXTENDED_FRAME && pCANObj.ID > CAN.EXTENDED_FRAME_ID_MAXIMUM)
+                    {
+                        pCANObj.ID = CAN.EXTENDED_FRAME_ID_MAXIMUM;
+                    }
+                }
+                //pCANObj.ID = incID ? id + index : id;
                 pCANObj.DataLen = mDataLen;
 
                 ulong ulData = incData ? data + index : data;
@@ -203,7 +219,7 @@ namespace CL_Main
                 pCANObj.TimeFlag = (byte)CAN_FRAME_TIME_FLAG.INVALID;
                 pCANObj.TimeStamp = 0;
 
-                pCANFrames[index] = new CAN_FRAME(pCANObj, DateTime.Now, CAN_FRAME_DIRECTION.SEND, CAN_FRAME_STATUS.FAILED);
+                pCANFrames[index] = new CAN_FRAME(pCANObj, DateTime.Now, CAN_FRAME_DIRECTION.SEND, CAN_FRAME_STATUS.UNKNOWN);
             }
             return pCANFrames;
         }

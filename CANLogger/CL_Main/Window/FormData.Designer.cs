@@ -59,7 +59,7 @@
             this.btnSave = new System.Windows.Forms.ToolStripButton();
             this.btnRTSave = new System.Windows.Forms.ToolStripButton();
             this.sp3 = new System.Windows.Forms.ToolStripSeparator();
-            this.rcvTimer = new System.Windows.Forms.Timer(this.components);
+            this.displayTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -285,9 +285,9 @@
             this.sp3.Name = "sp3";
             resources.ApplyResources(this.sp3, "sp3");
             // 
-            // rcvTimer
+            // displayTimer
             // 
-            this.rcvTimer.Tick += new System.EventHandler(this.rcvTimer_Tick);
+            this.displayTimer.Tick += new System.EventHandler(this.displayTimer_Tick);
             // 
             // FormData
             // 
@@ -338,7 +338,7 @@
         private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.Panel pnlReceiveIcon;
         private System.Windows.Forms.Panel pnlSend;
-        private System.Windows.Forms.Timer rcvTimer;
+        private System.Windows.Forms.Timer displayTimer;
         private System.Windows.Forms.DataGridViewTextBoxColumn cNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTimeStamp;

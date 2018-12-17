@@ -77,7 +77,8 @@ namespace CL_Framework
     public enum CAN_FRAME_STATUS : byte
     {
         SUCCESS = 0,    //发送或接收成功
-        FAILED = 1      //发送或接收失败
+        FAILED = 1,     //发送或接收失败
+        UNKNOWN = 255
     }
 
     /// <summary>
@@ -129,11 +130,12 @@ namespace CL_Framework
         public static readonly uint CAN_DLL_RESULT_SUCCESS = 1;
         public static readonly uint CAN_DLL_RESULT_FAILED = 0;
         ///////////////////////////////////////////////////////////////////////////////////////////
-        public static readonly uint STANDARD_FRAME_ID_MAXIMUM = 0x000001FF;
+        public static readonly uint STANDARD_FRAME_ID_MAXIMUM = 0x000007FF;
         public static readonly uint EXTENDED_FRAME_ID_MAXIMUM = 0x1FFFFFFF;
         public static readonly uint FRAME_DATA_LENGTH_MAXIMUM = 8;
         ///////////////////////////////////////////////////////////////////////////////////////////
-        public static readonly uint CHANNEL_REC_BUF_MAXIMUM = 130000;
+        public static readonly uint CHANNEL_RCV_BUF_MAXIMUM = 130000;
+        public static readonly uint CHANNEL_SEND_BUF_MAXIMUM = 130000;
         public static readonly int CHANNEL_DEFAULT_BAUDRATE = 1000;
         public static readonly uint CHANNEL_DEFAULT_ACC_CODE = 0x0;
         public static readonly uint CHANNEL_DEFAULT_ACC_MASK = 0xffffffff;

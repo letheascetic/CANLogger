@@ -501,7 +501,7 @@
   <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="rcvTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="displayTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>296, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -950,10 +950,10 @@
   <data name="&gt;&gt;sp3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;rcvTimer.Name" xml:space="preserve">
-    <value>rcvTimer</value>
+  <data name="&gt;&gt;displayTimer.Name" xml:space="preserve">
+    <value>displayTimer</value>
   </data>
-  <data name="&gt;&gt;rcvTimer.Type" xml:space="preserve">
+  <data name="&gt;&gt;displayTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

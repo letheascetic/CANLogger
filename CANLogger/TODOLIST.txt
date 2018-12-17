@@ -1,0 +1,6 @@
+1 send CAN Frames logic struct design:
+	双线程安全队列，一个待发送队列，一个已发送队列
+	定时器实现循环发送，一次发送单个Frame
+
+	
+
