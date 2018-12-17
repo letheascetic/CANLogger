@@ -9,10 +9,21 @@ namespace CL_Framework
     public enum CAN_RESULT : uint
     {
         SUCCESSFUL = 0x00000000,
-        ERR_DEVICEOPENED = 0x00000100,
-        ERR_DEVICEOPEN = 0x00000200,
-        ERR_DEVICENOTOPEN = 0x00000400,
-        ERR_UNKNOWN = 0xFFFFFFFF
+        ERR_CAN_OVERFLOW = 0x00000001,      //CAN控制器内部FIFO溢出
+        ERR_CAN_ERRALARM = 0x00000002,      //CAN控制器错误报警
+        ERR_CAN_PASSIVE = 0x00000004,       //CAN控制器消极错误
+        ERR_CAN_LOSE = 0x00000008,          //CAN控制器仲裁丢失
+        ERR_CAN_BUSERR = 0x00000010,        //CAN控制器总线错误
+        ERR_CAN_BUSOFF = 0x00000020,        //CAN控制器总线关闭
+        ERR_DEVICEOPENED = 0x00000100,      //设备已经打开
+        ERR_DEVICEOPEN = 0x00000200,        //打开设备错误
+        ERR_DEVICENOTOPEN = 0x00000400,     //设备没有打开
+        ERR_BUFFEROVERFLOW = 0x00000800,    //缓冲区溢出
+        ERR_DEVICENOTEXIST = 0x00001000,    //此设备不存在
+        ERR_LOADKERNELDLL = 0x00002000,     //装载动态库失败
+        ERR_CMDFAILED = 0x00004000,         //执行命令失败错误码
+        ERR_BUFFERCREATE = 0x00008000,      //内存不足
+        ERR_UNKNOWN = 0x80000000            //未知错误
     }
 
     /// <summary>
@@ -125,10 +136,35 @@ namespace CL_Framework
         }
     }
 
+    public struct CAN_ERR_DETAIL
+    {
+        public uint ErrCode;
+        public string Descreption;
+        public string Detail;
+    }
+
     public static class CAN
     {
+        ///////////////////////////////////////////////////////////////////////////////////////////
         public static readonly uint CAN_DLL_RESULT_SUCCESS = 1;
         public static readonly uint CAN_DLL_RESULT_FAILED = 0;
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        public static readonly string CAN_RESULT_SUCCESSFUL = "操作成功";
+        public static readonly string CAN_RESULT_ERR_CAN_OVERFLOW = "CAN控制器内部FIFO溢出";
+        public static readonly string CAN_RESULT_ERR_CAN_ERRALARM = "CAN控制器错误报警";
+        public static readonly string CAN_RESULT_ERR_CAN_PASSIVE = "CAN控制器消极错误";
+        public static readonly string CAN_RESULT_ERR_CAN_LOSE = "CAN控制器仲裁丢失";
+        public static readonly string CAN_RESULT_ERR_CAN_BUSERR = "CAN控制器总线错误";
+        public static readonly string CAN_RESULT_ERR_CAN_BUSOFF = "CAN控制器总线关闭";
+        public static readonly string CAN_RESULT_ERR_DEVICEOPENED = "设备已经打开";
+        public static readonly string CAN_RESULT_ERR_DEVICEOPEN = "打开设备错误";
+        public static readonly string CAN_RESULT_ERR_DEVICENOTOPEN = "设备没有打开";
+        public static readonly string CAN_RESULT_ERR_BUFFEROVERFLOW = "缓冲区溢出";
+        public static readonly string CAN_RESULT_ERR_DEVICENOTEXIST = "此设备不存在";
+        public static readonly string CAN_RESULT_ERR_LOADKERNELDLL = "装载动态库失败";
+        public static readonly string CAN_RESULT_ERR_CMDFAILED = "执行命令失败错误码";
+        public static readonly string CAN_RESULT_ERR_BUFFERCREATE = "内存不足";
+        public static readonly string CAN_RESULT_ERR_UNKNOWN = "未知错误";
         ///////////////////////////////////////////////////////////////////////////////////////////
         public static readonly uint STANDARD_FRAME_ID_MAXIMUM = 0x000007FF;
         public static readonly uint EXTENDED_FRAME_ID_MAXIMUM = 0x1FFFFFFF;
@@ -164,6 +200,7 @@ namespace CL_Framework
         public static readonly Hashtable CAN_SEND_MODE_LIST = new Hashtable();
         public static readonly Hashtable CAN_FRAME_TYPE_LIST = new Hashtable();
         public static readonly Hashtable CAN_FRAME_FORMAT_LIST = new Hashtable();
+        public static readonly Hashtable CAN_RESULT_MAPPING = new Hashtable();
         ///////////////////////////////////////////////////////////////////////////////////////////
         static CAN()
         {
@@ -183,6 +220,23 @@ namespace CL_Framework
 
             CAN_FRAME_FORMAT_LIST.Add(CAN_FRAME_FORMAT_STANDARD_FRAME, CAN_FRAME_FORMAT.STANDARD_FRAME);
             CAN_FRAME_FORMAT_LIST.Add(CAN_FRAME_FORMAT_EXTEND_FRAME, CAN_FRAME_FORMAT.EXTENDED_FRAME);
+
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.SUCCESSFUL, CAN_RESULT_SUCCESSFUL);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_CAN_OVERFLOW, CAN_RESULT_ERR_CAN_OVERFLOW);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_CAN_ERRALARM, CAN_RESULT_ERR_CAN_ERRALARM);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_CAN_PASSIVE, CAN_RESULT_ERR_CAN_PASSIVE);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_CAN_LOSE, CAN_RESULT_ERR_CAN_LOSE);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_CAN_BUSERR, CAN_RESULT_ERR_CAN_BUSERR);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_CAN_BUSOFF, CAN_RESULT_ERR_CAN_BUSOFF);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_DEVICEOPENED, CAN_RESULT_ERR_DEVICEOPENED);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_DEVICEOPEN, CAN_RESULT_ERR_DEVICEOPEN);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_DEVICENOTOPEN, CAN_RESULT_ERR_DEVICENOTOPEN);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_BUFFEROVERFLOW, CAN_RESULT_ERR_BUFFEROVERFLOW);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_DEVICENOTEXIST, CAN_RESULT_ERR_DEVICENOTEXIST);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_LOADKERNELDLL, CAN_RESULT_ERR_LOADKERNELDLL);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_CMDFAILED, CAN_RESULT_ERR_CMDFAILED);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_BUFFERCREATE, CAN_RESULT_ERR_BUFFERCREATE);
+            CAN_RESULT_MAPPING.Add(CAN_RESULT.ERR_UNKNOWN, CAN_RESULT_ERR_UNKNOWN);
         }
 
         public static string FindKey(object value, Hashtable table)
@@ -317,6 +371,158 @@ namespace CL_Framework
                     pInitConfig.Timing1 = 0x14;
                     break;
             }
+        }
+
+        /// <summary>
+        /// 获取对应的错误说明
+        /// </summary>
+        /// <param name="pCANErrInfo"></param>
+        /// <returns></returns>
+        public static CAN_ERR_DETAIL[] GetErrDetail(CAN_ERR_INFO pCANErrInfo)
+        {
+            List<CAN_ERR_DETAIL> pCANErrDetails = new List<CAN_ERR_DETAIL>();
+            foreach (CAN_RESULT pCANResult in CAN_RESULT_MAPPING.Keys)
+            {
+                if ((pCANErrInfo.ErrCode & (uint)pCANResult) != 0)
+                {
+                    CAN_ERR_DETAIL pCANErrDetail = new CAN_ERR_DETAIL();
+                    pCANErrDetail.ErrCode = (uint)CAN_RESULT.ERR_CAN_OVERFLOW;
+                    pCANErrDetail.Descreption = CAN_RESULT_MAPPING[CAN_RESULT.ERR_CAN_OVERFLOW].ToString();
+                    pCANErrDetail.Detail = string.Empty;
+
+                    if (pCANResult == CAN_RESULT.ERR_CAN_PASSIVE)
+                    {
+                        StringBuilder pDetail = new StringBuilder("错误类型:");
+                        switch ((pCANErrInfo.PassiveErrData1 & 0xc0) >> 6)
+                        {
+                            case 0:
+                                pDetail.Append("位错误");
+                                break;
+                            case 1:
+                                pDetail.Append("格式错误");
+                                break;
+                            case 2:
+                                pDetail.Append("填充错误");
+                                break;
+                            case 3:
+                            default:
+                                pDetail.Append("其他错误");
+                                break;
+                        }
+                        pDetail.Append("|传输方向:");
+                        pDetail.Append((pCANErrInfo.PassiveErrData1 & 0x20) == 0 ? "发送" : "接收");
+                        pDetail.Append("|错误位置:");
+                        switch (pCANErrInfo.PassiveErrData1 & 0x1f)
+                        {
+                            case 0x03:
+                                pDetail.Append("帧开始");
+                                break;
+                            case 0x02:
+                                pDetail.Append("ID.28-ID.21");
+                                break;
+                            case 0x06:
+                                pDetail.Append("ID.20-ID.18");
+                                break;
+                            case 0x04:
+                                pDetail.Append("SRTR位");
+                                break;
+                            case 0x05:
+                                pDetail.Append("IDE位");
+                                break;
+                            case 0x07:
+                                pDetail.Append("ID.17-ID.13");
+                                break;
+                            case 0x0f:
+                                pDetail.Append("ID.12-ID.5");
+                                break;
+                            case 0x0e:
+                                pDetail.Append("ID.4-ID.0");
+                                break;
+                            case 0x0c:
+                                pDetail.Append("RTR位");
+                                break;
+                            case 0x0b:
+                                pDetail.Append("数据长度");
+                                break;
+                            case 0x0a:
+                                pDetail.Append("数据区");
+                                break;
+                            case 0x08:
+                                pDetail.Append("CRC序列");
+                                break;
+                            case 0x18:
+                                pDetail.Append("CRC定义符");
+                                break;
+                            case 0x19:
+                                pDetail.Append("应答通道");
+                                break;
+                            case 0x1b:
+                                pDetail.Append("应答定义符");
+                                break;
+                            case 0x1a:
+                                pDetail.Append("帧结束");
+                                break;
+                            case 0x12:
+                                pDetail.Append("中止");
+                                break;
+                            case 0x11:
+                                pDetail.Append("活动错误标志");
+                                break;
+                            case 0x16:
+                                pDetail.Append("消极错误标志");
+                                break;
+                            case 0x13:
+                                pDetail.Append("支配(控制)位误差");
+                                break;
+                            case 0x17:
+                                pDetail.Append("错误定义符");
+                                break;
+                            case 0x1c:
+                                pDetail.Append("溢出标志");
+                                break;
+                            case 0x09:
+                            case 0x0d:
+                            default:
+                                pDetail.Append("无");
+                                break;
+                        }
+                        pDetail.Append("|接收错误计数器:").Append(pCANErrInfo.PassiveErrData2.ToString());
+                        pDetail.Append("|发送错误计数器:").Append(pCANErrInfo.PassiveErrData3.ToString());
+                        pCANErrDetail.Detail = pDetail.ToString();
+                    }
+                    else if (pCANResult == CAN_RESULT.ERR_CAN_LOSE)
+                    {
+                        StringBuilder pDetail = new StringBuilder("仲裁丢失位置:");
+                        switch (pCANErrInfo.ArLostErrData & 0x1f)
+                        {
+                            case 0x0b:
+                                pDetail.Append("SRTR位");
+                                break;
+                            case 0x0c:
+                                pDetail.Append("IDE位");
+                                break;
+                            case 0x1f:
+                                pDetail.Append("ERTR位");
+                                break;
+                            default:
+                                byte pos = (byte)(pCANErrInfo.ArLostErrData & 0x1f);
+                                if (pos <= 10)
+                                {
+                                    pDetail.Append("bit" + (pos + 1) + "位");
+                                }
+                                else
+                                {
+                                    pDetail.Append("bit" + (pos + 1) + "位");
+                                }
+                                break;
+                        }
+                        pCANErrDetail.Detail = pDetail.ToString();
+                    }
+
+                    pCANErrDetails.Add(pCANErrDetail);
+                }
+            }
+            return pCANErrDetails.ToArray();
         }
     }
 }
