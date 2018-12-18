@@ -70,11 +70,17 @@
     <Compile Include="Dialog\AboutUs.Designer.cs">
       <DependentUpon>AboutUs.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialog\DialogDevice.cs">
+    <Compile Include="Dialog\DeviceConfigDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialog\DialogDevice.Designer.cs">
-      <DependentUpon>DialogDevice.cs</DependentUpon>
+    <Compile Include="Dialog\DeviceConfigDialog.Designer.cs">
+      <DependentUpon>DeviceConfigDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\DisplayConfigDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\DisplayConfigDialog.Designer.cs">
+      <DependentUpon>DisplayConfigDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\UCCANConfig.cs">
       <SubType>UserControl</SubType>
@@ -135,11 +141,14 @@
     <EmbeddedResource Include="Dialog\AboutUs.resx">
       <DependentUpon>AboutUs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialog\DialogDevice.en.resx">
-      <DependentUpon>DialogDevice.cs</DependentUpon>
+    <EmbeddedResource Include="Dialog\DeviceConfigDialog.en.resx">
+      <DependentUpon>DeviceConfigDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialog\DialogDevice.resx">
-      <DependentUpon>DialogDevice.cs</DependentUpon>
+    <EmbeddedResource Include="Dialog\DeviceConfigDialog.resx">
+      <DependentUpon>DeviceConfigDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\DisplayConfigDialog.resx">
+      <DependentUpon>DisplayConfigDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UCCANConfig.resx">
       <DependentUpon>UCCANConfig.cs</DependentUpon>

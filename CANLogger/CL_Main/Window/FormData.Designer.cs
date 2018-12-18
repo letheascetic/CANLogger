@@ -238,6 +238,7 @@
             this.btnShowMode.Image = global::CL_Main.Properties.Resources.showmode;
             resources.ApplyResources(this.btnShowMode, "btnShowMode");
             this.btnShowMode.Name = "btnShowMode";
+            this.btnShowMode.Click += new System.EventHandler(this.btnShowMode_Click);
             // 
             // btnClear
             // 

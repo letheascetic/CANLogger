@@ -275,7 +275,7 @@ namespace CL_Main
 
         private void itemAddDevice_Click(object sender, EventArgs e)
         {
-            DialogDevice pDialogDevice = new DialogDevice(null);
+            DeviceConfigDialog pDialogDevice = new DeviceConfigDialog(null);
             if (pDialogDevice.ShowDialog() == DialogResult.OK)
             {
                 this.p_DeviceGroup.Add(pDialogDevice.GetDevice());
@@ -314,7 +314,7 @@ namespace CL_Main
                 MessageBox.Show("请选择要配置的设备.");
                 return;
             }
-            DialogDevice pDialogDevice = new DialogDevice(device);
+            DeviceConfigDialog pDialogDevice = new DeviceConfigDialog(device);
             if (pDialogDevice.ShowDialog() == DialogResult.OK)
             {
                 this.p_DeviceGroup.Update(pDialogDevice.GetDevice());

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace CL_Main
 {
-    public partial class DialogDevice : Form
+    public partial class DeviceConfigDialog : Form
     {
         /************************************************************************************/
         private static readonly ILog Logger = LogManager.GetLogger("info");
@@ -22,7 +22,7 @@ namespace CL_Main
         /************************************************************************************/
         #region public apis
 
-        public DialogDevice(Device device)
+        public DeviceConfigDialog(Device device)
         {
             InitializeComponent();
             this.device = device;

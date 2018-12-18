@@ -30,8 +30,10 @@ namespace CL_Main
         private UCNormalSendMode p_UCSendModeNormal = null;
         private readonly object locker = new object();
         private List<CAN_DATA> p_CANDataQueue = new List<CAN_DATA>();
-
         private int m_SendMode = SEND_MODE_LIST;
+        private DISPLAY_FRAME p_DisplayFrame;
+        /************************************************************************************/
+
         /************************************************************************************/
         #region public apis
 
@@ -59,6 +61,14 @@ namespace CL_Main
             this.p_UCSendModeList = new UCListSendMode(this.channel);
             this.pnlSend.Controls.Add(this.p_UCSendModeNormal);
             this.pnlSend.Controls.Add(this.p_UCSendModeList);
+
+            DISPLAY_FRAME pDisplayFrame = new DISPLAY_FRAME();
+            pDisplayFrame.DisplayMode = DISPLAY_MODE.ROLLING;
+            pDisplayFrame.ShowSendFrame = true;
+            pDisplayFrame.ShowErrorFrame = true;
+            pDisplayFrame.ShowFrameInterval = true;
+            pDisplayFrame.ShowLocalTime = false;
+            Display(pDisplayFrame, true);
 
             this.UpdateChannel(this.channel, null);
 
@@ -107,6 +117,7 @@ namespace CL_Main
                     int nRowIndex = this.dgvData.Rows.Add();
                     DataGridViewRow row = this.dgvData.Rows[nRowIndex];
                     CAN_DATA pCANData = new CAN_DATA(mQueueIndex, pCANFrames[index], row);
+                    pCANData.SetVisible(this.p_DisplayFrame.ShowSendFrame, this.p_DisplayFrame.ShowErrorFrame);
                     this.p_CANDataQueue.Add(pCANData);
                 }
             }
@@ -130,6 +141,51 @@ namespace CL_Main
                     this.p_CANDataQueue.Add(pCANData);
                 }
             }
+        }
+
+        private void Display(DISPLAY_FRAME pDisplayFrame, bool mIgnoreCompare=false)
+        {
+            if (!mIgnoreCompare && this.p_DisplayFrame.Equals(pDisplayFrame))
+            {
+                Logger.Info(string.Format("FormData[{0}] display frame paras no change, no need to update.", channel.ChannelName));
+                return;
+            }
+
+            if (mIgnoreCompare || this.p_DisplayFrame.ShowLocalTime != pDisplayFrame.ShowLocalTime)
+            {
+                this.dgvData.Columns[1].Visible = pDisplayFrame.ShowLocalTime;
+            }
+            if (mIgnoreCompare || this.p_DisplayFrame.ShowFrameInterval != pDisplayFrame.ShowFrameInterval)
+            {
+                this.dgvData.Columns[2].Visible = pDisplayFrame.ShowFrameInterval;
+            }
+            if (mIgnoreCompare 
+                || this.p_DisplayFrame.ShowErrorFrame != pDisplayFrame.ShowErrorFrame
+                || this.p_DisplayFrame.ShowSendFrame != pDisplayFrame.ShowSendFrame)
+            {
+                foreach (CAN_DATA pCANData in this.p_CANDataQueue)
+                {
+                    if (pCANData.CANFrame.Direction == CAN_FRAME_DIRECTION.SEND)
+                    {
+                        if (pCANData.CANFrame.Status != CAN_FRAME_STATUS.SUCCESS)
+                        {
+                            pCANData.Visible = pDisplayFrame.ShowErrorFrame && pDisplayFrame.ShowSendFrame;
+                        }
+                        else
+                        {
+                            pCANData.Visible = pDisplayFrame.ShowSendFrame;
+                        }
+                    }
+                    else
+                    {
+                        if (pCANData.CANFrame.Status != CAN_FRAME_STATUS.SUCCESS)
+                        {
+                            pCANData.Visible = pDisplayFrame.ShowErrorFrame;
+                        }
+                    }
+                }
+            }
+            this.p_DisplayFrame = pDisplayFrame;
         }
 
         #endregion
@@ -209,7 +265,13 @@ namespace CL_Main
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            this.dgvData.Rows.Clear();
+            string content = string.Format("确定要清除当前CAN通道[{0}]的数据吗？", channel.ChannelName);
+            DialogResult dialogResult = MessageBox.Show(content, "清除CAN通道数据", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.OK)
+            {
+                this.p_CANDataQueue.Clear();
+                this.dgvData.Rows.Clear();
+            }
         }
 
         private void FormData_FormClosing(object sender, FormClosingEventArgs e)
@@ -234,8 +296,32 @@ namespace CL_Main
             }
         }
 
-        #endregion
+        private void btnShowMode_Click(object sender, EventArgs e)
+        {
+            DisplayConfigDialog pDialog = new DisplayConfigDialog(this.p_DisplayFrame);
+            if (pDialog.ShowDialog() == DialogResult.OK)
+            {
+                Display(pDialog.DisplayFrame, false);
+                pDialog.Close();
+            }
+        }
 
+        #endregion
+    }
+
+    public enum DISPLAY_MODE : byte
+    {
+        ROLLING,        //滚动模式
+        STATISTICAL     //统计模式
+    }
+
+    public struct DISPLAY_FRAME
+    {
+        public DISPLAY_MODE DisplayMode;
+        public bool ShowSendFrame;
+        public bool ShowErrorFrame;
+        public bool ShowLocalTime;
+        public bool ShowFrameInterval;
     }
 
     class CAN_DATA
@@ -250,69 +336,66 @@ namespace CL_Main
         private static readonly string RECEIVE_SUCCESS_DESC = "接收成功";
         private static readonly string RECEIVE_FAILED_DESC = "接收失败";
         /************************************************************************************/
-        private long m_QueueIndex;
-        private DataGridViewRow row = null;
         private CAN_FRAME p_CANFrame;
-        /************************************************************************************/
-        public DataGridViewRow Row
-        { get { return this.row; } }
+        public DataGridViewRow Row { get; } = null;
         public bool Visible
-        { get { return this.row.Visible; } set { this.row.Visible = value; } }
-        public long QueueIndex
-        { get { return this.m_QueueIndex; } }
+        { get { return this.Row.Visible; } set { this.Row.Visible = value; } }
+        public long QueueIndex { get; }
+        public CAN_FRAME CANFrame
+        { get { return this.p_CANFrame; } set{ this.p_CANFrame = value; } }
         /************************************************************************************/
         public CAN_DATA(long mQueueIndex, CAN_FRAME pCANFrame, DataGridViewRow row)
         {
-            this.m_QueueIndex = mQueueIndex;
-            this.p_CANFrame = pCANFrame;
-            this.row = row;
+            this.QueueIndex = mQueueIndex;
+            this.CANFrame = pCANFrame;
+            this.Row = row;
             this.Init();
         }
 
         unsafe private void Init()
         {
             //queue index
-            this.row.Cells[0].Value = this.m_QueueIndex;
+            this.Row.Cells[0].Value = this.QueueIndex;
             //local time
-            this.row.Cells[1].Value = this.p_CANFrame.Time.ToString("yyyy-MM-dd hh:mm:ss.ffff");
+            this.Row.Cells[1].Value = this.CANFrame.Time.ToString("yyyy-MM-dd hh:mm:ss.ffff");
             //time stamp
-            this.row.Cells[2].Value = this.p_CANFrame.CANObj.TimeStamp.ToString("N0");
-            if (this.p_CANFrame.CANObj.TimeFlag == (byte)CAN_FRAME_TIME_FLAG.INVALID)
+            this.Row.Cells[2].Value = this.CANFrame.CANObj.TimeStamp.ToString("N0");
+            if (this.CANFrame.CANObj.TimeFlag == (byte)CAN_FRAME_TIME_FLAG.INVALID)
             {
-                this.row.Cells[2].Value = this.p_CANFrame.CANObj.TimeStamp;
+                this.Row.Cells[2].Value = this.CANFrame.CANObj.TimeStamp;
             }
             //can send/receive status
-            if (this.p_CANFrame.Direction == CAN_FRAME_DIRECTION.RECEIVE)
+            if (this.CANFrame.Direction == CAN_FRAME_DIRECTION.RECEIVE)
             {
-                this.row.Cells[3].Value = this.p_CANFrame.Status == CAN_FRAME_STATUS.SUCCESS ? RECEIVE_SUCCESS_DESC : RECEIVE_FAILED_DESC;
+                this.Row.Cells[3].Value = this.CANFrame.Status == CAN_FRAME_STATUS.SUCCESS ? RECEIVE_SUCCESS_DESC : RECEIVE_FAILED_DESC;
             }
             else
             {
-                this.row.Cells[3].Value = this.p_CANFrame.Status == CAN_FRAME_STATUS.SUCCESS ? SEND_SUCCESS_DESC : SEND_FAILED_DESC;
+                this.Row.Cells[3].Value = this.CANFrame.Status == CAN_FRAME_STATUS.SUCCESS ? SEND_SUCCESS_DESC : SEND_FAILED_DESC;
             }
 
             //can id
-            this.row.Cells[4].Value = this.p_CANFrame.CANObj.ID.ToString("x");
+            this.Row.Cells[4].Value = this.CANFrame.CANObj.ID.ToString("x");
             //can frame type
-            if (this.p_CANFrame.CANObj.RemoteFlag == (byte)CAN_FRAME_TYPE.DATA_FRAME)
+            if (this.CANFrame.CANObj.RemoteFlag == (byte)CAN_FRAME_TYPE.DATA_FRAME)
             {
-                this.row.Cells[5].Value = DATA_FRAME_DESC;
+                this.Row.Cells[5].Value = DATA_FRAME_DESC;
             }
             else
             {
-                this.row.Cells[5].Value = REMOTE_FRAME_DESC;
+                this.Row.Cells[5].Value = REMOTE_FRAME_DESC;
             }
             //can frame format
-            if (this.p_CANFrame.CANObj.ExternFlag == (byte)CAN_FRAME_FORMAT.STANDARD_FRAME)
+            if (this.CANFrame.CANObj.ExternFlag == (byte)CAN_FRAME_FORMAT.STANDARD_FRAME)
             {
-                this.row.Cells[6].Value = STANDARD_FRAME_DESC;
+                this.Row.Cells[6].Value = STANDARD_FRAME_DESC;
             }
             else
             {
-                this.row.Cells[6].Value = EXTENDED_FRAME_DESC;
+                this.Row.Cells[6].Value = EXTENDED_FRAME_DESC;
             }
             //can data length
-            this.row.Cells[7].Value = this.p_CANFrame.CANObj.DataLen;
+            this.Row.Cells[7].Value = this.CANFrame.CANObj.DataLen;
             //can data
 
             StringBuilder sb = new StringBuilder();
@@ -320,12 +403,39 @@ namespace CL_Main
             fixed (byte* pData = this.p_CANFrame.CANObj.Data)
             {
                 //Marshal.Copy((IntPtr)pData, data, 0, (int)CAN.FRAME_DATA_LENGTH_MAXIMUM);
-                for (int index = 0; index < this.p_CANFrame.CANObj.DataLen; index++)
+                for (int index = 0; index < this.CANFrame.CANObj.DataLen; index++)
                 {
                     sb.Append(Convert.ToString(pData[index], 16).PadLeft(2, '0')).Append(" ");
                 }
             }
-            this.row.Cells[8].Value = string.Join(" ", sb.ToString().Trim());
+            this.Row.Cells[8].Value = string.Join(" ", sb.ToString().Trim());
+
+        }
+
+        public void SetVisible(bool mShowSendFrame, bool mShowErrorFrame)
+        {
+            if (CANFrame.Direction == CAN_FRAME_DIRECTION.SEND)
+            {
+                if (CANFrame.Status != CAN_FRAME_STATUS.SUCCESS)
+                {
+                    Visible = mShowErrorFrame && mShowSendFrame;
+                }
+                else
+                {
+                    Visible = mShowSendFrame;
+                }
+            }
+            else
+            {
+                if (CANFrame.Status != CAN_FRAME_STATUS.SUCCESS)
+                {
+                    Visible = mShowErrorFrame;
+                }
+                else
+                {
+                    Visible = true;
+                }
+            }
         }
 
     }

@@ -1,6 +1,6 @@
 ﻿namespace CL_Main
 {
-    partial class DialogDevice
+    partial class DeviceConfigDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DialogDevice));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeviceConfigDialog));
             this.panelTop = new System.Windows.Forms.Panel();
             this.lbVersion = new System.Windows.Forms.Label();
             this.panelBottom = new System.Windows.Forms.FlowLayoutPanel();
